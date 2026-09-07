@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology and data provenance | OpenData Atlas</title>
+  <meta name="description" content="How OpenData Atlas selects, normalizes, ranks, and publishes World Bank indicator observations, with provenance and limitations.">
+  <link rel="canonical" href="https://srisusamg.github.io/open-data-pseo-lab/methodology/">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">OpenData Atlas</a>
+    <nav aria-label="Primary"><a href="../">Home</a><a href="./">Methodology</a></nav>
+  </header>
+  <main><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span>Methodology</span></nav>
+<header class="page-heading"><p class="eyebrow">Data notes</p><h1>Methodology and provenance</h1></header>
+<section><h2>Source</h2><p>All values come from the <a href="https://api.worldbank.org/v2/">World Bank Indicators API v2</a>, with no scraping or invented data. This snapshot was retrieved at <time datetime="2026-09-07T00:10:49Z">2026-09-07T00:10:49Z</time>.</p></section>
+<section><h2>Indicators</h2><dl class="indicator-definitions"><div><dt>Population</dt><dd><code>SP.POP.TOTL</code> — people</dd></div><div><dt>GDP</dt><dd><code>NY.GDP.MKTP.CD</code> — current US dollars</dd></div><div><dt>GDP per capita</dt><dd><code>NY.GDP.PCAP.CD</code> — current US dollars per person</dd></div><div><dt>Internet users</dt><dd><code>IT.NET.USER.ZS</code> — % of population</dd></div></dl></section>
+<section><h2>Selection and ranking</h2><p>For each country and indicator, the build requests a recent multi-year window and selects the latest non-null observation. Rankings compare those selected values from highest to lowest. Missing values remain missing: the pipeline does not substitute zero, interpolate, forecast, or otherwise invent observations.</p></section>
+<section><h2>Limitations</h2><p>Countries and indicators can have different latest observation years because reporting schedules vary. The year shown beside every value is part of the result and should be considered when making comparisons. Indicator definitions and revisions remain under World Bank stewardship.</p></section>
+</main>
+  <footer><p>Public indicator data from the <a href="https://data.worldbank.org/">World Bank</a>. <a href="./">How this site works</a>.</p></footer>
+</body>
+</html>

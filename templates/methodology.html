@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Methodology and data provenance | OpenData Atlas{% endblock %}
+{% block description %}How OpenData Atlas selects, normalizes, ranks, and publishes World Bank indicator observations, with provenance and limitations.{% endblock %}
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>Methodology</span></nav>
+<header class="page-heading"><p class="eyebrow">Data notes</p><h1>Methodology and provenance</h1></header>
+<section><h2>Source</h2><p>All values come from the <a href="https://api.worldbank.org/v2/">World Bank Indicators API v2</a>, with no scraping or invented data. This snapshot was retrieved at <time datetime="{{ retrieved_at }}">{{ retrieved_at }}</time>.</p></section>
+<section><h2>Indicators</h2><dl class="indicator-definitions">{% for indicator in indicators %}<div><dt>{{ indicator.name }}</dt><dd><code>{{ indicator.code }}</code> — {{ indicator.unit }}</dd></div>{% endfor %}</dl></section>
+<section><h2>Selection and ranking</h2><p>For each country and indicator, the build requests a recent multi-year window and selects the latest non-null observation. Rankings compare those selected values from highest to lowest. Missing values remain missing: the pipeline does not substitute zero, interpolate, forecast, or otherwise invent observations.</p></section>
+<section><h2>Limitations</h2><p>Countries and indicators can have different latest observation years because reporting schedules vary. The year shown beside every value is part of the result and should be considered when making comparisons. Indicator definitions and revisions remain under World Bank stewardship.</p></section>
+{% endblock %}
+

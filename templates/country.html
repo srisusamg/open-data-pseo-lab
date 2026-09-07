@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ country.name }} data: population, GDP and internet use | OpenData Atlas{% endblock %}
+{% block description %}Latest available World Bank indicators for {{ country.name }}, including population, GDP, GDP per capita, and internet use with observation years.{% endblock %}
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>{{ country.name }}</span></nav>
+<header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest non-null observations available from the World Bank for the selected indicators.</p></header>
+<section aria-labelledby="indicators-heading"><h2 id="indicators-heading">Latest indicators</h2><div class="metrics">
+{% for item in values %}<article class="metric">
+  <h3><a href="{{ link('indicators/' ~ item.indicator_slug ~ '/') }}">{{ item.indicator_name }}</a></h3>
+  <p class="metric-value">{{ item.value|value(item.format) }}</p>
+  {% if item.year %}<p>Observation year: <strong>{{ item.year }}</strong></p>{% else %}<p>No observation was available in the requested window.</p>{% endif %}
+  <p class="source">Source: <a href="{{ item.source_url }}">World Bank, {{ item.indicator_code }}</a></p>
+</article>{% endfor %}
+</div></section>
+<p class="note">Values can refer to different years. See the <a href="{{ link('methodology/') }}">methodology</a> before comparing them.</p>
+{% endblock %}
+

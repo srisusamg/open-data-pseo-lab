@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://srisusamg.github.io/open-data-pseo-lab/sitemap.xml
