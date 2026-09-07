@@ -3,6 +3,7 @@
   {"code": "USA", "slug": "united-states", "name": "United States"},
   {"code": "CHN", "slug": "china", "name": "China"},
   {"code": "VNM", "slug": "vietnam", "name": "Vietnam"},
-  {"code": "IDN", "slug": "indonesia", "name": "Indonesia"}
+  {"code": "IDN", "slug": "indonesia", "name": "Indonesia"},
+  {"code": "BRA", "slug": "brazil", "name": "Brazil"}
 ]
 
