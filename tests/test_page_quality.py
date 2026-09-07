@@ -5,7 +5,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import build
+from platform import build
+from platform.core.configuration import SitePaths
+from platform.providers.world_bank.client import SCHEMA_VERSION
+from platform.providers.world_bank.normalizer import normalize_snapshot
+from scripts.build import DEFAULT_PATHS
 from scripts.model import ROOT
 from scripts.validate import validate_snapshot
 from scripts.page_quality import (
@@ -156,10 +160,11 @@ class IntentionalSkipPipelineTests(unittest.TestCase):
         site_config = {"base_url": "https://example.test/atlas/", "name": "Fixture Atlas"}
         with tempfile.TemporaryDirectory() as temporary:
             fixture_root = Path(temporary)
-            shutil.copytree(ROOT / "templates", fixture_root / "templates")
-            shutil.copytree(ROOT / "static", fixture_root / "static")
-            with patch.object(build, "ROOT", fixture_root), patch.object(build, "load_config", return_value=(site_config, [country], [indicator])), patch.object(build, "load_comparisons", return_value=[]), patch.object(build, "load_json", return_value=change_config):
-                self.assertEqual(build.render_site(snapshot), 2)
+            fixture_site = fixture_root / "site-definition"
+            shutil.copytree(DEFAULT_PATHS.root, fixture_site)
+            paths = SitePaths(fixture_site, fixture_root / "site", fixture_root / "data/generated")
+            with patch.object(build, "load_site_config", return_value=(site_config, [country], [indicator])), patch.object(build, "load_comparisons", return_value=[]), patch.object(build, "load_json", return_value=change_config):
+                self.assertEqual(build.render_site(snapshot, paths, normalize_snapshot, SCHEMA_VERSION), 2)
 
             skipped_paths = ["countries/testland/", "indicators/test-indicator/", "countries/testland/change/2020-2025/"]
             sitemap = (fixture_root / "site/sitemap.xml").read_text(encoding="utf-8")

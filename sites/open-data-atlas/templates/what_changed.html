@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}How {{ change.entity.name }} changed, {{ change.requested_start_year }}–{{ change.requested_end_year }} | OpenData Atlas{% endblock %}
+{% block description %}A deterministic summary of how {{ change.entity.name }} changed from {{ change.requested_start_year }} to {{ change.requested_end_year }}, using actual World Bank observation years.{% endblock %}
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><a href="{{ link('countries/' ~ change.entity.slug ~ '/') }}">{{ change.entity.name }}</a><span aria-hidden="true">/</span><span>{{ change.requested_start_year }}–{{ change.requested_end_year }} change</span></nav>
+<header class="page-heading"><p class="eyebrow">What changed?</p><h1>How {{ change.entity.name }} changed, {{ change.requested_start_year }}–{{ change.requested_end_year }}</h1><p>Requested period: <strong>{{ change.requested_start_year }}–{{ change.requested_end_year }}</strong>. Actual observation years are shown for every indicator; values are never interpolated.</p></header>
+<section class="change-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">Summary</h2><p>{{ change.summary }}</p></section>
+<section aria-labelledby="details-heading"><h2 id="details-heading">Change metrics</h2><div class="table-wrap"><table class="change-table">
+  <caption>World Bank source facts and separately calculated changes</caption>
+  <thead><tr><th scope="col">Indicator</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Primary change</th><th scope="col">Relative change</th><th scope="col">CAGR</th></tr></thead>
+  <tbody>{% for metric in change.metrics %}<tr>
+    <th scope="row"><a href="{{ link('indicators/' ~ metric.metric_slug ~ '/') }}">{{ metric.metric_name }}</a><small>{{ metric.unit }}</small></th>
+    <td>{{ metric.start_value|value(metric.format) }}<small>{{ metric.actual_start_year }}</small></td>
+    <td>{{ metric.end_value|value(metric.format) }}<small>{{ metric.actual_end_year }}</small></td>
+    <td>{% if metric.percentage_point_change is not none %}{{ metric.percentage_point_change|difference('percentage') }}{% else %}{{ metric.absolute_change|difference(metric.format) }}{% endif %}</td>
+    <td>{% if metric.percent_change is not none %}{{ metric.percent_change|change }}{% else %}Not available{% endif %}</td>
+    <td>{% if metric.cagr is not none %}{{ metric.cagr|change }}{% else %}Not available{% endif %}</td>
+  </tr>{% endfor %}</tbody>
+</table></div></section>
+<section aria-labelledby="sources-heading"><h2 id="sources-heading">Sources and navigation</h2><p>Source: World Bank Indicators API. Each endpoint fact retains its metric, value, unit, observation year, and source.</p><ul class="source-list">{% for metric in change.metrics %}<li><a href="{{ metric.source_url }}">World Bank: {{ metric.metric_name }} ({{ metric.metric_id }})</a></li>{% endfor %}</ul><p><a href="{{ link('countries/' ~ change.entity.slug ~ '/') }}">View the {{ change.entity.name }} country profile</a> · <a href="{{ link('methodology/') }}">Read the methodology</a></p></section>
+{% if sibling_pages %}<section aria-labelledby="windows-heading"><h2 id="windows-heading">Other change windows</h2><ul class="link-list">{% for page in sibling_pages %}<li><a href="{{ link(page.path) }}">{{ change.entity.name }}, {{ page.requested_start_year }}–{{ page.requested_end_year }}</a></li>{% endfor %}</ul></section>{% endif %}
+{% endblock %}

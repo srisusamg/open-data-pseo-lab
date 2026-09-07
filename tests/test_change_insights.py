@@ -6,6 +6,7 @@ from scripts.change_metrics import derive_change_metric, select_observation
 from scripts.insights import InsightContext, generate_candidates, generate_insights, render_insight, render_summary, select_insights
 from scripts.model import ROOT, canonical_url
 from scripts.page_quality import change_page_skip_reason
+from scripts.build import DEFAULT_PATHS
 
 
 CONFIG = {
@@ -195,7 +196,7 @@ class PageQualityAndOutputTests(unittest.TestCase):
 
     def test_sitemap_includes_generated_and_excludes_skipped_url(self):
         sitemap = (ROOT / "site/sitemap.xml").read_text(encoding="utf-8")
-        site = json.loads((ROOT / "config/site.json").read_text(encoding="utf-8"))
+        site = json.loads((DEFAULT_PATHS.config / "site.json").read_text(encoding="utf-8"))
         generated = canonical_url(site["base_url"], "countries/india/change/2015-2025/")
         skipped = canonical_url(site["base_url"], "countries/test/change/2015-2025/")
         self.assertIn(f"<loc>{generated}</loc>", sitemap)

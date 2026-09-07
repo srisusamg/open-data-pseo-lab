@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ comparison.entity_a.name }} vs {{ comparison.entity_b.name }}: data comparison | OpenData Atlas{% endblock %}
+{% block description %}Compare {{ comparison.entity_a.name }} and {{ comparison.entity_b.name }} using latest World Bank population, GDP, internet-use, and other indicators with actual observation years and historical change.{% endblock %}
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>Compare</span><span aria-hidden="true">/</span><span>{{ comparison.entity_a.name }} vs {{ comparison.entity_b.name }}</span></nav>
+<header class="page-heading"><p class="eyebrow">Country comparison</p><h1>{{ comparison.entity_a.name }} vs {{ comparison.entity_b.name }}</h1><p>Deterministic comparison of the latest available World Bank observations and exact-year historical changes.</p></header>
+<p class="comparison-summary">{{ comparison.summary }}</p>
+<p>Explore the <a href="{{ link('countries/' ~ comparison.entity_a.slug ~ '/') }}">{{ comparison.entity_a.name }} profile</a> and <a href="{{ link('countries/' ~ comparison.entity_b.slug ~ '/') }}">{{ comparison.entity_b.name }} profile</a>.</p>
+
+<section aria-labelledby="latest-heading"><h2 id="latest-heading">Latest available observations</h2>
+<div class="table-wrap comparison-table"><table>
+  <caption>Latest source values; the difference is {{ comparison.entity_a.name }} minus {{ comparison.entity_b.name }}</caption>
+  <thead><tr><th scope="col">Indicator</th><th scope="col">{{ comparison.entity_a.name }}</th><th scope="col">{{ comparison.entity_b.name }}</th><th scope="col">Absolute difference</th><th scope="col">Percentage difference</th><th scope="col">Higher value</th></tr></thead>
+  <tbody>{% for metric in comparison.metrics %}<tr>
+    <th scope="row"><a href="{{ link('indicators/' ~ metric.metric_slug ~ '/') }}">{{ metric.metric_name }}</a></th>
+    <td>{% if metric.entity_a %}{{ metric.entity_a.value|value(metric.format) }} <small>({{ metric.entity_a.year }})</small>{% else %}Not available{% endif %}</td>
+    <td>{% if metric.entity_b %}{{ metric.entity_b.value|value(metric.format) }} <small>({{ metric.entity_b.year }})</small>{% else %}Not available{% endif %}</td>
+    <td>{{ metric.absolute_difference|difference(metric.format) }}</td><td>{{ metric.percentage_difference|change }}</td>
+    <td>{% if metric.leader %}{{ metric.leader.entity_name }}{% elif metric.entity_a and metric.entity_b %}Equal{% else %}Not available{% endif %}{% if metric.temporally_imperfect %}<span class="freshness-flag">Different years</span>{% endif %}</td>
+  </tr>{% endfor %}</tbody>
+</table></div></section>
+
+<section aria-labelledby="history-heading"><h2 id="history-heading">Historical change</h2>
+<div class="table-wrap comparison-history"><table>
+  <caption>Percentage changes use each country's exact source-year endpoints; no interpolation</caption>
+  <thead><tr><th scope="col">Indicator</th><th scope="col">Period</th><th scope="col">{{ comparison.entity_a.name }} change / CAGR</th><th scope="col">{{ comparison.entity_b.name }} change / CAGR</th><th scope="col">Larger change</th><th scope="col">Higher CAGR</th></tr></thead>
+  <tbody>{% for metric in comparison.metrics %}{% for period in [metric.periods.five_year, metric.periods.ten_year] %}<tr>
+    {% if loop.first %}<th scope="row" rowspan="2">{{ metric.metric_name }}</th>{% endif %}<td>{{ period.years }} years</td>
+    <td>{% if period.entity_a %}{{ period.entity_a.percentage_change|change }} <small>CAGR: {{ period.entity_a.cagr|change }} · {{ period.entity_a.start_year }}–{{ period.entity_a.end_year }}</small>{% else %}Not available{% endif %}</td>
+    <td>{% if period.entity_b %}{{ period.entity_b.percentage_change|change }} <small>CAGR: {{ period.entity_b.cagr|change }} · {{ period.entity_b.start_year }}–{{ period.entity_b.end_year }}</small>{% else %}Not available{% endif %}</td>
+    <td>{% if period.growth_leader %}{{ period.growth_leader.entity_name }}{% elif period.entity_a and period.entity_b %}Equal{% else %}Not available{% endif %}</td>
+    <td>{% if period.cagr_leader %}{{ period.cagr_leader.entity_name }}{% elif period.entity_a and period.entity_b and period.entity_a.cagr is not none and period.entity_b.cagr is not none %}Equal{% else %}Not available{% endif %}</td>
+  </tr>{% endfor %}{% endfor %}</tbody>
+</table></div></section>
+
+<section aria-labelledby="source-heading"><h2 id="source-heading">Sources and method</h2><p>Source: World Bank Indicators API v2. Every value retains its actual observation year. When latest years differ, the row is marked as temporally imperfect. Percentage difference is {{ comparison.entity_a.name }} relative to {{ comparison.entity_b.name }}; the absolute difference is expressed in the indicator's unit, with rates shown in percentage points.</p>
+<ul class="source-list">{% for metric in comparison.metrics %}<li>{{ metric.metric_name }}: <a href="{{ metric.provenance[0].source_url }}">{{ comparison.entity_a.name }} source</a> · <a href="{{ metric.provenance[1].source_url }}">{{ comparison.entity_b.name }} source</a></li>{% endfor %}</ul>
+<p>See the <a href="{{ link('methodology/') }}">methodology and limitations</a> for calculation details.</p></section>
+{% endblock %}

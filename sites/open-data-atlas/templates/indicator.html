@@ -5,10 +5,10 @@
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>Indicators</span><span aria-hidden="true">/</span><span>{{ indicator.name }}</span></nav>
 <header class="page-heading"><p class="eyebrow">Indicator ranking</p><h1>{{ indicator.name }} by country</h1><p>Latest available value for each configured country, ranked highest to lowest. Unit: {{ indicator.unit }}.</p></header>
 <div class="table-wrap"><table>
-  <caption>{{ indicator.name }} — World Bank indicator {{ indicator.code }}</caption>
+  <caption>{{ indicator.name }} — World Bank indicator {{ indicator.id }}</caption>
   <thead><tr><th scope="col">Rank</th><th scope="col">Country</th><th scope="col">Value</th><th scope="col">Year</th></tr></thead>
-  <tbody>{% for item in ranking %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="{{ link('countries/' ~ item.country_slug ~ '/') }}">{{ item.country_name }}</a></th><td>{{ item.value|value(item.format) }}</td><td>{{ item.year }}</td></tr>{% else %}<tr><td colspan="4">No observations were available in the requested window.</td></tr>{% endfor %}</tbody>
+  <tbody>{% for item in ranking %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="{{ link('countries/' ~ item.entity_slug ~ '/') }}">{{ item.entity_name }}</a></th><td>{{ item.value|value(item.format) }}</td><td>{{ item.year }}</td></tr>{% else %}<tr><td colspan="4">No observations were available in the requested window.</td></tr>{% endfor %}</tbody>
 </table></div>
-<p class="source">Source: <a href="https://data.worldbank.org/indicator/{{ indicator.code }}">World Bank, indicator {{ indicator.code }}</a>. Values may come from different observation years; see the <a href="{{ link('methodology/') }}">methodology</a>.</p>
-{% if comparisons %}<section><h2>Configured country comparisons</h2><ul class="link-list">{% for comparison in comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.country_a.name }} vs {{ comparison.country_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
+<p class="source">Source: <a href="https://data.worldbank.org/indicator/{{ indicator.id }}">World Bank, indicator {{ indicator.id }}</a>. Values may come from different observation years; see the <a href="{{ link('methodology/') }}">methodology</a>.</p>
+{% if comparisons %}<section><h2>Configured country comparisons</h2><ul class="link-list">{% for comparison in comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.entity_a.name }} vs {{ comparison.entity_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
 {% endblock %}

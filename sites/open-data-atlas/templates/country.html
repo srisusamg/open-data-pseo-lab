@@ -4,13 +4,13 @@
 {% block content %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>{{ country.name }}</span></nav>
 <header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest values and up to 15 historical observations from the World Bank for each selected indicator.</p></header>
-{% if country_comparisons %}<section class="comparison-links" aria-labelledby="comparisons-heading"><h2 id="comparisons-heading">Configured comparisons</h2><ul class="link-list">{% for comparison in country_comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.country_a.name }} vs {{ comparison.country_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
+{% if country_comparisons %}<section class="comparison-links" aria-labelledby="comparisons-heading"><h2 id="comparisons-heading">Configured comparisons</h2><ul class="link-list">{% for comparison in country_comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.entity_a.name }} vs {{ comparison.entity_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
 {% if country_change_pages %}<section class="comparison-links" aria-labelledby="changes-heading"><h2 id="changes-heading">What changed?</h2><ul class="link-list">{% for change in country_change_pages %}<li><a href="{{ link(change.path) }}">How {{ country.name }} changed, {{ change.requested_start_year }}–{{ change.requested_end_year }}</a></li>{% endfor %}</ul></section>{% endif %}
 <section aria-labelledby="indicators-heading"><h2 id="indicators-heading">Indicators and history</h2><div class="indicator-series">
 {% for item in values %}<article class="metric">
-  <h3><a href="{{ link('indicators/' ~ item.indicator_slug ~ '/') }}">{{ item.indicator_name }}</a></h3>
+  <h3><a href="{{ link('indicators/' ~ item.metric_slug ~ '/') }}">{{ item.metric_name }}</a></h3>
   {% if item.latest_observation %}<p class="metric-value">{{ item.latest_observation.value|value(item.format) }}</p><p>Latest observation year: <strong>{{ item.latest_observation.year }}</strong></p>{% else %}<p>No observation was available.</p>{% endif %}
-  <p class="source">Source: <a href="{{ item.source_url }}">World Bank, {{ item.indicator_code }}</a></p>
+  <p class="source">Source: <a href="{{ item.source_url }}">World Bank, {{ item.metric_id }}</a></p>
   <div class="derived" aria-label="Derived metrics">
     <h4>Derived metrics</h4>
     <p class="derived-note">Calculated from exact source-year endpoints; no interpolation.</p>

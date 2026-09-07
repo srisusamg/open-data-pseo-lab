@@ -10,9 +10,10 @@ from urllib.parse import unquote, urlparse
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.fetch_world_bank import HISTORY_OBSERVATIONS, SCHEMA_VERSION
 from scripts.comparison_metrics import comparison_path
-from scripts.model import ROOT, calculate_derived_metrics, canonical_url, load_comparisons, load_config, load_json
+from scripts.model import ROOT, canonical_url, load_comparisons, load_config, load_json
+from scripts.build import DEFAULT_PATHS
+from platform.providers.world_bank.validation import validate_snapshot
 
 
 class PageParser(HTMLParser):
@@ -67,41 +68,6 @@ def resolve_link(page: Path, href: str) -> Path | None:
     return target
 
 
-def validate_snapshot(snapshot: dict, countries: list[dict], indicators: list[dict]) -> list[str]:
-    errors: list[str] = []
-    if snapshot.get("schema_version") != SCHEMA_VERSION:
-        errors.append(f"snapshot schema_version must be {SCHEMA_VERSION}")
-    series = snapshot.get("series")
-    if not isinstance(series, list):
-        return errors + ["snapshot series must be a list"]
-    expected_pairs = {(country["code"], indicator["code"]) for country in countries for indicator in indicators}
-    actual_pairs = {(item.get("country_code"), item.get("indicator_code")) for item in series}
-    if actual_pairs != expected_pairs or len(series) != len(expected_pairs):
-        errors.append("snapshot must contain exactly one series for every configured country/indicator pair")
-    for item in series:
-        label = f"{item.get('country_code')} / {item.get('indicator_code')}"
-        observations = item.get("observations")
-        if not isinstance(observations, list):
-            errors.append(f"{label}: observations must be a list")
-            continue
-        if len(observations) > HISTORY_OBSERVATIONS:
-            errors.append(f"{label}: expected no more than {HISTORY_OBSERVATIONS} normalized observations")
-        years = [row.get("year") for row in observations]
-        if any(not isinstance(year, int) for year in years):
-            errors.append(f"{label}: every observation year must be an integer")
-        elif years != sorted(years, reverse=True) or len(years) != len(set(years)):
-            errors.append(f"{label}: observation years must be unique and newest first")
-        if any(not isinstance(row.get("value"), (int, float)) or isinstance(row.get("value"), bool) for row in observations):
-            errors.append(f"{label}: every observation value must be numeric")
-        expected_latest = observations[0] if observations else None
-        if item.get("latest_observation") != expected_latest:
-            errors.append(f"{label}: latest_observation must match the newest historical observation")
-        expected_derived = calculate_derived_metrics(observations)
-        if item.get("derived_metrics") != expected_derived:
-            errors.append(f"{label}: derived_metrics do not match deterministic recalculation")
-    return errors
-
-
 def validate() -> list[str]:
     site, countries, indicators = load_config()
     errors: list[str] = []
@@ -129,7 +95,7 @@ def validate() -> list[str]:
                 quality_rows = []
         except (OSError, ValueError, TypeError) as exc:
             errors.append(f"invalid page quality report: {exc}")
-    change_config = load_json(ROOT / "config" / "change_windows.json")
+    change_config = load_json(DEFAULT_PATHS.config / "change_windows.json")
     expected_recipes = {
         **{f"countries/{item['slug']}/": "country_profile" for item in countries},
         **{f"indicators/{item['slug']}/": "indicator_ranking" for item in indicators},

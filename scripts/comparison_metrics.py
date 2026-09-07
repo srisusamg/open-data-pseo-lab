@@ -1,131 +1,68 @@
-"""Deterministic calculations for allow-listed country comparisons."""
+"""Backward-compatible adapters for the canonical comparison recipe."""
 
 from __future__ import annotations
 
-from typing import Iterable
+from platform.recipes.comparison import (
+    build_comparison as _build_comparison,
+    calculate_metric_comparison as _calculate_metric_comparison,
+    comparison_path,
+)
 
 
-def comparison_path(country_a: dict, country_b: dict) -> str:
-    """Return the stable path for an ordered configured pair."""
-    return f"compare/{country_a['slug']}/{country_b['slug']}/"
+def _entity(item: dict) -> dict:
+    return {"id": item.get("id", item.get("code")), "slug": item["slug"], "name": item["name"]}
 
 
-def _period_metric(series: dict, period: str) -> dict | None:
-    metric = series.get("derived_metrics", {}).get(period)
-    return metric if isinstance(metric, dict) else None
-
-
-def _growth_leader(country_a: dict, country_b: dict, metric_a: dict | None, metric_b: dict | None) -> dict | None:
-    if not metric_a or not metric_b:
-        return None
-    a_change = metric_a.get("percentage_change")
-    b_change = metric_b.get("percentage_change")
-    if a_change is None or b_change is None or a_change == b_change:
-        return None
-    leader = country_a if a_change > b_change else country_b
-    return {"country_code": leader["code"], "country_name": leader["name"], "metric": "percentage_change"}
-
-
-def _cagr_leader(country_a: dict, country_b: dict, metric_a: dict | None, metric_b: dict | None) -> dict | None:
-    if not metric_a or not metric_b:
-        return None
-    a_cagr = metric_a.get("cagr")
-    b_cagr = metric_b.get("cagr")
-    if a_cagr is None or b_cagr is None or a_cagr == b_cagr:
-        return None
-    leader = country_a if a_cagr > b_cagr else country_b
-    return {"country_code": leader["code"], "country_name": leader["name"], "metric": "cagr"}
-
-
-def _gap_direction(series_a: dict, series_b: dict, years: int) -> dict | None:
-    """Compare a scale-neutral relative gap at matching exact endpoints."""
-    history_a = {row["year"]: float(row["value"]) for row in series_a.get("observations", [])}
-    history_b = {row["year"]: float(row["value"]) for row in series_b.get("observations", [])}
-    latest_a = series_a.get("latest_observation")
-    latest_b = series_b.get("latest_observation")
-    if not latest_a or not latest_b or latest_a["year"] != latest_b["year"]:
-        return None
-    end_year = int(latest_a["year"])
-    start_year = end_year - years
-    values = (history_a.get(start_year), history_b.get(start_year), history_a.get(end_year), history_b.get(end_year))
-    if any(value is None or value <= 0 for value in values):
-        return None
-    start_gap = abs(values[0] - values[1]) / max(values[0], values[1]) * 100
-    end_gap = abs(values[2] - values[3]) / max(values[2], values[3]) * 100
-    if abs(start_gap - end_gap) < 1e-9:
-        direction = "unchanged"
-    else:
-        direction = "narrowed" if end_gap < start_gap else "widened"
-    return {
-        "period_years": years,
-        "start_year": start_year,
-        "end_year": end_year,
-        "start_relative_gap": round(start_gap, 6),
-        "end_relative_gap": round(end_gap, 6),
-        "direction": direction,
+def _series(item: dict) -> dict:
+    result = dict(item)
+    aliases = {
+        "entity_id": "country_code", "metric_id": "indicator_code",
+        "metric_slug": "indicator_slug", "metric_name": "indicator_name",
     }
+    for target, source in aliases.items():
+        if target not in result and source in result:
+            result[target] = result[source]
+    result.setdefault("provenance", {
+        "source_name": "World Bank", "source_url": result.get("source_url", ""),
+        "source_metric_id": result.get("metric_id", ""),
+    })
+    return result
+
+
+def _legacy_aliases(result: dict) -> dict:
+    result["country_a"], result["country_b"] = result["entity_a"], result["entity_b"]
+    for metric in result["metrics"]:
+        metric.update({
+            "indicator_code": metric["metric_id"], "indicator_slug": metric["metric_slug"],
+            "indicator_name": metric["metric_name"], "country_a": metric["entity_a"],
+            "country_b": metric["entity_b"],
+            "source_urls": [item["source_url"] for item in metric["provenance"]],
+        })
+        if metric.get("leader"):
+            metric["leader"].update({
+                "country_code": metric["leader"]["entity_id"],
+                "country_name": metric["leader"]["entity_name"],
+            })
+        for period in metric["periods"].values():
+            period["country_a"], period["country_b"] = period["entity_a"], period["entity_b"]
+            for key in ("growth_leader", "cagr_leader"):
+                if period[key]:
+                    period[key].update({
+                        "country_code": period[key]["entity_id"],
+                        "country_name": period[key]["entity_name"],
+                    })
+    return result
 
 
 def calculate_indicator_comparison(country_a: dict, country_b: dict, series_a: dict, series_b: dict) -> dict:
-    latest_a = series_a.get("latest_observation")
-    latest_b = series_b.get("latest_observation")
-    comparable = bool(latest_a and latest_b)
-    absolute_difference = percentage_difference = None
-    leader = None
-    if comparable:
-        value_a = float(latest_a["value"])
-        value_b = float(latest_b["value"])
-        absolute_difference = round(value_a - value_b, 6)
-        if value_b != 0:
-            percentage_difference = round(((value_a - value_b) / abs(value_b)) * 100, 6)
-        if value_a != value_b:
-            leading_country = country_a if value_a > value_b else country_b
-            leader = {"country_code": leading_country["code"], "country_name": leading_country["name"]}
-
-    periods = {}
-    for key, years in (("five_year", 5), ("ten_year", 10)):
-        metric_a = _period_metric(series_a, key)
-        metric_b = _period_metric(series_b, key)
-        periods[key] = {
-            "years": years,
-            "country_a": metric_a,
-            "country_b": metric_b,
-            "growth_leader": _growth_leader(country_a, country_b, metric_a, metric_b),
-            "cagr_leader": _cagr_leader(country_a, country_b, metric_a, metric_b),
-        }
-
-    relative_gap = None
-    if comparable:
-        a_value = float(latest_a["value"])
-        b_value = float(latest_b["value"])
-        denominator = max(abs(a_value), abs(b_value))
-        if denominator > 0:
-            relative_gap = round(abs(a_value - b_value) / denominator * 100, 6)
-
-    return {
-        "indicator_code": series_a["indicator_code"],
-        "indicator_slug": series_a["indicator_slug"],
-        "indicator_name": series_a["indicator_name"],
-        "unit": series_a["unit"],
-        "format": series_a["format"],
-        "country_a": latest_a,
-        "country_b": latest_b,
-        "absolute_difference": absolute_difference,
-        "percentage_difference": percentage_difference,
-        "relative_gap": relative_gap,
-        "leader": leader,
-        "temporally_imperfect": bool(comparable and latest_a["year"] != latest_b["year"]),
-        "periods": periods,
-        "gap_change": _gap_direction(series_a, series_b, 10) or _gap_direction(series_a, series_b, 5),
-        "source_urls": [series_a["source_url"], series_b["source_url"]],
-    }
+    result = _calculate_metric_comparison(_entity(country_a), _entity(country_b), _series(series_a), _series(series_b))
+    wrapped = {"entity_a": _entity(country_a), "entity_b": _entity(country_b), "metrics": [result]}
+    return _legacy_aliases(wrapped)["metrics"][0]
 
 
-def build_comparison(country_a: dict, country_b: dict, series_a: Iterable[dict], series_b: Iterable[dict]) -> dict:
-    by_indicator_b = {item["indicator_code"]: item for item in series_b}
-    metrics = [
-        calculate_indicator_comparison(country_a, country_b, item, by_indicator_b[item["indicator_code"]])
-        for item in series_a
-        if item["indicator_code"] in by_indicator_b
-    ]
-    return {"country_a": country_a, "country_b": country_b, "path": comparison_path(country_a, country_b), "metrics": metrics}
+def build_comparison(country_a: dict, country_b: dict, series_a, series_b) -> dict:
+    result = _build_comparison(_entity(country_a), _entity(country_b), map(_series, series_a), map(_series, series_b))
+    return _legacy_aliases(result)
+
+
+__all__ = ["build_comparison", "calculate_indicator_comparison", "comparison_path"]
