@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{{ indicator.name }} ranking for five countries | OpenData Atlas{% endblock %}
-{% block description %}Compare and rank the latest available {{ indicator.name|lower }} values for India, the United States, China, Vietnam, and Indonesia using World Bank data.{% endblock %}
+{% block title %}{{ indicator.name }} ranking for {{ countries|length }} countries | OpenData Atlas{% endblock %}
+{% block description %}Compare and rank the latest available {{ indicator.name|lower }} values across {{ countries|length }} configured countries using World Bank data with observation years.{% endblock %}
 {% block content %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>Indicators</span><span aria-hidden="true">/</span><span>{{ indicator.name }}</span></nav>
 <header class="page-heading"><p class="eyebrow">Indicator ranking</p><h1>{{ indicator.name }} by country</h1><p>Latest available value for each configured country, ranked highest to lowest. Unit: {{ indicator.unit }}.</p></header>
@@ -11,4 +11,3 @@
 </table></div>
 <p class="source">Source: <a href="https://data.worldbank.org/indicator/{{ indicator.code }}">World Bank, indicator {{ indicator.code }}</a>. Values may come from different observation years; see the <a href="{{ link('methodology/') }}">methodology</a>.</p>
 {% endblock %}
-

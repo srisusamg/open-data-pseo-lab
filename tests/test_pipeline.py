@@ -35,5 +35,8 @@ class FormattingTests(unittest.TestCase):
     def test_missing_values_are_not_formatted_as_zero(self):
         self.assertEqual(format_value(None, "population"), "Not available")
 
+    def test_life_expectancy_is_formatted_in_years(self):
+        self.assertEqual(format_value(76.4321, "years"), "76.4 years")
+
 
 if __name__ == "__main__": unittest.main()

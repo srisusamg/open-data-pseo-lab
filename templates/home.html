@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}OpenData Atlas — World Bank country indicators{% endblock %}
-{% block description %}Compare the latest available population, GDP, GDP per capita, and internet use data for five countries, sourced from the World Bank.{% endblock %}
+{% block description %}Compare the latest available population, GDP, GDP per capita, internet use, and life expectancy data for {{ countries|length }} countries, sourced from the World Bank.{% endblock %}
 {% block content %}
 <section class="hero">
   <p class="eyebrow">World Bank indicators, clearly sourced</p><h1>OpenData Atlas</h1>
-  <p>Explore the latest available population, GDP, GDP per capita, and internet-use observations for five countries. Every value includes its actual observation year.</p>
+  <p>Explore the latest available observations for {{ indicators|length }} indicators across {{ countries|length }} countries. Every value includes its actual observation year.</p>
   <p class="muted">Data retrieved <time datetime="{{ retrieved_at }}">{{ retrieved_at[:10] }}</time>. <a href="{{ link('methodology/') }}">Read the methodology and limitations</a>.</p>
 </section>
 <div class="grid two-column">
@@ -12,4 +12,3 @@
   <section><h2>Indicator rankings</h2><ul class="link-list">{% for indicator in indicators %}<li><a href="{{ link('indicators/' ~ indicator.slug ~ '/') }}">{{ indicator.name }}</a></li>{% endfor %}</ul></section>
 </div>
 {% endblock %}
-

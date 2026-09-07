@@ -1,9 +1,9 @@
 {
-  "build_timestamp": "2026-09-07T00:40:52Z",
+  "build_timestamp": "2026-09-07T02:07:56Z",
   "source_name": "World Bank",
   "countries_count": 6,
-  "indicators_count": 4,
-  "generated_page_count": 12,
+  "indicators_count": 5,
+  "generated_page_count": 13,
   "generator_version": "1.0.0",
   "schema_version": "1.0"
 }

@@ -15,7 +15,7 @@ After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentia
 - `scripts/validate.py` checks required pages, titles, H1s, attribution, content size, and internal links.
 - `.github/workflows/refresh-and-deploy.yml` refreshes, tests, commits changed generated artifacts, and deploys the same run to Pages.
 
-The generated site contains a home page, five country profiles, four indicator rankings, a methodology page, a sitemap, and robots directives. Each observation preserves its World Bank indicator code, observation year, retrieval time, and source URL.
+The generated site contains a home page, one profile per configured country, one ranking per configured indicator, a methodology page, a sitemap, and robots directives. Each observation preserves its World Bank indicator code, observation year, retrieval time, and source URL.
 
 ## Build locally
 
@@ -44,7 +44,7 @@ Canonical and sitemap URLs come from `config/site.json`. The checked-in value wa
 
 To add a country, append its World Bank ISO3 `code`, URL-safe `slug`, and display `name` to `config/countries.json`, then rebuild and validate.
 
-To add an indicator, append its World Bank `code`, `slug`, `name`, human-readable `unit`, and an existing `format` (`population`, `currency`, `currency_per_person`, or `percentage`) to `config/indicators.json`. The templates automatically add its profile values and ranking page.
+To add an indicator, append its World Bank `code`, `slug`, `name`, human-readable `unit`, and an existing `format` (`population`, `currency`, `currency_per_person`, `percentage`, or `years`) to `config/indicators.json`. The templates automatically add its profile values and ranking page.
 
 ## Automated refresh and deployment
 

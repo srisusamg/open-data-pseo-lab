@@ -81,4 +81,6 @@ def format_value(value: int | float | None, style: str) -> str:
         return f"US${number:,.2f}"
     if style == "percentage":
         return f"{number:.1f}%"
+    if style == "years":
+        return f"{number:.1f} years"
     return f"{number:,}"

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{{ country.name }} data: population, GDP and internet use | OpenData Atlas{% endblock %}
-{% block description %}Latest available World Bank indicators for {{ country.name }}, including population, GDP, GDP per capita, and internet use with observation years.{% endblock %}
+{% block title %}{{ country.name }} data and World Bank indicators | OpenData Atlas{% endblock %}
+{% block description %}Latest available World Bank indicators for {{ country.name }}, including population, GDP, internet use, and life expectancy with observation years.{% endblock %}
 {% block content %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>{{ country.name }}</span></nav>
 <header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest non-null observations available from the World Bank for the selected indicators.</p></header>
@@ -14,4 +14,3 @@
 </div></section>
 <p class="note">Values can refer to different years. See the <a href="{{ link('methodology/') }}">methodology</a> before comparing them.</p>
 {% endblock %}
-

@@ -2,6 +2,6 @@
   {"code": "SP.POP.TOTL", "slug": "population", "name": "Population", "unit": "people", "format": "population"},
   {"code": "NY.GDP.MKTP.CD", "slug": "gdp", "name": "GDP", "unit": "current US dollars", "format": "currency"},
   {"code": "NY.GDP.PCAP.CD", "slug": "gdp-per-capita", "name": "GDP per capita", "unit": "current US dollars per person", "format": "currency_per_person"},
-  {"code": "IT.NET.USER.ZS", "slug": "internet-users", "name": "Internet users", "unit": "% of population", "format": "percentage"}
+  {"code": "IT.NET.USER.ZS", "slug": "internet-users", "name": "Internet users", "unit": "% of population", "format": "percentage"},
+  {"code": "SP.DYN.LE00.IN", "slug": "life-expectancy", "name": "Life expectancy at birth", "unit": "years", "format": "years"}
 ]
-

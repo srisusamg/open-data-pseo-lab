@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-09-07T00:40:52Z",
+  "retrieved_at": "2026-09-07T02:07:56Z",
   "window": {
     "start_year": 2017,
     "end_year": 2026
@@ -63,6 +63,19 @@
       "source_url": "https://api.worldbank.org/v2/country/IND/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
     },
     {
+      "country_code": "IND",
+      "country_slug": "india",
+      "country_name": "India",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 72.235,
+      "source_url": "https://api.worldbank.org/v2/country/IND/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
       "country_code": "USA",
       "country_slug": "united-states",
       "country_name": "United States",
@@ -113,6 +126,19 @@
       "year": 2024,
       "value": 94.69380188,
       "source_url": "https://api.worldbank.org/v2/country/USA/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "USA",
+      "country_slug": "united-states",
+      "country_name": "United States",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 78.890243902439,
+      "source_url": "https://api.worldbank.org/v2/country/USA/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
     },
     {
       "country_code": "CHN",
@@ -167,6 +193,19 @@
       "source_url": "https://api.worldbank.org/v2/country/CHN/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
     },
     {
+      "country_code": "CHN",
+      "country_slug": "china",
+      "country_name": "China",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 78.017,
+      "source_url": "https://api.worldbank.org/v2/country/CHN/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
       "country_code": "VNM",
       "country_slug": "vietnam",
       "country_name": "Vietnam",
@@ -217,6 +256,19 @@
       "year": 2024,
       "value": 84.15,
       "source_url": "https://api.worldbank.org/v2/country/VNM/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "VNM",
+      "country_slug": "vietnam",
+      "country_name": "Vietnam",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 74.736,
+      "source_url": "https://api.worldbank.org/v2/country/VNM/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
     },
     {
       "country_code": "IDN",
@@ -271,6 +323,19 @@
       "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
     },
     {
+      "country_code": "IDN",
+      "country_slug": "indonesia",
+      "country_name": "Indonesia",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 71.288,
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
       "country_code": "BRA",
       "country_slug": "brazil",
       "country_name": "Brazil",
@@ -321,6 +386,19 @@
       "year": 2024,
       "value": 84.46347227,
       "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "BRA",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "indicator_slug": "life-expectancy",
+      "indicator_name": "Life expectancy at birth",
+      "unit": "years",
+      "format": "years",
+      "year": 2024,
+      "value": 76.023,
+      "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/SP.DYN.LE00.IN?format=json&date=2017%3A2026&per_page=100"
     }
   ]
 }
