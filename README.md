@@ -9,13 +9,13 @@ After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentia
 ## Architecture
 
 - `config/` defines the site URL, countries, and indicators.
-- `scripts/fetch_world_bank.py` fetches a recent 10-year window and selects the latest non-null observation.
+- `scripts/fetch_world_bank.py` fetches each series and preserves its newest 15 non-null observations with actual source years.
 - `scripts/model.py` contains deterministic selection, ranking, URL, and number-formatting logic.
 - `scripts/build.py` writes normalized data to `data/generated/` and renders Jinja templates into `site/`.
 - `scripts/validate.py` checks required pages, titles, H1s, attribution, content size, and internal links.
 - `.github/workflows/refresh-and-deploy.yml` refreshes, tests, commits changed generated artifacts, and deploys the same run to Pages.
 
-The generated site contains a home page, one profile per configured country, one ranking per configured indicator, a methodology page, a sitemap, and robots directives. Each observation preserves its World Bank indicator code, observation year, retrieval time, and source URL.
+The generated site contains a home page, one profile per configured country, one ranking per configured indicator, a methodology page, a sitemap, and robots directives. Each country/indicator series preserves its World Bank indicator code, actual observation years, retrieval time, and source URL. Five- and 10-year changes and CAGR are deterministic derived metrics stored and displayed separately from source observations; exact year endpoints are required and no values are interpolated.
 
 ## Build locally
 

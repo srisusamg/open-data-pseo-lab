@@ -15,10 +15,10 @@ from urllib3.util.retry import Retry
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.model import ROOT, latest_non_null, load_config, source_url
+from scripts.model import ROOT, calculate_derived_metrics, load_config, normalize_history, source_url
 
-API_WINDOW_YEARS = 10
-SCHEMA_VERSION = "1.0"
+HISTORY_OBSERVATIONS = 15
+SCHEMA_VERSION = "2.0"
 
 
 class WorldBankError(RuntimeError):
@@ -38,9 +38,9 @@ def session_with_retries() -> requests.Session:
     return session
 
 
-def fetch_indicator(session: requests.Session, country: dict, indicator: dict, start_year: int, end_year: int) -> dict:
+def fetch_indicator(session: requests.Session, country: dict, indicator: dict) -> dict:
     url = source_url(country["code"], indicator["code"])
-    params = {"format": "json", "date": f"{start_year}:{end_year}", "per_page": 100}
+    params = {"format": "json", "per_page": 100}
     try:
         response = session.get(url.split("?", 1)[0], params=params, timeout=(5, 30))
         response.raise_for_status()
@@ -49,7 +49,8 @@ def fetch_indicator(session: requests.Session, country: dict, indicator: dict, s
         raise WorldBankError(f"Failed to fetch {country['code']} / {indicator['code']}: {exc}") from exc
     if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
         raise WorldBankError(f"Malformed World Bank response for {country['code']} / {indicator['code']}")
-    selected = latest_non_null(payload[1])
+    history = normalize_history(payload[1], HISTORY_OBSERVATIONS)
+    latest = history[0] if history else None
     return {
         "country_code": country["code"],
         "country_slug": country["slug"],
@@ -59,20 +60,19 @@ def fetch_indicator(session: requests.Session, country: dict, indicator: dict, s
         "indicator_name": indicator["name"],
         "unit": indicator["unit"],
         "format": indicator["format"],
-        "year": int(selected["date"]) if selected else None,
-        "value": selected["value"] if selected else None,
         "source_url": response.url,
+        "latest_observation": latest,
+        "observations": history,
+        "derived_metrics": calculate_derived_metrics(history),
     }
 
 
 def fetch_snapshot(output: Path) -> dict:
     site, countries, indicators = load_config()
     now = datetime.now(timezone.utc).replace(microsecond=0)
-    end_year = now.year
-    start_year = end_year - API_WINDOW_YEARS + 1
     session = session_with_retries()
-    observations = [
-        fetch_indicator(session, country, indicator, start_year, end_year)
+    series = [
+        fetch_indicator(session, country, indicator)
         for country in countries
         for indicator in indicators
     ]
@@ -80,8 +80,11 @@ def fetch_snapshot(output: Path) -> dict:
         "schema_version": SCHEMA_VERSION,
         "source": {"name": "World Bank", "api": "World Bank Indicators API v2"},
         "retrieved_at": now.isoformat().replace("+00:00", "Z"),
-        "window": {"start_year": start_year, "end_year": end_year},
-        "observations": observations,
+        "history_policy": {
+            "maximum_observations_per_series": HISTORY_OBSERVATIONS,
+            "selection": "newest non-null source observations; actual years preserved; no interpolation",
+        },
+        "series": series,
     }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(snapshot, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -97,7 +100,7 @@ def main() -> int:
     except (WorldBankError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
-    print(f"Fetched {len(snapshot['observations'])} observations to {args.output}")
+    print(f"Fetched {len(snapshot['series'])} country/indicator series to {args.output}")
     return 0
 
 

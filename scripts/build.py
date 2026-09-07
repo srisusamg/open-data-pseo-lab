@@ -14,9 +14,9 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.fetch_world_bank import SCHEMA_VERSION, fetch_snapshot
-from scripts.model import ROOT, canonical_url, format_value, load_config, load_json, rank_observations, relative_url
+from scripts.model import ROOT, canonical_url, format_change, format_value, load_config, load_json, rank_observations, relative_url
 
-GENERATOR_VERSION = "1.0.0"
+GENERATOR_VERSION = "2.0.0"
 
 
 def write_text(path: Path, content: str) -> None:
@@ -37,13 +37,17 @@ def render_site(snapshot: dict) -> int:
         lstrip_blocks=True,
     )
     env.filters["value"] = format_value
+    env.filters["change"] = format_change
 
-    observations = snapshot["observations"]
+    series = snapshot["series"]
     by_country = {country["slug"]: [] for country in countries}
     by_indicator = {indicator["slug"]: [] for indicator in indicators}
-    for item in observations:
+    for item in series:
         by_country[item["country_slug"]].append(item)
-        by_indicator[item["indicator_slug"]].append(item)
+        latest = item["latest_observation"]
+        by_indicator[item["indicator_slug"]].append(
+            {**item, "year": latest["year"] if latest else None, "value": latest["value"] if latest else None}
+        )
 
     page_paths = [""]
     common = {
@@ -109,4 +113,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

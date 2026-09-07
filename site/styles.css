@@ -9,14 +9,14 @@ nav { display: flex; gap: 1rem; } main { min-height: 70vh; padding-block: clamp(
 .hero, .page-heading { max-width: 48rem; margin-bottom: 2.5rem; }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -.025em; } h1 { font-size: clamp(2.3rem, 7vw, 4.5rem); margin: .25rem 0 1rem; } h2 { margin-top: 2rem; }
 .eyebrow { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.muted, .note { color: var(--muted); } .grid, .metrics { display: grid; gap: 1rem; } .two-column { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.muted, .note { color: var(--muted); } .grid, .metrics, .indicator-series { display: grid; gap: 1rem; } .two-column { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid > section, .metric { padding: 1.25rem; background: var(--panel); border: 1px solid var(--line); border-radius: .5rem; }
 .link-list { padding-left: 1.25rem; } .link-list li { margin-block: .55rem; } .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .metric h3 { margin-top: 0; } .metric-value { font-size: clamp(1.45rem, 4vw, 2.2rem); font-weight: 750; margin-block: .6rem; }
 .source { font-size: .9rem; color: var(--muted); } .breadcrumbs { color: var(--muted); font-size: .9rem; flex-wrap: wrap; }
 .table-wrap { overflow-x: auto; } table { width: 100%; border-collapse: collapse; background: var(--panel); } caption { text-align: left; font-weight: 700; padding-bottom: .6rem; }
 th, td { text-align: left; padding: .9rem; border-bottom: 1px solid var(--line); } thead { background: #e9eee8; }
+.indicator-series { grid-template-columns: 1fr; } .derived { margin-block: 1rem; padding: .9rem; background: #f0f4ef; border-left: .25rem solid var(--accent); } .derived h4 { margin: 0; } .derived-note { margin: .25rem 0 .7rem; color: var(--muted); font-size: .88rem; } .change-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 1rem; margin: 0; } .change-list div { display: flex; justify-content: space-between; gap: 1rem; } .change-list dd { margin: 0; font-weight: 700; text-align: right; } .history-table { max-height: 24rem; overflow-y: auto; } .history-table th, .history-table td { padding: .45rem .7rem; }
 .indicator-definitions div { padding: .8rem 0; border-bottom: 1px solid var(--line); } dt { font-weight: 750; }
 footer { border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted); font-size: .9rem; } code { background: #e9eee8; padding: .1em .3em; border-radius: .2em; }
-@media (max-width: 42rem) { .two-column, .metrics { grid-template-columns: 1fr; } .site-header { align-items: flex-start; gap: .75rem; } .site-header nav { gap: .65rem; } }
-
+@media (max-width: 42rem) { .two-column, .metrics, .change-list { grid-template-columns: 1fr; } .site-header { align-items: flex-start; gap: .75rem; } .site-header nav { gap: .65rem; } }

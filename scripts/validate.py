@@ -10,7 +10,8 @@ from urllib.parse import unquote, urlparse
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.model import ROOT, load_config
+from scripts.fetch_world_bank import HISTORY_OBSERVATIONS, SCHEMA_VERSION
+from scripts.model import ROOT, calculate_derived_metrics, load_config, load_json
 
 
 class PageParser(HTMLParser):
@@ -22,6 +23,8 @@ class PageParser(HTMLParser):
         self.links: list[str] = []
         self.descriptions: list[str] = []
         self.canonicals: list[str] = []
+        self.history_table_count = 0
+        self.derived_block_count = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
@@ -35,6 +38,10 @@ class PageParser(HTMLParser):
             self.descriptions.append(values.get("content") or "")
         elif tag == "link" and values.get("rel", "").lower() == "canonical":
             self.canonicals.append(values.get("href") or "")
+        elif tag == "div":
+            classes = set((values.get("class") or "").split())
+            self.history_table_count += "history-table" in classes
+            self.derived_block_count += "derived" in classes
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "title":
@@ -62,9 +69,52 @@ def resolve_link(page: Path, href: str) -> Path | None:
     return target
 
 
+def validate_snapshot(snapshot: dict, countries: list[dict], indicators: list[dict]) -> list[str]:
+    errors: list[str] = []
+    if snapshot.get("schema_version") != SCHEMA_VERSION:
+        errors.append(f"snapshot schema_version must be {SCHEMA_VERSION}")
+    series = snapshot.get("series")
+    if not isinstance(series, list):
+        return errors + ["snapshot series must be a list"]
+    expected_pairs = {(country["code"], indicator["code"]) for country in countries for indicator in indicators}
+    actual_pairs = {(item.get("country_code"), item.get("indicator_code")) for item in series}
+    if actual_pairs != expected_pairs or len(series) != len(expected_pairs):
+        errors.append("snapshot must contain exactly one series for every configured country/indicator pair")
+    for item in series:
+        label = f"{item.get('country_code')} / {item.get('indicator_code')}"
+        observations = item.get("observations")
+        if not isinstance(observations, list):
+            errors.append(f"{label}: observations must be a list")
+            continue
+        if len(observations) < HISTORY_OBSERVATIONS:
+            errors.append(f"{label}: expected at least {HISTORY_OBSERVATIONS} available observations")
+        years = [row.get("year") for row in observations]
+        if any(not isinstance(year, int) for year in years):
+            errors.append(f"{label}: every observation year must be an integer")
+        elif years != sorted(years, reverse=True) or len(years) != len(set(years)):
+            errors.append(f"{label}: observation years must be unique and newest first")
+        if any(not isinstance(row.get("value"), (int, float)) or isinstance(row.get("value"), bool) for row in observations):
+            errors.append(f"{label}: every observation value must be numeric")
+        expected_latest = observations[0] if observations else None
+        if item.get("latest_observation") != expected_latest:
+            errors.append(f"{label}: latest_observation must match the newest historical observation")
+        expected_derived = calculate_derived_metrics(observations)
+        if item.get("derived_metrics") != expected_derived:
+            errors.append(f"{label}: derived_metrics do not match deterministic recalculation")
+    return errors
+
+
 def validate() -> list[str]:
     _, countries, indicators = load_config()
     errors: list[str] = []
+    snapshot_path = ROOT / "data" / "generated" / "world_bank_snapshot.json"
+    if not snapshot_path.is_file():
+        errors.append("missing required artifact: data/generated/world_bank_snapshot.json")
+    else:
+        try:
+            errors.extend(validate_snapshot(load_json(snapshot_path), countries, indicators))
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"invalid generated snapshot: {exc}")
     site_root = (ROOT / "site").resolve()
     for required in [ROOT / "site" / "sitemap.xml", ROOT / "site" / "robots.txt"]:
         if not required.is_file():
@@ -94,6 +144,11 @@ def validate() -> list[str]:
             errors.append(f"expected one absolute canonical URL: {page.relative_to(ROOT)}")
         if page in country_pages and "World Bank" not in text:
             errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
+        if page in country_pages:
+            if parser.history_table_count != len(indicators):
+                errors.append(f"expected one historical table per indicator: {page.relative_to(ROOT)}")
+            if parser.derived_block_count != len(indicators):
+                errors.append(f"expected one separate derived-metrics block per indicator: {page.relative_to(ROOT)}")
         for href in parser.links:
             target = resolve_link(page, href)
             if target is None:
@@ -115,7 +170,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("Validation passed: required pages, metadata, attribution, and internal links are valid.")
+    print("Validation passed: snapshot history, derived metrics, pages, metadata, attribution, and links are valid.")
     return 0
 
 

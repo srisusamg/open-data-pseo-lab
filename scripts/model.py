@@ -34,6 +34,60 @@ def latest_non_null(records: Iterable[dict]) -> dict | None:
     return max(valid, key=lambda row: int(row["date"]))
 
 
+def normalize_history(records: Iterable[dict], limit: int = 15) -> list[dict]:
+    """Return the newest real observations with their source years unchanged."""
+    by_year: dict[int, int | float] = {}
+    for row in records:
+        value = row.get("value")
+        if value is None:
+            continue
+        try:
+            year = int(row["date"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
+            continue
+        by_year[year] = value
+    years = sorted(by_year, reverse=True)[:limit]
+    return [{"year": year, "value": by_year[year]} for year in years]
+
+
+def calculate_period_change(history: Iterable[dict], years: int) -> dict | None:
+    """Compare the latest value with the exact calendar-year endpoint."""
+    rows = list(history)
+    if not rows:
+        return None
+    latest = max(rows, key=lambda row: int(row["year"]))
+    end_year = int(latest["year"])
+    start_year = end_year - years
+    start = next((row for row in rows if int(row["year"]) == start_year), None)
+    if start is None:
+        return None
+    start_value = float(start["value"])
+    end_value = float(latest["value"])
+    if start_value == 0:
+        return None
+    percentage_change = round(((end_value - start_value) / start_value) * 100, 6)
+    cagr = None
+    if start_value > 0 and end_value > 0:
+        cagr = round(((end_value / start_value) ** (1 / years) - 1) * 100, 6)
+    return {
+        "start_year": start_year,
+        "end_year": end_year,
+        "percentage_change": percentage_change,
+        "cagr": cagr,
+    }
+
+
+def calculate_derived_metrics(history: Iterable[dict]) -> dict:
+    rows = list(history)
+    return {
+        "basis": "Exact calendar-year endpoints relative to the latest observation; no interpolation",
+        "five_year": calculate_period_change(rows, 5),
+        "ten_year": calculate_period_change(rows, 10),
+    }
+
+
 def rank_observations(observations: Iterable[dict]) -> list[dict]:
     available = [item for item in observations if item.get("value") is not None]
     return sorted(available, key=lambda item: (-float(item["value"]), item["country_name"]))
@@ -84,3 +138,9 @@ def format_value(value: int | float | None, style: str) -> str:
     if style == "years":
         return f"{number:.1f} years"
     return f"{number:,}"
+
+
+def format_change(value: int | float | None) -> str:
+    if value is None:
+        return "Not available"
+    return f"{float(value):+.1f}%"

@@ -3,14 +3,28 @@
 {% block description %}Latest available World Bank indicators for {{ country.name }}, including population, GDP, internet use, and life expectancy with observation years.{% endblock %}
 {% block content %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>{{ country.name }}</span></nav>
-<header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest non-null observations available from the World Bank for the selected indicators.</p></header>
-<section aria-labelledby="indicators-heading"><h2 id="indicators-heading">Latest indicators</h2><div class="metrics">
+<header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest values and up to 15 historical observations from the World Bank for each selected indicator.</p></header>
+<section aria-labelledby="indicators-heading"><h2 id="indicators-heading">Indicators and history</h2><div class="indicator-series">
 {% for item in values %}<article class="metric">
   <h3><a href="{{ link('indicators/' ~ item.indicator_slug ~ '/') }}">{{ item.indicator_name }}</a></h3>
-  <p class="metric-value">{{ item.value|value(item.format) }}</p>
-  {% if item.year %}<p>Observation year: <strong>{{ item.year }}</strong></p>{% else %}<p>No observation was available in the requested window.</p>{% endif %}
+  {% if item.latest_observation %}<p class="metric-value">{{ item.latest_observation.value|value(item.format) }}</p><p>Latest observation year: <strong>{{ item.latest_observation.year }}</strong></p>{% else %}<p>No observation was available.</p>{% endif %}
   <p class="source">Source: <a href="{{ item.source_url }}">World Bank, {{ item.indicator_code }}</a></p>
+  <div class="derived" aria-label="Derived metrics">
+    <h4>Derived metrics</h4>
+    <p class="derived-note">Calculated from exact source-year endpoints; no interpolation.</p>
+    <dl class="change-list">
+    {% for label, metric in [('5-year', item.derived_metrics.five_year), ('10-year', item.derived_metrics.ten_year)] %}
+      <div><dt>{{ label }} change</dt><dd>{% if metric %}{{ metric.percentage_change|change }} ({{ metric.start_year }}–{{ metric.end_year }}){% else %}Not available{% endif %}</dd></div>
+      <div><dt>{{ label }} CAGR</dt><dd>{% if metric and metric.cagr is not none %}{{ metric.cagr|change }}{% else %}Not available{% endif %}</dd></div>
+    {% endfor %}
+    </dl>
+  </div>
+  <div class="table-wrap history-table"><table>
+    <caption>Source observations ({{ item.unit }})</caption>
+    <thead><tr><th scope="col">Year</th><th scope="col">Value</th></tr></thead>
+    <tbody>{% for observation in item.observations %}<tr><th scope="row">{{ observation.year }}</th><td>{{ observation.value|value(item.format) }}</td></tr>{% else %}<tr><td colspan="2">No source observations available.</td></tr>{% endfor %}</tbody>
+  </table></div>
 </article>{% endfor %}
 </div></section>
-<p class="note">Values can refer to different years. See the <a href="{{ link('methodology/') }}">methodology</a> before comparing them.</p>
+<p class="note">Source observations and calculated changes are labeled separately. Values can refer to different years. See the <a href="{{ link('methodology/') }}">methodology</a> before comparing them.</p>
 {% endblock %}
