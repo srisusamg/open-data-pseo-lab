@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-09-07T00:25:08Z",
+  "retrieved_at": "2026-09-07T00:40:52Z",
   "window": {
     "start_year": 2017,
     "end_year": 2026
@@ -269,6 +269,58 @@
       "year": 2024,
       "value": 72.78075544,
       "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "BRA",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "indicator_code": "SP.POP.TOTL",
+      "indicator_slug": "population",
+      "indicator_name": "Population",
+      "unit": "people",
+      "format": "population",
+      "year": 2025,
+      "value": 212812405,
+      "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/SP.POP.TOTL?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "BRA",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "indicator_slug": "gdp",
+      "indicator_name": "GDP",
+      "unit": "current US dollars",
+      "format": "currency",
+      "year": 2025,
+      "value": 2279920092492.13,
+      "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/NY.GDP.MKTP.CD?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "BRA",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "indicator_code": "NY.GDP.PCAP.CD",
+      "indicator_slug": "gdp-per-capita",
+      "indicator_name": "GDP per capita",
+      "unit": "current US dollars per person",
+      "format": "currency_per_person",
+      "year": 2025,
+      "value": 10713.2856869511,
+      "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/NY.GDP.PCAP.CD?format=json&date=2017%3A2026&per_page=100"
+    },
+    {
+      "country_code": "BRA",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "indicator_code": "IT.NET.USER.ZS",
+      "indicator_slug": "internet-users",
+      "indicator_name": "Internet users",
+      "unit": "% of population",
+      "format": "percentage",
+      "year": 2024,
+      "value": 84.46347227,
+      "source_url": "https://api.worldbank.org/v2/country/BRA/indicator/IT.NET.USER.ZS?format=json&date=2017%3A2026&per_page=100"
     }
   ]
 }
