@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-09-07T14:24:30Z",
+  "retrieved_at": "2026-09-07T14:59:32Z",
   "history_policy": {
     "maximum_observations_per_series": 15,
     "selection": "newest non-null source observations; actual years preserved; no interpolation"
