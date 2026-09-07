@@ -1,0 +1,710 @@
+{
+  "as_of_date": "2026-09-07",
+  "formulas": {
+    "blended_workload": {
+      "formula_version": "blended-workload-v1",
+      "input_tokens": 800000,
+      "output_tokens": 200000
+    },
+    "intelligence_per_dollar": {
+      "version": "intelligence-per-dollar-v1",
+      "included_benchmarks": [
+        "agents-last-exam-v1"
+      ]
+    },
+    "relative_price_difference": {
+      "version": "relative-price-difference-v1",
+      "formula": "(model_a_price - model_b_price) / model_b_price * 100"
+    }
+  },
+  "models": [
+    {
+      "model_id": "anthropic:claude-fable-5",
+      "pricing": {
+        "model_id": "anthropic:claude-fable-5",
+        "input_price_per_million_tokens": 10.0,
+        "output_price_per_million_tokens": 50.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Anthropic launch pricing",
+          "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "source_metric_id": "pricing:claude-fable-5:standard",
+          "observation_date": "2026-06-09",
+          "effective_date": "2026-06-09",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_announcement",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 18.0,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "anthropic:claude-opus-5",
+      "pricing": {
+        "model_id": "anthropic:claude-opus-5",
+        "input_price_per_million_tokens": 5.0,
+        "output_price_per_million_tokens": 25.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Anthropic launch pricing",
+          "source_url": "https://www.anthropic.com/news/claude-opus-5",
+          "source_metric_id": "pricing:claude-opus-5:standard",
+          "observation_date": "2026-07-24",
+          "effective_date": "2026-07-24",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_announcement",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 9.0,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "anthropic:claude-sonnet-5",
+      "pricing": {
+        "model_id": "anthropic:claude-sonnet-5",
+        "input_price_per_million_tokens": 3.0,
+        "output_price_per_million_tokens": 15.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Anthropic launch pricing",
+          "source_url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "source_metric_id": "pricing:claude-sonnet-5:standard",
+          "observation_date": "2026-06-30",
+          "effective_date": "2026-09-01",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_announcement",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 5.4,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "google:gemini-3.5-flash-lite",
+      "pricing": {
+        "model_id": "google:gemini-3.5-flash-lite",
+        "input_price_per_million_tokens": 0.3,
+        "output_price_per_million_tokens": 2.5,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Gemini API pricing",
+          "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "source_metric_id": "pricing:gemini-3.5-flash-lite:standard",
+          "observation_date": "2026-08-11",
+          "effective_date": "2026-07-21",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 0.74,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "google:gemini-3.7-flash",
+      "pricing": {
+        "model_id": "google:gemini-3.7-flash",
+        "input_price_per_million_tokens": 0.75,
+        "output_price_per_million_tokens": 3.75,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard_introductory",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Gemini API model guide",
+          "source_url": "https://ai.google.dev/gemini-api/docs/latest-model",
+          "source_metric_id": "pricing:gemini-3.7-flash:standard",
+          "observation_date": "2026-08-12",
+          "effective_date": "2026-08-12",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 1.35,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "google:gemini-3.8-flash",
+      "pricing": {
+        "model_id": "google:gemini-3.8-flash",
+        "input_price_per_million_tokens": 0.75,
+        "output_price_per_million_tokens": 3.75,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard_introductory",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Gemini API pricing",
+          "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "source_metric_id": "pricing:gemini-3.8-flash:standard",
+          "observation_date": "2026-09-02",
+          "effective_date": "2026-09-02",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 1.35,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "openai:gpt-5.6-luna",
+      "pricing": {
+        "model_id": "openai:gpt-5.6-luna",
+        "input_price_per_million_tokens": 0.2,
+        "output_price_per_million_tokens": 1.2,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "OpenAI model documentation",
+          "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna",
+          "source_metric_id": "pricing:gpt-5.6-luna:standard",
+          "observation_date": "2026-09-07",
+          "effective_date": "2026-07-30",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 0.4,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": [
+        {
+          "value": 125.75,
+          "benchmark_id": "agents-last-exam-v1",
+          "benchmark_value": 50.3,
+          "formula_version": "intelligence-per-dollar-v1",
+          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "included_benchmarks": [
+            "agents-last-exam-v1"
+          ],
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+        }
+      ]
+    },
+    {
+      "model_id": "openai:gpt-5.6-sol",
+      "pricing": {
+        "model_id": "openai:gpt-5.6-sol",
+        "input_price_per_million_tokens": 4.0,
+        "output_price_per_million_tokens": 20.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "OpenAI model documentation",
+          "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol",
+          "source_metric_id": "pricing:gpt-5.6-sol:standard",
+          "observation_date": "2026-09-07",
+          "effective_date": "2026-08-21",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 7.2,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": [
+        {
+          "value": 7.31944444,
+          "benchmark_id": "agents-last-exam-v1",
+          "benchmark_value": 52.7,
+          "formula_version": "intelligence-per-dollar-v1",
+          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "included_benchmarks": [
+            "agents-last-exam-v1"
+          ],
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+        }
+      ]
+    },
+    {
+      "model_id": "openai:gpt-5.6-terra",
+      "pricing": {
+        "model_id": "openai:gpt-5.6-terra",
+        "input_price_per_million_tokens": 2.0,
+        "output_price_per_million_tokens": 12.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "OpenAI model documentation",
+          "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra",
+          "source_metric_id": "pricing:gpt-5.6-terra:standard",
+          "observation_date": "2026-09-07",
+          "effective_date": "2026-07-30",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 4.0,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": [
+        {
+          "value": 12.6,
+          "benchmark_id": "agents-last-exam-v1",
+          "benchmark_value": 50.4,
+          "formula_version": "intelligence-per-dollar-v1",
+          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "included_benchmarks": [
+            "agents-last-exam-v1"
+          ],
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+        }
+      ]
+    },
+    {
+      "model_id": "xai:grok-4.3",
+      "pricing": {
+        "model_id": "xai:grok-4.3",
+        "input_price_per_million_tokens": 1.25,
+        "output_price_per_million_tokens": 2.5,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard_short_context",
+        "maximum_prompt_tokens_for_rate": 199999,
+        "provenance": {
+          "source_name": "xAI model pricing",
+          "source_url": "https://docs.x.ai/developers/models/grok-4.3",
+          "source_metric_id": "pricing:grok-4.3:short-context",
+          "observation_date": "2026-09-07",
+          "effective_date": "2026-05-15",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 1.5,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "xai:grok-4.5",
+      "pricing": {
+        "model_id": "xai:grok-4.5",
+        "input_price_per_million_tokens": 2.0,
+        "output_price_per_million_tokens": 6.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard_short_context",
+        "maximum_prompt_tokens_for_rate": 199999,
+        "provenance": {
+          "source_name": "xAI model pricing",
+          "source_url": "https://docs.x.ai/developers/models/grok-4.5",
+          "source_metric_id": "pricing:grok-4.5:short-context",
+          "observation_date": "2026-09-02",
+          "effective_date": "2026-07-08",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 2.8,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    },
+    {
+      "model_id": "xai:grok-4.6",
+      "pricing": {
+        "model_id": "xai:grok-4.6",
+        "input_price_per_million_tokens": 2.0,
+        "output_price_per_million_tokens": 6.0,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard_short_context",
+        "maximum_prompt_tokens_for_rate": 199999,
+        "provenance": {
+          "source_name": "xAI model pricing",
+          "source_url": "https://docs.x.ai/developers/models/grok-4.6",
+          "source_metric_id": "pricing:grok-4.6:short-context",
+          "observation_date": "2026-08-21",
+          "effective_date": "2026-08-12",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 2.8,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": []
+    }
+  ],
+  "comparisons": [
+    {
+      "path": "compare/models/gpt-5-6-sol/claude-fable-5/",
+      "model_a_id": "openai:gpt-5.6-sol",
+      "model_b_id": "anthropic:claude-fable-5",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": -60.0,
+        "output_price_difference_percent_a_vs_b": -60.0,
+        "blended_cost_difference_percent_a_vs_b": -60.0
+      },
+      "comparable_benchmarks": []
+    },
+    {
+      "path": "compare/models/gpt-5-6-terra/claude-sonnet-5/",
+      "model_a_id": "openai:gpt-5.6-terra",
+      "model_b_id": "anthropic:claude-sonnet-5",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": -33.333333,
+        "output_price_difference_percent_a_vs_b": -20.0,
+        "blended_cost_difference_percent_a_vs_b": -25.925926
+      },
+      "comparable_benchmarks": []
+    },
+    {
+      "path": "compare/models/gpt-5-6-luna/gemini-3-5-flash-lite/",
+      "model_a_id": "openai:gpt-5.6-luna",
+      "model_b_id": "google:gemini-3.5-flash-lite",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": -33.333333,
+        "output_price_difference_percent_a_vs_b": -52.0,
+        "blended_cost_difference_percent_a_vs_b": -45.945946
+      },
+      "comparable_benchmarks": []
+    },
+    {
+      "path": "compare/models/grok-4-6/gpt-5-6-sol/",
+      "model_a_id": "xai:grok-4.6",
+      "model_b_id": "openai:gpt-5.6-sol",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": -50.0,
+        "output_price_difference_percent_a_vs_b": -70.0,
+        "blended_cost_difference_percent_a_vs_b": -61.111111
+      },
+      "comparable_benchmarks": []
+    },
+    {
+      "path": "compare/models/gpt-5-6-sol/gpt-5-6-terra/",
+      "model_a_id": "openai:gpt-5.6-sol",
+      "model_b_id": "openai:gpt-5.6-terra",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": 100.0,
+        "output_price_difference_percent_a_vs_b": 66.666667,
+        "blended_cost_difference_percent_a_vs_b": 80.0
+      },
+      "comparable_benchmarks": [
+        "aa-intelligence-index-v4.1",
+        "agents-last-exam-v1"
+      ]
+    },
+    {
+      "path": "compare/models/gemini-3-8-flash/grok-4-6/",
+      "model_a_id": "google:gemini-3.8-flash",
+      "model_b_id": "xai:grok-4.6",
+      "relative_price_differences": {
+        "input_price_difference_percent_a_vs_b": -62.5,
+        "output_price_difference_percent_a_vs_b": -37.5,
+        "blended_cost_difference_percent_a_vs_b": -51.785714
+      },
+      "comparable_benchmarks": []
+    }
+  ],
+  "rankings": [
+    {
+      "metric": "input-cost",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 0.2
+        },
+        {
+          "rank": 2,
+          "model_id": "google:gemini-3.5-flash-lite",
+          "value": 0.3
+        },
+        {
+          "rank": 3,
+          "model_id": "google:gemini-3.7-flash",
+          "value": 0.75
+        },
+        {
+          "rank": 3,
+          "model_id": "google:gemini-3.8-flash",
+          "value": 0.75
+        },
+        {
+          "rank": 5,
+          "model_id": "xai:grok-4.3",
+          "value": 1.25
+        },
+        {
+          "rank": 6,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 2.0
+        },
+        {
+          "rank": 6,
+          "model_id": "xai:grok-4.5",
+          "value": 2.0
+        },
+        {
+          "rank": 6,
+          "model_id": "xai:grok-4.6",
+          "value": 2.0
+        },
+        {
+          "rank": 9,
+          "model_id": "anthropic:claude-sonnet-5",
+          "value": 3.0
+        },
+        {
+          "rank": 10,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 4.0
+        },
+        {
+          "rank": 11,
+          "model_id": "anthropic:claude-opus-5",
+          "value": 5.0
+        },
+        {
+          "rank": 12,
+          "model_id": "anthropic:claude-fable-5",
+          "value": 10.0
+        }
+      ]
+    },
+    {
+      "metric": "output-cost",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 1.2
+        },
+        {
+          "rank": 2,
+          "model_id": "google:gemini-3.5-flash-lite",
+          "value": 2.5
+        },
+        {
+          "rank": 2,
+          "model_id": "xai:grok-4.3",
+          "value": 2.5
+        },
+        {
+          "rank": 4,
+          "model_id": "google:gemini-3.7-flash",
+          "value": 3.75
+        },
+        {
+          "rank": 4,
+          "model_id": "google:gemini-3.8-flash",
+          "value": 3.75
+        },
+        {
+          "rank": 6,
+          "model_id": "xai:grok-4.5",
+          "value": 6.0
+        },
+        {
+          "rank": 6,
+          "model_id": "xai:grok-4.6",
+          "value": 6.0
+        },
+        {
+          "rank": 8,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 12.0
+        },
+        {
+          "rank": 9,
+          "model_id": "anthropic:claude-sonnet-5",
+          "value": 15.0
+        },
+        {
+          "rank": 10,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 20.0
+        },
+        {
+          "rank": 11,
+          "model_id": "anthropic:claude-opus-5",
+          "value": 25.0
+        },
+        {
+          "rank": 12,
+          "model_id": "anthropic:claude-fable-5",
+          "value": 50.0
+        }
+      ]
+    },
+    {
+      "metric": "context-window",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 1050000
+        },
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 1050000
+        },
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 1050000
+        },
+        {
+          "rank": 4,
+          "model_id": "anthropic:claude-fable-5",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "anthropic:claude-opus-5",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "anthropic:claude-sonnet-5",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "google:gemini-3.5-flash-lite",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "google:gemini-3.7-flash",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "google:gemini-3.8-flash",
+          "value": 1000000
+        },
+        {
+          "rank": 4,
+          "model_id": "xai:grok-4.3",
+          "value": 1000000
+        },
+        {
+          "rank": 11,
+          "model_id": "xai:grok-4.5",
+          "value": 500000
+        },
+        {
+          "rank": 11,
+          "model_id": "xai:grok-4.6",
+          "value": 500000
+        }
+      ]
+    }
+  ]
+}

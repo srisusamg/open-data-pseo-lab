@@ -152,7 +152,13 @@ def validate() -> list[str]:
     comparison_pages = {ROOT / "site" / path / "index.html" for path, row in report_by_url.items() if row.get("page_type") == "comparison" and row.get("status") == "generated"}
     change_pages = {ROOT / "site" / path / "index.html" for path, row in report_by_url.items() if row.get("page_type") == "what_changed" and row.get("status") == "generated"}
     expected_files = set(expected_pages(generated_paths))
-    actual_files = set((ROOT / "site").rglob("index.html")) if (ROOT / "site").is_dir() else set()
+    # Each site validator owns one output boundary. The separately validated AI
+    # Model Economics subsite must not alter OpenData Atlas eligibility results.
+    second_site_root = (ROOT / "site" / "ai-model-economics").resolve()
+    actual_files = {
+        path for path in (ROOT / "site").rglob("index.html")
+        if second_site_root not in path.resolve().parents
+    } if (ROOT / "site").is_dir() else set()
     for extra in sorted(actual_files - expected_files):
         errors.append(f"unexpected generated page: {extra.relative_to(ROOT)}")
     for page in expected_files:

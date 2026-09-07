@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}AI model {{ ranking.metric|replace('-', ' ') }} ranking{% endblock %}
+{% block description %}Deterministic {{ ranking.metric|replace('-', ' ') }} ranking for quality-gated AI models using official provider data.{% endblock %}
+{% block content %}
+<p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Rankings</p>
+<section class="page-heading"><p class="eyebrow">Deterministic ranking</p><h1>{{ ranking.metric|replace('-', ' ')|title }}</h1><p class="lede">{% if ranking.metric == 'context-window' %}Largest verified context window first.{% else %}Lowest current standard API list price first.{% endif %}</p></section>
+<section class="insight-box"><h2>What the ranking shows</h2><p>{{ ranking.insights.summary }}</p></section>
+<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Model</th><th>Provider</th><th>Value</th><th>Observed</th></tr></thead><tbody>{% for row in ranking.rows %}<tr><td>{{ row.rank }}</td><td><a href="{{ link('models/' ~ row.model.slug ~ '/') }}">{{ row.model.name }}</a></td><td>{{ row.model.provider.name }}</td><td>{% if ranking.metric == 'context-window' %}{{ row.value|tokens }} tokens{% else %}{{ row.value|money }} / 1M{% endif %}</td><td>{% if ranking.metric == 'context-window' %}{{ row.model.provenance.observation_date }}{% else %}{{ row.model.pricing.provenance.observation_date }}{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

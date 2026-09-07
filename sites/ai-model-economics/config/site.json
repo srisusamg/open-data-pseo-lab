@@ -1,0 +1,15 @@
+{
+  "name": "AI Model Economics",
+  "base_url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/",
+  "as_of_date": "2026-09-07",
+  "maximum_pricing_age_days": 120,
+  "blended_workload": {
+    "formula_version": "blended-workload-v1",
+    "input_tokens": 800000,
+    "output_tokens": 200000
+  },
+  "intelligence_per_dollar": {
+    "version": "intelligence-per-dollar-v1",
+    "included_benchmarks": ["agents-last-exam-v1"]
+  }
+}

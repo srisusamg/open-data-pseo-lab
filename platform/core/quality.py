@@ -29,6 +29,11 @@ PAGE_POLICIES = {
     "indicator_ranking": PagePolicy(3, 0, 3, 2, minimum_required_internal_links=2),
     "comparison": PagePolicy(3, 2, 3, 2, 2, 2, 3),
     "what_changed": PagePolicy(3, 3, 3, 3, 3, 3, 3),
+    "model_profile": PagePolicy(4, 0, 2, 3, 1, 1, 2),
+    "provider_profile": PagePolicy(2, 0, 2, 2, minimum_required_internal_links=2),
+    "model_comparison": PagePolicy(4, 0, 2, 2, 2, 2, 3),
+    "model_ranking": PagePolicy(3, 0, 2, 2, 2, 2, 2),
+    "release_timeline": PagePolicy(3, 0, 2, 2, minimum_required_internal_links=2),
 }
 
 

@@ -1,6 +1,6 @@
 # Reusable pSEO platform architecture
 
-This repository has one deployed site, OpenData Atlas, on top of a small reusable platform. The structure is intentionally based on ordinary Python functions and data contracts. There is no plugin registry, hook lifecycle, dynamic discovery, or dependency-injection framework.
+This repository has two isolated sites, OpenData Atlas and AI Model Economics, on top of a small reusable platform. The structure is intentionally based on ordinary Python functions and data contracts. There is no plugin registry, hook lifecycle, dynamic discovery, or dependency-injection framework.
 
 ## Dependency direction
 
@@ -90,7 +90,7 @@ Recipe-specific thresholds are represented by `PagePolicy` values and explicit p
 
 `sites/open-data-atlas/runtime.py` selects the World Bank provider and supplies the site's paths. `platform/build.py` accepts those provider functions and contains only reusable orchestration. `scripts/build.py` remains the stable command used locally and by GitHub Actions. The generated output locations remain `data/generated/` and `site/`.
 
-To add a second vertical later, create a second site directory, map its provider data to the canonical model, and compose only the recipes it needs. Do not copy the core, recipes, quality gate, URL utilities, or deterministic insight engine. A second vertical is deliberately not implemented here.
+AI Model Economics follows that boundary in `sites/ai-model-economics/`, with its curated adapter in `platform/providers/ai_models/` and provider-neutral domain recipes in `platform/recipes/model_economics.py`. See [ai-model-economics-architecture.md](ai-model-economics-architecture.md) for the deployment decision and vertical-specific contracts.
 
 ## Compatibility guarantees
 

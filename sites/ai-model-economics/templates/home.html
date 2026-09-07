@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}AI Model Economics — API pricing and model comparisons{% endblock %}
+{% block description %}Compare verified API token prices, context windows, release dates, and carefully scoped benchmark observations for {{ models|length }} AI models.{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Model economics, with receipts</p>
+  <h1>AI Model Economics</h1>
+  <p class="lede">A compact, deterministic view of API pricing, context windows, releases, and comparable performance evidence.</p>
+  <p class="muted">Catalog as of {{ site.as_of_date }}. {{ models|length }} models from {{ providers|length }} providers. No generated estimates are treated as canonical data.</p>
+</section>
+<section>
+  <div class="section-heading"><div><p class="eyebrow">Explore</p><h2>Current model catalog</h2></div><a href="{{ link('models/releases/' ~ releases[0].year ~ '/') }}">Release timeline →</a></div>
+  <div class="model-grid">{% for model in models %}
+    <article class="card model-card"><p class="provider-label">{{ model.provider.name }}</p><h3><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></h3><p>{{ model.context_window_tokens|tokens }} token context</p>{% if model.pricing %}<p class="price">{{ model.pricing.input_price_per_million_tokens|money }} in · {{ model.pricing.output_price_per_million_tokens|money }} out</p>{% endif %}<p class="muted">Released {{ model.release_date }}</p></article>
+  {% endfor %}</div>
+</section>
+<div class="grid two-column">
+  <section class="card"><h2>Providers</h2><ul class="link-list">{% for provider in providers %}<li><a href="{{ link(provider.path) }}">{{ provider.name }}</a> <span>{{ provider.models|length }} models</span></li>{% endfor %}</ul></section>
+  <section class="card"><h2>Rankings</h2><ul class="link-list">{% for ranking in rankings %}<li><a href="{{ link(ranking.path) }}">{{ ranking.metric|replace('-', ' ')|title }}</a></li>{% endfor %}</ul></section>
+</div>
+<section><h2>Configured comparisons</h2><div class="comparison-list">{% for comparison in comparisons %}<a class="comparison-link" href="{{ link(comparison.path) }}"><span>{{ comparison.model_a.name }}</span><strong>vs</strong><span>{{ comparison.model_b.name }}</span></a>{% endfor %}</div></section>
+{% endblock %}

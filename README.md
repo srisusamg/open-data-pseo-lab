@@ -1,10 +1,12 @@
-# OpenData Atlas
+# Reusable pSEO Lab
 
 OpenData Atlas is a deliberately small programmatic-SEO experiment. It proves an unattended, database-free pipeline:
 
 **World Bank API → normalized JSON → static HTML → validation → generated-data commit → GitHub Pages**
 
 After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentials, a CMS, or a runtime server.
+
+The repository now also contains **AI Model Economics**, a second quality-gated site proving the same platform works for a curated AI model, API pricing, release, and benchmark domain. Its generated site is isolated at `site/ai-model-economics/`; OpenData Atlas behavior and URLs remain unchanged.
 
 ## Architecture
 
@@ -18,6 +20,8 @@ After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentia
 
 See [docs/architecture.md](docs/architecture.md) for the provider contract, canonical model, recipe boundary, deterministic insight pipeline, quality gate, and the path for a future second vertical.
 
+See [docs/ai-model-economics-architecture.md](docs/ai-model-economics-architecture.md) for the second site's architecture, deployment decision, formulas, local preview, and next-phase backlog, and [docs/ai-model-economics-seed-sources.md](docs/ai-model-economics-seed-sources.md) for its curated official-source report.
+
 The generated site contains a home page, one profile per configured country, one ranking per configured indicator, one page per allowed comparison, quality-gated 5- and 10-year What Changed pages, a methodology page, a sitemap, and robots directives. Each country/indicator series preserves its World Bank indicator code, actual observation years, retrieval time, and source URL. Narratives are selected and rendered from structured evidence without AI or country-specific prose.
 
 ## Build locally
@@ -27,12 +31,14 @@ Python 3.12 is used in CI; Python 3.10+ is supported locally.
 ```shell
 python -m pip install -r requirements.txt
 python scripts/build.py
+python scripts/build_ai_model_economics.py
 python scripts/validate.py
+python scripts/validate_ai_model_economics.py
 python -m unittest discover -s tests
 python -m http.server 8000 --directory site
 ```
 
-Then open <http://localhost:8000/>. To rebuild without calling the API, use `python scripts/build.py --offline` after a snapshot exists.
+Then open <http://localhost:8000/> for OpenData Atlas or <http://localhost:8000/ai-model-economics/> for AI Model Economics. To rebuild OpenData Atlas without calling the API, use `python scripts/build.py --offline` after a snapshot exists. The AI Model Economics build is always offline and deterministic from its curated catalog.
 
 ## URLs
 

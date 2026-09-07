@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-09-07T00:00:00Z",
+  "allowed_source_hosts": [
+    "platform.openai.com", "openai.com", "www.anthropic.com", "docs.anthropic.com",
+    "ai.google.dev", "blog.google", "docs.x.ai"
+  ],
+  "providers": [
+    {
+      "id": "openai", "slug": "openai", "name": "OpenAI",
+      "provenance": {"source_name": "OpenAI API documentation", "source_url": "https://platform.openai.com/docs/models", "source_metric_id": "provider:openai", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "anthropic", "slug": "anthropic", "name": "Anthropic",
+      "provenance": {"source_name": "Claude Platform documentation", "source_url": "https://docs.anthropic.com/en/docs/about-claude/models/overview", "source_metric_id": "provider:anthropic", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "google", "slug": "google", "name": "Google",
+      "provenance": {"source_name": "Gemini API documentation", "source_url": "https://ai.google.dev/gemini-api/docs/models", "source_metric_id": "provider:google", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "xai", "slug": "xai", "name": "xAI",
+      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models", "source_metric_id": "provider:xai", "observation_date": "2026-08-21", "effective_date": "2026-08-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    }
+  ],
+  "models": [
+    {
+      "id": "openai:gpt-5.6-sol", "slug": "gpt-5-6-sol", "name": "GPT-5.6 Sol", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-sol"},
+      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol", "source_metric_id": "model:gpt-5.6-sol", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "openai:gpt-5.6-terra", "slug": "gpt-5-6-terra", "name": "GPT-5.6 Terra", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-terra"},
+      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra", "source_metric_id": "model:gpt-5.6-terra", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "openai:gpt-5.6-luna", "slug": "gpt-5-6-luna", "name": "GPT-5.6 Luna", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-luna"},
+      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna", "source_metric_id": "model:gpt-5.6-luna", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "anthropic:claude-fable-5", "slug": "claude-fable-5", "name": "Claude Fable 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-06-09", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-fable-5"},
+      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "source_metric_id": "model:claude-fable-5", "observation_date": "2026-06-09", "effective_date": "2026-06-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "anthropic:claude-opus-5", "slug": "claude-opus-5", "name": "Claude Opus 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-07-24", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-opus-5"},
+      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-opus-5", "source_metric_id": "model:claude-opus-5", "observation_date": "2026-07-24", "effective_date": "2026-07-24", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "anthropic:claude-sonnet-5", "slug": "claude-sonnet-5", "name": "Claude Sonnet 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-06-30", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-sonnet-5"},
+      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-sonnet-5", "source_metric_id": "model:claude-sonnet-5", "observation_date": "2026-06-30", "effective_date": "2026-06-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "google:gemini-3.8-flash", "slug": "gemini-3-8-flash", "name": "Gemini 3.8 Flash", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-09-02", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.8-flash"},
+      "provenance": {"source_name": "Google launch announcement", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/", "source_metric_id": "model:gemini-3.8-flash", "observation_date": "2026-09-02", "effective_date": "2026-09-02", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "google:gemini-3.7-flash", "slug": "gemini-3-7-flash", "name": "Gemini 3.7 Flash", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-08-12", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.7-flash"},
+      "provenance": {"source_name": "Gemini API model guide", "source_url": "https://ai.google.dev/gemini-api/docs/latest-model", "source_metric_id": "model:gemini-3.7-flash", "observation_date": "2026-08-12", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "google:gemini-3.5-flash-lite", "slug": "gemini-3-5-flash-lite", "name": "Gemini 3.5 Flash-Lite", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-07-21", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.5-flash-lite"},
+      "provenance": {"source_name": "Google launch announcement", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/", "source_metric_id": "model:gemini-3.5-flash-lite", "observation_date": "2026-07-21", "effective_date": "2026-07-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "xai:grok-4.6", "slug": "grok-4-6", "name": "Grok 4.6", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-08-12", "status": "active", "openness": "closed", "context_window_tokens": 500000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.6"},
+      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.6", "source_metric_id": "model:grok-4.6", "observation_date": "2026-08-21", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "xai:grok-4.5", "slug": "grok-4-5", "name": "Grok 4.5", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-07-08", "status": "active", "openness": "closed", "context_window_tokens": 500000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.5"},
+      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.5", "source_metric_id": "model:grok-4.5", "observation_date": "2026-09-02", "effective_date": "2026-07-08", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    },
+    {
+      "id": "xai:grok-4.3", "slug": "grok-4-3", "name": "Grok 4.3", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-05-15", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
+      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.3"},
+      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.3", "source_metric_id": "model:grok-4.3", "observation_date": "2026-09-07", "effective_date": "2026-05-15", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "agents-last-exam-v1", "slug": "agents-last-exam", "name": "Agents' Last Exam", "version": "launch-table-2026-07-09", "unit": "percent", "higher_is_better": true, "description": "Provider-reported long-running professional workflow evaluation; only observations from the same launch table are compared.",
+      "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "benchmark:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+    },
+    {
+      "id": "aa-intelligence-index-v4.1", "slug": "aa-intelligence-index-v4-1", "name": "Artificial Analysis Intelligence Index", "version": "4.1", "unit": "index_score", "higher_is_better": true, "description": "Third-party index values reproduced in one provider launch table; comparability is limited to that exact table and configuration.",
+      "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "benchmark:aa-intelligence-index-v4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+    },
+    {
+      "id": "terminal-bench-2.1", "slug": "terminal-bench-2-1", "name": "Terminal-Bench", "version": "2.1", "unit": "percent", "higher_is_better": true, "description": "Provider-reported coding and agentic benchmark; not compared with observations from a different evaluation harness.",
+      "provenance": {"source_name": "Google Gemini 3.5 launch post", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/", "source_metric_id": "benchmark:terminal-bench-2.1", "observation_date": "2026-05-19", "effective_date": "2026-05-19", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+    }
+  ],
+  "pricing_observations": [
+    {"model_id": "openai:gpt-5.6-sol", "input_price": 4, "output_price": 20, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol", "source_metric_id": "pricing:gpt-5.6-sol:standard", "observation_date": "2026-09-07", "effective_date": "2026-08-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "openai:gpt-5.6-terra", "input_price": 2, "output_price": 12, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra", "source_metric_id": "pricing:gpt-5.6-terra:standard", "observation_date": "2026-09-07", "effective_date": "2026-07-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "openai:gpt-5.6-luna", "input_price": 0.2, "output_price": 1.2, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna", "source_metric_id": "pricing:gpt-5.6-luna:standard", "observation_date": "2026-09-07", "effective_date": "2026-07-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "anthropic:claude-fable-5", "input_price": 10, "output_price": 50, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "source_metric_id": "pricing:claude-fable-5:standard", "observation_date": "2026-06-09", "effective_date": "2026-06-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
+    {"model_id": "anthropic:claude-opus-5", "input_price": 5, "output_price": 25, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-opus-5", "source_metric_id": "pricing:claude-opus-5:standard", "observation_date": "2026-07-24", "effective_date": "2026-07-24", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
+    {"model_id": "anthropic:claude-sonnet-5", "input_price": 3, "output_price": 15, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-sonnet-5", "source_metric_id": "pricing:claude-sonnet-5:standard", "observation_date": "2026-06-30", "effective_date": "2026-09-01", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
+    {"model_id": "google:gemini-3.8-flash", "input_price": 0.75, "output_price": 3.75, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_introductory", "provenance": {"source_name": "Gemini API pricing", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "source_metric_id": "pricing:gemini-3.8-flash:standard", "observation_date": "2026-09-02", "effective_date": "2026-09-02", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "google:gemini-3.7-flash", "input_price": 0.75, "output_price": 3.75, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_introductory", "provenance": {"source_name": "Gemini API model guide", "source_url": "https://ai.google.dev/gemini-api/docs/latest-model", "source_metric_id": "pricing:gemini-3.7-flash:standard", "observation_date": "2026-08-12", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "google:gemini-3.5-flash-lite", "input_price": 0.3, "output_price": 2.5, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Gemini API pricing", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "source_metric_id": "pricing:gemini-3.5-flash-lite:standard", "observation_date": "2026-08-11", "effective_date": "2026-07-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "xai:grok-4.6", "input_price": 2, "output_price": 6, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.6", "source_metric_id": "pricing:grok-4.6:short-context", "observation_date": "2026-08-21", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "xai:grok-4.5", "input_price": 2, "output_price": 6, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.5", "source_metric_id": "pricing:grok-4.5:short-context", "observation_date": "2026-09-02", "effective_date": "2026-07-08", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
+    {"model_id": "xai:grok-4.3", "input_price": 1.25, "output_price": 2.5, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.3", "source_metric_id": "pricing:grok-4.3:short-context", "observation_date": "2026-09-07", "effective_date": "2026-05-15", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}}
+  ],
+  "performance_observations": [
+    {"model_id": "openai:gpt-5.6-sol", "benchmark_id": "agents-last-exam-v1", "value": 52.7, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-sol:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
+    {"model_id": "openai:gpt-5.6-terra", "benchmark_id": "agents-last-exam-v1", "value": 50.4, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-terra:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
+    {"model_id": "openai:gpt-5.6-luna", "benchmark_id": "agents-last-exam-v1", "value": 50.3, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-luna:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
+    {"model_id": "openai:gpt-5.6-sol", "benchmark_id": "aa-intelligence-index-v4.1", "value": 58.9, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-sol:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
+    {"model_id": "openai:gpt-5.6-terra", "benchmark_id": "aa-intelligence-index-v4.1", "value": 55, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-terra:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
+    {"model_id": "openai:gpt-5.6-luna", "benchmark_id": "aa-intelligence-index-v4.1", "value": 51.2, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-luna:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}}
+  ]
+}

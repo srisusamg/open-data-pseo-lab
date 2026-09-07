@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-5-6-sol/",
+    "summary": "Its configured blended workload cost ranks 10th lowest among 12 models with current pricing. Its context window ranks 1st largest among 12 eligible models. It was released 60 days before this catalog's 2026-09-07 as-of date. On Agents' Last Exam, its versioned intelligence-per-dollar value ranks 3rd within a 3-model comparable cohort."
+  },
+  {
+    "url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-5-6-luna/",
+    "summary": "Its configured blended workload cost ranks 1st lowest among 12 models with current pricing. Its context window ranks 1st largest among 12 eligible models. It was released 60 days before this catalog's 2026-09-07 as-of date. On Agents' Last Exam, its versioned intelligence-per-dollar value ranks 1st within a 3-model comparable cohort."
+  },
+  {
+    "url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gemini-3-8-flash/",
+    "summary": "Its configured blended workload cost ranks 3rd lowest among 12 models with current pricing. Its context window ranks 4th largest among 12 eligible models. It was released 5 days before this catalog's 2026-09-07 as-of date."
+  },
+  {
+    "url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-sol/claude-fable-5/",
+    "summary": "GPT-5.6 Sol has the lower input token price ($4.00 versus $10.00 per 1M tokens). GPT-5.6 Sol has the lower output token price ($20.00 versus $50.00 per 1M tokens). GPT-5.6 Sol has the larger context window (1,050,000 versus 1,000,000 tokens)."
+  },
+  {
+    "url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-terra/claude-sonnet-5/",
+    "summary": "GPT-5.6 Terra has the lower input token price ($2.00 versus $3.00 per 1M tokens). GPT-5.6 Terra has the lower output token price ($12.00 versus $15.00 per 1M tokens). GPT-5.6 Terra has the larger context window (1,050,000 versus 1,000,000 tokens)."
+  }
+]

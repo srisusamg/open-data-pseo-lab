@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 
 @dataclass(frozen=True)
@@ -387,6 +387,65 @@ def generate_insights(context: InsightContext | Mapping[str, Any]) -> dict:
     )
     return {"candidates": candidates, "selected": selected,
             "summary": render_summary(selected, normalized)}
+
+
+def run_insight_pipeline(
+    context: InsightContext,
+    candidates: list[dict],
+    scores: Mapping[str, int],
+    type_order: Mapping[str, int],
+    renderer: Callable[[dict], str],
+    *,
+    maximum: int = 4,
+    prefer_metric_diversity: bool = False,
+) -> dict:
+    """Run the shared deterministic pipeline for a domain-owned insight recipe.
+
+    Candidate generation and sentence wording remain outside core, while scoring,
+    stable ordering, deduplication, bounded selection, and summary assembly are
+    shared.  This keeps new vertical vocabulary out of the platform core.
+    """
+    scored = []
+    for candidate in candidates:
+        kind = candidate["type"]
+        if kind not in scores or kind not in type_order:
+            raise ValueError(f"Unsupported {context.context_type} insight type: {kind}")
+        item = dict(candidate)
+        item["priority"] = int(scores[kind]) + int(item.pop("score_offset", 0))
+        scored.append(item)
+
+    def key(item: dict) -> tuple:
+        return (-item["priority"], type_order[item["type"]], item.get("metric_id") or "")
+
+    ordered = sorted(scored, key=key)
+    unique, seen = [], set()
+    for candidate in ordered:
+        if candidate["dedupe_key"] not in seen:
+            seen.add(candidate["dedupe_key"])
+            unique.append(candidate)
+
+    if prefer_metric_diversity:
+        selected, selected_metrics, selected_types = [], set(), set()
+        for candidate in unique:
+            metric_id = candidate.get("metric_id")
+            if candidate["type"] not in selected_types and (metric_id is None or metric_id not in selected_metrics):
+                selected.append(candidate)
+                selected_types.add(candidate["type"])
+                if metric_id:
+                    selected_metrics.add(metric_id)
+                if len(selected) == maximum:
+                    break
+        if len(selected) < maximum:
+            selected.extend(item for item in unique if item not in selected)
+            selected = selected[:maximum]
+        selected = sorted(selected, key=key)
+    else:
+        selected = unique[:maximum]
+    return {
+        "candidates": ordered,
+        "selected": selected,
+        "summary": " ".join(renderer(item) for item in selected),
+    }
 
 
 def generate_candidates(metrics: list[dict], config: Mapping[str, Any]) -> list[dict]:

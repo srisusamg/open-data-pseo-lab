@@ -1,0 +1,2446 @@
+[
+  {
+    "url": "models/claude-fable-5/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/claude-opus-5/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/claude-sonnet-5/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gemini-3-5-flash-lite/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gemini-3-7-flash/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gemini-3-8-flash/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gpt-5-6-luna/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 8,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 8,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 8,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gpt-5-6-sol/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 8,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 8,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 8,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/gpt-5-6-terra/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 8,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 8,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 8,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/grok-4-3/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/grok-4-5/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/grok-4-6/",
+    "page_type": "model_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 2,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "providers/openai/",
+    "page_type": "provider_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "providers/anthropic/",
+    "page_type": "provider_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "providers/google/",
+    "page_type": "provider_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "providers/xai/",
+    "page_type": "provider_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/rankings/input-cost/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 12,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 12,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 9,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 13,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/rankings/output-cost/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 12,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 12,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 9,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 13,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/rankings/context-window/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 12,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 12,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 13,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/gpt-5-6-sol/claude-fable-5/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 4,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/gpt-5-6-terra/claude-sonnet-5/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 4,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/gpt-5-6-luna/gemini-3-5-flash-lite/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 4,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/grok-4-6/gpt-5-6-sol/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 4,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/gpt-5-6-sol/gpt-5-6-terra/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 10,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 5,
+    "selected_insight_count": 5,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 10,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 5,
+      "selected_insight_count": 5,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/models/gemini-3-8-flash/grok-4-6/",
+    "page_type": "model_comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 4,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 3,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "models/releases/2026/",
+    "page_type": "release_timeline",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 12,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 12,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 9,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 13,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  }
+]
