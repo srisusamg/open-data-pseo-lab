@@ -14,11 +14,14 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.fetch_world_bank import SCHEMA_VERSION, fetch_snapshot
+from scripts.change_metrics import change_path, derive_change_metric
 from scripts.comparison_metrics import build_comparison
+from scripts.insights import generate_insights
+from scripts.page_quality import change_page_skip_reason
 from scripts.model import ROOT, canonical_url, format_change, format_difference, format_value, load_comparisons, load_config, load_json, rank_observations, relative_url
 from scripts.summary_rules import render_summary
 
-GENERATOR_VERSION = "2.0.0"
+GENERATOR_VERSION = "3.0.0"
 
 
 def write_text(path: Path, content: str) -> None:
@@ -29,6 +32,7 @@ def write_text(path: Path, content: str) -> None:
 def render_site(snapshot: dict) -> int:
     site_config, countries, indicators = load_config()
     configured_pairs = load_comparisons(countries)
+    change_config = load_json(ROOT / "config" / "change_windows.json")
     output = ROOT / "site"
     if output.exists():
         shutil.rmtree(output)
@@ -69,6 +73,55 @@ def render_site(snapshot: dict) -> int:
         comparisons_by_country[comparison["country_a"]["code"]].append(comparison)
         comparisons_by_country[comparison["country_b"]["code"]].append(comparison)
 
+    change_pages: list[dict] = []
+    quality_report: list[dict] = []
+    requested_end = int(change_config["requested_end_year"])
+    for country in countries:
+        country_series = [series_by_key[(country["code"], indicator["code"])] for indicator in indicators]
+        for window in sorted(change_config["windows"]):
+            requested_start = requested_end - int(window)
+            path = change_path(country, requested_start, requested_end)
+            metrics = []
+            for item in country_series:
+                metric = derive_change_metric(
+                    item,
+                    requested_start,
+                    requested_end,
+                    tolerance_years=int(change_config["observation_tolerance_years"]),
+                    minimum_span_years=int(change_config["minimum_span_by_window"][str(window)]),
+                    acceleration_minimum_observations=int(change_config["acceleration_minimum_observations"]),
+                )
+                if metric:
+                    metrics.append(metric)
+            insight_result = generate_insights({"type": "change", "metrics": metrics, "config": change_config}) if metrics else {"candidates": [], "selected": [], "summary": ""}
+            skip_reason = change_page_skip_reason(metrics, insight_result, change_config)
+            report_row = {
+                "url": path,
+                "page_type": "what_changed",
+                "status": "skipped" if skip_reason else "generated",
+                "usable_metric_count": len(metrics),
+                "historical_span": min((metric["span_years"] for metric in metrics), default=0),
+                "insight_candidate_count": len(insight_result["candidates"]),
+                "selected_insight_count": len(insight_result["selected"]),
+                "skip_reason": skip_reason,
+            }
+            quality_report.append(report_row)
+            if not skip_reason:
+                change_pages.append({
+                    "country": country,
+                    "path": path,
+                    "requested_start_year": requested_start,
+                    "requested_end_year": requested_end,
+                    "window_years": int(window),
+                    "metrics": metrics,
+                    "insight_candidates": insight_result["candidates"],
+                    "selected_insights": insight_result["selected"],
+                    "summary": insight_result["summary"],
+                })
+    changes_by_country = {country["code"]: [] for country in countries}
+    for page in change_pages:
+        changes_by_country[page["country"]["code"]].append(page)
+
     page_paths = [""]
     common = {
         "site": site_config,
@@ -76,6 +129,7 @@ def render_site(snapshot: dict) -> int:
         "indicators": indicators,
         "retrieved_at": snapshot["retrieved_at"],
         "comparisons": comparisons,
+        "change_pages": change_pages,
         "canonical_url": canonical_url,
     }
 
@@ -89,7 +143,7 @@ def render_site(snapshot: dict) -> int:
         page_path = f"countries/{country['slug']}/"
         page_paths.append(page_path)
         values = sorted(by_country[country["slug"]], key=lambda x: [i["slug"] for i in indicators].index(x["indicator_slug"]))
-        render("country.html", page_path, output / page_path / "index.html", country=country, values=values, country_comparisons=comparisons_by_country[country["code"]])
+        render("country.html", page_path, output / page_path / "index.html", country=country, values=values, country_comparisons=comparisons_by_country[country["code"]], country_change_pages=changes_by_country[country["code"]])
     for indicator in indicators:
         page_path = f"indicators/{indicator['slug']}/"
         page_paths.append(page_path)
@@ -99,6 +153,11 @@ def render_site(snapshot: dict) -> int:
         page_path = comparison["path"]
         page_paths.append(page_path)
         render("comparison.html", page_path, output / page_path / "index.html", comparison=comparison)
+    for change_page in change_pages:
+        page_path = change_page["path"]
+        page_paths.append(page_path)
+        sibling_pages = [page for page in changes_by_country[change_page["country"]["code"]] if page["path"] != page_path]
+        render("what_changed.html", page_path, output / page_path / "index.html", change=change_page, sibling_pages=sibling_pages)
     page_paths.append("methodology/")
     render("methodology.html", "methodology/", output / "methodology" / "index.html")
 
@@ -114,11 +173,14 @@ def render_site(snapshot: dict) -> int:
         "countries_count": len(countries),
         "indicators_count": len(indicators),
         "comparisons_count": len(comparisons),
+        "what_changed_generated_count": len(change_pages),
+        "what_changed_skipped_count": sum(row["status"] == "skipped" for row in quality_report),
         "generated_page_count": len(page_paths),
         "generator_version": GENERATOR_VERSION,
         "schema_version": SCHEMA_VERSION,
     }
     write_text(ROOT / "data" / "generated" / "build_manifest.json", json.dumps(manifest, indent=2))
+    write_text(ROOT / "data" / "generated" / "page_quality_report.json", json.dumps(quality_report, indent=2))
     return len(page_paths)
 
 

@@ -1,0 +1,17 @@
+{
+  "requested_end_year": 2025,
+  "windows": [5, 10],
+  "observation_tolerance_years": 1,
+  "minimum_span_by_window": {
+    "5": 4,
+    "10": 8
+  },
+  "minimum_usable_metrics": 3,
+  "minimum_insight_candidates": 3,
+  "minimum_selected_insights": 3,
+  "maximum_selected_insights": 6,
+  "acceleration_minimum_observations": 6,
+  "acceleration_relative_rate_threshold": 0.25,
+  "acceleration_percentage_point_rate_threshold": 0.5,
+  "standout_ratio_threshold": 1.75
+}

@@ -53,11 +53,12 @@ class PageParser(HTMLParser):
             self.title += data
 
 
-def expected_pages(countries: list[dict], indicators: list[dict], comparisons: list[tuple[dict, dict]]) -> list[Path]:
+def expected_pages(countries: list[dict], indicators: list[dict], comparisons: list[tuple[dict, dict]], change_paths: list[str] | None = None) -> list[Path]:
     pages = [ROOT / "site" / "index.html", ROOT / "site" / "methodology" / "index.html"]
     pages += [ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries]
     pages += [ROOT / "site" / "indicators" / item["slug"] / "index.html" for item in indicators]
     pages += [ROOT / "site" / comparison_path(country_a, country_b) / "index.html" for country_a, country_b in comparisons]
+    pages += [ROOT / "site" / path / "index.html" for path in (change_paths or [])]
     return pages
 
 
@@ -121,6 +122,20 @@ def validate() -> list[str]:
             errors.extend(validate_snapshot(load_json(snapshot_path), countries, indicators))
         except (OSError, ValueError, TypeError) as exc:
             errors.append(f"invalid generated snapshot: {exc}")
+    quality_path = ROOT / "data" / "generated" / "page_quality_report.json"
+    quality_rows: list[dict] = []
+    if not quality_path.is_file():
+        errors.append("missing required artifact: data/generated/page_quality_report.json")
+    else:
+        try:
+            quality_rows = load_json(quality_path)
+            if not isinstance(quality_rows, list):
+                errors.append("page quality report must be a list")
+                quality_rows = []
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"invalid page quality report: {exc}")
+    generated_changes = [row.get("url") for row in quality_rows if row.get("status") == "generated" and isinstance(row.get("url"), str)]
+    skipped_changes = [row.get("url") for row in quality_rows if row.get("status") == "skipped" and isinstance(row.get("url"), str)]
     site_root = (ROOT / "site").resolve()
     for required in [ROOT / "site" / "sitemap.xml", ROOT / "site" / "robots.txt"]:
         if not required.is_file():
@@ -128,7 +143,8 @@ def validate() -> list[str]:
     country_pages = {ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries}
     titles: dict[str, Path] = {}
     comparison_pages = {ROOT / "site" / comparison_path(a, b) / "index.html" for a, b in comparisons}
-    for page in expected_pages(countries, indicators, comparisons):
+    change_pages = {ROOT / "site" / path / "index.html" for path in generated_changes}
+    for page in expected_pages(countries, indicators, comparisons, generated_changes):
         if not page.is_file():
             errors.append(f"missing page: {page.relative_to(ROOT)}")
             continue
@@ -153,6 +169,8 @@ def validate() -> list[str]:
             errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
         if page in comparison_pages and "World Bank" not in text:
             errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
+        if page in change_pages and "World Bank" not in text:
+            errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
         if page in country_pages:
             if parser.history_table_count != len(indicators):
                 errors.append(f"expected one historical table per indicator: {page.relative_to(ROOT)}")
@@ -176,6 +194,16 @@ def validate() -> list[str]:
             url = canonical_url(site["base_url"], comparison_path(country_a, country_b))
             if f"<loc>{url}</loc>" not in sitemap:
                 errors.append(f"sitemap missing comparison URL: {url}")
+        for path in generated_changes:
+            url = canonical_url(site["base_url"], path)
+            if f"<loc>{url}</loc>" not in sitemap:
+                errors.append(f"sitemap missing generated change URL: {url}")
+        for path in skipped_changes:
+            url = canonical_url(site["base_url"], path)
+            if f"<loc>{url}</loc>" in sitemap:
+                errors.append(f"sitemap contains skipped change URL: {url}")
+            if (ROOT / "site" / path / "index.html").is_file():
+                errors.append(f"skipped change page was published: {path}")
     return errors
 
 

@@ -19,6 +19,8 @@ th, td { text-align: left; padding: .9rem; border-bottom: 1px solid var(--line);
 .indicator-series { grid-template-columns: 1fr; } .derived { margin-block: 1rem; padding: .9rem; background: #f0f4ef; border-left: .25rem solid var(--accent); } .derived h4 { margin: 0; } .derived-note { margin: .25rem 0 .7rem; color: var(--muted); font-size: .88rem; } .change-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 1rem; margin: 0; } .change-list div { display: flex; justify-content: space-between; gap: 1rem; } .change-list dd { margin: 0; font-weight: 700; text-align: right; } .history-table { max-height: 24rem; overflow-y: auto; } .history-table th, .history-table td { padding: .45rem .7rem; }
 .indicator-definitions div { padding: .8rem 0; border-bottom: 1px solid var(--line); } dt { font-weight: 750; }
 .comparison-summary { max-width: 55rem; padding: 1.1rem 1.25rem; background: #edf5ef; border-left: .3rem solid var(--accent); font-size: 1.08rem; }
+.change-summary { max-width: 58rem; margin-bottom: 2rem; padding: .2rem 1.25rem 1rem; background: #edf5ef; border-left: .3rem solid var(--accent); font-size: 1.08rem; }
+.change-table small { display: block; color: var(--muted); white-space: nowrap; }
 .comparison-links { margin-bottom: 2rem; }
 .comparison-table small, .comparison-history small { display: block; color: var(--muted); white-space: nowrap; }
 .freshness-flag { display: block; width: max-content; margin-top: .3rem; padding: .1rem .4rem; border-radius: .25rem; background: #fff1cf; color: #694b00; font-size: .75rem; font-weight: 700; }
