@@ -53,13 +53,8 @@ class PageParser(HTMLParser):
             self.title += data
 
 
-def expected_pages(countries: list[dict], indicators: list[dict], comparisons: list[tuple[dict, dict]], change_paths: list[str] | None = None) -> list[Path]:
-    pages = [ROOT / "site" / "index.html", ROOT / "site" / "methodology" / "index.html"]
-    pages += [ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries]
-    pages += [ROOT / "site" / "indicators" / item["slug"] / "index.html" for item in indicators]
-    pages += [ROOT / "site" / comparison_path(country_a, country_b) / "index.html" for country_a, country_b in comparisons]
-    pages += [ROOT / "site" / path / "index.html" for path in (change_paths or [])]
-    return pages
+def expected_pages(generated_paths: list[str]) -> list[Path]:
+    return [ROOT / "site" / "index.html", ROOT / "site" / "methodology" / "index.html"] + [ROOT / "site" / path / "index.html" for path in generated_paths]
 
 
 def resolve_link(page: Path, href: str) -> Path | None:
@@ -89,8 +84,8 @@ def validate_snapshot(snapshot: dict, countries: list[dict], indicators: list[di
         if not isinstance(observations, list):
             errors.append(f"{label}: observations must be a list")
             continue
-        if len(observations) < HISTORY_OBSERVATIONS:
-            errors.append(f"{label}: expected at least {HISTORY_OBSERVATIONS} available observations")
+        if len(observations) > HISTORY_OBSERVATIONS:
+            errors.append(f"{label}: expected no more than {HISTORY_OBSERVATIONS} normalized observations")
         years = [row.get("year") for row in observations]
         if any(not isinstance(year, int) for year in years):
             errors.append(f"{label}: every observation year must be an integer")
@@ -134,17 +129,67 @@ def validate() -> list[str]:
                 quality_rows = []
         except (OSError, ValueError, TypeError) as exc:
             errors.append(f"invalid page quality report: {exc}")
-    generated_changes = [row.get("url") for row in quality_rows if row.get("status") == "generated" and isinstance(row.get("url"), str)]
-    skipped_changes = [row.get("url") for row in quality_rows if row.get("status") == "skipped" and isinstance(row.get("url"), str)]
+    change_config = load_json(ROOT / "config" / "change_windows.json")
+    expected_recipes = {
+        **{f"countries/{item['slug']}/": "country_profile" for item in countries},
+        **{f"indicators/{item['slug']}/": "indicator_ranking" for item in indicators},
+        **{comparison_path(a, b): "comparison" for a, b in comparisons},
+        **{
+            f"countries/{country['slug']}/change/{int(change_config['requested_end_year']) - int(window)}-{int(change_config['requested_end_year'])}/": "what_changed"
+            for country in countries for window in change_config["windows"]
+        },
+    }
+    report_by_url: dict[str, dict] = {}
+    required_report_fields = {
+        "url", "page_type", "status", "quality_score", "usable_facts", "usable_historical_metrics",
+        "insight_candidate_count", "selected_insight_count", "source_freshness", "skip_reasons",
+    }
+    for index, row in enumerate(quality_rows, 1):
+        if not isinstance(row, dict):
+            errors.append(f"page quality report row {index} must be an object")
+            continue
+        missing = sorted(required_report_fields - row.keys())
+        if missing:
+            errors.append(f"page quality report row {index} missing fields: {', '.join(missing)}")
+        url = row.get("url")
+        if not isinstance(url, str):
+            errors.append(f"page quality report row {index} has invalid URL")
+            continue
+        if url in report_by_url:
+            errors.append(f"page quality report has duplicate URL: {url}")
+        report_by_url[url] = row
+        if row.get("status") not in {"generated", "skipped"}:
+            errors.append(f"page quality report has invalid status for {url}")
+        if not isinstance(row.get("quality_score"), int) or not 0 <= row.get("quality_score", -1) <= 100:
+            errors.append(f"page quality report has invalid quality score for {url}")
+        if not isinstance(row.get("skip_reasons"), list) or (row.get("status") == "generated") == bool(row.get("skip_reasons")):
+            errors.append(f"page quality report has inconsistent skip reasons for {url}")
+        if not isinstance(row.get("source_freshness"), dict):
+            errors.append(f"page quality report has invalid source freshness for {url}")
+    if set(report_by_url) != set(expected_recipes):
+        for path in sorted(set(expected_recipes) - set(report_by_url)):
+            errors.append(f"page quality report missing potential page: {path}")
+        for path in sorted(set(report_by_url) - set(expected_recipes)):
+            errors.append(f"page quality report contains unexpected page: {path}")
+    for path, page_type in expected_recipes.items():
+        if path in report_by_url and report_by_url[path].get("page_type") != page_type:
+            errors.append(f"page quality report has wrong page type for {path}")
+
+    generated_paths = [path for path, row in report_by_url.items() if row.get("status") == "generated"]
+    skipped_paths = [path for path, row in report_by_url.items() if row.get("status") == "skipped"]
     site_root = (ROOT / "site").resolve()
     for required in [ROOT / "site" / "sitemap.xml", ROOT / "site" / "robots.txt"]:
         if not required.is_file():
             errors.append(f"missing required artifact: {required.relative_to(ROOT)}")
-    country_pages = {ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries}
+    country_pages = {ROOT / "site" / path / "index.html" for path, row in report_by_url.items() if row.get("page_type") == "country_profile" and row.get("status") == "generated"}
     titles: dict[str, Path] = {}
-    comparison_pages = {ROOT / "site" / comparison_path(a, b) / "index.html" for a, b in comparisons}
-    change_pages = {ROOT / "site" / path / "index.html" for path in generated_changes}
-    for page in expected_pages(countries, indicators, comparisons, generated_changes):
+    comparison_pages = {ROOT / "site" / path / "index.html" for path, row in report_by_url.items() if row.get("page_type") == "comparison" and row.get("status") == "generated"}
+    change_pages = {ROOT / "site" / path / "index.html" for path, row in report_by_url.items() if row.get("page_type") == "what_changed" and row.get("status") == "generated"}
+    expected_files = set(expected_pages(generated_paths))
+    actual_files = set((ROOT / "site").rglob("index.html")) if (ROOT / "site").is_dir() else set()
+    for extra in sorted(actual_files - expected_files):
+        errors.append(f"unexpected generated page: {extra.relative_to(ROOT)}")
+    for page in expected_files:
         if not page.is_file():
             errors.append(f"missing page: {page.relative_to(ROOT)}")
             continue
@@ -172,10 +217,12 @@ def validate() -> list[str]:
         if page in change_pages and "World Bank" not in text:
             errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
         if page in country_pages:
-            if parser.history_table_count != len(indicators):
-                errors.append(f"expected one historical table per indicator: {page.relative_to(ROOT)}")
-            if parser.derived_block_count != len(indicators):
-                errors.append(f"expected one separate derived-metrics block per indicator: {page.relative_to(ROOT)}")
+            report_path = page.parent.relative_to(ROOT / "site").as_posix() + "/"
+            minimum = report_by_url[report_path].get("usable_facts", 0)
+            if parser.history_table_count < minimum:
+                errors.append(f"country page has fewer historical tables than usable facts: {page.relative_to(ROOT)}")
+            if parser.derived_block_count != parser.history_table_count:
+                errors.append(f"expected one separate derived-metrics block per history table: {page.relative_to(ROOT)}")
         for href in parser.links:
             target = resolve_link(page, href)
             if target is None:
@@ -190,20 +237,16 @@ def validate() -> list[str]:
     sitemap_path = ROOT / "site" / "sitemap.xml"
     if sitemap_path.is_file():
         sitemap = sitemap_path.read_text(encoding="utf-8")
-        for country_a, country_b in comparisons:
-            url = canonical_url(site["base_url"], comparison_path(country_a, country_b))
-            if f"<loc>{url}</loc>" not in sitemap:
-                errors.append(f"sitemap missing comparison URL: {url}")
-        for path in generated_changes:
+        for path in generated_paths:
             url = canonical_url(site["base_url"], path)
             if f"<loc>{url}</loc>" not in sitemap:
-                errors.append(f"sitemap missing generated change URL: {url}")
-        for path in skipped_changes:
+                errors.append(f"sitemap missing generated URL: {url}")
+        for path in skipped_paths:
             url = canonical_url(site["base_url"], path)
             if f"<loc>{url}</loc>" in sitemap:
-                errors.append(f"sitemap contains skipped change URL: {url}")
+                errors.append(f"sitemap contains skipped URL: {url}")
             if (ROOT / "site" / path / "index.html").is_file():
-                errors.append(f"skipped change page was published: {path}")
+                errors.append(f"skipped page was published: {path}")
     return errors
 
 

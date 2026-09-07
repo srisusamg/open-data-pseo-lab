@@ -1,122 +1,2446 @@
 [
   {
+    "url": "countries/india/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "countries/united-states/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "countries/china/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "countries/vietnam/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "countries/indonesia/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "countries/brazil/",
+    "page_type": "country_profile",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 6,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "indicators/population/",
+    "page_type": "indicator_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 6,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2025,
+      "maximum_age_years": 1,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 6,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2025,
+        "maximum_age_years": 1,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "indicators/gdp/",
+    "page_type": "indicator_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 6,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2025,
+      "maximum_age_years": 1,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 6,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2025,
+        "maximum_age_years": 1,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "indicators/gdp-per-capita/",
+    "page_type": "indicator_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 6,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2025,
+      "maximum_age_years": 1,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 6,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2025,
+        "maximum_age_years": 1,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "indicators/internet-users/",
+    "page_type": "indicator_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 6,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 6,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "indicators/life-expectancy/",
+    "page_type": "indicator_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 6,
+    "usable_historical_metrics": 6,
+    "insight_candidate_count": 0,
+    "selected_insight_count": 0,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2024,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 6,
+      "usable_historical_metrics": 6,
+      "insight_candidate_count": 0,
+      "selected_insight_count": 0,
+      "differentiated_content_count": 6,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2024,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/india/vietnam/",
+    "page_type": "comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 8,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/india/china/",
+    "page_type": "comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 8,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "compare/united-states/china/",
+    "page_type": "comparison",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
+    "insight_candidate_count": 4,
+    "selected_insight_count": 4,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 4,
+      "selected_insight_count": 4,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 8,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
     "url": "countries/india/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 15,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 15,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/india/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 14,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 14,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/united-states/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 15,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 15,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/united-states/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 14,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 14,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/china/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 13,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 13,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/china/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 13,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 13,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/vietnam/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 12,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 12,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/vietnam/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 15,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 15,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/indonesia/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 14,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 14,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/indonesia/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 15,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 15,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/brazil/change/2020-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 4,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 14,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 14,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   },
   {
     "url": "countries/brazil/change/2015-2025/",
     "page_type": "what_changed",
     "status": "generated",
-    "usable_metric_count": 5,
-    "historical_span": 9,
+    "quality_score": 100,
+    "usable_facts": 5,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 15,
     "selected_insight_count": 6,
-    "skip_reason": null
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2025,
+      "oldest_source_year": 2024,
+      "maximum_age_years": 2,
+      "allowed_age_years": 3,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 5,
+      "usable_historical_metrics": 5,
+      "insight_candidate_count": 15,
+      "selected_insight_count": 6,
+      "differentiated_content_count": 5,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2025,
+        "oldest_source_year": 2024,
+        "maximum_age_years": 2,
+        "allowed_age_years": 3,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 7,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
   }
 ]
