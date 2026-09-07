@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 from scripts.change_metrics import derive_change_metric, select_observation
-from scripts.insights import generate_candidates, render_insight, render_summary, select_insights
+from scripts.insights import InsightContext, generate_candidates, generate_insights, render_insight, render_summary, select_insights
 from scripts.model import ROOT, canonical_url
 from scripts.page_quality import change_page_skip_reason
 
@@ -158,6 +158,19 @@ class InsightSelectionAndTextTests(unittest.TestCase):
         selected = select_insights(generate_candidates(items, CONFIG), 6)
         self.assertEqual(render_summary(selected), render_summary(selected))
         self.assertNotIn("Life expectancy", render_summary(selected))
+
+    def test_same_context_produces_the_same_structured_output(self):
+        items = [
+            metric("population", "population", [(2015, 100), (2025, 110)], "SP.POP.TOTL", "Population"),
+            metric("gdp", "currency", [(2015, 100), (2025, 200)], "NY.GDP.MKTP.CD", "GDP"),
+            metric("internet-users", "percentage", [(2015, 20), (2025, 40)], "IT.NET.USER.ZS", "Internet users"),
+        ]
+        context = InsightContext("change", items, CONFIG)
+        first = generate_insights(context)
+        self.assertEqual(first, generate_insights(context))
+        common_fields = {"context_type", "type", "priority", "entity_id", "metric_id", "metric_name", "value", "evidence", "dedupe_key"}
+        self.assertTrue(all(common_fields <= candidate.keys() for candidate in first["candidates"]))
+        self.assertTrue(all(candidate["context_type"] == "change" for candidate in first["candidates"]))
 
 
 class PageQualityAndOutputTests(unittest.TestCase):

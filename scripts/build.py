@@ -17,10 +17,9 @@ if __package__ in (None, ""):
 from scripts.change_metrics import change_path, derive_change_metric
 from scripts.comparison_metrics import build_comparison
 from scripts.fetch_world_bank import SCHEMA_VERSION, fetch_snapshot
-from scripts.insights import generate_insights
+from scripts.insights import InsightContext, generate_insights
 from scripts.model import ROOT, calculate_derived_metrics, canonical_url, format_change, format_difference, format_value, load_comparisons, load_config, load_json, rank_observations, relative_url
 from scripts.page_quality import complete_provenance, duplicate_intents, evaluate_page_quality, quality_report_row
-from scripts.summary_rules import render_summary, select_insights as select_comparison_insights
 
 GENERATOR_VERSION = "4.0.0"
 
@@ -152,15 +151,20 @@ def render_site(snapshot: dict) -> int:
     duplicate_comparisons = duplicate_intents(comparison_intents)
     for country_a, country_b in configured_pairs:
         comparison = build_comparison(country_a, country_b, [series_by_key[(country_a["code"], i["code"])] for i in indicators], [series_by_key[(country_b["code"], i["code"])] for i in indicators])
-        insights = select_comparison_insights(comparison)
-        comparison["summary"] = render_summary(comparison, insights)
+        insight_result = generate_insights(InsightContext(
+            context_type="comparison", metrics=comparison["metrics"], subject=comparison,
+        ))
+        comparison["insight_candidates"] = insight_result["candidates"]
+        comparison["selected_insights"] = insight_result["selected"]
+        comparison["summary"] = insight_result["summary"]
         usable = [metric for metric in comparison["metrics"] if metric.get("country_a") and metric.get("country_b")]
         historical = sum(any(period["country_a"] and period["country_b"] for period in metric["periods"].values()) for metric in usable)
         key = "comparison:" + ":".join(sorted((country_a["code"], country_b["code"])))
         context = {
             "url": comparison["path"], "page_type": "comparison", "as_of_year": as_of_year,
             "usable_facts": len(usable), "usable_historical_metrics": historical,
-            "insight_candidate_count": len(insights), "selected_insight_count": len(insights),
+            "insight_candidate_count": len(insight_result["candidates"]),
+            "selected_insight_count": len(insight_result["selected"]),
             "source_years": [fact["year"] for metric in usable for fact in (metric["country_a"], metric["country_b"])],
             "provenance_complete": bool(usable) and all(len(metric.get("source_urls", [])) == 2 and all(metric["source_urls"]) for metric in usable),
             "differentiated_content_count": sum(not _close(metric["absolute_difference"], 0) for metric in usable),
@@ -188,7 +192,10 @@ def render_site(snapshot: dict) -> int:
                     metric = derive_change_metric(series_by_key[(country["code"], indicator["code"])], requested_start, requested_end, tolerance_years=int(change_config["observation_tolerance_years"]), minimum_span_years=int(change_config["minimum_span_by_window"][str(window)]), acceleration_minimum_observations=int(change_config["acceleration_minimum_observations"]))
                     if metric:
                         metrics.append(metric)
-            insight_result = generate_insights({"type": "change", "metrics": metrics, "config": change_config}) if metrics else {"candidates": [], "selected": [], "summary": ""}
+            insight_result = generate_insights(InsightContext(
+                context_type="change", metrics=metrics, config=change_config,
+                subject={"country": country},
+            )) if metrics else {"candidates": [], "selected": [], "summary": ""}
             context = {
                 "url": path, "page_type": "what_changed", "as_of_year": as_of_year,
                 "usable_facts": len(metrics), "usable_historical_metrics": len(metrics),

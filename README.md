@@ -12,7 +12,7 @@ After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentia
 - `scripts/fetch_world_bank.py` fetches each series and preserves its newest 15 non-null observations with actual source years.
 - `scripts/model.py` contains deterministic selection, ranking, URL, and number-formatting logic.
 - `scripts/change_metrics.py` selects real historical endpoints and keeps source facts separate from derived change calculations.
-- `scripts/insights.py` generates, scores, selects, and renders deterministic structured insights through a reusable `generate_insights(context)` API.
+- `scripts/insights.py` runs both `comparison` and `change` contexts through one deterministic pipeline: candidate generation, scoring, deduplication, selection, and structured-evidence text rendering via `generate_insights(context)`.
 - `scripts/build.py` writes normalized data and page-quality decisions to `data/generated/` and renders Jinja templates into `site/`.
 - `scripts/validate.py` checks required pages, titles, H1s, attribution, content size, and internal links.
 - `.github/workflows/refresh-and-deploy.yml` refreshes, tests, commits changed generated artifacts, and deploys the same run to Pages.

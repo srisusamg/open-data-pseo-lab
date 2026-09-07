@@ -16,7 +16,8 @@ from scripts.model import (
     relative_url,
     source_url,
 )
-from scripts.summary_rules import render_summary, select_insights
+from scripts.insights import InsightContext, generate_insights
+from scripts import summary_rules
 
 
 class SelectionTests(unittest.TestCase):
@@ -157,18 +158,43 @@ class DeterministicSummaryTests(unittest.TestCase):
         a = self.series(self.country_a, "gdp-per-capita", "GDP per capita", [(2024, 150), (2019, 120), (2014, 100)])
         b = self.series(self.country_b, "gdp-per-capita", "GDP per capita", [(2024, 240), (2019, 160), (2014, 100)])
         comparison = build_comparison(self.country_a, self.country_b, [a], [b])
-        insights = select_insights(comparison)
+        result = generate_insights(InsightContext("comparison", comparison["metrics"], subject=comparison))
+        insights = result["selected"]
         growth = next(item for item in insights if item["type"] == "growth_leader")
-        self.assertEqual(growth["leader"], "Beta")
-        self.assertIn("Beta's gdp per capita had the larger percentage change", render_summary(comparison, insights))
+        self.assertEqual(growth["evidence"]["leader"], "Beta")
+        self.assertIn("Beta's gdp per capita had the larger percentage change", result["summary"])
+
+    def test_comparison_output_is_deterministic_and_uses_shared_shape(self):
+        a = self.series(self.country_a, "gdp", "GDP", [(2024, 200), (2014, 100)])
+        b = self.series(self.country_b, "gdp", "GDP", [(2024, 150), (2014, 100)])
+        comparison = build_comparison(self.country_a, self.country_b, [a], [b])
+        context = InsightContext("comparison", comparison["metrics"], subject=comparison)
+        first = generate_insights(context)
+        second = generate_insights(context)
+        self.assertEqual(first, second)
+        self.assertTrue(first["candidates"])
+        common_fields = {"context_type", "type", "priority", "entity_id", "metric_id", "metric_name", "value", "evidence", "dedupe_key"}
+        self.assertTrue(all(common_fields <= candidate.keys() for candidate in first["candidates"]))
+        self.assertTrue(all(candidate["context_type"] == "comparison" for candidate in first["candidates"]))
+
+    def test_legacy_comparison_module_delegates_to_shared_pipeline(self):
+        a = self.series(self.country_a, "population", "Population", [(2024, 200), (2014, 100)])
+        b = self.series(self.country_b, "population", "Population", [(2024, 150), (2014, 100)])
+        comparison = build_comparison(self.country_a, self.country_b, [a], [b])
+        shared = generate_insights(InsightContext("comparison", comparison["metrics"], subject=comparison))
+        self.assertIs(summary_rules.generate_insights, generate_insights)
+        legacy = summary_rules.select_insights(comparison)
+        self.assertIn("scale_leaders", {item["type"] for item in legacy})
+        self.assertEqual(summary_rules.render_summary(comparison, legacy), shared["summary"])
+        self.assertEqual(summary_rules.render_summary(comparison), shared["summary"])
 
     def test_missing_values_create_no_leader_or_missing_data_claim(self):
         a = self.series(self.country_a, "population", "Population", [])
         b = self.series(self.country_b, "population", "Population", [(2024, 100)])
         comparison = build_comparison(self.country_a, self.country_b, [a], [b])
-        insights = select_insights(comparison)
-        self.assertFalse(any(item["type"] in {"scale_leaders", "growth_leader", "biggest_gap"} for item in insights))
-        summary = render_summary(comparison, insights)
+        result = generate_insights(InsightContext("comparison", comparison["metrics"], subject=comparison))
+        self.assertFalse(any(item["type"] in {"metric_leader", "growth_leader", "largest_relative_gap"} for item in result["selected"]))
+        summary = result["summary"]
         self.assertNotIn("higher", summary)
         self.assertNotIn("larger", summary)
 

@@ -1040,7 +1040,7 @@
     "quality_score": 100,
     "usable_facts": 5,
     "usable_historical_metrics": 5,
-    "insight_candidate_count": 4,
+    "insight_candidate_count": 5,
     "selected_insight_count": 4,
     "source_freshness": {
       "as_of_year": 2026,
@@ -1054,7 +1054,7 @@
     "metrics": {
       "usable_facts": 5,
       "usable_historical_metrics": 5,
-      "insight_candidate_count": 4,
+      "insight_candidate_count": 5,
       "selected_insight_count": 4,
       "differentiated_content_count": 5,
       "source_freshness": {
@@ -1228,7 +1228,7 @@
     "quality_score": 100,
     "usable_facts": 5,
     "usable_historical_metrics": 5,
-    "insight_candidate_count": 4,
+    "insight_candidate_count": 5,
     "selected_insight_count": 4,
     "source_freshness": {
       "as_of_year": 2026,
@@ -1242,7 +1242,7 @@
     "metrics": {
       "usable_facts": 5,
       "usable_historical_metrics": 5,
-      "insight_candidate_count": 4,
+      "insight_candidate_count": 5,
       "selected_insight_count": 4,
       "differentiated_content_count": 5,
       "source_freshness": {
