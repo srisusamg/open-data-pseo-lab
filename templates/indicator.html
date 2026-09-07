@@ -10,4 +10,5 @@
   <tbody>{% for item in ranking %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="{{ link('countries/' ~ item.country_slug ~ '/') }}">{{ item.country_name }}</a></th><td>{{ item.value|value(item.format) }}</td><td>{{ item.year }}</td></tr>{% else %}<tr><td colspan="4">No observations were available in the requested window.</td></tr>{% endfor %}</tbody>
 </table></div>
 <p class="source">Source: <a href="https://data.worldbank.org/indicator/{{ indicator.code }}">World Bank, indicator {{ indicator.code }}</a>. Values may come from different observation years; see the <a href="{{ link('methodology/') }}">methodology</a>.</p>
+{% if comparisons %}<section><h2>Configured country comparisons</h2><ul class="link-list">{% for comparison in comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.country_a.name }} vs {{ comparison.country_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
 {% endblock %}

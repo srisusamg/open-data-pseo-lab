@@ -3,7 +3,8 @@
   "source_name": "World Bank",
   "countries_count": 6,
   "indicators_count": 5,
-  "generated_page_count": 13,
+  "comparisons_count": 3,
+  "generated_page_count": 16,
   "generator_version": "2.0.0",
   "schema_version": "2.0"
 }

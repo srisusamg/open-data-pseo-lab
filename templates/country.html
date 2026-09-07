@@ -4,6 +4,7 @@
 {% block content %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a><span aria-hidden="true">/</span><span>{{ country.name }}</span></nav>
 <header class="page-heading"><p class="eyebrow">Country profile</p><h1>{{ country.name }} data</h1><p>Latest values and up to 15 historical observations from the World Bank for each selected indicator.</p></header>
+{% if country_comparisons %}<section class="comparison-links" aria-labelledby="comparisons-heading"><h2 id="comparisons-heading">Configured comparisons</h2><ul class="link-list">{% for comparison in country_comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.country_a.name }} vs {{ comparison.country_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
 <section aria-labelledby="indicators-heading"><h2 id="indicators-heading">Indicators and history</h2><div class="indicator-series">
 {% for item in values %}<article class="metric">
   <h3><a href="{{ link('indicators/' ~ item.indicator_slug ~ '/') }}">{{ item.indicator_name }}</a></h3>

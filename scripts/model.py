@@ -26,6 +26,31 @@ def load_config() -> tuple[dict, list[dict], list[dict]]:
     return site, countries, indicators
 
 
+def load_comparisons(countries: list[dict]) -> list[tuple[dict, dict]]:
+    """Resolve and validate the ordered comparison allow-list."""
+    configured = load_json(ROOT / "config" / "comparisons.json")
+    if not isinstance(configured, list):
+        raise ValueError("config/comparisons.json must contain a list of country-code pairs")
+    by_code = {country["code"]: country for country in countries}
+    resolved = []
+    seen: set[frozenset[str]] = set()
+    for index, pair in enumerate(configured, 1):
+        if not isinstance(pair, list) or len(pair) != 2 or not all(isinstance(code, str) for code in pair):
+            raise ValueError(f"comparison {index} must be a two-item list of country codes")
+        code_a, code_b = pair
+        missing = [code for code in pair if code not in by_code]
+        if missing:
+            raise ValueError(f"comparison {index} references unknown country code(s): {', '.join(missing)}")
+        if code_a == code_b:
+            raise ValueError(f"comparison {index} cannot compare {code_a} with itself")
+        key = frozenset(pair)
+        if key in seen:
+            raise ValueError(f"comparison {index} duplicates an existing pair (including reversed pairs): {code_a}/{code_b}")
+        seen.add(key)
+        resolved.append((by_code[code_a], by_code[code_b]))
+    return resolved
+
+
 def latest_non_null(records: Iterable[dict]) -> dict | None:
     """Select the newest numeric observation, never inventing a missing value."""
     valid = [row for row in records if row.get("value") is not None]
@@ -144,3 +169,13 @@ def format_change(value: int | float | None) -> str:
     if value is None:
         return "Not available"
     return f"{float(value):+.1f}%"
+
+
+def format_difference(value: int | float | None, style: str) -> str:
+    if value is None:
+        return "Not available"
+    number = float(value)
+    if style == "percentage":
+        return f"{number:+.1f} percentage points"
+    sign = "+" if number > 0 else "-" if number < 0 else ""
+    return sign + format_value(abs(number), style)

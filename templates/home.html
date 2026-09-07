@@ -11,4 +11,5 @@
   <section><h2>Country profiles</h2><ul class="link-list">{% for country in countries %}<li><a href="{{ link('countries/' ~ country.slug ~ '/') }}">{{ country.name }}</a></li>{% endfor %}</ul></section>
   <section><h2>Indicator rankings</h2><ul class="link-list">{% for indicator in indicators %}<li><a href="{{ link('indicators/' ~ indicator.slug ~ '/') }}">{{ indicator.name }}</a></li>{% endfor %}</ul></section>
 </div>
+{% if comparisons %}<section><h2>Country comparisons</h2><ul class="link-list">{% for comparison in comparisons %}<li><a href="{{ link(comparison.path) }}">{{ comparison.country_a.name }} vs {{ comparison.country_b.name }}</a></li>{% endfor %}</ul></section>{% endif %}
 {% endblock %}

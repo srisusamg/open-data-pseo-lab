@@ -11,7 +11,8 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.fetch_world_bank import HISTORY_OBSERVATIONS, SCHEMA_VERSION
-from scripts.model import ROOT, calculate_derived_metrics, load_config, load_json
+from scripts.comparison_metrics import comparison_path
+from scripts.model import ROOT, calculate_derived_metrics, canonical_url, load_comparisons, load_config, load_json
 
 
 class PageParser(HTMLParser):
@@ -52,10 +53,11 @@ class PageParser(HTMLParser):
             self.title += data
 
 
-def expected_pages(countries: list[dict], indicators: list[dict]) -> list[Path]:
+def expected_pages(countries: list[dict], indicators: list[dict], comparisons: list[tuple[dict, dict]]) -> list[Path]:
     pages = [ROOT / "site" / "index.html", ROOT / "site" / "methodology" / "index.html"]
     pages += [ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries]
     pages += [ROOT / "site" / "indicators" / item["slug"] / "index.html" for item in indicators]
+    pages += [ROOT / "site" / comparison_path(country_a, country_b) / "index.html" for country_a, country_b in comparisons]
     return pages
 
 
@@ -105,8 +107,12 @@ def validate_snapshot(snapshot: dict, countries: list[dict], indicators: list[di
 
 
 def validate() -> list[str]:
-    _, countries, indicators = load_config()
+    site, countries, indicators = load_config()
     errors: list[str] = []
+    try:
+        comparisons = load_comparisons(countries)
+    except (OSError, ValueError, TypeError) as exc:
+        return [f"invalid comparison configuration: {exc}"]
     snapshot_path = ROOT / "data" / "generated" / "world_bank_snapshot.json"
     if not snapshot_path.is_file():
         errors.append("missing required artifact: data/generated/world_bank_snapshot.json")
@@ -121,7 +127,8 @@ def validate() -> list[str]:
             errors.append(f"missing required artifact: {required.relative_to(ROOT)}")
     country_pages = {ROOT / "site" / "countries" / item["slug"] / "index.html" for item in countries}
     titles: dict[str, Path] = {}
-    for page in expected_pages(countries, indicators):
+    comparison_pages = {ROOT / "site" / comparison_path(a, b) / "index.html" for a, b in comparisons}
+    for page in expected_pages(countries, indicators, comparisons):
         if not page.is_file():
             errors.append(f"missing page: {page.relative_to(ROOT)}")
             continue
@@ -144,6 +151,8 @@ def validate() -> list[str]:
             errors.append(f"expected one absolute canonical URL: {page.relative_to(ROOT)}")
         if page in country_pages and "World Bank" not in text:
             errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
+        if page in comparison_pages and "World Bank" not in text:
+            errors.append(f"missing World Bank attribution: {page.relative_to(ROOT)}")
         if page in country_pages:
             if parser.history_table_count != len(indicators):
                 errors.append(f"expected one historical table per indicator: {page.relative_to(ROOT)}")
@@ -160,6 +169,13 @@ def validate() -> list[str]:
                 continue
             if not target.is_file():
                 errors.append(f"broken link in {page.relative_to(ROOT)}: {href}")
+    sitemap_path = ROOT / "site" / "sitemap.xml"
+    if sitemap_path.is_file():
+        sitemap = sitemap_path.read_text(encoding="utf-8")
+        for country_a, country_b in comparisons:
+            url = canonical_url(site["base_url"], comparison_path(country_a, country_b))
+            if f"<loc>{url}</loc>" not in sitemap:
+                errors.append(f"sitemap missing comparison URL: {url}")
     return errors
 
 

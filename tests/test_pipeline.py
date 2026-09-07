@@ -1,17 +1,22 @@
 import unittest
+from unittest.mock import patch
 
+from scripts.comparison_metrics import build_comparison, calculate_indicator_comparison, comparison_path
 from scripts.model import (
     calculate_derived_metrics,
     calculate_period_change,
     canonical_url,
     format_change,
+    format_difference,
     format_value,
     latest_non_null,
+    load_comparisons,
     normalize_history,
     rank_observations,
     relative_url,
     source_url,
 )
+from scripts.summary_rules import render_summary, select_insights
 
 
 class SelectionTests(unittest.TestCase):
@@ -85,6 +90,9 @@ class UrlTests(unittest.TestCase):
     def test_source_url_is_deterministic(self):
         self.assertEqual(source_url("IND", "SP.POP.TOTL"), "https://api.worldbank.org/v2/country/IND/indicator/SP.POP.TOTL?format=json")
 
+    def test_comparison_path_is_ordered_and_deterministic(self):
+        self.assertEqual(comparison_path({"slug": "india"}, {"slug": "vietnam"}), "compare/india/vietnam/")
+
 
 class FormattingTests(unittest.TestCase):
     def test_missing_values_are_not_formatted_as_zero(self):
@@ -96,6 +104,79 @@ class FormattingTests(unittest.TestCase):
     def test_change_includes_sign(self):
         self.assertEqual(format_change(4.25), "+4.2%")
         self.assertEqual(format_change(-4.25), "-4.2%")
+
+    def test_rate_difference_uses_percentage_points(self):
+        self.assertEqual(format_difference(4.25, "percentage"), "+4.2 percentage points")
+
+
+class ComparisonConfigTests(unittest.TestCase):
+    def setUp(self):
+        self.countries = [
+            {"code": "AAA", "slug": "alpha", "name": "Alpha"},
+            {"code": "BBB", "slug": "beta", "name": "Beta"},
+        ]
+
+    @patch("scripts.model.load_json", return_value=[["AAA", "BBB"], ["BBB", "AAA"]])
+    def test_reversed_duplicate_fails_clearly(self, _):
+        with self.assertRaisesRegex(ValueError, "reversed pairs"):
+            load_comparisons(self.countries)
+
+    @patch("scripts.model.load_json", return_value=[["AAA", "ZZZ"]])
+    def test_unknown_country_fails_clearly(self, _):
+        with self.assertRaisesRegex(ValueError, "unknown country code"):
+            load_comparisons(self.countries)
+
+
+class DeterministicSummaryTests(unittest.TestCase):
+    country_a = {"code": "AAA", "slug": "alpha", "name": "Alpha"}
+    country_b = {"code": "BBB", "slug": "beta", "name": "Beta"}
+
+    @staticmethod
+    def series(country, slug, name, values):
+        observations = [{"year": year, "value": value} for year, value in values]
+        return {
+            "country_code": country["code"], "indicator_code": slug.upper(), "indicator_slug": slug,
+            "indicator_name": name, "unit": "units", "format": "population",
+            "source_url": f"https://example.test/{country['code']}/{slug}",
+            "latest_observation": observations[0] if observations else None,
+            "observations": observations,
+            "derived_metrics": calculate_derived_metrics(observations),
+        }
+
+    def test_calculations_preserve_years_and_flag_mismatch(self):
+        a = self.series(self.country_a, "population", "Population", [(2024, 200), (2019, 100)])
+        b = self.series(self.country_b, "population", "Population", [(2023, 100), (2018, 80)])
+        metric = calculate_indicator_comparison(self.country_a, self.country_b, a, b)
+        self.assertEqual(metric["absolute_difference"], 100)
+        self.assertEqual(metric["percentage_difference"], 100)
+        self.assertEqual(metric["leader"]["country_name"], "Alpha")
+        self.assertTrue(metric["temporally_imperfect"])
+        self.assertEqual((metric["country_a"]["year"], metric["country_b"]["year"]), (2024, 2023))
+
+    def test_summary_growth_statement_agrees_with_calculation(self):
+        a = self.series(self.country_a, "gdp-per-capita", "GDP per capita", [(2024, 150), (2019, 120), (2014, 100)])
+        b = self.series(self.country_b, "gdp-per-capita", "GDP per capita", [(2024, 240), (2019, 160), (2014, 100)])
+        comparison = build_comparison(self.country_a, self.country_b, [a], [b])
+        insights = select_insights(comparison)
+        growth = next(item for item in insights if item["type"] == "growth_leader")
+        self.assertEqual(growth["leader"], "Beta")
+        self.assertIn("Beta's gdp per capita had the larger percentage change", render_summary(comparison, insights))
+
+    def test_missing_values_create_no_leader_or_missing_data_claim(self):
+        a = self.series(self.country_a, "population", "Population", [])
+        b = self.series(self.country_b, "population", "Population", [(2024, 100)])
+        comparison = build_comparison(self.country_a, self.country_b, [a], [b])
+        insights = select_insights(comparison)
+        self.assertFalse(any(item["type"] in {"scale_leaders", "growth_leader", "biggest_gap"} for item in insights))
+        summary = render_summary(comparison, insights)
+        self.assertNotIn("higher", summary)
+        self.assertNotIn("larger", summary)
+
+    def test_gap_direction_requires_matching_exact_years(self):
+        a = self.series(self.country_a, "gdp", "GDP", [(2024, 200), (2014, 100)])
+        b = self.series(self.country_b, "gdp", "GDP", [(2023, 160), (2013, 100)])
+        metric = calculate_indicator_comparison(self.country_a, self.country_b, a, b)
+        self.assertIsNone(metric["gap_change"])
 
 
 if __name__ == "__main__": unittest.main()

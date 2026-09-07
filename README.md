@@ -8,14 +8,14 @@ After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentia
 
 ## Architecture
 
-- `config/` defines the site URL, countries, and indicators.
+- `config/` defines the site URL, countries, indicators, and an explicit comparison-pair allow-list.
 - `scripts/fetch_world_bank.py` fetches each series and preserves its newest 15 non-null observations with actual source years.
 - `scripts/model.py` contains deterministic selection, ranking, URL, and number-formatting logic.
 - `scripts/build.py` writes normalized data to `data/generated/` and renders Jinja templates into `site/`.
 - `scripts/validate.py` checks required pages, titles, H1s, attribution, content size, and internal links.
 - `.github/workflows/refresh-and-deploy.yml` refreshes, tests, commits changed generated artifacts, and deploys the same run to Pages.
 
-The generated site contains a home page, one profile per configured country, one ranking per configured indicator, a methodology page, a sitemap, and robots directives. Each country/indicator series preserves its World Bank indicator code, actual observation years, retrieval time, and source URL. Five- and 10-year changes and CAGR are deterministic derived metrics stored and displayed separately from source observations; exact year endpoints are required and no values are interpolated.
+The generated site contains a home page, one profile per configured country, one ranking per configured indicator, one page per allowed comparison, a methodology page, a sitemap, and robots directives. Each country/indicator series preserves its World Bank indicator code, actual observation years, retrieval time, and source URL. Five- and 10-year changes and CAGR are deterministic derived metrics stored and displayed separately from source observations; exact year endpoints are required and no values are interpolated. Comparison summaries are selected and rendered from calculated facts without AI or pair-specific prose.
 
 ## Build locally
 
@@ -35,7 +35,8 @@ Then open <http://localhost:8000/>. To rebuild without calling the API, use `pyt
 
 - `/` — index of countries and rankings
 - `/countries/{country-slug}/` — latest values for one country
-- `/indicators/{indicator-slug}/` — five-country ranking
+- `/indicators/{indicator-slug}/` — configured-country ranking
+- `/compare/{first-country-slug}/{second-country-slug}/` — allow-listed country comparison
 - `/methodology/` — source, selection rules, and limitations
 
 Canonical and sitemap URLs come from `config/site.json`. The checked-in value was derived from this repository's GitHub remote and includes the project-site subpath. Edit this single value if the repository owner or name changes; keep the trailing slash.
@@ -45,6 +46,8 @@ Canonical and sitemap URLs come from `config/site.json`. The checked-in value wa
 To add a country, append its World Bank ISO3 `code`, URL-safe `slug`, and display `name` to `config/countries.json`, then rebuild and validate.
 
 To add an indicator, append its World Bank `code`, `slug`, `name`, human-readable `unit`, and an existing `format` (`population`, `currency`, `currency_per_person`, `percentage`, or `years`) to `config/indicators.json`. The templates automatically add its profile values and ranking page.
+
+To add a comparison, append an ordered pair of existing ISO3 country codes to `config/comparisons.json`. Repeated, reversed, self, malformed, and unknown-country pairs fail the build explicitly. The configured order determines both the URL and signed difference direction.
 
 ## Automated refresh and deployment
 

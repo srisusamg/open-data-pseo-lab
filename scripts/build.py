@@ -14,7 +14,9 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.fetch_world_bank import SCHEMA_VERSION, fetch_snapshot
-from scripts.model import ROOT, canonical_url, format_change, format_value, load_config, load_json, rank_observations, relative_url
+from scripts.comparison_metrics import build_comparison
+from scripts.model import ROOT, canonical_url, format_change, format_difference, format_value, load_comparisons, load_config, load_json, rank_observations, relative_url
+from scripts.summary_rules import render_summary
 
 GENERATOR_VERSION = "2.0.0"
 
@@ -26,6 +28,7 @@ def write_text(path: Path, content: str) -> None:
 
 def render_site(snapshot: dict) -> int:
     site_config, countries, indicators = load_config()
+    configured_pairs = load_comparisons(countries)
     output = ROOT / "site"
     if output.exists():
         shutil.rmtree(output)
@@ -38,6 +41,7 @@ def render_site(snapshot: dict) -> int:
     )
     env.filters["value"] = format_value
     env.filters["change"] = format_change
+    env.filters["difference"] = format_difference
 
     series = snapshot["series"]
     by_country = {country["slug"]: [] for country in countries}
@@ -49,12 +53,29 @@ def render_site(snapshot: dict) -> int:
             {**item, "year": latest["year"] if latest else None, "value": latest["value"] if latest else None}
         )
 
+    series_by_key = {(item["country_code"], item["indicator_code"]): item for item in series}
+    comparisons = []
+    for country_a, country_b in configured_pairs:
+        comparison = build_comparison(
+            country_a,
+            country_b,
+            [series_by_key[(country_a["code"], indicator["code"])] for indicator in indicators],
+            [series_by_key[(country_b["code"], indicator["code"])] for indicator in indicators],
+        )
+        comparison["summary"] = render_summary(comparison)
+        comparisons.append(comparison)
+    comparisons_by_country = {country["code"]: [] for country in countries}
+    for comparison in comparisons:
+        comparisons_by_country[comparison["country_a"]["code"]].append(comparison)
+        comparisons_by_country[comparison["country_b"]["code"]].append(comparison)
+
     page_paths = [""]
     common = {
         "site": site_config,
         "countries": countries,
         "indicators": indicators,
         "retrieved_at": snapshot["retrieved_at"],
+        "comparisons": comparisons,
         "canonical_url": canonical_url,
     }
 
@@ -68,12 +89,16 @@ def render_site(snapshot: dict) -> int:
         page_path = f"countries/{country['slug']}/"
         page_paths.append(page_path)
         values = sorted(by_country[country["slug"]], key=lambda x: [i["slug"] for i in indicators].index(x["indicator_slug"]))
-        render("country.html", page_path, output / page_path / "index.html", country=country, values=values)
+        render("country.html", page_path, output / page_path / "index.html", country=country, values=values, country_comparisons=comparisons_by_country[country["code"]])
     for indicator in indicators:
         page_path = f"indicators/{indicator['slug']}/"
         page_paths.append(page_path)
         ranking = rank_observations(by_indicator[indicator["slug"]])
         render("indicator.html", page_path, output / page_path / "index.html", indicator=indicator, ranking=ranking)
+    for comparison in comparisons:
+        page_path = comparison["path"]
+        page_paths.append(page_path)
+        render("comparison.html", page_path, output / page_path / "index.html", comparison=comparison)
     page_paths.append("methodology/")
     render("methodology.html", "methodology/", output / "methodology" / "index.html")
 
@@ -88,6 +113,7 @@ def render_site(snapshot: dict) -> int:
         "source_name": snapshot["source"]["name"],
         "countries_count": len(countries),
         "indicators_count": len(indicators),
+        "comparisons_count": len(comparisons),
         "generated_page_count": len(page_paths),
         "generator_version": GENERATOR_VERSION,
         "schema_version": SCHEMA_VERSION,
