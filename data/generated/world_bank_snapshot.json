@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-09-07T00:14:34Z",
+  "retrieved_at": "2026-09-07T00:25:08Z",
   "window": {
     "start_year": 2017,
     "end_year": 2026
