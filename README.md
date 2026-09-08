@@ -6,7 +6,7 @@ OpenData Atlas is a deliberately small programmatic-SEO experiment. It proves an
 
 After setup, the weekly GitHub Actions job runs without Codex, an LLM, credentials, a CMS, or a runtime server.
 
-The repository now also contains **AI Model Economics**, a second quality-gated site proving the same platform works for a curated AI model, API pricing, release, and benchmark domain. Its generated site is isolated at `site/ai-model-economics/`; OpenData Atlas behavior and URLs remain unchanged.
+The repository now also contains **AI Model Economics**, a second quality-gated site with a 44-model, 15-provider canonical catalog spanning proprietary APIs, open-weight and local models, and product-only models. Pricing and benchmark coverage are optional and rankings are metric-specific. Its generated site is isolated at `site/ai-model-economics/`; OpenData Atlas behavior and URLs remain unchanged.
 
 ## Architecture
 

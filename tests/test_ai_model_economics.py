@@ -110,6 +110,56 @@ class ModelEconomicsRecipeTests(unittest.TestCase):
         self.assertEqual(ranking_path("input-cost"), "models/rankings/input-cost/")
         self.assertEqual(release_path(2026), "models/releases/2026/")
 
+    def test_catalog_spans_requested_provider_taxonomy(self):
+        provider_ids = {item["id"] for item in self.dataset["providers"]}
+        self.assertEqual(len(self.models), 44)
+        self.assertTrue({"openai", "anthropic", "google", "xai", "meta", "deepseek", "mistral", "qwen", "cohere", "microsoft", "nvidia", "amazon", "moonshot", "minimax", "zhipu"}.issubset(provider_ids))
+
+    def test_optional_pricing_does_not_block_profile_or_context_ranking(self):
+        scout = self.by_id["meta:llama-4-scout"]
+        self.assertFalse(scout["pricing_available"])
+        self.assertIsNone(scout["pricing"])
+        self.assertFalse(scout["ranking_eligibility"]["input_cost"])
+        self.assertTrue(scout["ranking_eligibility"]["context_window"])
+        self.assertIn(scout["id"], {row["model"]["id"] for row in BUILD._ranking("context-window", self.models)})
+        self.assertNotIn(scout["id"], {row["model"]["id"] for row in BUILD._ranking("input-cost", self.models)})
+
+    def test_open_and_local_model_metadata_is_preserved(self):
+        model = self.by_id["qwen:qwen3-30b-a3b"]
+        self.assertEqual(model["openness"], "open")
+        self.assertTrue(model["weights_available"])
+        self.assertIn("local", model["distribution_types"])
+        self.assertEqual(model["open_model"]["parameter_count_billions"], 30)
+        self.assertEqual(model["open_model"]["active_parameter_count_billions"], 3)
+        self.assertEqual(model["license"], "Apache 2.0")
+
+    def test_product_only_model_is_explicit_and_unpriced(self):
+        model = self.by_id["openai:chatgpt-4o"]
+        self.assertEqual(model["distribution_types"], ["product_only"])
+        self.assertTrue(model["product_available"])
+        self.assertFalse(model["api_available"])
+        self.assertFalse(model["pricing_available"])
+        self.assertIsNone(model["pricing"])
+
+    def test_missing_benchmark_data_is_metric_specific(self):
+        model = self.by_id["microsoft:phi-4-mini-instruct"]
+        self.assertEqual(model["performance"], [])
+        self.assertEqual(model["ranking_eligibility"]["benchmarks"], [])
+        self.assertTrue(model["ranking_eligibility"]["context_window"])
+
+    def test_model_status_values_and_validation(self):
+        statuses = {item["status"] for item in self.models}
+        self.assertIn("active", statuses)
+        self.assertIn("legacy", statuses)
+        invalid = copy.deepcopy(self.catalog)
+        invalid["models"][0]["status"] = "rumored"
+        self.assertTrue(any("invalid status" in error for error in validate_catalog(invalid)))
+
+    def test_every_model_slug_has_a_stable_unique_url(self):
+        paths = [model_path(model) for model in self.models]
+        self.assertEqual(len(paths), len(set(paths)))
+        self.assertTrue(all(path.startswith("models/") and path.endswith("/") for path in paths))
+
 
 class QualityAndProvenanceTests(unittest.TestCase):
     def test_missing_pricing_fails_model_page_gate(self):
@@ -133,6 +183,10 @@ class QualityAndProvenanceTests(unittest.TestCase):
         for collection in ("providers", "models", "benchmarks", "pricing_observations", "performance_observations"):
             with self.subTest(collection=collection):
                 self.assertTrue(all(complete_dated_provenance(item) for item in dataset[collection]))
+        for model in dataset["models"]:
+            expected = set(model) - {"id", "slug", "provenance", "fact_provenance"}
+            self.assertTrue(expected.issubset(model["fact_provenance"]))
+            self.assertTrue(all(complete_dated_provenance(value) for value in model["fact_provenance"].values()))
 
     def test_catalog_rejects_missing_provenance_field(self):
         catalog = copy.deepcopy(load_catalog(SITE_ROOT / "config" / "catalog.json"))

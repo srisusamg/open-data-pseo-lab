@@ -19,11 +19,48 @@
   },
   "models": [
     {
+      "model_id": "amazon:nova-2-lite",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "amazon:nova-micro",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "amazon:nova-premier",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
       "model_id": "anthropic:claude-fable-5",
       "pricing": {
         "model_id": "anthropic:claude-fable-5",
         "input_price_per_million_tokens": 10.0,
         "output_price_per_million_tokens": 50.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -48,7 +85,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "anthropic:claude-opus-5",
@@ -56,6 +99,7 @@
         "model_id": "anthropic:claude-opus-5",
         "input_price_per_million_tokens": 5.0,
         "output_price_per_million_tokens": 25.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -80,7 +124,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "anthropic:claude-sonnet-5",
@@ -88,6 +138,7 @@
         "model_id": "anthropic:claude-sonnet-5",
         "input_price_per_million_tokens": 3.0,
         "output_price_per_million_tokens": 15.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -112,7 +163,100 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "cohere:command-a-03-2025",
+      "pricing": {
+        "model_id": "cohere:command-a-03-2025",
+        "input_price_per_million_tokens": 2.5,
+        "output_price_per_million_tokens": 10.0,
+        "cached_input_price_per_million_tokens": null,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "standard",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "Cohere Command A pricing",
+          "source_url": "https://docs.cohere.com/docs/command-a",
+          "source_metric_id": "pricing:command-a-03-2025:standard",
+          "observation_date": "2026-09-07",
+          "effective_date": "2025-03-13",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 4.0,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "cohere:command-a-plus-05-2026",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "cohere:command-r7b-12-2024",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "deepseek:deepseek-r1",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "deepseek:deepseek-v3",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "google:gemini-3.5-flash-lite",
@@ -120,6 +264,7 @@
         "model_id": "google:gemini-3.5-flash-lite",
         "input_price_per_million_tokens": 0.3,
         "output_price_per_million_tokens": 2.5,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -144,7 +289,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "google:gemini-3.7-flash",
@@ -152,6 +303,7 @@
         "model_id": "google:gemini-3.7-flash",
         "input_price_per_million_tokens": 0.75,
         "output_price_per_million_tokens": 3.75,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard_introductory",
@@ -176,7 +328,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "google:gemini-3.8-flash",
@@ -184,6 +342,7 @@
         "model_id": "google:gemini-3.8-flash",
         "input_price_per_million_tokens": 0.75,
         "output_price_per_million_tokens": 3.75,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard_introductory",
@@ -208,7 +367,232 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "meta:llama-4-maverick",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "meta:llama-4-scout",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "microsoft:phi-4",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "microsoft:phi-4-mini-instruct",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "microsoft:phi-4-multimodal-instruct",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "minimax:minimax-m2-5",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "minimax:minimax-m2-7",
+      "pricing": {
+        "model_id": "minimax:minimax-m2-7",
+        "input_price_per_million_tokens": 0.3,
+        "output_price_per_million_tokens": 1.2,
+        "cached_input_price_per_million_tokens": 0.06,
+        "unit": "usd_per_1m_tokens",
+        "currency": "USD",
+        "pricing_tier": "pay_as_you_go",
+        "maximum_prompt_tokens_for_rate": null,
+        "provenance": {
+          "source_name": "MiniMax pay-as-you-go pricing",
+          "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "source_metric_id": "pricing:minimax-m2-7:paygo",
+          "observation_date": "2026-09-07",
+          "effective_date": "2026-03-18",
+          "retrieved_at": "2026-09-07T00:00:00Z",
+          "source_type": "official_pricing_documentation",
+          "confidence": "high",
+          "status": "verified"
+        }
+      },
+      "blended_cost": {
+        "value": 0.48,
+        "currency": "USD",
+        "input_tokens": 800000,
+        "output_tokens": 200000,
+        "formula_version": "blended-workload-v1",
+        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      },
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "mistral:ministral-3-3b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "mistral:mistral-large-3",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "mistral:mistral-medium-3-5",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "mistral:mistral-small-4",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "moonshot:kimi-k2-5",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "moonshot:kimi-k2-6",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "nvidia:llama-3-1-nemotron-nano-8b-v1",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "nvidia:nemotron-3-5-lightning-30b-a3b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "openai:chatgpt-4o",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "openai:gpt-5.6-luna",
@@ -216,6 +600,7 @@
         "model_id": "openai:gpt-5.6-luna",
         "input_price_per_million_tokens": 0.2,
         "output_price_per_million_tokens": 1.2,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -252,7 +637,16 @@
           ],
           "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
         }
-      ]
+      ],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": [
+          "aa-intelligence-index-v4.1",
+          "agents-last-exam-v1"
+        ]
+      }
     },
     {
       "model_id": "openai:gpt-5.6-sol",
@@ -260,6 +654,7 @@
         "model_id": "openai:gpt-5.6-sol",
         "input_price_per_million_tokens": 4.0,
         "output_price_per_million_tokens": 20.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -296,7 +691,16 @@
           ],
           "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
         }
-      ]
+      ],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": [
+          "aa-intelligence-index-v4.1",
+          "agents-last-exam-v1"
+        ]
+      }
     },
     {
       "model_id": "openai:gpt-5.6-terra",
@@ -304,6 +708,7 @@
         "model_id": "openai:gpt-5.6-terra",
         "input_price_per_million_tokens": 2.0,
         "output_price_per_million_tokens": 12.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard",
@@ -340,7 +745,112 @@
           ],
           "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
         }
-      ]
+      ],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": [
+          "aa-intelligence-index-v4.1",
+          "agents-last-exam-v1"
+        ]
+      }
+    },
+    {
+      "model_id": "openai:gpt-oss-120b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "openai:gpt-oss-20b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "qwen:qwen3-0-6b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "qwen:qwen3-235b-a22b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "qwen:qwen3-30b-a3b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "qwen:qwen3-8b",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "zhipu:glm-4-5",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": true,
+        "benchmarks": []
+      }
+    },
+    {
+      "model_id": "zhipu:glm-4-5v",
+      "pricing": null,
+      "blended_cost": null,
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": false,
+        "output_cost": false,
+        "context_window": false,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "xai:grok-4.3",
@@ -348,6 +858,7 @@
         "model_id": "xai:grok-4.3",
         "input_price_per_million_tokens": 1.25,
         "output_price_per_million_tokens": 2.5,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard_short_context",
@@ -372,7 +883,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "xai:grok-4.5",
@@ -380,6 +897,7 @@
         "model_id": "xai:grok-4.5",
         "input_price_per_million_tokens": 2.0,
         "output_price_per_million_tokens": 6.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard_short_context",
@@ -404,7 +922,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     },
     {
       "model_id": "xai:grok-4.6",
@@ -412,6 +936,7 @@
         "model_id": "xai:grok-4.6",
         "input_price_per_million_tokens": 2.0,
         "output_price_per_million_tokens": 6.0,
+        "cached_input_price_per_million_tokens": null,
         "unit": "usd_per_1m_tokens",
         "currency": "USD",
         "pricing_tier": "standard_short_context",
@@ -436,7 +961,13 @@
         "formula_version": "blended-workload-v1",
         "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
       },
-      "intelligence_per_dollar": []
+      "intelligence_per_dollar": [],
+      "ranking_eligibility": {
+        "input_cost": true,
+        "output_cost": true,
+        "context_window": true,
+        "benchmarks": []
+      }
     }
   ],
   "comparisons": [
@@ -525,52 +1056,62 @@
           "value": 0.3
         },
         {
-          "rank": 3,
+          "rank": 2,
+          "model_id": "minimax:minimax-m2-7",
+          "value": 0.3
+        },
+        {
+          "rank": 4,
           "model_id": "google:gemini-3.7-flash",
           "value": 0.75
         },
         {
-          "rank": 3,
+          "rank": 4,
           "model_id": "google:gemini-3.8-flash",
           "value": 0.75
         },
         {
-          "rank": 5,
+          "rank": 6,
           "model_id": "xai:grok-4.3",
           "value": 1.25
         },
         {
-          "rank": 6,
+          "rank": 7,
           "model_id": "openai:gpt-5.6-terra",
           "value": 2.0
         },
         {
-          "rank": 6,
+          "rank": 7,
           "model_id": "xai:grok-4.5",
           "value": 2.0
         },
         {
-          "rank": 6,
+          "rank": 7,
           "model_id": "xai:grok-4.6",
           "value": 2.0
         },
         {
-          "rank": 9,
+          "rank": 10,
+          "model_id": "cohere:command-a-03-2025",
+          "value": 2.5
+        },
+        {
+          "rank": 11,
           "model_id": "anthropic:claude-sonnet-5",
           "value": 3.0
         },
         {
-          "rank": 10,
+          "rank": 12,
           "model_id": "openai:gpt-5.6-sol",
           "value": 4.0
         },
         {
-          "rank": 11,
+          "rank": 13,
           "model_id": "anthropic:claude-opus-5",
           "value": 5.0
         },
         {
-          "rank": 12,
+          "rank": 14,
           "model_id": "anthropic:claude-fable-5",
           "value": 10.0
         }
@@ -585,57 +1126,67 @@
           "value": 1.2
         },
         {
-          "rank": 2,
+          "rank": 1,
+          "model_id": "minimax:minimax-m2-7",
+          "value": 1.2
+        },
+        {
+          "rank": 3,
           "model_id": "google:gemini-3.5-flash-lite",
           "value": 2.5
         },
         {
-          "rank": 2,
+          "rank": 3,
           "model_id": "xai:grok-4.3",
           "value": 2.5
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "google:gemini-3.7-flash",
           "value": 3.75
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "google:gemini-3.8-flash",
           "value": 3.75
         },
         {
-          "rank": 6,
+          "rank": 7,
           "model_id": "xai:grok-4.5",
           "value": 6.0
         },
         {
-          "rank": 6,
+          "rank": 7,
           "model_id": "xai:grok-4.6",
           "value": 6.0
         },
         {
-          "rank": 8,
+          "rank": 9,
+          "model_id": "cohere:command-a-03-2025",
+          "value": 10.0
+        },
+        {
+          "rank": 10,
           "model_id": "openai:gpt-5.6-terra",
           "value": 12.0
         },
         {
-          "rank": 9,
+          "rank": 11,
           "model_id": "anthropic:claude-sonnet-5",
           "value": 15.0
         },
         {
-          "rank": 10,
+          "rank": 12,
           "model_id": "openai:gpt-5.6-sol",
           "value": 20.0
         },
         {
-          "rank": 11,
+          "rank": 13,
           "model_id": "anthropic:claude-opus-5",
           "value": 25.0
         },
         {
-          "rank": 12,
+          "rank": 14,
           "model_id": "anthropic:claude-fable-5",
           "value": 50.0
         }
@@ -646,63 +1197,183 @@
       "rows": [
         {
           "rank": 1,
+          "model_id": "meta:llama-4-scout",
+          "value": 10000000
+        },
+        {
+          "rank": 2,
           "model_id": "openai:gpt-5.6-luna",
           "value": 1050000
         },
         {
-          "rank": 1,
+          "rank": 2,
           "model_id": "openai:gpt-5.6-sol",
           "value": 1050000
         },
         {
-          "rank": 1,
+          "rank": 2,
           "model_id": "openai:gpt-5.6-terra",
           "value": 1050000
         },
         {
-          "rank": 4,
+          "rank": 5,
+          "model_id": "amazon:nova-2-lite",
+          "value": 1000000
+        },
+        {
+          "rank": 5,
+          "model_id": "amazon:nova-premier",
+          "value": 1000000
+        },
+        {
+          "rank": 5,
           "model_id": "anthropic:claude-fable-5",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "anthropic:claude-opus-5",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "anthropic:claude-sonnet-5",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "google:gemini-3.5-flash-lite",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "google:gemini-3.7-flash",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "google:gemini-3.8-flash",
           "value": 1000000
         },
         {
-          "rank": 4,
+          "rank": 5,
           "model_id": "xai:grok-4.3",
           "value": 1000000
         },
         {
-          "rank": 11,
+          "rank": 14,
           "model_id": "xai:grok-4.5",
           "value": 500000
         },
         {
-          "rank": 11,
+          "rank": 14,
           "model_id": "xai:grok-4.6",
           "value": 500000
+        },
+        {
+          "rank": 16,
+          "model_id": "cohere:command-a-03-2025",
+          "value": 256000
+        },
+        {
+          "rank": 16,
+          "model_id": "moonshot:kimi-k2-5",
+          "value": 256000
+        },
+        {
+          "rank": 16,
+          "model_id": "moonshot:kimi-k2-6",
+          "value": 256000
+        },
+        {
+          "rank": 19,
+          "model_id": "minimax:minimax-m2-5",
+          "value": 204800
+        },
+        {
+          "rank": 19,
+          "model_id": "minimax:minimax-m2-7",
+          "value": 204800
+        },
+        {
+          "rank": 21,
+          "model_id": "microsoft:phi-4-mini-instruct",
+          "value": 131072
+        },
+        {
+          "rank": 21,
+          "model_id": "microsoft:phi-4-multimodal-instruct",
+          "value": 131072
+        },
+        {
+          "rank": 21,
+          "model_id": "openai:gpt-oss-120b",
+          "value": 131072
+        },
+        {
+          "rank": 21,
+          "model_id": "openai:gpt-oss-20b",
+          "value": 131072
+        },
+        {
+          "rank": 25,
+          "model_id": "amazon:nova-micro",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "openai:chatgpt-4o",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "cohere:command-a-plus-05-2026",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "cohere:command-r7b-12-2024",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "deepseek:deepseek-r1",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "deepseek:deepseek-v3",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "zhipu:glm-4-5",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "qwen:qwen3-235b-a22b",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "qwen:qwen3-30b-a3b",
+          "value": 128000
+        },
+        {
+          "rank": 25,
+          "model_id": "qwen:qwen3-8b",
+          "value": 128000
+        },
+        {
+          "rank": 35,
+          "model_id": "qwen:qwen3-0-6b",
+          "value": 32000
+        },
+        {
+          "rank": 36,
+          "model_id": "microsoft:phi-4",
+          "value": 16384
         }
       ]
     }

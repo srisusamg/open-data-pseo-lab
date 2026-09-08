@@ -33,12 +33,12 @@ The provider adapter owns the curated input schema, official-source allow-list, 
 ## Canonical records
 
 - `Provider`: stable ID, slug, name, and dated provenance.
-- `Model`: stable ID and slug, provider, family, release date, lifecycle status, open/closed status, verified context window, capabilities, external IDs, and dated provenance.
+- `Model`: stable ID and slug, provider, family, optional release/context fields, lifecycle status, distribution types, open/closed status, license/weights availability, explicit capability and API/product availability flags, optional open-model details, external IDs, and field-level dated provenance.
 - `Benchmark`: stable ID, version, unit, direction, comparability description, and dated provenance.
-- `PricingObservation`: model, normalized input/output USD per 1M tokens, tier and threshold qualifiers, and dated provenance.
+- `PricingObservation`: model, normalized input/output and optional cached-input USD per 1M tokens, tier and threshold qualifiers, and dated provenance.
 - `PerformanceObservation`: model, benchmark, value, unit, evaluation configuration, explicit comparison group, and dated provenance.
 
-Every canonical record requires source name, source URL, source metric ID, observation date, effective date, retrieved timestamp, source type, confidence, and status. The adapter rejects missing provenance, unknown relationships, unsupported pricing units, non-USD observations, duplicate IDs/slugs, and sources outside the official-domain allow-list.
+Every canonical fact resolves to source name, source URL, source metric ID, observation date, effective date, retrieved timestamp, source type, confidence, and status. Record provenance supplies the default, while `fact_provenance` can override individual fields. The adapter rejects missing provenance, unknown relationships, invalid taxonomy values, contradictory price/weight/product flags, unsupported pricing units, non-USD observations, duplicate IDs/slugs, and sources outside the official-domain allow-list.
 
 ## Derivations
 
@@ -51,7 +51,7 @@ All formulas, included benchmarks, versions, and comparison-group identifiers pe
 
 ## Quality and comparison safety
 
-Potential model, provider, comparison, ranking, and release pages pass through the shared quality evaluator. Model pages require complete canonical facts and current pricing. Comparisons additionally require compatible normalized units, pricing within the configured freshness window, complete provenance, and enough deterministic insights. Performance and value leaders are emitted only when both observations match on benchmark ID/version, unit, evaluation configuration, and comparison group.
+Potential model, provider, comparison, ranking, and release pages pass through the shared quality evaluator. Model pages require enough verified taxonomy and availability facts, but neither pricing nor benchmark observations are mandatory. Ranking eligibility is metric-specific: price rankings require a comparable price observation, context ranking requires a verified context window, and benchmark eligibility is tracked per benchmark. Comparisons additionally require compatible normalized units, pricing within the configured freshness window, complete provenance, and enough deterministic insights. Performance and value leaders are emitted only when both observations match on benchmark ID/version, unit, evaluation configuration, and comparison group.
 
 Only eligible pages are rendered, linked, listed in `generated_urls.json`, and included in the site sitemap. Every potential recipe page receives a generated/skipped record in `page_quality_report.json`.
 
@@ -69,6 +69,10 @@ python -m http.server 8000 --directory site
 ```
 
 Open `http://localhost:8000/ai-model-economics/`. On this Windows Codex host, use the bundled Python executable if `python` is not on `PATH`.
+
+## Current catalog scope
+
+Schema v2.0 contains 44 models across 15 providers, covering proprietary frontier and lower-cost APIs, open-weight models, locally runnable small models, and explicitly labeled product-only models. Static catalog filters cover provider, openness, distribution, reasoning, multimodality, and family without introducing a frontend framework.
 
 ## Next-phase backlog
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Model Economics — API pricing and model comparisons</title>
-  <meta name="description" content="Compare verified API token prices, context windows, release dates, and carefully scoped benchmark observations for 12 AI models.">
+  <title>AI Model Economics — canonical model catalog</title>
+  <meta name="description" content="Explore a provenance-backed catalog of proprietary, open-weight, hosted, local, and product-only AI models.">
   <link rel="canonical" href="https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,32 +14,296 @@
     <nav aria-label="Primary"><a href="./">Models</a><a href="models/rankings/input-cost/">Rankings</a><a href="methodology/">Methodology</a></nav>
   </header>
   <main><section class="hero">
-  <p class="eyebrow">Model economics, with receipts</p>
+  <p class="eyebrow">Canonical model catalog, with receipts</p>
   <h1>AI Model Economics</h1>
-  <p class="lede">A compact, deterministic view of API pricing, context windows, releases, and comparable performance evidence.</p>
-  <p class="muted">Catalog as of 2026-09-07. 12 models from 4 providers. No generated estimates are treated as canonical data.</p>
+  <p class="lede">Important frontier, lower-cost, open-weight, and local models in one explicit taxonomy. Pricing and benchmarks appear only where comparable evidence exists.</p>
+  <p class="muted">Catalog as of 2026-09-07. 44 models from 15 providers.</p>
 </section>
 <section>
-  <div class="section-heading"><div><p class="eyebrow">Explore</p><h2>Current model catalog</h2></div><a href="models/releases/2026/">Release timeline →</a></div>
-  <div class="model-grid">    <article class="card model-card"><p class="provider-label">Anthropic</p><h3><a href="models/claude-fable-5/">Claude Fable 5</a></h3><p>1,000,000 token context</p><p class="price">$10.00 in · $50.00 out</p><p class="muted">Released 2026-06-09</p></article>
-    <article class="card model-card"><p class="provider-label">Anthropic</p><h3><a href="models/claude-opus-5/">Claude Opus 5</a></h3><p>1,000,000 token context</p><p class="price">$5.00 in · $25.00 out</p><p class="muted">Released 2026-07-24</p></article>
-    <article class="card model-card"><p class="provider-label">Anthropic</p><h3><a href="models/claude-sonnet-5/">Claude Sonnet 5</a></h3><p>1,000,000 token context</p><p class="price">$3.00 in · $15.00 out</p><p class="muted">Released 2026-06-30</p></article>
-    <article class="card model-card"><p class="provider-label">Google</p><h3><a href="models/gemini-3-5-flash-lite/">Gemini 3.5 Flash-Lite</a></h3><p>1,000,000 token context</p><p class="price">$0.30 in · $2.50 out</p><p class="muted">Released 2026-07-21</p></article>
-    <article class="card model-card"><p class="provider-label">Google</p><h3><a href="models/gemini-3-7-flash/">Gemini 3.7 Flash</a></h3><p>1,000,000 token context</p><p class="price">$0.75 in · $3.75 out</p><p class="muted">Released 2026-08-12</p></article>
-    <article class="card model-card"><p class="provider-label">Google</p><h3><a href="models/gemini-3-8-flash/">Gemini 3.8 Flash</a></h3><p>1,000,000 token context</p><p class="price">$0.75 in · $3.75 out</p><p class="muted">Released 2026-09-02</p></article>
-    <article class="card model-card"><p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-luna/">GPT-5.6 Luna</a></h3><p>1,050,000 token context</p><p class="price">$0.20 in · $1.20 out</p><p class="muted">Released 2026-07-09</p></article>
-    <article class="card model-card"><p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-sol/">GPT-5.6 Sol</a></h3><p>1,050,000 token context</p><p class="price">$4.00 in · $20.00 out</p><p class="muted">Released 2026-07-09</p></article>
-    <article class="card model-card"><p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-terra/">GPT-5.6 Terra</a></h3><p>1,050,000 token context</p><p class="price">$2.00 in · $12.00 out</p><p class="muted">Released 2026-07-09</p></article>
-    <article class="card model-card"><p class="provider-label">xAI</p><h3><a href="models/grok-4-3/">Grok 4.3</a></h3><p>1,000,000 token context</p><p class="price">$1.25 in · $2.50 out</p><p class="muted">Released 2026-05-15</p></article>
-    <article class="card model-card"><p class="provider-label">xAI</p><h3><a href="models/grok-4-5/">Grok 4.5</a></h3><p>500,000 token context</p><p class="price">$2.00 in · $6.00 out</p><p class="muted">Released 2026-07-08</p></article>
-    <article class="card model-card"><p class="provider-label">xAI</p><h3><a href="models/grok-4-6/">Grok 4.6</a></h3><p>500,000 token context</p><p class="price">$2.00 in · $6.00 out</p><p class="muted">Released 2026-08-12</p></article>
+  <div class="section-heading"><div><p class="eyebrow">Explore</p><h2>Model catalog</h2></div><a href="models/releases/2026/">Release timeline →</a></div>
+  <form class="catalog-filters" aria-label="Filter model catalog" id="catalog-filters">
+    <label>Provider<select name="provider"><option value="">All providers</option><option value="openai">OpenAI</option><option value="anthropic">Anthropic</option><option value="google">Google</option><option value="xai">xAI</option><option value="meta">Meta</option><option value="deepseek">DeepSeek</option><option value="mistral">Mistral</option><option value="qwen">Qwen / Alibaba</option><option value="cohere">Cohere</option><option value="microsoft">Microsoft</option><option value="nvidia">NVIDIA</option><option value="amazon">Amazon</option><option value="moonshot">Moonshot / Kimi</option><option value="minimax">MiniMax</option><option value="zhipu">Zhipu / GLM</option></select></label>
+    <label>Access<select name="openness"><option value="">Open + closed</option><option value="open">Open</option><option value="closed">Closed</option></select></label>
+    <label>Distribution<select name="distribution"><option value="">All distributions</option><option value="api">API</option><option value="hosted">Hosted</option><option value="open_weight">Open weight</option><option value="local">Local</option><option value="product_only">Product only</option><option value="preview">Preview</option></select></label>
+    <label>Family<select name="family"><option value="">All families</option><option value="claude 5">Claude 5</option><option value="command a">Command A</option><option value="command r">Command R</option><option value="deepseek r1">DeepSeek R1</option><option value="deepseek v3">DeepSeek V3</option><option value="glm-4.5">GLM-4.5</option><option value="gpt-4o">GPT-4o</option><option value="gpt-5.6">GPT-5.6</option><option value="gemini 3">Gemini 3</option><option value="grok 4">Grok 4</option><option value="kimi k2">Kimi K2</option><option value="llama 4">Llama 4</option><option value="minimax m2">MiniMax M2</option><option value="ministral 3">Ministral 3</option><option value="mistral large">Mistral Large</option><option value="mistral medium">Mistral Medium</option><option value="mistral small">Mistral Small</option><option value="nemotron 3.5">Nemotron 3.5</option><option value="nemotron nano">Nemotron Nano</option><option value="nova">Nova</option><option value="nova 2">Nova 2</option><option value="phi-4">Phi-4</option><option value="qwen3">Qwen3</option><option value="gpt-oss">gpt-oss</option></select></label>
+    <label>Capability<select name="capability"><option value="">All capabilities</option><option value="reasoning">Reasoning</option><option value="multimodal">Multimodal</option></select></label>
+  </form>
+  <p class="muted" id="catalog-count" aria-live="polite">Showing 44 models</p>
+  <div class="model-grid" id="model-catalog">    <article class="card model-card" data-provider="amazon" data-openness="closed" data-distributions="api hosted" data-family="nova 2" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Amazon</p><h3><a href="models/nova-2-lite/">Amazon Nova 2 Lite</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="amazon" data-openness="closed" data-distributions="api hosted" data-family="nova" data-capabilities="">
+      <p class="provider-label">Amazon</p><h3><a href="models/nova-micro/">Amazon Nova Micro</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2024-12-03</p>
+    </article>
+    <article class="card model-card" data-provider="amazon" data-openness="closed" data-distributions="api hosted" data-family="nova" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Amazon</p><h3><a href="models/nova-premier/">Amazon Nova Premier</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-30</p>
+    </article>
+    <article class="card model-card" data-provider="anthropic" data-openness="closed" data-distributions="api hosted" data-family="claude 5" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Anthropic</p><h3><a href="models/claude-fable-5/">Claude Fable 5</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$10.00 in · $50.00 out</p>      <p class="muted">Active · released 2026-06-09</p>
+    </article>
+    <article class="card model-card" data-provider="anthropic" data-openness="closed" data-distributions="api hosted" data-family="claude 5" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Anthropic</p><h3><a href="models/claude-opus-5/">Claude Opus 5</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$5.00 in · $25.00 out</p>      <p class="muted">Active · released 2026-07-24</p>
+    </article>
+    <article class="card model-card" data-provider="anthropic" data-openness="closed" data-distributions="api hosted" data-family="claude 5" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Anthropic</p><h3><a href="models/claude-sonnet-5/">Claude Sonnet 5</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$3.00 in · $15.00 out</p>      <p class="muted">Active · released 2026-06-30</p>
+    </article>
+    <article class="card model-card" data-provider="cohere" data-openness="closed" data-distributions="api hosted" data-family="command a" data-capabilities="reasoning ">
+      <p class="provider-label">Cohere</p><h3><a href="models/command-a-03-2025/">Command A</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>256,000 token context</p>
+<p class="price">$2.50 in · $10.00 out</p>      <p class="muted">Active · released 2025-03-13</p>
+    </article>
+    <article class="card model-card" data-provider="cohere" data-openness="closed" data-distributions="api hosted" data-family="command a" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Cohere</p><h3><a href="models/command-a-plus-05-2026/">Command A+</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="cohere" data-openness="closed" data-distributions="api hosted" data-family="command r" data-capabilities="reasoning ">
+      <p class="provider-label">Cohere</p><h3><a href="models/command-r7b-12-2024/">Command R7B</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="deepseek" data-openness="open" data-distributions="api hosted open_weight" data-family="deepseek r1" data-capabilities="reasoning ">
+      <p class="provider-label">DeepSeek</p><h3><a href="models/deepseek-r1/">DeepSeek-R1</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-01-20</p>
+    </article>
+    <article class="card model-card" data-provider="deepseek" data-openness="open" data-distributions="api hosted open_weight" data-family="deepseek v3" data-capabilities="">
+      <p class="provider-label">DeepSeek</p><h3><a href="models/deepseek-v3/">DeepSeek-V3</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2024-12-26</p>
+    </article>
+    <article class="card model-card" data-provider="google" data-openness="closed" data-distributions="api hosted" data-family="gemini 3" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Google</p><h3><a href="models/gemini-3-5-flash-lite/">Gemini 3.5 Flash-Lite</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$0.30 in · $2.50 out</p>      <p class="muted">Active · released 2026-07-21</p>
+    </article>
+    <article class="card model-card" data-provider="google" data-openness="closed" data-distributions="api hosted" data-family="gemini 3" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Google</p><h3><a href="models/gemini-3-7-flash/">Gemini 3.7 Flash</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$0.75 in · $3.75 out</p>      <p class="muted">Active · released 2026-08-12</p>
+    </article>
+    <article class="card model-card" data-provider="google" data-openness="closed" data-distributions="api hosted" data-family="gemini 3" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Google</p><h3><a href="models/gemini-3-8-flash/">Gemini 3.8 Flash</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$0.75 in · $3.75 out</p>      <p class="muted">Active · released 2026-09-02</p>
+    </article>
+    <article class="card model-card" data-provider="meta" data-openness="open" data-distributions="open_weight" data-family="llama 4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Meta</p><h3><a href="models/llama-4-maverick/">Llama 4 Maverick</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-05</p>
+    </article>
+    <article class="card model-card" data-provider="meta" data-openness="open" data-distributions="open_weight local" data-family="llama 4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Meta</p><h3><a href="models/llama-4-scout/">Llama 4 Scout</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li><li>local</li></ul>
+      <p>10,000,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-05</p>
+    </article>
+    <article class="card model-card" data-provider="microsoft" data-openness="open" data-distributions="hosted open_weight local" data-family="phi-4" data-capabilities="reasoning ">
+      <p class="provider-label">Microsoft</p><h3><a href="models/phi-4/">Phi-4</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>hosted</li><li>open weight</li><li>local</li></ul>
+      <p>16,384 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2024-12-12</p>
+    </article>
+    <article class="card model-card" data-provider="microsoft" data-openness="open" data-distributions="hosted open_weight local" data-family="phi-4" data-capabilities="reasoning ">
+      <p class="provider-label">Microsoft</p><h3><a href="models/phi-4-mini-instruct/">Phi-4-mini-instruct</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>hosted</li><li>open weight</li><li>local</li></ul>
+      <p>131,072 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-02-26</p>
+    </article>
+    <article class="card model-card" data-provider="microsoft" data-openness="open" data-distributions="hosted open_weight local" data-family="phi-4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Microsoft</p><h3><a href="models/phi-4-multimodal-instruct/">Phi-4-multimodal-instruct</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>hosted</li><li>open weight</li><li>local</li></ul>
+      <p>131,072 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-02-26</p>
+    </article>
+    <article class="card model-card" data-provider="minimax" data-openness="closed" data-distributions="api hosted" data-family="minimax m2" data-capabilities="reasoning ">
+      <p class="provider-label">MiniMax</p><h3><a href="models/minimax-m2-5/">MiniMax M2.5</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>204,800 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="minimax" data-openness="closed" data-distributions="api hosted" data-family="minimax m2" data-capabilities="reasoning ">
+      <p class="provider-label">MiniMax</p><h3><a href="models/minimax-m2-7/">MiniMax M2.7</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>204,800 token context</p>
+<p class="price">$0.30 in · $1.20 out</p>      <p class="muted">Active · released 2026-03-18</p>
+    </article>
+    <article class="card model-card" data-provider="mistral" data-openness="open" data-distributions="api open_weight local" data-family="ministral 3" data-capabilities="multimodal">
+      <p class="provider-label">Mistral</p><h3><a href="models/ministral-3-3b/">Ministral 3 3B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>open weight</li><li>local</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="mistral" data-openness="open" data-distributions="api hosted open_weight" data-family="mistral large" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Mistral</p><h3><a href="models/mistral-large-3/">Mistral Large 3</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="mistral" data-openness="open" data-distributions="api hosted open_weight" data-family="mistral medium" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Mistral</p><h3><a href="models/mistral-medium-3-5/">Mistral Medium 3.5</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="mistral" data-openness="open" data-distributions="api hosted open_weight" data-family="mistral small" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Mistral</p><h3><a href="models/mistral-small-4/">Mistral Small 4</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="moonshot" data-openness="open" data-distributions="api hosted open_weight" data-family="kimi k2" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Moonshot / Kimi</p><h3><a href="models/kimi-k2-5/">Kimi K2.5</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>256,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="moonshot" data-openness="open" data-distributions="api hosted open_weight" data-family="kimi k2" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Moonshot / Kimi</p><h3><a href="models/kimi-k2-6/">Kimi K2.6</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>256,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="nvidia" data-openness="open" data-distributions="hosted open_weight local" data-family="nemotron nano" data-capabilities="reasoning ">
+      <p class="provider-label">NVIDIA</p><h3><a href="models/llama-3-1-nemotron-nano-8b-v1/">Llama 3.1 Nemotron Nano 8B v1</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>hosted</li><li>open weight</li><li>local</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="nvidia" data-openness="open" data-distributions="hosted open_weight" data-family="nemotron 3.5" data-capabilities="reasoning ">
+      <p class="provider-label">NVIDIA</p><h3><a href="models/nemotron-3-5-lightning-30b-a3b/">Nemotron 3.5 Lightning 30B-A3B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>hosted</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="closed" data-distributions="product_only" data-family="gpt-4o" data-capabilities="multimodal">
+      <p class="provider-label">OpenAI</p><h3><a href="models/chatgpt-4o/">ChatGPT-4o</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>product only</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Legacy · released 2024-05-13</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="closed" data-distributions="api hosted" data-family="gpt-5.6" data-capabilities="reasoning multimodal">
+      <p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-luna/">GPT-5.6 Luna</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,050,000 token context</p>
+<p class="price">$0.20 in · $1.20 out</p>      <p class="muted">Active · released 2026-07-09</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="closed" data-distributions="api hosted" data-family="gpt-5.6" data-capabilities="reasoning multimodal">
+      <p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-sol/">GPT-5.6 Sol</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,050,000 token context</p>
+<p class="price">$4.00 in · $20.00 out</p>      <p class="muted">Active · released 2026-07-09</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="closed" data-distributions="api hosted" data-family="gpt-5.6" data-capabilities="reasoning multimodal">
+      <p class="provider-label">OpenAI</p><h3><a href="models/gpt-5-6-terra/">GPT-5.6 Terra</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,050,000 token context</p>
+<p class="price">$2.00 in · $12.00 out</p>      <p class="muted">Active · released 2026-07-09</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="open" data-distributions="open_weight" data-family="gpt-oss" data-capabilities="reasoning ">
+      <p class="provider-label">OpenAI</p><h3><a href="models/gpt-oss-120b/">gpt-oss-120b</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li></ul>
+      <p>131,072 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-08-05</p>
+    </article>
+    <article class="card model-card" data-provider="openai" data-openness="open" data-distributions="open_weight local" data-family="gpt-oss" data-capabilities="reasoning ">
+      <p class="provider-label">OpenAI</p><h3><a href="models/gpt-oss-20b/">gpt-oss-20b</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li><li>local</li></ul>
+      <p>131,072 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-08-05</p>
+    </article>
+    <article class="card model-card" data-provider="qwen" data-openness="open" data-distributions="open_weight local" data-family="qwen3" data-capabilities="reasoning ">
+      <p class="provider-label">Qwen / Alibaba</p><h3><a href="models/qwen3-0-6b/">Qwen3-0.6B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li><li>local</li></ul>
+      <p>32,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-29</p>
+    </article>
+    <article class="card model-card" data-provider="qwen" data-openness="open" data-distributions="open_weight" data-family="qwen3" data-capabilities="reasoning ">
+      <p class="provider-label">Qwen / Alibaba</p><h3><a href="models/qwen3-235b-a22b/">Qwen3-235B-A22B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-29</p>
+    </article>
+    <article class="card model-card" data-provider="qwen" data-openness="open" data-distributions="open_weight local" data-family="qwen3" data-capabilities="reasoning ">
+      <p class="provider-label">Qwen / Alibaba</p><h3><a href="models/qwen3-30b-a3b/">Qwen3-30B-A3B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li><li>local</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-29</p>
+    </article>
+    <article class="card model-card" data-provider="qwen" data-openness="open" data-distributions="open_weight local" data-family="qwen3" data-capabilities="reasoning ">
+      <p class="provider-label">Qwen / Alibaba</p><h3><a href="models/qwen3-8b/">Qwen3-8B</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>open weight</li><li>local</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-04-29</p>
+    </article>
+    <article class="card model-card" data-provider="zhipu" data-openness="open" data-distributions="api hosted open_weight" data-family="glm-4.5" data-capabilities="reasoning ">
+      <p class="provider-label">Zhipu / GLM</p><h3><a href="models/glm-4-5/">GLM-4.5</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>128,000 token context</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active · released 2025-07-28</p>
+    </article>
+    <article class="card model-card" data-provider="zhipu" data-openness="open" data-distributions="api hosted open_weight" data-family="glm-4.5" data-capabilities="reasoning multimodal">
+      <p class="provider-label">Zhipu / GLM</p><h3><a href="models/glm-4-5v/">GLM-4.5V</a></h3>
+      <ul class="tag-list compact"><li>open</li><li>api</li><li>hosted</li><li>open weight</li></ul>
+      <p>Context not publicly verified</p>
+<p class="muted">No comparable public API pricing</p>      <p class="muted">Active</p>
+    </article>
+    <article class="card model-card" data-provider="xai" data-openness="closed" data-distributions="api hosted" data-family="grok 4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">xAI</p><h3><a href="models/grok-4-3/">Grok 4.3</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>1,000,000 token context</p>
+<p class="price">$1.25 in · $2.50 out</p>      <p class="muted">Active · released 2026-05-15</p>
+    </article>
+    <article class="card model-card" data-provider="xai" data-openness="closed" data-distributions="api hosted" data-family="grok 4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">xAI</p><h3><a href="models/grok-4-5/">Grok 4.5</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>500,000 token context</p>
+<p class="price">$2.00 in · $6.00 out</p>      <p class="muted">Active · released 2026-07-08</p>
+    </article>
+    <article class="card model-card" data-provider="xai" data-openness="closed" data-distributions="api hosted" data-family="grok 4" data-capabilities="reasoning multimodal">
+      <p class="provider-label">xAI</p><h3><a href="models/grok-4-6/">Grok 4.6</a></h3>
+      <ul class="tag-list compact"><li>closed</li><li>api</li><li>hosted</li></ul>
+      <p>500,000 token context</p>
+<p class="price">$2.00 in · $6.00 out</p>      <p class="muted">Active · released 2026-08-12</p>
+    </article>
 </div>
 </section>
 <div class="grid two-column">
-  <section class="card"><h2>Providers</h2><ul class="link-list"><li><a href="providers/openai/">OpenAI</a> <span>3 models</span></li><li><a href="providers/anthropic/">Anthropic</a> <span>3 models</span></li><li><a href="providers/google/">Google</a> <span>3 models</span></li><li><a href="providers/xai/">xAI</a> <span>3 models</span></li></ul></section>
-  <section class="card"><h2>Rankings</h2><ul class="link-list"><li><a href="models/rankings/input-cost/">Input Cost</a></li><li><a href="models/rankings/output-cost/">Output Cost</a></li><li><a href="models/rankings/context-window/">Context Window</a></li></ul></section>
+  <section class="card"><h2>Providers</h2><ul class="link-list"><li><a href="providers/openai/">OpenAI</a> <span>6 models</span></li><li><a href="providers/anthropic/">Anthropic</a> <span>3 models</span></li><li><a href="providers/google/">Google</a> <span>3 models</span></li><li><a href="providers/xai/">xAI</a> <span>3 models</span></li><li><a href="providers/meta/">Meta</a> <span>2 models</span></li><li><a href="providers/deepseek/">DeepSeek</a> <span>2 models</span></li><li><a href="providers/mistral/">Mistral</a> <span>4 models</span></li><li><a href="providers/qwen/">Qwen / Alibaba</a> <span>4 models</span></li><li><a href="providers/cohere/">Cohere</a> <span>3 models</span></li><li><a href="providers/microsoft/">Microsoft</a> <span>3 models</span></li><li><a href="providers/nvidia/">NVIDIA</a> <span>2 models</span></li><li><a href="providers/amazon/">Amazon</a> <span>3 models</span></li><li><a href="providers/moonshot/">Moonshot / Kimi</a> <span>2 models</span></li><li><a href="providers/minimax/">MiniMax</a> <span>2 models</span></li><li><a href="providers/zhipu/">Zhipu / GLM</a> <span>2 models</span></li></ul></section>
+  <section class="card"><h2>Rankings</h2><ul class="link-list"><li><a href="models/rankings/input-cost/">Input Cost</a></li><li><a href="models/rankings/output-cost/">Output Cost</a></li><li><a href="models/rankings/context-window/">Context Window</a></li></ul><p class="muted">Eligibility is calculated independently for each metric.</p></section>
 </div>
-<section><h2>Configured comparisons</h2><div class="comparison-list"><a class="comparison-link" href="compare/models/gpt-5-6-sol/claude-fable-5/"><span>GPT-5.6 Sol</span><strong>vs</strong><span>Claude Fable 5</span></a><a class="comparison-link" href="compare/models/gpt-5-6-terra/claude-sonnet-5/"><span>GPT-5.6 Terra</span><strong>vs</strong><span>Claude Sonnet 5</span></a><a class="comparison-link" href="compare/models/gpt-5-6-luna/gemini-3-5-flash-lite/"><span>GPT-5.6 Luna</span><strong>vs</strong><span>Gemini 3.5 Flash-Lite</span></a><a class="comparison-link" href="compare/models/grok-4-6/gpt-5-6-sol/"><span>Grok 4.6</span><strong>vs</strong><span>GPT-5.6 Sol</span></a><a class="comparison-link" href="compare/models/gpt-5-6-sol/gpt-5-6-terra/"><span>GPT-5.6 Sol</span><strong>vs</strong><span>GPT-5.6 Terra</span></a><a class="comparison-link" href="compare/models/gemini-3-8-flash/grok-4-6/"><span>Gemini 3.8 Flash</span><strong>vs</strong><span>Grok 4.6</span></a></div></section>
+<section><h2>Configured economic comparisons</h2><div class="comparison-list"><a class="comparison-link" href="compare/models/gpt-5-6-sol/claude-fable-5/"><span>GPT-5.6 Sol</span><strong>vs</strong><span>Claude Fable 5</span></a><a class="comparison-link" href="compare/models/gpt-5-6-terra/claude-sonnet-5/"><span>GPT-5.6 Terra</span><strong>vs</strong><span>Claude Sonnet 5</span></a><a class="comparison-link" href="compare/models/gpt-5-6-luna/gemini-3-5-flash-lite/"><span>GPT-5.6 Luna</span><strong>vs</strong><span>Gemini 3.5 Flash-Lite</span></a><a class="comparison-link" href="compare/models/grok-4-6/gpt-5-6-sol/"><span>Grok 4.6</span><strong>vs</strong><span>GPT-5.6 Sol</span></a><a class="comparison-link" href="compare/models/gpt-5-6-sol/gpt-5-6-terra/"><span>GPT-5.6 Sol</span><strong>vs</strong><span>GPT-5.6 Terra</span></a><a class="comparison-link" href="compare/models/gemini-3-8-flash/grok-4-6/"><span>Gemini 3.8 Flash</span><strong>vs</strong><span>Grok 4.6</span></a></div></section><script>
+(() => { const form=document.querySelector('#catalog-filters'), cards=[...document.querySelectorAll('#model-catalog article')], count=document.querySelector('#catalog-count');
+  form.addEventListener('change',()=>{const f=new FormData(form);let shown=0;cards.forEach(card=>{const ok=(!f.get('provider')||card.dataset.provider===f.get('provider'))&&(!f.get('openness')||card.dataset.openness===f.get('openness'))&&(!f.get('distribution')||card.dataset.distributions.split(' ').includes(f.get('distribution')))&&(!f.get('family')||card.dataset.family===f.get('family'))&&(!f.get('capability')||card.dataset.capabilities.split(' ').includes(f.get('capability')));card.hidden=!ok;if(ok)shown++;});count.textContent=`Showing ${shown} model${shown===1?'':'s'}`;});
+})();
+</script>
 </main>
   <footer><p>Curated from official provider sources. Prices are point-in-time API list prices; terms and availability can change. <a href="methodology/">Methods and limitations</a>.</p></footer>
 </body>

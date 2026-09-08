@@ -1,22 +1,41 @@
 {% extends "base.html" %}
-{% block title %}AI Model Economics — API pricing and model comparisons{% endblock %}
-{% block description %}Compare verified API token prices, context windows, release dates, and carefully scoped benchmark observations for {{ models|length }} AI models.{% endblock %}
+{% block title %}AI Model Economics — canonical model catalog{% endblock %}
+{% block description %}Explore a provenance-backed catalog of proprietary, open-weight, hosted, local, and product-only AI models.{% endblock %}
 {% block content %}
 <section class="hero">
-  <p class="eyebrow">Model economics, with receipts</p>
+  <p class="eyebrow">Canonical model catalog, with receipts</p>
   <h1>AI Model Economics</h1>
-  <p class="lede">A compact, deterministic view of API pricing, context windows, releases, and comparable performance evidence.</p>
-  <p class="muted">Catalog as of {{ site.as_of_date }}. {{ models|length }} models from {{ providers|length }} providers. No generated estimates are treated as canonical data.</p>
+  <p class="lede">Important frontier, lower-cost, open-weight, and local models in one explicit taxonomy. Pricing and benchmarks appear only where comparable evidence exists.</p>
+  <p class="muted">Catalog as of {{ site.as_of_date }}. {{ models|length }} models from {{ providers|length }} providers.</p>
 </section>
 <section>
-  <div class="section-heading"><div><p class="eyebrow">Explore</p><h2>Current model catalog</h2></div><a href="{{ link('models/releases/' ~ releases[0].year ~ '/') }}">Release timeline →</a></div>
-  <div class="model-grid">{% for model in models %}
-    <article class="card model-card"><p class="provider-label">{{ model.provider.name }}</p><h3><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></h3><p>{{ model.context_window_tokens|tokens }} token context</p>{% if model.pricing %}<p class="price">{{ model.pricing.input_price_per_million_tokens|money }} in · {{ model.pricing.output_price_per_million_tokens|money }} out</p>{% endif %}<p class="muted">Released {{ model.release_date }}</p></article>
+  <div class="section-heading"><div><p class="eyebrow">Explore</p><h2>Model catalog</h2></div><a href="{{ link('models/releases/' ~ releases[0].year ~ '/') }}">Release timeline →</a></div>
+  <form class="catalog-filters" aria-label="Filter model catalog" id="catalog-filters">
+    <label>Provider<select name="provider"><option value="">All providers</option>{% for provider in providers %}<option value="{{ provider.id }}">{{ provider.name }}</option>{% endfor %}</select></label>
+    <label>Access<select name="openness"><option value="">Open + closed</option><option value="open">Open</option><option value="closed">Closed</option></select></label>
+    <label>Distribution<select name="distribution"><option value="">All distributions</option><option value="api">API</option><option value="hosted">Hosted</option><option value="open_weight">Open weight</option><option value="local">Local</option><option value="product_only">Product only</option><option value="preview">Preview</option></select></label>
+    <label>Family<select name="family"><option value="">All families</option>{% for family in families %}<option value="{{ family|lower }}">{{ family }}</option>{% endfor %}</select></label>
+    <label>Capability<select name="capability"><option value="">All capabilities</option><option value="reasoning">Reasoning</option><option value="multimodal">Multimodal</option></select></label>
+  </form>
+  <p class="muted" id="catalog-count" aria-live="polite">Showing {{ models|length }} models</p>
+  <div class="model-grid" id="model-catalog">{% for model in models %}
+    <article class="card model-card" data-provider="{{ model.provider_id }}" data-openness="{{ model.openness }}" data-distributions="{{ model.distribution_types|join(' ') }}" data-family="{{ model.family|lower }}" data-capabilities="{% if model.reasoning_capability %}reasoning {% endif %}{% if model.multimodal_capability %}multimodal{% endif %}">
+      <p class="provider-label">{{ model.provider.name }}</p><h3><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></h3>
+      <ul class="tag-list compact"><li>{{ model.openness }}</li>{% for distribution in model.distribution_types %}<li>{{ distribution|replace('_', ' ') }}</li>{% endfor %}</ul>
+      <p>{% if model.context_window_tokens %}{{ model.context_window_tokens|tokens }} token context{% else %}Context not publicly verified{% endif %}</p>
+      {% if model.pricing %}<p class="price">{{ model.pricing.input_price_per_million_tokens|money }} in · {{ model.pricing.output_price_per_million_tokens|money }} out</p>{% else %}<p class="muted">No comparable public API pricing</p>{% endif %}
+      <p class="muted">{{ model.status|title }}{% if model.release_date %} · released {{ model.release_date }}{% endif %}</p>
+    </article>
   {% endfor %}</div>
 </section>
 <div class="grid two-column">
   <section class="card"><h2>Providers</h2><ul class="link-list">{% for provider in providers %}<li><a href="{{ link(provider.path) }}">{{ provider.name }}</a> <span>{{ provider.models|length }} models</span></li>{% endfor %}</ul></section>
-  <section class="card"><h2>Rankings</h2><ul class="link-list">{% for ranking in rankings %}<li><a href="{{ link(ranking.path) }}">{{ ranking.metric|replace('-', ' ')|title }}</a></li>{% endfor %}</ul></section>
+  <section class="card"><h2>Rankings</h2><ul class="link-list">{% for ranking in rankings %}<li><a href="{{ link(ranking.path) }}">{{ ranking.metric|replace('-', ' ')|title }}</a></li>{% endfor %}</ul><p class="muted">Eligibility is calculated independently for each metric.</p></section>
 </div>
-<section><h2>Configured comparisons</h2><div class="comparison-list">{% for comparison in comparisons %}<a class="comparison-link" href="{{ link(comparison.path) }}"><span>{{ comparison.model_a.name }}</span><strong>vs</strong><span>{{ comparison.model_b.name }}</span></a>{% endfor %}</div></section>
+{% if comparisons %}<section><h2>Configured economic comparisons</h2><div class="comparison-list">{% for comparison in comparisons %}<a class="comparison-link" href="{{ link(comparison.path) }}"><span>{{ comparison.model_a.name }}</span><strong>vs</strong><span>{{ comparison.model_b.name }}</span></a>{% endfor %}</div></section>{% endif %}
+<script>
+(() => { const form=document.querySelector('#catalog-filters'), cards=[...document.querySelectorAll('#model-catalog article')], count=document.querySelector('#catalog-count');
+  form.addEventListener('change',()=>{const f=new FormData(form);let shown=0;cards.forEach(card=>{const ok=(!f.get('provider')||card.dataset.provider===f.get('provider'))&&(!f.get('openness')||card.dataset.openness===f.get('openness'))&&(!f.get('distribution')||card.dataset.distributions.split(' ').includes(f.get('distribution')))&&(!f.get('family')||card.dataset.family===f.get('family'))&&(!f.get('capability')||card.dataset.capabilities.split(' ').includes(f.get('capability')));card.hidden=!ok;if(ok)shown++;});count.textContent=`Showing ${shown} model${shown===1?'':'s'}`;});
+})();
+</script>
 {% endblock %}

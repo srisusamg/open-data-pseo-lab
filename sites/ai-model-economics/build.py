@@ -20,7 +20,7 @@ from platform.recipes.model_economics import (
     release_path,
 )
 
-GENERATOR_VERSION = "1.0.0"
+GENERATOR_VERSION = "2.0.0"
 
 
 def _evaluated(context: dict) -> tuple[dict, dict]:
@@ -49,19 +49,19 @@ def _load_comparisons(path: Path, models: dict[str, dict]) -> list[tuple[dict, d
 
 def _ranking(metric: str, models: list[dict]) -> list[dict]:
     if metric == "input-cost":
-        rows = [{"model": item, "value": item["pricing"]["input_price_per_million_tokens"]} for item in models if item["pricing"]]
+        rows = [{"model": item, "value": item["pricing"]["input_price_per_million_tokens"]} for item in models if item["ranking_eligibility"]["input_cost"]]
         rows = sorted(rows, key=lambda row: (row["value"], row["model"]["name"]))
         for row in rows:
             row["rank"] = 1 + sum(other["value"] < row["value"] for other in rows)
         return rows
     if metric == "output-cost":
-        rows = [{"model": item, "value": item["pricing"]["output_price_per_million_tokens"]} for item in models if item["pricing"]]
+        rows = [{"model": item, "value": item["pricing"]["output_price_per_million_tokens"]} for item in models if item["ranking_eligibility"]["output_cost"]]
         rows = sorted(rows, key=lambda row: (row["value"], row["model"]["name"]))
         for row in rows:
             row["rank"] = 1 + sum(other["value"] < row["value"] for other in rows)
         return rows
     if metric == "context-window":
-        rows = [{"model": item, "value": item["context_window_tokens"]} for item in models]
+        rows = [{"model": item, "value": item["context_window_tokens"]} for item in models if item["ranking_eligibility"]["context_window"]]
         rows = sorted(rows, key=lambda row: (-row["value"], row["model"]["name"]))
         for row in rows:
             row["rank"] = 1 + sum(other["value"] > row["value"] for other in rows)
@@ -94,7 +94,7 @@ def render_site(paths: SitePaths) -> int:
     model_urls = {item["id"]: model_path(item) for item in models}
     provider_urls = {item["id"]: provider_path(item) for item in dataset["providers"]}
     ranking_urls = {metric: ranking_path(metric) for metric in ("input-cost", "output-cost", "context-window")}
-    years = sorted({int(item["release_date"][:4]) for item in models}, reverse=True)
+    years = sorted({int(item["release_date"][:4]) for item in models if item["release_date"]}, reverse=True)
     release_urls = {year: release_path(year) for year in years}
     all_base_urls = permanent_urls | set(model_urls.values()) | set(provider_urls.values()) | set(ranking_urls.values()) | set(release_urls.values())
 
@@ -104,8 +104,14 @@ def render_site(paths: SitePaths) -> int:
         path = model_urls[model["id"]]
         insights = model_insights(model, models, benchmarks_by_id, config["as_of_date"])
         pricing = model["pricing"]
-        facts = 4 + (2 if pricing else 0) + len(model["performance"])
-        years_used = [int(model["release_date"][:4])]
+        taxonomy_fields = (
+            "provider_id", "family", "release_date", "status", "distribution_types", "openness",
+            "weights_available", "reasoning_capability", "multimodal_capability", "tool_use_capability",
+            "coding_capability", "api_available", "product_available",
+        )
+        facts = sum(model.get(key) is not None for key in taxonomy_fields)
+        facts += int(model["context_window_tokens"] is not None) + (3 if pricing else 0) + len(model["performance"])
+        years_used = [int(model["provenance"]["observation_date"][:4])]
         if pricing:
             years_used.append(int(pricing["provenance"]["observation_date"][:4]))
         years_used.extend(int(item["provenance"]["observation_date"][:4]) for item in model["performance"])
@@ -114,11 +120,11 @@ def render_site(paths: SitePaths) -> int:
             "usable_facts": facts, "usable_historical_metrics": 0,
             "insight_candidate_count": len(insights["candidates"]), "selected_insight_count": len(insights["selected"]),
             "source_years": years_used,
-            "provenance_complete": complete_dated_provenance(model) and bool(pricing) and complete_dated_provenance(pricing) and all(complete_dated_provenance(item) for item in model["performance"]),
+            "provenance_complete": complete_dated_provenance(model) and all(complete_dated_provenance(value) for value in model["fact_provenance"].values()) and (pricing is None or complete_dated_provenance(pricing)) and all(complete_dated_provenance(item) for item in model["performance"]),
             "differentiated_content_count": facts, "duplicate_intent": f"model:{model['id']}" in model_intents,
             "required_internal_links": [provider_urls[model["provider_id"]], "methodology/"], "available_internal_links": all_base_urls,
             "canonical_url": canonical_url(base_url, path), "expected_canonical_url": canonical_url(base_url, path),
-            "unsupported_calculations": 0, "policy_overrides": {"minimum_usable_facts": 6},
+            "unsupported_calculations": 0, "policy_overrides": {"minimum_usable_facts": 6, "minimum_insight_candidates": 1, "minimum_selected_insights": 1},
         }
         result, report = _evaluated(context)
         model_results[path] = (result, report, insights)
@@ -189,7 +195,7 @@ def render_site(paths: SitePaths) -> int:
             "insight_candidate_count": len(insights["candidates"]), "selected_insight_count": len(insights["selected"]),
             "source_years": [int(item["pricing"]["provenance"]["observation_date"][:4]) for item in (model_a, model_b)] if comparable else [],
             "provenance_complete": comparable and all(complete_dated_provenance(item) for pair in performance_pairs for item in pair),
-            "differentiated_content_count": sum(value not in (None, 0) for value in derived.values()) + int(model_a["context_window_tokens"] != model_b["context_window_tokens"]),
+            "differentiated_content_count": sum(value not in (None, 0) for value in derived.values()) + int(model_a["context_window_tokens"] is not None and model_b["context_window_tokens"] is not None and model_a["context_window_tokens"] != model_b["context_window_tokens"]),
             "duplicate_intent": "comparison:" + ":".join(sorted((model_a["id"], model_b["id"]))) in comparison_intents,
             "required_internal_links": [model_urls[model_a["id"]], model_urls[model_b["id"]], "methodology/"], "available_internal_links": available_urls,
             "canonical_url": canonical_url(base_url, path), "expected_canonical_url": canonical_url(base_url, path), "unsupported_calculations": 0,
@@ -221,7 +227,12 @@ def render_site(paths: SitePaths) -> int:
         providers_by_model[comparison["model_a"]["id"]].append(comparison)
         providers_by_model[comparison["model_b"]["id"]].append(comparison)
     page_paths = [""] + [model_urls[item["id"]] for item in eligible_models] + [item["path"] for item in providers] + [item["path"] for item in rankings] + [item["path"] for item in comparisons] + [item["path"] for item in releases] + ["methodology/"]
-    common = {"site": config, "models": eligible_models, "providers": providers, "rankings": rankings, "comparisons": comparisons, "releases": releases, "retrieved_at": dataset["retrieved_at"], "canonical_url": canonical_url}
+    common = {
+        "site": config, "models": eligible_models, "providers": providers, "rankings": rankings,
+        "comparisons": comparisons, "releases": releases, "retrieved_at": dataset["retrieved_at"],
+        "canonical_url": canonical_url,
+        "families": sorted({item["family"] for item in eligible_models}),
+    }
 
     def render(template: str, page_path: str, destination: Path, **context: object) -> None:
         html = env.get_template(template).render(**common, page_path=page_path, link=lambda target: relative_url(page_path, target), **context)
@@ -258,7 +269,7 @@ def render_site(paths: SitePaths) -> int:
         },
         "models": [{
             "model_id": item["id"], "pricing": item["pricing"], "blended_cost": item["blended_cost"],
-            "intelligence_per_dollar": item["value_metrics"],
+            "intelligence_per_dollar": item["value_metrics"], "ranking_eligibility": item["ranking_eligibility"],
         } for item in eligible_models],
         "comparisons": [{
             "path": item["path"], "model_a_id": item["model_a"]["id"], "model_b_id": item["model_b"]["id"],

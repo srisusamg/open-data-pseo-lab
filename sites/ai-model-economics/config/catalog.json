@@ -1,124 +1,2930 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "retrieved_at": "2026-09-07T00:00:00Z",
   "allowed_source_hosts": [
-    "platform.openai.com", "openai.com", "www.anthropic.com", "docs.anthropic.com",
-    "ai.google.dev", "blog.google", "docs.x.ai"
+    "ai.google.dev",
+    "ai.meta.com",
+    "api-docs.deepseek.com",
+    "blog.google",
+    "build.nvidia.com",
+    "docs.anthropic.com",
+    "docs.aws.amazon.com",
+    "docs.cohere.com",
+    "docs.mistral.ai",
+    "docs.x.ai",
+    "docs.z.ai",
+    "github.com",
+    "huggingface.co",
+    "learn.microsoft.com",
+    "openai.com",
+    "platform.kimi.ai",
+    "platform.minimax.io",
+    "platform.openai.com",
+    "qwenlm.github.io",
+    "www.anthropic.com"
   ],
   "providers": [
     {
-      "id": "openai", "slug": "openai", "name": "OpenAI",
-      "provenance": {"source_name": "OpenAI API documentation", "source_url": "https://platform.openai.com/docs/models", "source_metric_id": "provider:openai", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "openai",
+      "slug": "openai",
+      "name": "OpenAI",
+      "provenance": {
+        "source_name": "OpenAI API documentation",
+        "source_url": "https://platform.openai.com/docs/models",
+        "source_metric_id": "provider:openai",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
     },
     {
-      "id": "anthropic", "slug": "anthropic", "name": "Anthropic",
-      "provenance": {"source_name": "Claude Platform documentation", "source_url": "https://docs.anthropic.com/en/docs/about-claude/models/overview", "source_metric_id": "provider:anthropic", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "anthropic",
+      "slug": "anthropic",
+      "name": "Anthropic",
+      "provenance": {
+        "source_name": "Claude Platform documentation",
+        "source_url": "https://docs.anthropic.com/en/docs/about-claude/models/overview",
+        "source_metric_id": "provider:anthropic",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
     },
     {
-      "id": "google", "slug": "google", "name": "Google",
-      "provenance": {"source_name": "Gemini API documentation", "source_url": "https://ai.google.dev/gemini-api/docs/models", "source_metric_id": "provider:google", "observation_date": "2026-09-07", "effective_date": "2026-09-07", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "google",
+      "slug": "google",
+      "name": "Google",
+      "provenance": {
+        "source_name": "Gemini API documentation",
+        "source_url": "https://ai.google.dev/gemini-api/docs/models",
+        "source_metric_id": "provider:google",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
     },
     {
-      "id": "xai", "slug": "xai", "name": "xAI",
-      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models", "source_metric_id": "provider:xai", "observation_date": "2026-08-21", "effective_date": "2026-08-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "xai",
+      "slug": "xai",
+      "name": "xAI",
+      "provenance": {
+        "source_name": "xAI model documentation",
+        "source_url": "https://docs.x.ai/developers/models",
+        "source_metric_id": "provider:xai",
+        "observation_date": "2026-08-21",
+        "effective_date": "2026-08-21",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "meta",
+      "slug": "meta",
+      "name": "Meta",
+      "provenance": {
+        "source_name": "Meta official model documentation",
+        "source_url": "https://ai.meta.com/llama/get-started/",
+        "source_metric_id": "provider:meta",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "deepseek",
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "provenance": {
+        "source_name": "DeepSeek official model documentation",
+        "source_url": "https://api-docs.deepseek.com/",
+        "source_metric_id": "provider:deepseek",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "mistral",
+      "slug": "mistral",
+      "name": "Mistral",
+      "provenance": {
+        "source_name": "Mistral official model documentation",
+        "source_url": "https://docs.mistral.ai/models",
+        "source_metric_id": "provider:mistral",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "qwen",
+      "slug": "qwen",
+      "name": "Qwen / Alibaba",
+      "provenance": {
+        "source_name": "Qwen / Alibaba official model documentation",
+        "source_url": "https://qwenlm.github.io/blog/qwen3/",
+        "source_metric_id": "provider:qwen",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "cohere",
+      "slug": "cohere",
+      "name": "Cohere",
+      "provenance": {
+        "source_name": "Cohere official model documentation",
+        "source_url": "https://docs.cohere.com/docs/models",
+        "source_metric_id": "provider:cohere",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "microsoft",
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "provenance": {
+        "source_name": "Microsoft official model documentation",
+        "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/models",
+        "source_metric_id": "provider:microsoft",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "nvidia",
+      "slug": "nvidia",
+      "name": "NVIDIA",
+      "provenance": {
+        "source_name": "NVIDIA official model documentation",
+        "source_url": "https://build.nvidia.com/explore/discover",
+        "source_metric_id": "provider:nvidia",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "amazon",
+      "slug": "amazon",
+      "name": "Amazon",
+      "provenance": {
+        "source_name": "Amazon official model documentation",
+        "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+        "source_metric_id": "provider:amazon",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "moonshot",
+      "slug": "moonshot",
+      "name": "Moonshot / Kimi",
+      "provenance": {
+        "source_name": "Moonshot / Kimi official model documentation",
+        "source_url": "https://platform.kimi.ai/docs/models",
+        "source_metric_id": "provider:moonshot",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "minimax",
+      "slug": "minimax",
+      "name": "MiniMax",
+      "provenance": {
+        "source_name": "MiniMax official model documentation",
+        "source_url": "https://platform.minimax.io/docs/guides/models-intro",
+        "source_metric_id": "provider:minimax",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "zhipu",
+      "slug": "zhipu",
+      "name": "Zhipu / GLM",
+      "provenance": {
+        "source_name": "Zhipu / GLM official model documentation",
+        "source_url": "https://docs.z.ai/guides/llm/glm-4.5",
+        "source_metric_id": "provider:zhipu",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
     }
   ],
   "models": [
     {
-      "id": "openai:gpt-5.6-sol", "slug": "gpt-5-6-sol", "name": "GPT-5.6 Sol", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-sol"},
-      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol", "source_metric_id": "model:gpt-5.6-sol", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "openai:gpt-5.6-sol",
+      "slug": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol",
+      "provider_id": "openai",
+      "family": "GPT-5.6",
+      "release_date": "2026-07-09",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1050000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "web search",
+        "file search",
+        "computer use"
+      ],
+      "external_ids": {
+        "openai_api": "gpt-5.6-sol"
+      },
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol",
+        "source_metric_id": "model:gpt-5.6-sol",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "ChatGPT"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "openai:gpt-5.6-terra", "slug": "gpt-5-6-terra", "name": "GPT-5.6 Terra", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-terra"},
-      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra", "source_metric_id": "model:gpt-5.6-terra", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "openai:gpt-5.6-terra",
+      "slug": "gpt-5-6-terra",
+      "name": "GPT-5.6 Terra",
+      "provider_id": "openai",
+      "family": "GPT-5.6",
+      "release_date": "2026-07-09",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1050000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "web search",
+        "file search",
+        "computer use"
+      ],
+      "external_ids": {
+        "openai_api": "gpt-5.6-terra"
+      },
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra",
+        "source_metric_id": "model:gpt-5.6-terra",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "ChatGPT"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "openai:gpt-5.6-luna", "slug": "gpt-5-6-luna", "name": "GPT-5.6 Luna", "provider_id": "openai", "family": "GPT-5.6", "release_date": "2026-07-09", "status": "active", "openness": "closed", "context_window_tokens": 1050000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "web search", "file search", "computer use"], "external_ids": {"openai_api": "gpt-5.6-luna"},
-      "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna", "source_metric_id": "model:gpt-5.6-luna", "observation_date": "2026-09-07", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "openai:gpt-5.6-luna",
+      "slug": "gpt-5-6-luna",
+      "name": "GPT-5.6 Luna",
+      "provider_id": "openai",
+      "family": "GPT-5.6",
+      "release_date": "2026-07-09",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1050000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "web search",
+        "file search",
+        "computer use"
+      ],
+      "external_ids": {
+        "openai_api": "gpt-5.6-luna"
+      },
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna",
+        "source_metric_id": "model:gpt-5.6-luna",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "ChatGPT"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "anthropic:claude-fable-5", "slug": "claude-fable-5", "name": "Claude Fable 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-06-09", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-fable-5"},
-      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "source_metric_id": "model:claude-fable-5", "observation_date": "2026-06-09", "effective_date": "2026-06-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+      "id": "anthropic:claude-fable-5",
+      "slug": "claude-fable-5",
+      "name": "Claude Fable 5",
+      "provider_id": "anthropic",
+      "family": "Claude 5",
+      "release_date": "2026-06-09",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "adaptive reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "anthropic_api": "claude-fable-5"
+      },
+      "provenance": {
+        "source_name": "Anthropic launch announcement",
+        "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "source_metric_id": "model:claude-fable-5",
+        "observation_date": "2026-06-09",
+        "effective_date": "2026-06-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_announcement",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Claude"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "anthropic:claude-opus-5", "slug": "claude-opus-5", "name": "Claude Opus 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-07-24", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-opus-5"},
-      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-opus-5", "source_metric_id": "model:claude-opus-5", "observation_date": "2026-07-24", "effective_date": "2026-07-24", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+      "id": "anthropic:claude-opus-5",
+      "slug": "claude-opus-5",
+      "name": "Claude Opus 5",
+      "provider_id": "anthropic",
+      "family": "Claude 5",
+      "release_date": "2026-07-24",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "adaptive reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "anthropic_api": "claude-opus-5"
+      },
+      "provenance": {
+        "source_name": "Anthropic launch announcement",
+        "source_url": "https://www.anthropic.com/news/claude-opus-5",
+        "source_metric_id": "model:claude-opus-5",
+        "observation_date": "2026-07-24",
+        "effective_date": "2026-07-24",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_announcement",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Claude"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "anthropic:claude-sonnet-5", "slug": "claude-sonnet-5", "name": "Claude Sonnet 5", "provider_id": "anthropic", "family": "Claude 5", "release_date": "2026-06-30", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "text output", "adaptive reasoning", "tool use"], "external_ids": {"anthropic_api": "claude-sonnet-5"},
-      "provenance": {"source_name": "Anthropic launch announcement", "source_url": "https://www.anthropic.com/news/claude-sonnet-5", "source_metric_id": "model:claude-sonnet-5", "observation_date": "2026-06-30", "effective_date": "2026-06-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+      "id": "anthropic:claude-sonnet-5",
+      "slug": "claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "provider_id": "anthropic",
+      "family": "Claude 5",
+      "release_date": "2026-06-30",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "adaptive reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "anthropic_api": "claude-sonnet-5"
+      },
+      "provenance": {
+        "source_name": "Anthropic launch announcement",
+        "source_url": "https://www.anthropic.com/news/claude-sonnet-5",
+        "source_metric_id": "model:claude-sonnet-5",
+        "observation_date": "2026-06-30",
+        "effective_date": "2026-06-30",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_announcement",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Claude"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "google:gemini-3.8-flash", "slug": "gemini-3-8-flash", "name": "Gemini 3.8 Flash", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-09-02", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.8-flash"},
-      "provenance": {"source_name": "Google launch announcement", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/", "source_metric_id": "model:gemini-3.8-flash", "observation_date": "2026-09-02", "effective_date": "2026-09-02", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+      "id": "google:gemini-3.8-flash",
+      "slug": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "provider_id": "google",
+      "family": "Gemini 3",
+      "release_date": "2026-09-02",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "video input",
+        "audio input",
+        "text output",
+        "reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "gemini_api": "gemini-3.8-flash"
+      },
+      "provenance": {
+        "source_name": "Google launch announcement",
+        "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+        "source_metric_id": "model:gemini-3.8-flash",
+        "observation_date": "2026-09-02",
+        "effective_date": "2026-09-02",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_announcement",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Gemini"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "google:gemini-3.7-flash", "slug": "gemini-3-7-flash", "name": "Gemini 3.7 Flash", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-08-12", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.7-flash"},
-      "provenance": {"source_name": "Gemini API model guide", "source_url": "https://ai.google.dev/gemini-api/docs/latest-model", "source_metric_id": "model:gemini-3.7-flash", "observation_date": "2026-08-12", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "google:gemini-3.7-flash",
+      "slug": "gemini-3-7-flash",
+      "name": "Gemini 3.7 Flash",
+      "provider_id": "google",
+      "family": "Gemini 3",
+      "release_date": "2026-08-12",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "video input",
+        "audio input",
+        "text output",
+        "reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "gemini_api": "gemini-3.7-flash"
+      },
+      "provenance": {
+        "source_name": "Gemini API model guide",
+        "source_url": "https://ai.google.dev/gemini-api/docs/latest-model",
+        "source_metric_id": "model:gemini-3.7-flash",
+        "observation_date": "2026-08-12",
+        "effective_date": "2026-08-12",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Gemini"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "google:gemini-3.5-flash-lite", "slug": "gemini-3-5-flash-lite", "name": "Gemini 3.5 Flash-Lite", "provider_id": "google", "family": "Gemini 3", "release_date": "2026-07-21", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "video input", "audio input", "text output", "reasoning", "tool use"], "external_ids": {"gemini_api": "gemini-3.5-flash-lite"},
-      "provenance": {"source_name": "Google launch announcement", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/", "source_metric_id": "model:gemini-3.5-flash-lite", "observation_date": "2026-07-21", "effective_date": "2026-07-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_announcement", "confidence": "high", "status": "verified"}
+      "id": "google:gemini-3.5-flash-lite",
+      "slug": "gemini-3-5-flash-lite",
+      "name": "Gemini 3.5 Flash-Lite",
+      "provider_id": "google",
+      "family": "Gemini 3",
+      "release_date": "2026-07-21",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "video input",
+        "audio input",
+        "text output",
+        "reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "gemini_api": "gemini-3.5-flash-lite"
+      },
+      "provenance": {
+        "source_name": "Google launch announcement",
+        "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+        "source_metric_id": "model:gemini-3.5-flash-lite",
+        "observation_date": "2026-07-21",
+        "effective_date": "2026-07-21",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_announcement",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Gemini"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "xai:grok-4.6", "slug": "grok-4-6", "name": "Grok 4.6", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-08-12", "status": "active", "openness": "closed", "context_window_tokens": 500000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.6"},
-      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.6", "source_metric_id": "model:grok-4.6", "observation_date": "2026-08-21", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "xai:grok-4.6",
+      "slug": "grok-4-6",
+      "name": "Grok 4.6",
+      "provider_id": "xai",
+      "family": "Grok 4",
+      "release_date": "2026-08-12",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 500000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "structured output"
+      ],
+      "external_ids": {
+        "xai_api": "grok-4.6"
+      },
+      "provenance": {
+        "source_name": "xAI model documentation",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.6",
+        "source_metric_id": "model:grok-4.6",
+        "observation_date": "2026-08-21",
+        "effective_date": "2026-08-12",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Grok"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "xai:grok-4.5", "slug": "grok-4-5", "name": "Grok 4.5", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-07-08", "status": "active", "openness": "closed", "context_window_tokens": 500000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.5"},
-      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.5", "source_metric_id": "model:grok-4.5", "observation_date": "2026-09-02", "effective_date": "2026-07-08", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "xai:grok-4.5",
+      "slug": "grok-4-5",
+      "name": "Grok 4.5",
+      "provider_id": "xai",
+      "family": "Grok 4",
+      "release_date": "2026-07-08",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 500000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "structured output"
+      ],
+      "external_ids": {
+        "xai_api": "grok-4.5"
+      },
+      "provenance": {
+        "source_name": "xAI model documentation",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.5",
+        "source_metric_id": "model:grok-4.5",
+        "observation_date": "2026-09-02",
+        "effective_date": "2026-07-08",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Grok"
+      ],
+      "pricing_available": true
     },
     {
-      "id": "xai:grok-4.3", "slug": "grok-4-3", "name": "Grok 4.3", "provider_id": "xai", "family": "Grok 4", "release_date": "2026-05-15", "status": "active", "openness": "closed", "context_window_tokens": 1000000,
-      "capabilities": ["text input", "image input", "text output", "reasoning", "function calling", "structured output"], "external_ids": {"xai_api": "grok-4.3"},
-      "provenance": {"source_name": "xAI model documentation", "source_url": "https://docs.x.ai/developers/models/grok-4.3", "source_metric_id": "model:grok-4.3", "observation_date": "2026-09-07", "effective_date": "2026-05-15", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_documentation", "confidence": "high", "status": "verified"}
+      "id": "xai:grok-4.3",
+      "slug": "grok-4-3",
+      "name": "Grok 4.3",
+      "provider_id": "xai",
+      "family": "Grok 4",
+      "release_date": "2026-05-15",
+      "status": "active",
+      "openness": "closed",
+      "context_window_tokens": 1000000,
+      "capabilities": [
+        "text input",
+        "image input",
+        "text output",
+        "reasoning",
+        "function calling",
+        "structured output"
+      ],
+      "external_ids": {
+        "xai_api": "grok-4.3"
+      },
+      "provenance": {
+        "source_name": "xAI model documentation",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.3",
+        "source_metric_id": "model:grok-4.3",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-05-15",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "license": null,
+      "weights_available": false,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Grok"
+      ],
+      "pricing_available": true
+    },
+    {
+      "id": "openai:gpt-oss-120b",
+      "slug": "gpt-oss-120b",
+      "name": "gpt-oss-120b",
+      "provider_id": "openai",
+      "family": "gpt-oss",
+      "release_date": "2025-08-05",
+      "status": "active",
+      "distribution_types": [
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 131072,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "gpt-oss-120b official model documentation",
+        "source_url": "https://platform.openai.com/docs/models",
+        "source_metric_id": "model:gpt-oss-120b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-08-05",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 120,
+        "active_parameter_count_billions": 5.1,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/openai/gpt-oss-120b",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "openai:gpt-oss-20b",
+      "slug": "gpt-oss-20b",
+      "name": "gpt-oss-20b",
+      "provider_id": "openai",
+      "family": "gpt-oss",
+      "release_date": "2025-08-05",
+      "status": "active",
+      "distribution_types": [
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 131072,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "gpt-oss-20b official model documentation",
+        "source_url": "https://platform.openai.com/docs/models",
+        "source_metric_id": "model:gpt-oss-20b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-08-05",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 20,
+        "active_parameter_count_billions": 3.6,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/openai/gpt-oss-20b",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "openai:chatgpt-4o",
+      "slug": "chatgpt-4o",
+      "name": "ChatGPT-4o",
+      "provider_id": "openai",
+      "family": "GPT-4o",
+      "release_date": "2024-05-13",
+      "status": "legacy",
+      "distribution_types": [
+        "product_only"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 128000,
+      "reasoning_capability": false,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": true,
+      "product_availability": [
+        "ChatGPT"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "audio",
+        "product model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "ChatGPT-4o official model documentation",
+        "source_url": "https://platform.openai.com/docs/models",
+        "source_metric_id": "model:chatgpt-4o",
+        "observation_date": "2026-09-07",
+        "effective_date": "2024-05-13",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "meta:llama-4-scout",
+      "slug": "llama-4-scout",
+      "name": "Llama 4 Scout",
+      "provider_id": "meta",
+      "family": "Llama 4",
+      "release_date": "2025-04-05",
+      "status": "active",
+      "distribution_types": [
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Llama 4 Community License",
+      "weights_available": true,
+      "context_window_tokens": 10000000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": null,
+      "coding_capability": null,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "multi-image",
+        "long context"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Llama 4 Scout official model documentation",
+        "source_url": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+        "source_metric_id": "model:llama-4-scout",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-05",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 109,
+        "active_parameter_count_billions": 17,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+        "minimum_useful_hardware_class": "Single NVIDIA H100"
+      }
+    },
+    {
+      "id": "meta:llama-4-maverick",
+      "slug": "llama-4-maverick",
+      "name": "Llama 4 Maverick",
+      "provider_id": "meta",
+      "family": "Llama 4",
+      "release_date": "2025-04-05",
+      "status": "active",
+      "distribution_types": [
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Llama 4 Community License",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": null,
+      "coding_capability": null,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "multi-image"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Llama 4 Maverick official model documentation",
+        "source_url": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+        "source_metric_id": "model:llama-4-maverick",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-05",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 400,
+        "active_parameter_count_billions": 17,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "deepseek:deepseek-v3",
+      "slug": "deepseek-v3",
+      "name": "DeepSeek-V3",
+      "provider_id": "deepseek",
+      "family": "DeepSeek V3",
+      "release_date": "2024-12-26",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "DeepSeek Model License",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": false,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "DeepSeek Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "DeepSeek-V3 official model documentation",
+        "source_url": "https://api-docs.deepseek.com/news/news1226/",
+        "source_metric_id": "model:deepseek-v3",
+        "observation_date": "2026-09-07",
+        "effective_date": "2024-12-26",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 671,
+        "active_parameter_count_billions": 37,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://github.com/deepseek-ai/DeepSeek-V3",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "deepseek:deepseek-r1",
+      "slug": "deepseek-r1",
+      "name": "DeepSeek-R1",
+      "provider_id": "deepseek",
+      "family": "DeepSeek R1",
+      "release_date": "2025-01-20",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": null,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "DeepSeek Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "DeepSeek-R1 official model documentation",
+        "source_url": "https://api-docs.deepseek.com/news/news250120",
+        "source_metric_id": "model:deepseek-r1",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-01-20",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 671,
+        "active_parameter_count_billions": 37,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "mistral:mistral-medium-3-5",
+      "slug": "mistral-medium-3-5",
+      "name": "Mistral Medium 3.5",
+      "provider_id": "mistral",
+      "family": "Mistral Medium",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Modified MIT",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Mistral Vibe"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning",
+        "coding",
+        "agents"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Mistral Medium 3.5 official model documentation",
+        "source_url": "https://docs.mistral.ai/models",
+        "source_metric_id": "model:mistral-medium-3-5",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 128,
+        "active_parameter_count_billions": 128,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://docs.mistral.ai/models",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "mistral:mistral-small-4",
+      "slug": "mistral-small-4",
+      "name": "Mistral Small 4",
+      "provider_id": "mistral",
+      "family": "Mistral Small",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Mistral Small 4 official model documentation",
+        "source_url": "https://docs.mistral.ai/models",
+        "source_metric_id": "model:mistral-small-4",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": null,
+        "active_parameter_count_billions": null,
+        "architecture_type": "Hybrid transformer",
+        "known_quantizations": [],
+        "weights_url": "https://docs.mistral.ai/models",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "mistral:mistral-large-3",
+      "slug": "mistral-large-3",
+      "name": "Mistral Large 3",
+      "provider_id": "mistral",
+      "family": "Mistral Large",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Mistral Large 3 official model documentation",
+        "source_url": "https://docs.mistral.ai/models",
+        "source_metric_id": "model:mistral-large-3",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": null,
+        "active_parameter_count_billions": null,
+        "architecture_type": null,
+        "known_quantizations": [],
+        "weights_url": "https://docs.mistral.ai/models",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "mistral:ministral-3-3b",
+      "slug": "ministral-3-3b",
+      "name": "Ministral 3 3B",
+      "provider_id": "mistral",
+      "family": "Ministral 3",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": null,
+      "multimodal_capability": true,
+      "tool_use_capability": null,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "small model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Ministral 3 3B official model documentation",
+        "source_url": "https://docs.mistral.ai/models",
+        "source_metric_id": "model:ministral-3-3b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 3,
+        "active_parameter_count_billions": 3,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://docs.mistral.ai/models",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "qwen:qwen3-235b-a22b",
+      "slug": "qwen3-235b-a22b",
+      "name": "Qwen3-235B-A22B",
+      "provider_id": "qwen",
+      "family": "Qwen3",
+      "release_date": "2025-04-29",
+      "status": "active",
+      "distribution_types": [
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": true,
+      "product_availability": [
+        "Qwen Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "agentic"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Qwen3-235B-A22B official model documentation",
+        "source_url": "https://qwenlm.github.io/blog/qwen3/",
+        "source_metric_id": "model:qwen3-235b-a22b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-29",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 235,
+        "active_parameter_count_billions": 22,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/Qwen/Qwen3-235B-A22B",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "qwen:qwen3-30b-a3b",
+      "slug": "qwen3-30b-a3b",
+      "name": "Qwen3-30B-A3B",
+      "provider_id": "qwen",
+      "family": "Qwen3",
+      "release_date": "2025-04-29",
+      "status": "active",
+      "distribution_types": [
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": true,
+      "product_availability": [
+        "Qwen Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "agentic"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Qwen3-30B-A3B official model documentation",
+        "source_url": "https://qwenlm.github.io/blog/qwen3/",
+        "source_metric_id": "model:qwen3-30b-a3b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-29",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 30,
+        "active_parameter_count_billions": 3,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "qwen:qwen3-8b",
+      "slug": "qwen3-8b",
+      "name": "Qwen3-8B",
+      "provider_id": "qwen",
+      "family": "Qwen3",
+      "release_date": "2025-04-29",
+      "status": "active",
+      "distribution_types": [
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": true,
+      "product_availability": [
+        "Qwen Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "agentic"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Qwen3-8B official model documentation",
+        "source_url": "https://qwenlm.github.io/blog/qwen3/",
+        "source_metric_id": "model:qwen3-8b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-29",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 8,
+        "active_parameter_count_billions": 8,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/Qwen/Qwen3-8B",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "qwen:qwen3-0-6b",
+      "slug": "qwen3-0-6b",
+      "name": "Qwen3-0.6B",
+      "provider_id": "qwen",
+      "family": "Qwen3",
+      "release_date": "2025-04-29",
+      "status": "active",
+      "distribution_types": [
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "Apache 2.0",
+      "weights_available": true,
+      "context_window_tokens": 32000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": true,
+      "product_availability": [
+        "Qwen Chat"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "agentic"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Qwen3-0.6B official model documentation",
+        "source_url": "https://qwenlm.github.io/blog/qwen3/",
+        "source_metric_id": "model:qwen3-0-6b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-29",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 0.6,
+        "active_parameter_count_billions": 0.6,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/Qwen/Qwen3-0.6B",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "cohere:command-a-plus-05-2026",
+      "slug": "command-a-plus-05-2026",
+      "name": "Command A+",
+      "provider_id": "cohere",
+      "family": "Command A",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "reasoning",
+        "tool use",
+        "translation"
+      ],
+      "external_ids": {
+        "cohere_api": "command-a-plus-05-2026"
+      },
+      "provenance": {
+        "source_name": "Command A+ official model documentation",
+        "source_url": "https://docs.cohere.com/docs/models",
+        "source_metric_id": "model:command-a-plus-05-2026",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "cohere:command-a-03-2025",
+      "slug": "command-a-03-2025",
+      "name": "Command A",
+      "provider_id": "cohere",
+      "family": "Command A",
+      "release_date": "2025-03-13",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 256000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": true,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "RAG"
+      ],
+      "external_ids": {
+        "cohere_api": "command-a-03-2025"
+      },
+      "provenance": {
+        "source_name": "Command A official model documentation",
+        "source_url": "https://docs.cohere.com/docs/command-a",
+        "source_metric_id": "model:command-a-03-2025",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-03-13",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "cohere:command-r7b-12-2024",
+      "slug": "command-r7b-12-2024",
+      "name": "Command R7B",
+      "provider_id": "cohere",
+      "family": "Command R",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "RAG"
+      ],
+      "external_ids": {
+        "cohere_api": "command-r7b-12-2024"
+      },
+      "provenance": {
+        "source_name": "Command R7B official model documentation",
+        "source_url": "https://docs.cohere.com/docs/models",
+        "source_metric_id": "model:command-r7b-12-2024",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "microsoft:phi-4",
+      "slug": "phi-4",
+      "name": "Phi-4",
+      "provider_id": "microsoft",
+      "family": "Phi-4",
+      "release_date": "2024-12-12",
+      "status": "active",
+      "distribution_types": [
+        "hosted",
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": 16384,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": false,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "small model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Phi-4 official model documentation",
+        "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/models",
+        "source_metric_id": "model:phi-4",
+        "observation_date": "2026-09-07",
+        "effective_date": "2024-12-12",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 14,
+        "active_parameter_count_billions": 14,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/microsoft/phi-4",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "microsoft:phi-4-mini-instruct",
+      "slug": "phi-4-mini-instruct",
+      "name": "Phi-4-mini-instruct",
+      "provider_id": "microsoft",
+      "family": "Phi-4",
+      "release_date": "2025-02-26",
+      "status": "active",
+      "distribution_types": [
+        "hosted",
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": 131072,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": false,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "coding",
+        "small model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Phi-4-mini-instruct official model documentation",
+        "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/models",
+        "source_metric_id": "model:phi-4-mini-instruct",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-02-26",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 3.8,
+        "active_parameter_count_billions": 3.8,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/microsoft/Phi-4-mini-instruct",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "microsoft:phi-4-multimodal-instruct",
+      "slug": "phi-4-multimodal-instruct",
+      "name": "Phi-4-multimodal-instruct",
+      "provider_id": "microsoft",
+      "family": "Phi-4",
+      "release_date": "2025-02-26",
+      "status": "active",
+      "distribution_types": [
+        "hosted",
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": 131072,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": false,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "audio",
+        "reasoning",
+        "small model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Phi-4-multimodal-instruct official model documentation",
+        "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/models",
+        "source_metric_id": "model:phi-4-multimodal-instruct",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-02-26",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 5.6,
+        "active_parameter_count_billions": 5.6,
+        "architecture_type": "Multimodal transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/microsoft/Phi-4-multimodal-instruct",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "nvidia:nemotron-3-5-lightning-30b-a3b",
+      "slug": "nemotron-3-5-lightning-30b-a3b",
+      "name": "Nemotron 3.5 Lightning 30B-A3B",
+      "provider_id": "nvidia",
+      "family": "Nemotron 3.5",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "NVIDIA Open Model License",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Nemotron 3.5 Lightning 30B-A3B official model documentation",
+        "source_url": "https://build.nvidia.com/nvidia/nemotron-3.5-lightning-30b-a3b/modelcard",
+        "source_metric_id": "model:nemotron-3-5-lightning-30b-a3b",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 30,
+        "active_parameter_count_billions": 3,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-30B-A3B-BF16",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "nvidia:llama-3-1-nemotron-nano-8b-v1",
+      "slug": "llama-3-1-nemotron-nano-8b-v1",
+      "name": "Llama 3.1 Nemotron Nano 8B v1",
+      "provider_id": "nvidia",
+      "family": "Nemotron Nano",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "hosted",
+        "open_weight",
+        "local"
+      ],
+      "openness": "open",
+      "license": "NVIDIA Open Model License",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": false,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "small model"
+      ],
+      "external_ids": {},
+      "provenance": {
+        "source_name": "Llama 3.1 Nemotron Nano 8B v1 official model documentation",
+        "source_url": "https://build.nvidia.com/nvidia/llama-3_1-nemotron-nano-8b-v1/modelcard",
+        "source_metric_id": "model:llama-3-1-nemotron-nano-8b-v1",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 8,
+        "active_parameter_count_billions": 8,
+        "architecture_type": "Dense transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "amazon:nova-2-lite",
+      "slug": "nova-2-lite",
+      "name": "Amazon Nova 2 Lite",
+      "provider_id": "amazon",
+      "family": "Nova 2",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 1000000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "video",
+        "reasoning",
+        "tool use"
+      ],
+      "external_ids": {
+        "bedrock": "amazon.nova-2-lite"
+      },
+      "provenance": {
+        "source_name": "Amazon Nova 2 Lite official model documentation",
+        "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+        "source_metric_id": "model:nova-2-lite",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "amazon:nova-premier",
+      "slug": "nova-premier",
+      "name": "Amazon Nova Premier",
+      "provider_id": "amazon",
+      "family": "Nova",
+      "release_date": "2025-04-30",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 1000000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "video",
+        "reasoning",
+        "agents"
+      ],
+      "external_ids": {
+        "bedrock": "amazon.nova-premier"
+      },
+      "provenance": {
+        "source_name": "Amazon Nova Premier official model documentation",
+        "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+        "source_metric_id": "model:nova-premier",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-04-30",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "amazon:nova-micro",
+      "slug": "nova-micro",
+      "name": "Amazon Nova Micro",
+      "provider_id": "amazon",
+      "family": "Nova",
+      "release_date": "2024-12-03",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 128000,
+      "reasoning_capability": false,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": null,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "tool use",
+        "low cost"
+      ],
+      "external_ids": {
+        "bedrock": "amazon.nova-micro"
+      },
+      "provenance": {
+        "source_name": "Amazon Nova Micro official model documentation",
+        "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+        "source_metric_id": "model:nova-micro",
+        "observation_date": "2026-09-07",
+        "effective_date": "2024-12-03",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "moonshot:kimi-k2-6",
+      "slug": "kimi-k2-6",
+      "name": "Kimi K2.6",
+      "provider_id": "moonshot",
+      "family": "Kimi K2",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Modified MIT",
+      "weights_available": true,
+      "context_window_tokens": 256000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Kimi"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning",
+        "agents",
+        "coding"
+      ],
+      "external_ids": {
+        "kimi_api": "kimi-k2.6"
+      },
+      "provenance": {
+        "source_name": "Kimi K2.6 official model documentation",
+        "source_url": "https://platform.kimi.ai/docs/models",
+        "source_metric_id": "model:kimi-k2-6",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": null,
+        "active_parameter_count_billions": null,
+        "architecture_type": "Native multimodal transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "moonshot:kimi-k2-5",
+      "slug": "kimi-k2-5",
+      "name": "Kimi K2.5",
+      "provider_id": "moonshot",
+      "family": "Kimi K2",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "Modified MIT",
+      "weights_available": true,
+      "context_window_tokens": 256000,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": true,
+      "product_availability": [
+        "Kimi"
+      ],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning",
+        "agents",
+        "coding"
+      ],
+      "external_ids": {
+        "kimi_api": "kimi-k2.5"
+      },
+      "provenance": {
+        "source_name": "Kimi K2.5 official model documentation",
+        "source_url": "https://platform.kimi.ai/docs/models",
+        "source_metric_id": "model:kimi-k2-5",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": null,
+        "active_parameter_count_billions": null,
+        "architecture_type": "Native multimodal transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/moonshotai/Kimi-K2.5",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "minimax:minimax-m2-7",
+      "slug": "minimax-m2-7",
+      "name": "MiniMax M2.7",
+      "provider_id": "minimax",
+      "family": "MiniMax M2",
+      "release_date": "2026-03-18",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 204800,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": true,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {
+        "minimax_api": "MiniMax-M2.7"
+      },
+      "provenance": {
+        "source_name": "MiniMax M2.7 official model documentation",
+        "source_url": "https://platform.minimax.io/docs/guides/models-intro",
+        "source_metric_id": "model:minimax-m2-7",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-03-18",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "minimax:minimax-m2-5",
+      "slug": "minimax-m2-5",
+      "name": "MiniMax M2.5",
+      "provider_id": "minimax",
+      "family": "MiniMax M2",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted"
+      ],
+      "openness": "closed",
+      "license": null,
+      "weights_available": false,
+      "context_window_tokens": 204800,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {
+        "minimax_api": "MiniMax-M2.5"
+      },
+      "provenance": {
+        "source_name": "MiniMax M2.5 official model documentation",
+        "source_url": "https://platform.minimax.io/docs/guides/models-intro",
+        "source_metric_id": "model:minimax-m2-5",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "id": "zhipu:glm-4-5",
+      "slug": "glm-4-5",
+      "name": "GLM-4.5",
+      "provider_id": "zhipu",
+      "family": "GLM-4.5",
+      "release_date": "2025-07-28",
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": 128000,
+      "reasoning_capability": true,
+      "multimodal_capability": false,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "reasoning",
+        "tool use",
+        "coding"
+      ],
+      "external_ids": {
+        "zai_api": "glm-4.5"
+      },
+      "provenance": {
+        "source_name": "GLM-4.5 official model documentation",
+        "source_url": "https://docs.z.ai/guides/llm/glm-4.5",
+        "source_metric_id": "model:glm-4-5",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-07-28",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 355,
+        "active_parameter_count_billions": 32,
+        "architecture_type": "Mixture of experts transformer",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/zai-org/GLM-4.5",
+        "minimum_useful_hardware_class": null
+      }
+    },
+    {
+      "id": "zhipu:glm-4-5v",
+      "slug": "glm-4-5v",
+      "name": "GLM-4.5V",
+      "provider_id": "zhipu",
+      "family": "GLM-4.5",
+      "release_date": null,
+      "status": "active",
+      "distribution_types": [
+        "api",
+        "hosted",
+        "open_weight"
+      ],
+      "openness": "open",
+      "license": "MIT",
+      "weights_available": true,
+      "context_window_tokens": null,
+      "reasoning_capability": true,
+      "multimodal_capability": true,
+      "tool_use_capability": true,
+      "coding_capability": true,
+      "api_available": true,
+      "product_available": false,
+      "product_availability": [],
+      "pricing_available": false,
+      "capabilities": [
+        "text",
+        "image",
+        "video",
+        "reasoning",
+        "GUI",
+        "coding"
+      ],
+      "external_ids": {
+        "zai_api": "glm-4.5v"
+      },
+      "provenance": {
+        "source_name": "GLM-4.5V official model documentation",
+        "source_url": "https://docs.z.ai/guides/vlm/glm-4.5v",
+        "source_metric_id": "model:glm-4-5v",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-09-07",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_documentation",
+        "confidence": "high",
+        "status": "verified"
+      },
+      "open_model": {
+        "parameter_count_billions": 106,
+        "active_parameter_count_billions": 12,
+        "architecture_type": "Multimodal mixture of experts",
+        "known_quantizations": [],
+        "weights_url": "https://huggingface.co/zai-org/GLM-4.5V",
+        "minimum_useful_hardware_class": null
+      }
     }
   ],
   "benchmarks": [
     {
-      "id": "agents-last-exam-v1", "slug": "agents-last-exam", "name": "Agents' Last Exam", "version": "launch-table-2026-07-09", "unit": "percent", "higher_is_better": true, "description": "Provider-reported long-running professional workflow evaluation; only observations from the same launch table are compared.",
-      "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "benchmark:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+      "id": "agents-last-exam-v1",
+      "slug": "agents-last-exam",
+      "name": "Agents' Last Exam",
+      "version": "launch-table-2026-07-09",
+      "unit": "percent",
+      "higher_is_better": true,
+      "description": "Provider-reported long-running professional workflow evaluation; only observations from the same launch table are compared.",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "benchmark:agents-last-exam",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
     },
     {
-      "id": "aa-intelligence-index-v4.1", "slug": "aa-intelligence-index-v4-1", "name": "Artificial Analysis Intelligence Index", "version": "4.1", "unit": "index_score", "higher_is_better": true, "description": "Third-party index values reproduced in one provider launch table; comparability is limited to that exact table and configuration.",
-      "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "benchmark:aa-intelligence-index-v4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+      "id": "aa-intelligence-index-v4.1",
+      "slug": "aa-intelligence-index-v4-1",
+      "name": "Artificial Analysis Intelligence Index",
+      "version": "4.1",
+      "unit": "index_score",
+      "higher_is_better": true,
+      "description": "Third-party index values reproduced in one provider launch table; comparability is limited to that exact table and configuration.",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "benchmark:aa-intelligence-index-v4.1",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
     },
     {
-      "id": "terminal-bench-2.1", "slug": "terminal-bench-2-1", "name": "Terminal-Bench", "version": "2.1", "unit": "percent", "higher_is_better": true, "description": "Provider-reported coding and agentic benchmark; not compared with observations from a different evaluation harness.",
-      "provenance": {"source_name": "Google Gemini 3.5 launch post", "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/", "source_metric_id": "benchmark:terminal-bench-2.1", "observation_date": "2026-05-19", "effective_date": "2026-05-19", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}
+      "id": "terminal-bench-2.1",
+      "slug": "terminal-bench-2-1",
+      "name": "Terminal-Bench",
+      "version": "2.1",
+      "unit": "percent",
+      "higher_is_better": true,
+      "description": "Provider-reported coding and agentic benchmark; not compared with observations from a different evaluation harness.",
+      "provenance": {
+        "source_name": "Google Gemini 3.5 launch post",
+        "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source_metric_id": "benchmark:terminal-bench-2.1",
+        "observation_date": "2026-05-19",
+        "effective_date": "2026-05-19",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
     }
   ],
   "pricing_observations": [
-    {"model_id": "openai:gpt-5.6-sol", "input_price": 4, "output_price": 20, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol", "source_metric_id": "pricing:gpt-5.6-sol:standard", "observation_date": "2026-09-07", "effective_date": "2026-08-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "openai:gpt-5.6-terra", "input_price": 2, "output_price": 12, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra", "source_metric_id": "pricing:gpt-5.6-terra:standard", "observation_date": "2026-09-07", "effective_date": "2026-07-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "openai:gpt-5.6-luna", "input_price": 0.2, "output_price": 1.2, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "OpenAI model documentation", "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna", "source_metric_id": "pricing:gpt-5.6-luna:standard", "observation_date": "2026-09-07", "effective_date": "2026-07-30", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "anthropic:claude-fable-5", "input_price": 10, "output_price": 50, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "source_metric_id": "pricing:claude-fable-5:standard", "observation_date": "2026-06-09", "effective_date": "2026-06-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
-    {"model_id": "anthropic:claude-opus-5", "input_price": 5, "output_price": 25, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-opus-5", "source_metric_id": "pricing:claude-opus-5:standard", "observation_date": "2026-07-24", "effective_date": "2026-07-24", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
-    {"model_id": "anthropic:claude-sonnet-5", "input_price": 3, "output_price": 15, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Anthropic launch pricing", "source_url": "https://www.anthropic.com/news/claude-sonnet-5", "source_metric_id": "pricing:claude-sonnet-5:standard", "observation_date": "2026-06-30", "effective_date": "2026-09-01", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_announcement", "confidence": "high", "status": "verified"}},
-    {"model_id": "google:gemini-3.8-flash", "input_price": 0.75, "output_price": 3.75, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_introductory", "provenance": {"source_name": "Gemini API pricing", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "source_metric_id": "pricing:gemini-3.8-flash:standard", "observation_date": "2026-09-02", "effective_date": "2026-09-02", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "google:gemini-3.7-flash", "input_price": 0.75, "output_price": 3.75, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_introductory", "provenance": {"source_name": "Gemini API model guide", "source_url": "https://ai.google.dev/gemini-api/docs/latest-model", "source_metric_id": "pricing:gemini-3.7-flash:standard", "observation_date": "2026-08-12", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "google:gemini-3.5-flash-lite", "input_price": 0.3, "output_price": 2.5, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard", "provenance": {"source_name": "Gemini API pricing", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "source_metric_id": "pricing:gemini-3.5-flash-lite:standard", "observation_date": "2026-08-11", "effective_date": "2026-07-21", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "xai:grok-4.6", "input_price": 2, "output_price": 6, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.6", "source_metric_id": "pricing:grok-4.6:short-context", "observation_date": "2026-08-21", "effective_date": "2026-08-12", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "xai:grok-4.5", "input_price": 2, "output_price": 6, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.5", "source_metric_id": "pricing:grok-4.5:short-context", "observation_date": "2026-09-02", "effective_date": "2026-07-08", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}},
-    {"model_id": "xai:grok-4.3", "input_price": 1.25, "output_price": 2.5, "unit": "usd_per_1m_tokens", "currency": "USD", "pricing_tier": "standard_short_context", "maximum_prompt_tokens_for_rate": 199999, "provenance": {"source_name": "xAI model pricing", "source_url": "https://docs.x.ai/developers/models/grok-4.3", "source_metric_id": "pricing:grok-4.3:short-context", "observation_date": "2026-09-07", "effective_date": "2026-05-15", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_pricing_documentation", "confidence": "high", "status": "verified"}}
+    {
+      "model_id": "openai:gpt-5.6-sol",
+      "input_price": 4,
+      "output_price": 20,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol",
+        "source_metric_id": "pricing:gpt-5.6-sol:standard",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-08-21",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-terra",
+      "input_price": 2,
+      "output_price": 12,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra",
+        "source_metric_id": "pricing:gpt-5.6-terra:standard",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-07-30",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-luna",
+      "input_price": 0.2,
+      "output_price": 1.2,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "OpenAI model documentation",
+        "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna",
+        "source_metric_id": "pricing:gpt-5.6-luna:standard",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-07-30",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "anthropic:claude-fable-5",
+      "input_price": 10,
+      "output_price": 50,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "Anthropic launch pricing",
+        "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "source_metric_id": "pricing:claude-fable-5:standard",
+        "observation_date": "2026-06-09",
+        "effective_date": "2026-06-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_announcement",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "anthropic:claude-opus-5",
+      "input_price": 5,
+      "output_price": 25,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "Anthropic launch pricing",
+        "source_url": "https://www.anthropic.com/news/claude-opus-5",
+        "source_metric_id": "pricing:claude-opus-5:standard",
+        "observation_date": "2026-07-24",
+        "effective_date": "2026-07-24",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_announcement",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "anthropic:claude-sonnet-5",
+      "input_price": 3,
+      "output_price": 15,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "Anthropic launch pricing",
+        "source_url": "https://www.anthropic.com/news/claude-sonnet-5",
+        "source_metric_id": "pricing:claude-sonnet-5:standard",
+        "observation_date": "2026-06-30",
+        "effective_date": "2026-09-01",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_announcement",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "google:gemini-3.8-flash",
+      "input_price": 0.75,
+      "output_price": 3.75,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard_introductory",
+      "provenance": {
+        "source_name": "Gemini API pricing",
+        "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "source_metric_id": "pricing:gemini-3.8-flash:standard",
+        "observation_date": "2026-09-02",
+        "effective_date": "2026-09-02",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "google:gemini-3.7-flash",
+      "input_price": 0.75,
+      "output_price": 3.75,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard_introductory",
+      "provenance": {
+        "source_name": "Gemini API model guide",
+        "source_url": "https://ai.google.dev/gemini-api/docs/latest-model",
+        "source_metric_id": "pricing:gemini-3.7-flash:standard",
+        "observation_date": "2026-08-12",
+        "effective_date": "2026-08-12",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "google:gemini-3.5-flash-lite",
+      "input_price": 0.3,
+      "output_price": 2.5,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "Gemini API pricing",
+        "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "source_metric_id": "pricing:gemini-3.5-flash-lite:standard",
+        "observation_date": "2026-08-11",
+        "effective_date": "2026-07-21",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "xai:grok-4.6",
+      "input_price": 2,
+      "output_price": 6,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard_short_context",
+      "maximum_prompt_tokens_for_rate": 199999,
+      "provenance": {
+        "source_name": "xAI model pricing",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.6",
+        "source_metric_id": "pricing:grok-4.6:short-context",
+        "observation_date": "2026-08-21",
+        "effective_date": "2026-08-12",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "xai:grok-4.5",
+      "input_price": 2,
+      "output_price": 6,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard_short_context",
+      "maximum_prompt_tokens_for_rate": 199999,
+      "provenance": {
+        "source_name": "xAI model pricing",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.5",
+        "source_metric_id": "pricing:grok-4.5:short-context",
+        "observation_date": "2026-09-02",
+        "effective_date": "2026-07-08",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "xai:grok-4.3",
+      "input_price": 1.25,
+      "output_price": 2.5,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard_short_context",
+      "maximum_prompt_tokens_for_rate": 199999,
+      "provenance": {
+        "source_name": "xAI model pricing",
+        "source_url": "https://docs.x.ai/developers/models/grok-4.3",
+        "source_metric_id": "pricing:grok-4.3:short-context",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-05-15",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "cohere:command-a-03-2025",
+      "input_price": 2.5,
+      "output_price": 10,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "standard",
+      "provenance": {
+        "source_name": "Cohere Command A pricing",
+        "source_url": "https://docs.cohere.com/docs/command-a",
+        "source_metric_id": "pricing:command-a-03-2025:standard",
+        "observation_date": "2026-09-07",
+        "effective_date": "2025-03-13",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    },
+    {
+      "model_id": "minimax:minimax-m2-7",
+      "input_price": 0.3,
+      "output_price": 1.2,
+      "cached_input_price": 0.06,
+      "unit": "usd_per_1m_tokens",
+      "currency": "USD",
+      "pricing_tier": "pay_as_you_go",
+      "provenance": {
+        "source_name": "MiniMax pay-as-you-go pricing",
+        "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "source_metric_id": "pricing:minimax-m2-7:paygo",
+        "observation_date": "2026-09-07",
+        "effective_date": "2026-03-18",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_pricing_documentation",
+        "confidence": "high",
+        "status": "verified"
+      }
+    }
   ],
   "performance_observations": [
-    {"model_id": "openai:gpt-5.6-sol", "benchmark_id": "agents-last-exam-v1", "value": 52.7, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-sol:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
-    {"model_id": "openai:gpt-5.6-terra", "benchmark_id": "agents-last-exam-v1", "value": 50.4, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-terra:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
-    {"model_id": "openai:gpt-5.6-luna", "benchmark_id": "agents-last-exam-v1", "value": 50.3, "unit": "percent", "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-luna:agents-last-exam", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
-    {"model_id": "openai:gpt-5.6-sol", "benchmark_id": "aa-intelligence-index-v4.1", "value": 58.9, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-sol:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
-    {"model_id": "openai:gpt-5.6-terra", "benchmark_id": "aa-intelligence-index-v4.1", "value": 55, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-terra:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}},
-    {"model_id": "openai:gpt-5.6-luna", "benchmark_id": "aa-intelligence-index-v4.1", "value": 51.2, "unit": "index_score", "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning", "comparison_group": "openai-gpt-5.6-launch-2026-07-09", "provenance": {"source_name": "OpenAI GPT-5.6 launch table", "source_url": "https://openai.com/index/gpt-5-6/", "source_metric_id": "performance:gpt-5.6-luna:aa-index-4.1", "observation_date": "2026-07-09", "effective_date": "2026-07-09", "retrieved_at": "2026-09-07T00:00:00Z", "source_type": "official_provider_evaluation", "confidence": "medium", "status": "provider_reported"}}
+    {
+      "model_id": "openai:gpt-5.6-sol",
+      "benchmark_id": "agents-last-exam-v1",
+      "value": 52.7,
+      "unit": "percent",
+      "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-sol:agents-last-exam",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-terra",
+      "benchmark_id": "agents-last-exam-v1",
+      "value": 50.4,
+      "unit": "percent",
+      "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-terra:agents-last-exam",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-luna",
+      "benchmark_id": "agents-last-exam-v1",
+      "value": 50.3,
+      "unit": "percent",
+      "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-luna:agents-last-exam",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-sol",
+      "benchmark_id": "aa-intelligence-index-v4.1",
+      "value": 58.9,
+      "unit": "index_score",
+      "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-sol:aa-index-4.1",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-terra",
+      "benchmark_id": "aa-intelligence-index-v4.1",
+      "value": 55,
+      "unit": "index_score",
+      "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-terra:aa-index-4.1",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    },
+    {
+      "model_id": "openai:gpt-5.6-luna",
+      "benchmark_id": "aa-intelligence-index-v4.1",
+      "value": 51.2,
+      "unit": "index_score",
+      "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+      "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "provenance": {
+        "source_name": "OpenAI GPT-5.6 launch table",
+        "source_url": "https://openai.com/index/gpt-5-6/",
+        "source_metric_id": "performance:gpt-5.6-luna:aa-index-4.1",
+        "observation_date": "2026-07-09",
+        "effective_date": "2026-07-09",
+        "retrieved_at": "2026-09-07T00:00:00Z",
+        "source_type": "official_provider_evaluation",
+        "confidence": "medium",
+        "status": "provider_reported"
+      }
+    }
   ]
 }

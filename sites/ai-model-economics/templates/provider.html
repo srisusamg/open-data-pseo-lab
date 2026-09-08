@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}{{ provider.name }} model API pricing — AI Model Economics{% endblock %}
-{% block description %}Current curated API pricing, context windows, and release dates for {{ provider.models|length }} {{ provider.name }} models.{% endblock %}
+{% block title %}{{ provider.name }} model catalog — AI Model Economics{% endblock %}
+{% block description %}Verified taxonomy, access, context, status, and optional pricing for {{ provider.models|length }} {{ provider.name }} models.{% endblock %}
 {% block content %}
 <p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Providers / {{ provider.name }}</p>
 <section class="page-heading"><p class="eyebrow">Provider profile</p><h1>{{ provider.name }}</h1><p class="lede">{{ provider.models|length }} quality-gated models with official-source facts.</p></section>
-<div class="table-wrap"><table><thead><tr><th>Model</th><th>Released</th><th>Context</th><th>Input / 1M</th><th>Output / 1M</th></tr></thead><tbody>{% for model in provider.models %}<tr><td><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></td><td>{{ model.release_date }}</td><td>{{ model.context_window_tokens|tokens }}</td><td>{{ model.pricing.input_price_per_million_tokens|money }}</td><td>{{ model.pricing.output_price_per_million_tokens|money }}</td></tr>{% endfor %}</tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Model</th><th>Status</th><th>Distribution</th><th>Context</th><th>Input / 1M</th><th>Output / 1M</th></tr></thead><tbody>{% for model in provider.models %}<tr><td><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></td><td>{{ model.status }}</td><td>{{ model.distribution_types|join(', ')|replace('_', ' ') }}</td><td>{{ model.context_window_tokens|tokens if model.context_window_tokens else '—' }}</td><td>{{ model.pricing.input_price_per_million_tokens|money if model.pricing else '—' }}</td><td>{{ model.pricing.output_price_per_million_tokens|money if model.pricing else '—' }}</td></tr>{% endfor %}</tbody></table></div>
 <p class="source"><a href="{{ provider.provenance.source_url }}">Official provider documentation</a>, observed {{ provider.provenance.observation_date }}.</p>
 {% endblock %}

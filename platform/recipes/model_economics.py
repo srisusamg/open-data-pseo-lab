@@ -15,6 +15,7 @@ PROVENANCE_FIELDS = (
 
 INSIGHT_SCORES = {
     "price_position": 100, "context_position": 90, "release_recency": 80,
+    "catalog_scope": 60,
     "value_standout": 70, "cheaper_input": 100, "cheaper_output": 95,
     "larger_context": 90, "performance_leader": 85, "value_leader": 80,
     "ranking_leader": 100, "ranking_spread": 90, "ranking_cluster": 80,
@@ -23,7 +24,7 @@ INSIGHT_ORDER = {kind: index for index, kind in enumerate(INSIGHT_SCORES)}
 
 
 def complete_dated_provenance(record: dict) -> bool:
-    value = record.get("provenance")
+    value = record.get("provenance", record)
     return isinstance(value, dict) and all(value.get(key) not in (None, "") for key in PROVENANCE_FIELDS)
 
 
@@ -49,7 +50,7 @@ def release_path(year: int) -> str:
 
 def order_releases(models: Iterable[dict], year: int) -> list[dict]:
     return sorted(
-        (item for item in models if item["release_date"].startswith(str(year))),
+        (item for item in models if item["release_date"] and item["release_date"].startswith(str(year))),
         key=lambda item: (-date.fromisoformat(item["release_date"]).toordinal(), item["name"]),
     )
 
@@ -150,6 +151,12 @@ def enrich_models(dataset: dict, config: dict) -> list[dict]:
         model.update({
             "provider": providers[model["provider_id"]], "pricing": price, "blended_cost": blend,
             "performance": performance, "value_metrics": [item for item in values if item],
+            "ranking_eligibility": {
+                "input_cost": price is not None,
+                "output_cost": price is not None,
+                "context_window": model["context_window_tokens"] is not None,
+                "benchmarks": sorted({item["benchmark_id"] for item in performance}),
+            },
         })
         enriched.append(model)
     return sorted(enriched, key=lambda item: (item["provider"]["name"], item["name"]))
@@ -176,6 +183,8 @@ def _render(insight: dict) -> str:
         return f"Its context window ranks {_ordinal(evidence['position'])} largest among {evidence['total']} eligible models."
     if kind == "release_recency":
         return f"It was released {evidence['days']} days before this catalog's {evidence['as_of_date']} as-of date."
+    if kind == "catalog_scope":
+        return f"It is cataloged as an {evidence['openness']} model available through {evidence['distribution']}."
     if kind == "value_standout":
         return f"On {evidence['benchmark_name']}, its versioned intelligence-per-dollar value ranks {_ordinal(evidence['position'])} within a {evidence['total']}-model comparable cohort."
     if kind in {"cheaper_input", "cheaper_output"}:
@@ -198,15 +207,20 @@ def _render(insight: dict) -> str:
 
 def model_insights(model: dict, models: list[dict], benchmarks: dict[str, dict], as_of_date: str) -> dict:
     candidates = []
+    candidates.append(_candidate("model_profile", "catalog_scope", model["id"], model["openness"], {
+        "openness": model["openness"], "distribution": ", ".join(value.replace("_", " ") for value in model["distribution_types"]),
+    }, metric_id="catalog-taxonomy"))
     priced = sorted((item for item in models if item["blended_cost"]), key=lambda item: (item["blended_cost"]["value"], item["name"]))
     if model["blended_cost"]:
         position = 1 + sum(item["blended_cost"]["value"] < model["blended_cost"]["value"] for item in priced)
         candidates.append(_candidate("model_profile", "price_position", model["id"], position, {"position": position, "total": len(priced)}, metric_id="blended-cost"))
-    contexts = sorted(models, key=lambda item: (-item["context_window_tokens"], item["name"]))
-    position = 1 + sum(item["context_window_tokens"] > model["context_window_tokens"] for item in contexts)
-    candidates.append(_candidate("model_profile", "context_position", model["id"], position, {"position": position, "total": len(contexts)}, metric_id="context-window"))
-    days = (date.fromisoformat(as_of_date) - date.fromisoformat(model["release_date"])).days
-    candidates.append(_candidate("model_profile", "release_recency", model["id"], days, {"days": days, "as_of_date": as_of_date}, metric_id="release-date"))
+    contexts = sorted((item for item in models if item["context_window_tokens"] is not None), key=lambda item: (-item["context_window_tokens"], item["name"]))
+    if model["context_window_tokens"] is not None:
+        position = 1 + sum(item["context_window_tokens"] > model["context_window_tokens"] for item in contexts)
+        candidates.append(_candidate("model_profile", "context_position", model["id"], position, {"position": position, "total": len(contexts)}, metric_id="context-window"))
+    if model["release_date"]:
+        days = (date.fromisoformat(as_of_date) - date.fromisoformat(model["release_date"])).days
+        candidates.append(_candidate("model_profile", "release_recency", model["id"], days, {"days": days, "as_of_date": as_of_date}, metric_id="release-date"))
     for metric in model["value_metrics"]:
         cohort = [
             (item, value) for item in models for value in item["value_metrics"]
@@ -227,7 +241,7 @@ def comparison_insights(model_a: dict, model_b: dict, performance_pairs: list[tu
         if a != b:
             leader, low, high = (model_a, a, b) if a < b else (model_b, b, a)
             candidates.append(_candidate("model_comparison", kind, f"{model_a['id']}:{model_b['id']}", low, {"leader": leader["name"], "low": low, "high": high}, metric_id=field))
-    if model_a["context_window_tokens"] != model_b["context_window_tokens"]:
+    if model_a["context_window_tokens"] is not None and model_b["context_window_tokens"] is not None and model_a["context_window_tokens"] != model_b["context_window_tokens"]:
         leader, other = (model_a, model_b) if model_a["context_window_tokens"] > model_b["context_window_tokens"] else (model_b, model_a)
         candidates.append(_candidate("model_comparison", "larger_context", f"{model_a['id']}:{model_b['id']}", leader["context_window_tokens"], {
             "leader": leader["name"], "large": leader["context_window_tokens"], "small": other["context_window_tokens"],

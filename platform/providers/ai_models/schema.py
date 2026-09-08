@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, TypedDict
+from typing import Literal, NotRequired, TypedDict
 
 from platform.core.provenance import Provenance
 
@@ -20,12 +20,25 @@ class Model(TypedDict):
     name: str
     provider_id: str
     family: str
-    release_date: str
+    release_date: str | None
     status: Literal["active", "legacy", "deprecated", "retired", "preview"]
     openness: Literal["open", "closed"]
-    context_window_tokens: int
+    distribution_types: list[Literal["api", "hosted", "open_weight", "local", "product_only", "preview"]]
+    license: str | None
+    weights_available: bool
+    context_window_tokens: int | None
+    reasoning_capability: bool | None
+    multimodal_capability: bool | None
+    tool_use_capability: bool | None
+    coding_capability: bool | None
+    api_available: bool
+    product_available: bool
+    product_availability: list[str]
+    pricing_available: bool
     capabilities: list[str]
     external_ids: dict[str, str]
+    open_model: NotRequired[dict]
+    fact_provenance: dict[str, Provenance]
     provenance: Provenance
 
 
@@ -44,6 +57,7 @@ class PricingObservation(TypedDict):
     model_id: str
     input_price_per_million_tokens: float
     output_price_per_million_tokens: float
+    cached_input_price_per_million_tokens: float | None
     unit: Literal["usd_per_1m_tokens"]
     currency: str
     pricing_tier: str

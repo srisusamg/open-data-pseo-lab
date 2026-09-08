@@ -38,13 +38,28 @@ def normalize_catalog(catalog: dict) -> dict:
         providers.append({**{key: item[key] for key in ("id", "slug", "name")}, "provenance": _provenance(item)})
     models: list[Model] = []
     for item in catalog["models"]:
-        models.append({
-            **{key: deepcopy(item[key]) for key in (
-                "id", "slug", "name", "provider_id", "family", "release_date", "status",
-                "openness", "context_window_tokens", "capabilities", "external_ids",
-            )},
-            "provenance": _provenance(item),
-        })
+        provenance = _provenance(item)
+        fields = (
+            "id", "slug", "name", "provider_id", "family", "release_date", "status",
+            "distribution_types", "openness", "license", "weights_available",
+            "context_window_tokens", "reasoning_capability", "multimodal_capability",
+            "tool_use_capability", "coding_capability", "api_available", "product_available",
+            "product_availability", "pricing_available", "capabilities", "external_ids",
+        )
+        model = {**{key: deepcopy(item[key]) for key in fields}, "provenance": provenance}
+        if "open_model" in item:
+            model["open_model"] = deepcopy(item["open_model"])
+        model["fact_provenance"] = {key: deepcopy(provenance) for key in fields if key not in {"id", "slug"}}
+        if "open_model" in item:
+            model["fact_provenance"]["open_model"] = deepcopy(provenance)
+        for key, value in item.get("fact_provenance", {}).items():
+            model["fact_provenance"][key] = dated_provenance(
+                value["source_name"], value["source_url"], value["source_metric_id"],
+                observation_date=value["observation_date"], effective_date=value["effective_date"],
+                retrieved_at=value["retrieved_at"], source_type=value["source_type"],
+                confidence=value["confidence"], status=value["status"],
+            )
+        models.append(model)
     benchmarks: list[Benchmark] = []
     for item in catalog["benchmarks"]:
         benchmarks.append({
@@ -57,6 +72,7 @@ def normalize_catalog(catalog: dict) -> dict:
             "model_id": item["model_id"],
             "input_price_per_million_tokens": normalize_price(item["input_price"], item["unit"]),
             "output_price_per_million_tokens": normalize_price(item["output_price"], item["unit"]),
+            "cached_input_price_per_million_tokens": normalize_price(item["cached_input_price"], item["unit"]) if item.get("cached_input_price") is not None else None,
             "unit": "usd_per_1m_tokens", "currency": item["currency"], "pricing_tier": item["pricing_tier"],
             "maximum_prompt_tokens_for_rate": item.get("maximum_prompt_tokens_for_rate"),
             "provenance": _provenance(item),

@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/nova-2-lite/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/nova-micro/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/nova-premier/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/claude-fable-5/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/claude-opus-5/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/claude-sonnet-5/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/command-a-03-2025/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/command-a-plus-05-2026/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/command-r7b-12-2024/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/deepseek-r1/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/deepseek-v3/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gemini-3-5-flash-lite/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gemini-3-7-flash/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gemini-3-8-flash/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/llama-4-maverick/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/llama-4-scout/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/phi-4/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/phi-4-mini-instruct/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/phi-4-multimodal-instruct/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/minimax-m2-5/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/minimax-m2-7/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/ministral-3-3b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/mistral-large-3/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/mistral-medium-3-5/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/mistral-small-4/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/kimi-k2-5/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/kimi-k2-6/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/llama-3-1-nemotron-nano-8b-v1/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/nemotron-3-5-lightning-30b-a3b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/chatgpt-4o/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-5-6-luna/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-5-6-sol/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-5-6-terra/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-oss-120b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/gpt-oss-20b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/qwen3-0-6b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/qwen3-235b-a22b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/qwen3-30b-a3b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/qwen3-8b/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/glm-4-5/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/glm-4-5v/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/grok-4-3/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/grok-4-5/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/grok-4-6/</loc></url>
@@ -17,6 +49,17 @@
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/anthropic/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/google/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/xai/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/meta/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/deepseek/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/mistral/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/qwen/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/cohere/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/microsoft/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/nvidia/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/amazon/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/moonshot/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/minimax/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/zhipu/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/input-cost/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/output-cost/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/context-window/</loc></url>
@@ -27,5 +70,7 @@
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-sol/gpt-5-6-terra/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gemini-3-8-flash/grok-4-6/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/releases/2026/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/releases/2025/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/releases/2024/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/methodology/</loc></url>
 </urlset>

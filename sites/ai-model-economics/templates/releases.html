@@ -4,5 +4,5 @@
 {% block content %}
 <p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Releases / {{ release.year }}</p>
 <section class="page-heading"><p class="eyebrow">Release timeline</p><h1>AI model releases in {{ release.year }}</h1><p class="lede">{{ release.models|length }} releases, ordered by verified release date.</p></section>
-<ol class="timeline">{% for model in release.models %}<li><time datetime="{{ model.release_date }}">{{ model.release_date }}</time><div><h2><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></h2><p>{{ model.provider.name }} · {{ model.family }} · {{ model.context_window_tokens|tokens }} token context</p><a class="source" href="{{ model.provenance.source_url }}">Release source</a></div></li>{% endfor %}</ol>
+<ol class="timeline">{% for model in release.models %}<li><time datetime="{{ model.release_date }}">{{ model.release_date }}</time><div><h2><a href="{{ link('models/' ~ model.slug ~ '/') }}">{{ model.name }}</a></h2><p>{{ model.provider.name }} · {{ model.family }}{% if model.context_window_tokens %} · {{ model.context_window_tokens|tokens }} token context{% endif %}</p><a class="source" href="{{ model.provenance.source_url }}">Release source</a></div></li>{% endfor %}</ol>
 {% endblock %}
