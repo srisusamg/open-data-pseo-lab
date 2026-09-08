@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "3.0",
   "retrieved_at": "2026-09-07T00:00:00Z",
   "providers": [
     {
@@ -12484,6 +12484,9 @@
       "version": "launch-table-2026-07-09",
       "unit": "percent",
       "higher_is_better": true,
+      "group": "reasoning",
+      "evaluator": "OpenAI",
+      "normalization_method": null,
       "description": "Provider-reported long-running professional workflow evaluation; only observations from the same launch table are compared.",
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
@@ -12504,6 +12507,9 @@
       "version": "4.1",
       "unit": "index_score",
       "higher_is_better": true,
+      "group": "general_intelligence",
+      "evaluator": "Artificial Analysis, reproduced by OpenAI",
+      "normalization_method": "External versioned composite used as published; not recomputed by this site",
       "description": "Third-party index values reproduced in one provider launch table; comparability is limited to that exact table and configuration.",
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
@@ -12524,6 +12530,9 @@
       "version": "2.1",
       "unit": "percent",
       "higher_is_better": true,
+      "group": "coding",
+      "evaluator": "Google",
+      "normalization_method": null,
       "description": "Provider-reported coding and agentic benchmark; not compared with observations from a different evaluation harness.",
       "provenance": {
         "source_name": "Google Gemini 3.5 launch post",
@@ -12842,6 +12851,13 @@
       "unit": "percent",
       "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Agents' Last Exam",
+      "benchmark_version": "launch-table-2026-07-09",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": null,
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12861,6 +12877,13 @@
       "unit": "percent",
       "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Agents' Last Exam",
+      "benchmark_version": "launch-table-2026-07-09",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": null,
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12880,6 +12903,13 @@
       "unit": "percent",
       "evaluation_configuration": "OpenAI launch table; reasoning configuration as reported",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Agents' Last Exam",
+      "benchmark_version": "launch-table-2026-07-09",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": null,
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12899,6 +12929,13 @@
       "unit": "index_score",
       "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Artificial Analysis Intelligence Index",
+      "benchmark_version": "4.1",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "Artificial Analysis, reproduced by OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": "External versioned composite used as published; not recomputed by this site",
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12918,6 +12955,13 @@
       "unit": "index_score",
       "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Artificial Analysis Intelligence Index",
+      "benchmark_version": "4.1",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "Artificial Analysis, reproduced by OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": "External versioned composite used as published; not recomputed by this site",
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12937,6 +12981,13 @@
       "unit": "index_score",
       "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
       "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+      "benchmark_name": "Artificial Analysis Intelligence Index",
+      "benchmark_version": "4.1",
+      "evaluation_date": "2026-07-09",
+      "source": "https://openai.com/index/gpt-5-6/",
+      "evaluator": "Artificial Analysis, reproduced by OpenAI",
+      "metric_direction": "higher_is_better",
+      "normalization_method": "External versioned composite used as published; not recomputed by this site",
       "provenance": {
         "source_name": "OpenAI GPT-5.6 launch table",
         "source_url": "https://openai.com/index/gpt-5-6/",
@@ -12949,5 +13000,6 @@
         "status": "provider_reported"
       }
     }
-  ]
+  ],
+  "operational_observations": []
 }

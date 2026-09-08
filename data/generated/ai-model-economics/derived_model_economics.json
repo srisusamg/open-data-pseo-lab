@@ -1,15 +1,36 @@
 {
   "as_of_date": "2026-09-07",
   "formulas": {
-    "blended_workload": {
-      "formula_version": "blended-workload-v1",
-      "input_tokens": 800000,
-      "output_tokens": 200000
+    "workload_profiles": {
+      "coding": {
+        "label": "Coding example",
+        "description": "Illustrative 70% input / 30% output token mix; not a universal default.",
+        "input_share": 0.7,
+        "output_share": 0.3,
+        "total_tokens": 1000000,
+        "formula_version": "workload-coding-v1"
+      },
+      "chat": {
+        "label": "Chat example",
+        "description": "Illustrative 40% input / 60% output token mix; not a universal default.",
+        "input_share": 0.4,
+        "output_share": 0.6,
+        "total_tokens": 1000000,
+        "formula_version": "workload-chat-v1"
+      },
+      "batch": {
+        "label": "Batch extraction example",
+        "description": "Illustrative 90% input / 10% output token mix; not a universal default.",
+        "input_share": 0.9,
+        "output_share": 0.1,
+        "total_tokens": 1000000,
+        "formula_version": "workload-batch-v1"
+      }
     },
     "intelligence_per_dollar": {
-      "version": "intelligence-per-dollar-v1",
+      "version": "intelligence-per-dollar-v2",
       "included_benchmarks": [
-        "agents-last-exam-v1"
+        "aa-intelligence-index-v4.1"
       ]
     },
     "relative_price_difference": {
@@ -21,37 +42,61 @@
     {
       "model_id": "amazon:nova-2-lite",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "amazon:nova-micro",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "amazon:nova-premier",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -77,20 +122,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 18.0,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 14.0,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 34.0,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 22.0,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -116,20 +183,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 9.0,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 7.0,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 17.0,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 11.0,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -155,20 +244,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 5.4,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 4.2,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 10.2,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 6.6,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -194,68 +305,122 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 4.0,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 3.25,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 7.0,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 4.75,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "cohere:command-a-plus-05-2026",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "cohere:command-r7b-12-2024",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "deepseek:deepseek-r1",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "deepseek:deepseek-v3",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -281,20 +446,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 0.74,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 0.52,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 1.62,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 0.96,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -320,20 +507,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 1.35,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 1.05,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 2.55,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 1.65,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -359,92 +568,162 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 1.35,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 1.05,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 2.55,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 1.65,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "meta:llama-4-maverick",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "meta:llama-4-scout",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "microsoft:phi-4",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "microsoft:phi-4-mini-instruct",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "microsoft:phi-4-multimodal-instruct",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "minimax:minimax-m2-5",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -470,128 +749,222 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 0.48,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 0.39,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 0.84,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 0.57,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "mistral:ministral-3-3b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "mistral:mistral-large-3",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "mistral:mistral-medium-3-5",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "mistral:mistral-small-4",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "moonshot:kimi-k2-5",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "moonshot:kimi-k2-6",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "nvidia:llama-3-1-nemotron-nano-8b-v1",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "nvidia:nemotron-3-5-lightning-30b-a3b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "openai:chatgpt-4o",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -617,34 +990,124 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 0.4,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 0.3,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 0.8,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 0.5,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [
+      "value_metrics": [
         {
-          "value": 125.75,
-          "benchmark_id": "agents-last-exam-v1",
-          "benchmark_value": 50.3,
-          "formula_version": "intelligence-per-dollar-v1",
-          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "workload": "batch",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 256.0,
+          "intelligence_per_output_dollar": 42.66666667,
+          "blended_workload_cost": {
+            "value": 0.3,
+            "currency": "USD",
+            "input_tokens": 900000,
+            "output_tokens": 100000,
+            "formula_version": "workload-batch-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 170.66666667,
+          "value": 170.66666667,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
           "included_benchmarks": [
-            "agents-last-exam-v1"
-          ],
-          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "chat",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 256.0,
+          "intelligence_per_output_dollar": 42.66666667,
+          "blended_workload_cost": {
+            "value": 0.8,
+            "currency": "USD",
+            "input_tokens": 400000,
+            "output_tokens": 600000,
+            "formula_version": "workload-chat-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 64.0,
+          "value": 64.0,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "coding",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 256.0,
+          "intelligence_per_output_dollar": 42.66666667,
+          "blended_workload_cost": {
+            "value": 0.5,
+            "currency": "USD",
+            "input_tokens": 700000,
+            "output_tokens": 300000,
+            "formula_version": "workload-coding-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 102.4,
+          "value": 102.4,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
         }
       ],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
+        "open_models": false,
         "benchmarks": [
           "aa-intelligence-index-v4.1",
           "agents-last-exam-v1"
+        ],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": [
+          "batch",
+          "chat",
+          "coding"
         ]
       }
     },
@@ -671,34 +1134,124 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 7.2,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 5.6,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 13.6,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 8.8,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [
+      "value_metrics": [
         {
-          "value": 7.31944444,
-          "benchmark_id": "agents-last-exam-v1",
-          "benchmark_value": 52.7,
-          "formula_version": "intelligence-per-dollar-v1",
-          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "workload": "batch",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 14.725,
+          "intelligence_per_output_dollar": 2.945,
+          "blended_workload_cost": {
+            "value": 5.6,
+            "currency": "USD",
+            "input_tokens": 900000,
+            "output_tokens": 100000,
+            "formula_version": "workload-batch-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 10.51785714,
+          "value": 10.51785714,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
           "included_benchmarks": [
-            "agents-last-exam-v1"
-          ],
-          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "chat",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 14.725,
+          "intelligence_per_output_dollar": 2.945,
+          "blended_workload_cost": {
+            "value": 13.6,
+            "currency": "USD",
+            "input_tokens": 400000,
+            "output_tokens": 600000,
+            "formula_version": "workload-chat-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 4.33088235,
+          "value": 4.33088235,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "coding",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 14.725,
+          "intelligence_per_output_dollar": 2.945,
+          "blended_workload_cost": {
+            "value": 8.8,
+            "currency": "USD",
+            "input_tokens": 700000,
+            "output_tokens": 300000,
+            "formula_version": "workload-coding-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 6.69318182,
+          "value": 6.69318182,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
         }
       ],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
+        "open_models": false,
         "benchmarks": [
           "aa-intelligence-index-v4.1",
           "agents-last-exam-v1"
+        ],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": [
+          "batch",
+          "chat",
+          "coding"
         ]
       }
     },
@@ -725,131 +1278,285 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 4.0,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 3.0,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 8.0,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 5.0,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [
+      "value_metrics": [
         {
-          "value": 12.6,
-          "benchmark_id": "agents-last-exam-v1",
-          "benchmark_value": 50.4,
-          "formula_version": "intelligence-per-dollar-v1",
-          "formula": "benchmark_score / configured_blended_workload_cost_usd",
+          "workload": "batch",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 27.5,
+          "intelligence_per_output_dollar": 4.58333333,
+          "blended_workload_cost": {
+            "value": 3.0,
+            "currency": "USD",
+            "input_tokens": 900000,
+            "output_tokens": 100000,
+            "formula_version": "workload-batch-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 18.33333333,
+          "value": 18.33333333,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
           "included_benchmarks": [
-            "agents-last-exam-v1"
-          ],
-          "comparison_group": "openai-gpt-5.6-launch-2026-07-09"
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "chat",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 27.5,
+          "intelligence_per_output_dollar": 4.58333333,
+          "blended_workload_cost": {
+            "value": 8.0,
+            "currency": "USD",
+            "input_tokens": 400000,
+            "output_tokens": 600000,
+            "formula_version": "workload-chat-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 6.875,
+          "value": 6.875,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
+        },
+        {
+          "workload": "coding",
+          "benchmark_id": "aa-intelligence-index-v4.1",
+          "benchmark_version": "4.1",
+          "comparison_group": "openai-gpt-5.6-launch-2026-07-09",
+          "evaluation_configuration": "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+          "intelligence_per_input_dollar": 27.5,
+          "intelligence_per_output_dollar": 4.58333333,
+          "blended_workload_cost": {
+            "value": 5.0,
+            "currency": "USD",
+            "input_tokens": 700000,
+            "output_tokens": 300000,
+            "formula_version": "workload-coding-v1",
+            "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+          },
+          "intelligence_per_blended_dollar": 11.0,
+          "value": 11.0,
+          "speed_adjusted_value": null,
+          "speed_metric": null,
+          "formula_version": "intelligence-per-dollar-v2",
+          "included_benchmarks": [
+            "aa-intelligence-index-v4.1"
+          ]
         }
       ],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
+        "open_models": false,
         "benchmarks": [
           "aa-intelligence-index-v4.1",
           "agents-last-exam-v1"
+        ],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": [
+          "batch",
+          "chat",
+          "coding"
         ]
       }
     },
     {
       "model_id": "openai:gpt-oss-120b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "openai:gpt-oss-20b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "qwen:qwen3-0-6b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "qwen:qwen3-235b-a22b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "qwen:qwen3-30b-a3b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "qwen:qwen3-8b",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "zhipu:glm-4-5",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": true,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
       "model_id": "zhipu:glm-4-5v",
       "pricing": null,
-      "blended_cost": null,
-      "intelligence_per_dollar": [],
+      "workload_costs": {
+        "batch": null,
+        "chat": null,
+        "coding": null
+      },
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": false,
         "output_cost": false,
         "context_window": false,
-        "benchmarks": []
+        "open_models": true,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -875,20 +1582,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 1.5,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 1.375,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 2.0,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 1.625,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -914,20 +1643,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 2.8,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 2.4,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 4.4,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 3.2,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     },
     {
@@ -953,20 +1704,42 @@
           "status": "verified"
         }
       },
-      "blended_cost": {
-        "value": 2.8,
-        "currency": "USD",
-        "input_tokens": 800000,
-        "output_tokens": 200000,
-        "formula_version": "blended-workload-v1",
-        "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+      "workload_costs": {
+        "batch": {
+          "value": 2.4,
+          "currency": "USD",
+          "input_tokens": 900000,
+          "output_tokens": 100000,
+          "formula_version": "workload-batch-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "chat": {
+          "value": 4.4,
+          "currency": "USD",
+          "input_tokens": 400000,
+          "output_tokens": 600000,
+          "formula_version": "workload-chat-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        },
+        "coding": {
+          "value": 3.2,
+          "currency": "USD",
+          "input_tokens": 700000,
+          "output_tokens": 300000,
+          "formula_version": "workload-coding-v1",
+          "formula": "input_price_per_1m * input_tokens / 1m + output_price_per_1m * output_tokens / 1m"
+        }
       },
-      "intelligence_per_dollar": [],
+      "value_metrics": [],
       "ranking_eligibility": {
         "input_cost": true,
         "output_cost": true,
         "context_window": true,
-        "benchmarks": []
+        "open_models": false,
+        "benchmarks": [],
+        "latency": false,
+        "throughput": false,
+        "value_workloads": []
       }
     }
   ],
@@ -989,7 +1762,7 @@
       "relative_price_differences": {
         "input_price_difference_percent_a_vs_b": -33.333333,
         "output_price_difference_percent_a_vs_b": -20.0,
-        "blended_cost_difference_percent_a_vs_b": -25.925926
+        "blended_cost_difference_percent_a_vs_b": -24.242424
       },
       "comparable_benchmarks": []
     },
@@ -1000,7 +1773,7 @@
       "relative_price_differences": {
         "input_price_difference_percent_a_vs_b": -33.333333,
         "output_price_difference_percent_a_vs_b": -52.0,
-        "blended_cost_difference_percent_a_vs_b": -45.945946
+        "blended_cost_difference_percent_a_vs_b": -47.916667
       },
       "comparable_benchmarks": []
     },
@@ -1011,7 +1784,7 @@
       "relative_price_differences": {
         "input_price_difference_percent_a_vs_b": -50.0,
         "output_price_difference_percent_a_vs_b": -70.0,
-        "blended_cost_difference_percent_a_vs_b": -61.111111
+        "blended_cost_difference_percent_a_vs_b": -63.636364
       },
       "comparable_benchmarks": []
     },
@@ -1022,7 +1795,7 @@
       "relative_price_differences": {
         "input_price_difference_percent_a_vs_b": 100.0,
         "output_price_difference_percent_a_vs_b": 66.666667,
-        "blended_cost_difference_percent_a_vs_b": 80.0
+        "blended_cost_difference_percent_a_vs_b": 76.0
       },
       "comparable_benchmarks": [
         "aa-intelligence-index-v4.1",
@@ -1036,346 +1809,970 @@
       "relative_price_differences": {
         "input_price_difference_percent_a_vs_b": -62.5,
         "output_price_difference_percent_a_vs_b": -37.5,
-        "blended_cost_difference_percent_a_vs_b": -51.785714
+        "blended_cost_difference_percent_a_vs_b": -48.4375
       },
       "comparable_benchmarks": []
     }
   ],
   "rankings": [
     {
+      "metric": "intelligence",
+      "workload": null,
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 58.9,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "index_score",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning"
+          ],
+          "age_days": 60
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 55,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "index_score",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning"
+          ],
+          "age_days": 60
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 51.2,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "index_score",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning"
+          ],
+          "age_days": 60
+        }
+      ]
+    },
+    {
+      "metric": "reasoning",
+      "workload": null,
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 52.7,
+          "cohort": [
+            "agents-last-exam-v1",
+            "launch-table-2026-07-09",
+            "percent",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI launch table; reasoning configuration as reported"
+          ],
+          "age_days": 60
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 50.4,
+          "cohort": [
+            "agents-last-exam-v1",
+            "launch-table-2026-07-09",
+            "percent",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI launch table; reasoning configuration as reported"
+          ],
+          "age_days": 60
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 50.3,
+          "cohort": [
+            "agents-last-exam-v1",
+            "launch-table-2026-07-09",
+            "percent",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI launch table; reasoning configuration as reported"
+          ],
+          "age_days": 60
+        }
+      ]
+    },
+    {
+      "metric": "coding",
+      "workload": null,
+      "rows": []
+    },
+    {
+      "metric": "speed",
+      "workload": null,
+      "rows": []
+    },
+    {
+      "metric": "latency",
+      "workload": null,
+      "rows": []
+    },
+    {
       "metric": "input-cost",
+      "workload": null,
       "rows": [
         {
           "rank": 1,
           "model_id": "openai:gpt-5.6-luna",
-          "value": 0.2
+          "value": 0.2,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 2,
           "model_id": "google:gemini-3.5-flash-lite",
-          "value": 0.3
+          "value": 0.3,
+          "cohort": [],
+          "age_days": 27
         },
         {
           "rank": 2,
           "model_id": "minimax:minimax-m2-7",
-          "value": 0.3
+          "value": 0.3,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 4,
           "model_id": "google:gemini-3.7-flash",
-          "value": 0.75
+          "value": 0.75,
+          "cohort": [],
+          "age_days": 26
         },
         {
           "rank": 4,
           "model_id": "google:gemini-3.8-flash",
-          "value": 0.75
+          "value": 0.75,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 6,
           "model_id": "xai:grok-4.3",
-          "value": 1.25
+          "value": 1.25,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 7,
           "model_id": "openai:gpt-5.6-terra",
-          "value": 2.0
+          "value": 2.0,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 7,
           "model_id": "xai:grok-4.5",
-          "value": 2.0
+          "value": 2.0,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 7,
           "model_id": "xai:grok-4.6",
-          "value": 2.0
+          "value": 2.0,
+          "cohort": [],
+          "age_days": 17
         },
         {
           "rank": 10,
           "model_id": "cohere:command-a-03-2025",
-          "value": 2.5
+          "value": 2.5,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 11,
           "model_id": "anthropic:claude-sonnet-5",
-          "value": 3.0
+          "value": 3.0,
+          "cohort": [],
+          "age_days": 69
         },
         {
           "rank": 12,
           "model_id": "openai:gpt-5.6-sol",
-          "value": 4.0
+          "value": 4.0,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 13,
           "model_id": "anthropic:claude-opus-5",
-          "value": 5.0
+          "value": 5.0,
+          "cohort": [],
+          "age_days": 45
         },
         {
           "rank": 14,
           "model_id": "anthropic:claude-fable-5",
-          "value": 10.0
+          "value": 10.0,
+          "cohort": [],
+          "age_days": 90
         }
       ]
     },
     {
       "metric": "output-cost",
+      "workload": null,
       "rows": [
         {
           "rank": 1,
           "model_id": "openai:gpt-5.6-luna",
-          "value": 1.2
+          "value": 1.2,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 1,
           "model_id": "minimax:minimax-m2-7",
-          "value": 1.2
+          "value": 1.2,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 3,
           "model_id": "google:gemini-3.5-flash-lite",
-          "value": 2.5
+          "value": 2.5,
+          "cohort": [],
+          "age_days": 27
         },
         {
           "rank": 3,
           "model_id": "xai:grok-4.3",
-          "value": 2.5
+          "value": 2.5,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 5,
           "model_id": "google:gemini-3.7-flash",
-          "value": 3.75
+          "value": 3.75,
+          "cohort": [],
+          "age_days": 26
         },
         {
           "rank": 5,
           "model_id": "google:gemini-3.8-flash",
-          "value": 3.75
+          "value": 3.75,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 7,
           "model_id": "xai:grok-4.5",
-          "value": 6.0
+          "value": 6.0,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 7,
           "model_id": "xai:grok-4.6",
-          "value": 6.0
+          "value": 6.0,
+          "cohort": [],
+          "age_days": 17
         },
         {
           "rank": 9,
           "model_id": "cohere:command-a-03-2025",
-          "value": 10.0
+          "value": 10.0,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 10,
           "model_id": "openai:gpt-5.6-terra",
-          "value": 12.0
+          "value": 12.0,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 11,
           "model_id": "anthropic:claude-sonnet-5",
-          "value": 15.0
+          "value": 15.0,
+          "cohort": [],
+          "age_days": 69
         },
         {
           "rank": 12,
           "model_id": "openai:gpt-5.6-sol",
-          "value": 20.0
+          "value": 20.0,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 13,
           "model_id": "anthropic:claude-opus-5",
-          "value": 25.0
+          "value": 25.0,
+          "cohort": [],
+          "age_days": 45
         },
         {
           "rank": 14,
           "model_id": "anthropic:claude-fable-5",
-          "value": 50.0
+          "value": 50.0,
+          "cohort": [],
+          "age_days": 90
         }
       ]
     },
     {
-      "metric": "context-window",
+      "metric": "context",
+      "workload": null,
       "rows": [
         {
           "rank": 1,
           "model_id": "meta:llama-4-scout",
-          "value": 10000000
+          "value": 10000000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 2,
           "model_id": "openai:gpt-5.6-luna",
-          "value": 1050000
+          "value": 1050000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 2,
           "model_id": "openai:gpt-5.6-sol",
-          "value": 1050000
+          "value": 1050000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 2,
           "model_id": "openai:gpt-5.6-terra",
-          "value": 1050000
+          "value": 1050000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 5,
           "model_id": "amazon:nova-2-lite",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 5,
           "model_id": "amazon:nova-premier",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 5,
           "model_id": "anthropic:claude-fable-5",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 90
         },
         {
           "rank": 5,
           "model_id": "anthropic:claude-opus-5",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 45
         },
         {
           "rank": 5,
           "model_id": "anthropic:claude-sonnet-5",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 69
         },
         {
           "rank": 5,
           "model_id": "google:gemini-3.5-flash-lite",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 48
         },
         {
           "rank": 5,
           "model_id": "google:gemini-3.7-flash",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 26
         },
         {
           "rank": 5,
           "model_id": "google:gemini-3.8-flash",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 5,
           "model_id": "xai:grok-4.3",
-          "value": 1000000
+          "value": 1000000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 14,
           "model_id": "xai:grok-4.5",
-          "value": 500000
+          "value": 500000,
+          "cohort": [],
+          "age_days": 5
         },
         {
           "rank": 14,
           "model_id": "xai:grok-4.6",
-          "value": 500000
+          "value": 500000,
+          "cohort": [],
+          "age_days": 17
         },
         {
           "rank": 16,
           "model_id": "cohere:command-a-03-2025",
-          "value": 256000
+          "value": 256000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 16,
           "model_id": "moonshot:kimi-k2-5",
-          "value": 256000
+          "value": 256000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 16,
           "model_id": "moonshot:kimi-k2-6",
-          "value": 256000
+          "value": 256000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 19,
           "model_id": "minimax:minimax-m2-5",
-          "value": 204800
+          "value": 204800,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 19,
           "model_id": "minimax:minimax-m2-7",
-          "value": 204800
+          "value": 204800,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 21,
           "model_id": "microsoft:phi-4-mini-instruct",
-          "value": 131072
+          "value": 131072,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 21,
           "model_id": "microsoft:phi-4-multimodal-instruct",
-          "value": 131072
+          "value": 131072,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 21,
           "model_id": "openai:gpt-oss-120b",
-          "value": 131072
+          "value": 131072,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 21,
           "model_id": "openai:gpt-oss-20b",
-          "value": 131072
+          "value": 131072,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "amazon:nova-micro",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "openai:chatgpt-4o",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "cohere:command-a-plus-05-2026",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "cohere:command-r7b-12-2024",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "deepseek:deepseek-r1",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "deepseek:deepseek-v3",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "zhipu:glm-4-5",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "qwen:qwen3-235b-a22b",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "qwen:qwen3-30b-a3b",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 25,
           "model_id": "qwen:qwen3-8b",
-          "value": 128000
+          "value": 128000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 35,
           "model_id": "qwen:qwen3-0-6b",
-          "value": 32000
+          "value": 32000,
+          "cohort": [],
+          "age_days": 0
         },
         {
           "rank": 36,
           "model_id": "microsoft:phi-4",
-          "value": 16384
+          "value": 16384,
+          "cohort": [],
+          "age_days": 0
         }
       ]
+    },
+    {
+      "metric": "open-models",
+      "workload": null,
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "deepseek:deepseek-r1",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "deepseek:deepseek-v3",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "zhipu:glm-4-5",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "zhipu:glm-4-5v",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "moonshot:kimi-k2-5",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "moonshot:kimi-k2-6",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "nvidia:llama-3-1-nemotron-nano-8b-v1",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "meta:llama-4-maverick",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "meta:llama-4-scout",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "mistral:ministral-3-3b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "mistral:mistral-large-3",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "mistral:mistral-medium-3-5",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "mistral:mistral-small-4",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "nvidia:nemotron-3-5-lightning-30b-a3b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "microsoft:phi-4",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "microsoft:phi-4-mini-instruct",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "microsoft:phi-4-multimodal-instruct",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "qwen:qwen3-0-6b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "qwen:qwen3-235b-a22b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "qwen:qwen3-30b-a3b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "qwen:qwen3-8b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-oss-120b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        },
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-oss-20b",
+          "value": 1,
+          "cohort": [],
+          "age_days": 0
+        }
+      ]
+    },
+    {
+      "metric": "value",
+      "workload": null,
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 102.4,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 11.0,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 6.69318182,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        }
+      ]
+    },
+    {
+      "metric": "value",
+      "workload": "coding",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 102.4,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 11.0,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 6.69318182,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "coding"
+          ],
+          "age_days": 0
+        }
+      ]
+    },
+    {
+      "metric": "value",
+      "workload": "chat",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 64.0,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "chat"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 6.875,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "chat"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 4.33088235,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "chat"
+          ],
+          "age_days": 0
+        }
+      ]
+    },
+    {
+      "metric": "value",
+      "workload": "batch",
+      "rows": [
+        {
+          "rank": 1,
+          "model_id": "openai:gpt-5.6-luna",
+          "value": 170.66666667,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "batch"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 2,
+          "model_id": "openai:gpt-5.6-terra",
+          "value": 18.33333333,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "batch"
+          ],
+          "age_days": 0
+        },
+        {
+          "rank": 3,
+          "model_id": "openai:gpt-5.6-sol",
+          "value": 10.51785714,
+          "cohort": [
+            "aa-intelligence-index-v4.1",
+            "4.1",
+            "openai-gpt-5.6-launch-2026-07-09",
+            "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+            "batch"
+          ],
+          "age_days": 0
+        }
+      ]
+    }
+  ],
+  "price_performance_frontier": [
+    {
+      "model_id": "openai:gpt-5.6-luna",
+      "performance": 51.2,
+      "cost": 0.5,
+      "cohort": [
+        "aa-intelligence-index-v4.1",
+        "4.1",
+        "openai-gpt-5.6-launch-2026-07-09",
+        "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+        "coding"
+      ],
+      "workload": "coding"
+    },
+    {
+      "model_id": "openai:gpt-5.6-terra",
+      "performance": 55,
+      "cost": 5.0,
+      "cohort": [
+        "aa-intelligence-index-v4.1",
+        "4.1",
+        "openai-gpt-5.6-launch-2026-07-09",
+        "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+        "coding"
+      ],
+      "workload": "coding"
+    },
+    {
+      "model_id": "openai:gpt-5.6-sol",
+      "performance": 58.9,
+      "cost": 8.8,
+      "cohort": [
+        "aa-intelligence-index-v4.1",
+        "4.1",
+        "openai-gpt-5.6-launch-2026-07-09",
+        "OpenAI reproduction of Artificial Analysis Index v4.1; max reasoning",
+        "coding"
+      ],
+      "workload": "coding"
     }
   ]
 }

@@ -7,7 +7,7 @@ from pathlib import Path
 from datetime import date
 from urllib.parse import urlparse
 
-SCHEMA_VERSION = "2.0"
+SCHEMA_VERSION = "3.0"
 PROVENANCE_FIELDS = (
     "source_name", "source_url", "source_metric_id", "observation_date",
     "effective_date", "retrieved_at", "source_type", "confidence", "status",
@@ -37,6 +37,7 @@ def validate_catalog(catalog: dict) -> list[str]:
     benchmarks = catalog.get("benchmarks", [])
     prices = catalog.get("pricing_observations", [])
     performance = catalog.get("performance_observations", [])
+    operational = catalog.get("operational_observations", [])
     provider_ids = {item.get("id") for item in providers}
     model_ids = {item.get("id") for item in models}
     benchmark_ids = {item.get("id") for item in benchmarks}
@@ -44,6 +45,7 @@ def validate_catalog(catalog: dict) -> list[str]:
     for label, records in (
         ("provider", providers), ("model", models), ("benchmark", benchmarks),
         ("pricing observation", prices), ("performance observation", performance),
+        ("operational observation", operational),
     ):
         for index, record in enumerate(records, 1):
             if not _official_https(record, allowed_hosts):
@@ -107,6 +109,27 @@ def validate_catalog(catalog: dict) -> list[str]:
             errors.append(f"performance observation references unknown benchmark {observation.get('benchmark_id')}")
         if not observation.get("evaluation_configuration") or not observation.get("comparison_group"):
             errors.append(f"performance observation for {observation.get('model_id')} lacks comparability metadata")
+    benchmark_groups = {"general_intelligence", "reasoning", "coding", "multimodal"}
+    for benchmark in benchmarks:
+        if benchmark.get("group") not in benchmark_groups:
+            errors.append(f"benchmark {benchmark.get('id')} has an invalid benchmark group")
+        if not benchmark.get("evaluator"):
+            errors.append(f"benchmark {benchmark.get('id')} lacks an evaluator")
+        if not isinstance(benchmark.get("higher_is_better"), bool):
+            errors.append(f"benchmark {benchmark.get('id')} lacks metric direction")
+        if "normalization_method" not in benchmark:
+            errors.append(f"benchmark {benchmark.get('id')} lacks a normalization method declaration")
+    expected_units = {"latency": "seconds_to_first_token", "throughput": "tokens_per_second"}
+    for observation in operational:
+        metric = observation.get("metric")
+        if observation.get("model_id") not in model_ids:
+            errors.append(f"operational observation references unknown model {observation.get('model_id')}")
+        if metric not in expected_units or observation.get("unit") != expected_units.get(metric):
+            errors.append(f"operational observation for {observation.get('model_id')} has an incompatible metric unit")
+        if not isinstance(observation.get("value"), (int, float)) or observation.get("value", 0) < 0:
+            errors.append(f"operational observation for {observation.get('model_id')} needs a non-negative numeric value")
+        if not observation.get("evaluation_configuration") or not observation.get("comparison_group"):
+            errors.append(f"operational observation for {observation.get('model_id')} lacks comparability metadata")
     for label, records in (("provider", providers), ("model", models), ("benchmark", benchmarks)):
         ids = [item.get("id") for item in records]
         slugs = [item.get("slug") for item in records]

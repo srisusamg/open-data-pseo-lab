@@ -34,24 +34,28 @@ The provider adapter owns the curated input schema, official-source allow-list, 
 
 - `Provider`: stable ID, slug, name, and dated provenance.
 - `Model`: stable ID and slug, provider, family, optional release/context fields, lifecycle status, distribution types, open/closed status, license/weights availability, explicit capability and API/product availability flags, optional open-model details, external IDs, and field-level dated provenance.
-- `Benchmark`: stable ID, version, unit, direction, comparability description, and dated provenance.
+- `Benchmark`: stable ID, version, unit, direction, benchmark group, evaluator, declared normalization method, comparability description, and dated provenance.
 - `PricingObservation`: model, normalized input/output and optional cached-input USD per 1M tokens, tier and threshold qualifiers, and dated provenance.
-- `PerformanceObservation`: model, benchmark, value, unit, evaluation configuration, explicit comparison group, and dated provenance.
+- `PerformanceObservation`: model, benchmark name/version, value, evaluation date, source, evaluator, metric direction, normalization method, evaluation configuration, explicit comparison group, and dated provenance.
+- `OperationalObservation`: optional latency or throughput value, fixed compatible unit, evaluation configuration, explicit comparison group, and dated provenance.
 
 Every canonical fact resolves to source name, source URL, source metric ID, observation date, effective date, retrieved timestamp, source type, confidence, and status. Record provenance supplies the default, while `fact_provenance` can override individual fields. The adapter rejects missing provenance, unknown relationships, invalid taxonomy values, contradictory price/weight/product flags, unsupported pricing units, non-USD observations, duplicate IDs/slugs, and sources outside the official-domain allow-list.
 
 ## Derivations
 
 - Input and output prices normalize only from explicit USD per token, 1,000 tokens, or 1M tokens.
-- `blended-workload-v1` prices 800,000 input tokens plus 200,000 output tokens.
+- Versioned workload examples model coding (70% input / 30% output), chat (40% / 60%), and batch extraction (90% / 10%) over one million tokens. These are configurable examples, not universal defaults.
 - Relative price difference is `(A - B) / B × 100`, with model B documented as the baseline.
-- `intelligence-per-dollar-v1` is `benchmark score / blended workload cost`. It currently includes only `agents-last-exam-v1` observations from one shared launch-table comparison group. It is not a cross-benchmark composite.
+- `intelligence-per-dollar-v2` derives intelligence per input dollar, intelligence per output dollar, blended workload cost, intelligence per blended dollar, and speed-adjusted value when fresh throughput evidence exists. It currently includes only `aa-intelligence-index-v4.1` and is not a site-created cross-benchmark composite.
+- Optional composite definitions are rejected unless they name included benchmarks, weights that sum to one, a normalization method, and a version.
 
 All formulas, included benchmarks, versions, and comparison-group identifiers persist in normalized or derived output. Missing input remains missing. No interpolation, guessed price, or model-generated inference enters the catalog.
 
 ## Quality and comparison safety
 
-Potential model, provider, comparison, ranking, and release pages pass through the shared quality evaluator. Model pages require enough verified taxonomy and availability facts, but neither pricing nor benchmark observations are mandatory. Ranking eligibility is metric-specific: price rankings require a comparable price observation, context ranking requires a verified context window, and benchmark eligibility is tracked per benchmark. Comparisons additionally require compatible normalized units, pricing within the configured freshness window, complete provenance, and enough deterministic insights. Performance and value leaders are emitted only when both observations match on benchmark ID/version, unit, evaluation configuration, and comparison group.
+Potential model, provider, comparison, ranking, and release pages pass through the shared quality evaluator. Model pages require enough verified taxonomy and availability facts, but neither pricing nor benchmark observations are mandatory. Ranking eligibility is metric-specific and freshness-aware. Benchmark, operational, and value ranks are calculated only inside an exact comparison cohort; missing values never become zero. Open-weight availability is a verified alphabetical list, not an implicit quality score. Comparisons additionally require compatible normalized units, pricing within the configured freshness window, complete provenance, and enough deterministic insights.
+
+The flagship price-performance frontier is also cohort-local. A point is removed only when another comparable model performs at least as well and costs no more under the same workload, with at least one strict advantage.
 
 Only eligible pages are rendered, linked, listed in `generated_urls.json`, and included in the site sitemap. Every potential recipe page receives a generated/skipped record in `page_quality_report.json`.
 
@@ -72,14 +76,14 @@ Open `http://localhost:8000/ai-model-economics/`. On this Windows Codex host, us
 
 ## Current catalog scope
 
-Schema v2.0 contains 44 models across 15 providers, covering proprietary frontier and lower-cost APIs, open-weight models, locally runnable small models, and explicitly labeled product-only models. Static catalog filters cover provider, openness, distribution, reasoning, multimodality, and family without introducing a frontend framework.
+Schema v3.0 contains 44 models across 15 providers, covering proprietary frontier and lower-cost APIs, open-weight models, locally runnable small models, and explicitly labeled product-only models. It generates independent intelligence, reasoning, coding, throughput, latency, input-cost, output-cost, context, open-weight, workload-value, and price-performance-frontier pages without an overall score.
 
 ## Next-phase backlog
 
 1. Replace individual curated observations with authenticated official provider API adapters where stable price/model metadata is available.
 2. Add point-in-time price history and effective-date change pages without overwriting prior observations.
 3. Add independently governed benchmark sources only after licensing, methodology, and model-configuration comparability are explicit.
-4. Add benchmark-specific rankings; do not add a general intelligence composite unless its formula and limitations can survive review.
+4. Add new benchmark and operational observations only after evaluator, version, harness, unit, and comparison-cohort review.
 5. Add automated freshness alerts and source-change review queues.
 6. Package and version the shared core if an independent repository or deployment cadence becomes necessary.
 7. Add custom-domain deployment only when ownership and release requirements justify separating the Pages artifact.

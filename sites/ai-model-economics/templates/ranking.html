@@ -1,9 +1,17 @@
 {% extends "base.html" %}
-{% block title %}AI model {{ ranking.metric|replace('-', ' ') }} ranking{% endblock %}
-{% block description %}Deterministic {{ ranking.metric|replace('-', ' ') }} ranking for quality-gated AI models using official provider data.{% endblock %}
+{% block title %}{{ ranking.title }}{% if ranking.workload %} for {{ ranking.workload }}{% endif %} ranking — AI Model Economics{% endblock %}
+{% block description %}Deterministic, quality-gated {{ ranking.title|lower }} ranking with explicit cohorts, observation dates, and missing-data exclusions.{% endblock %}
 {% block content %}
 <p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Rankings</p>
-<section class="page-heading"><p class="eyebrow">Deterministic ranking</p><h1>{{ ranking.metric|replace('-', ' ')|title }}</h1><p class="lede">{% if ranking.metric == 'context-window' %}Largest verified context window first.{% else %}Lowest current standard API list price first.{% endif %}</p></section>
+<section class="page-heading"><p class="eyebrow">Independent dimension</p><h1>{{ ranking.title }}</h1>
+  <p class="lede">{% if ranking.metric in ['input-cost', 'output-cost', 'latency'] %}Lower is better.{% elif ranking.metric == 'open-models' %}Verified open-weight availability; models are listed alphabetically and are not assigned an arbitrary quality score.{% else %}Higher is better within each explicitly comparable cohort.{% endif %}</p>
+  {% if ranking.workload %}<p class="callout">Workload profile: <strong>{{ site.workload_profiles[ranking.workload].label }}</strong>. {{ site.workload_profiles[ranking.workload].description }}</p>{% endif %}
+</section>
 <section class="insight-box"><h2>What the ranking shows</h2><p>{{ ranking.insights.summary }}</p></section>
-<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Model</th><th>Provider</th><th>Value</th><th>Observed</th></tr></thead><tbody>{% for row in ranking.rows %}<tr><td>{{ row.rank }}</td><td><a href="{{ link('models/' ~ row.model.slug ~ '/') }}">{{ row.model.name }}</a></td><td>{{ row.model.provider.name }}</td><td>{% if ranking.metric == 'context-window' %}{{ row.value|tokens }} tokens{% else %}{{ row.value|money }} / 1M{% endif %}</td><td>{% if ranking.metric == 'context-window' %}{{ row.model.provenance.observation_date }}{% else %}{{ row.model.pricing.provenance.observation_date }}{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+{% if ranking.rows %}<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Model</th><th>Provider</th><th>Value</th><th>Cohort</th><th>Observed</th></tr></thead><tbody>{% for row in ranking.rows %}<tr>
+  <td>{% if ranking.metric == 'open-models' %}—{% else %}{{ row.rank }}{% endif %}</td><td><a href="{{ link('models/' ~ row.model.slug ~ '/') }}">{{ row.model.name }}</a></td><td>{{ row.model.provider.name }}</td>
+  <td>{% if row.display_value %}{{ row.display_value }}{% elif ranking.metric == 'context' %}{{ row.value|tokens }} tokens{% elif ranking.metric in ['input-cost', 'output-cost'] %}{{ row.value|money }} / 1M tokens{% elif ranking.metric == 'latency' %}{{ '%.3f'|format(row.value) }} seconds to first token{% elif ranking.metric == 'speed' %}{{ '%.2f'|format(row.value) }} tokens/second{% elif ranking.metric == 'value' %}{{ '%.2f'|format(row.value) }} benchmark points/USD{% else %}{{ row.value }} {{ row.unit|default('')|replace('_', ' ') }}{% endif %}</td>
+  <td>{{ row.cohort_label|default('single comparable unit') }}</td><td>{{ row.observed }}{% if row.age_days is not none %} ({{ row.age_days }} days old){% endif %}</td>
+</tr>{% endfor %}</tbody></table></div>{% else %}<p class="callout">This page is intentionally unranked until enough fresh, comparable observations exist. No missing value is converted to zero.</p>{% endif %}
+<section class="card"><h2>Eligibility boundary</h2><p>Ranks are calculated before rendering. Benchmark, version, unit, evaluator configuration, and comparison group remain separate; ties share a rank and deterministic name ordering only breaks display-order ties.</p></section>
 {% endblock %}

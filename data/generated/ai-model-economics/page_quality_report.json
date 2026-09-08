@@ -2826,7 +2826,7 @@
     "quality_score": 100,
     "usable_facts": 19,
     "usable_historical_metrics": 0,
-    "insight_candidate_count": 5,
+    "insight_candidate_count": 7,
     "selected_insight_count": 4,
     "source_freshness": {
       "as_of_year": 2026,
@@ -2840,7 +2840,7 @@
     "metrics": {
       "usable_facts": 19,
       "usable_historical_metrics": 0,
-      "insight_candidate_count": 5,
+      "insight_candidate_count": 7,
       "selected_insight_count": 4,
       "differentiated_content_count": 19,
       "source_freshness": {
@@ -2920,7 +2920,7 @@
     "quality_score": 100,
     "usable_facts": 19,
     "usable_historical_metrics": 0,
-    "insight_candidate_count": 5,
+    "insight_candidate_count": 7,
     "selected_insight_count": 4,
     "source_freshness": {
       "as_of_year": 2026,
@@ -2934,7 +2934,7 @@
     "metrics": {
       "usable_facts": 19,
       "usable_historical_metrics": 0,
-      "insight_candidate_count": 5,
+      "insight_candidate_count": 7,
       "selected_insight_count": 4,
       "differentiated_content_count": 19,
       "source_freshness": {
@@ -3014,7 +3014,7 @@
     "quality_score": 100,
     "usable_facts": 19,
     "usable_historical_metrics": 0,
-    "insight_candidate_count": 5,
+    "insight_candidate_count": 7,
     "selected_insight_count": 4,
     "source_freshness": {
       "as_of_year": 2026,
@@ -3028,7 +3028,7 @@
     "metrics": {
       "usable_facts": 19,
       "usable_historical_metrics": 0,
-      "insight_candidate_count": 5,
+      "insight_candidate_count": 7,
       "selected_insight_count": 4,
       "differentiated_content_count": 19,
       "source_freshness": {
@@ -5546,7 +5546,477 @@
     }
   },
   {
-    "url": "models/rankings/input-cost/",
+    "url": "rankings/intelligence/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/reasoning/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/coding/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 0,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 1,
+    "selected_insight_count": 1,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 0,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 1,
+      "selected_insight_count": 1,
+      "differentiated_content_count": 0,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 1,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/speed/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 0,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 1,
+    "selected_insight_count": 1,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 0,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 1,
+      "selected_insight_count": 1,
+      "differentiated_content_count": 0,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 1,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/latency/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 0,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 1,
+    "selected_insight_count": 1,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 0,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 1,
+      "selected_insight_count": 1,
+      "differentiated_content_count": 0,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 1,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/input-cost/",
     "page_type": "model_ranking",
     "status": "generated",
     "quality_score": 100,
@@ -5640,7 +6110,7 @@
     }
   },
   {
-    "url": "models/rankings/output-cost/",
+    "url": "rankings/output-cost/",
     "page_type": "model_ranking",
     "status": "generated",
     "quality_score": 100,
@@ -5734,7 +6204,7 @@
     }
   },
   {
-    "url": "models/rankings/context-window/",
+    "url": "rankings/context/",
     "page_type": "model_ranking",
     "status": "generated",
     "quality_score": 100,
@@ -5766,6 +6236,570 @@
         "stale_fact_count": 0
       },
       "required_internal_link_count": 37,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/open-models/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 23,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 3,
+    "selected_insight_count": 3,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 23,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 3,
+      "selected_insight_count": 3,
+      "differentiated_content_count": 1,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 24,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/value/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/value/coding/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/value/chat/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/value/batch/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 2,
+    "selected_insight_count": 2,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 2,
+      "selected_insight_count": 2,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
+      "missing_internal_links": [],
+      "unsupported_calculation_count": 0,
+      "checks": [
+        {
+          "name": "minimum_usable_facts",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_historical_coverage",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "provenance_completeness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "source_freshness",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "differentiated_content",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_insight_candidates",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "minimum_selected_insights",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "unique_page_intent",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "required_internal_links",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "valid_canonical_url",
+          "passed": true,
+          "reason": null
+        },
+        {
+          "name": "supported_calculations",
+          "passed": true,
+          "reason": null
+        }
+      ]
+    }
+  },
+  {
+    "url": "rankings/price-performance-frontier/",
+    "page_type": "model_ranking",
+    "status": "generated",
+    "quality_score": 100,
+    "usable_facts": 3,
+    "usable_historical_metrics": 0,
+    "insight_candidate_count": 1,
+    "selected_insight_count": 1,
+    "source_freshness": {
+      "as_of_year": 2026,
+      "newest_source_year": 2026,
+      "oldest_source_year": 2026,
+      "maximum_age_years": 0,
+      "allowed_age_years": 2,
+      "stale_fact_count": 0
+    },
+    "skip_reasons": [],
+    "metrics": {
+      "usable_facts": 3,
+      "usable_historical_metrics": 0,
+      "insight_candidate_count": 1,
+      "selected_insight_count": 1,
+      "differentiated_content_count": 3,
+      "source_freshness": {
+        "as_of_year": 2026,
+        "newest_source_year": 2026,
+        "oldest_source_year": 2026,
+        "maximum_age_years": 0,
+        "allowed_age_years": 2,
+        "stale_fact_count": 0
+      },
+      "required_internal_link_count": 4,
       "missing_internal_links": [],
       "unsupported_calculation_count": 0,
       "checks": [

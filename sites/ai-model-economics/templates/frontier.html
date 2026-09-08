@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Price-performance frontier — AI Model Economics{% endblock %}
+{% block description %}Deterministic Pareto frontier for AI model performance versus configured workload cost, calculated only within comparable benchmark cohorts.{% endblock %}
+{% block content %}
+<p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Rankings</p>
+<section class="page-heading"><p class="eyebrow">Flagship economics analysis</p><h1>Price-performance frontier</h1><p class="lede">A model is on the frontier when no comparable model both performs better and costs less under the same benchmark cohort and workload assumptions.</p><p class="callout">Profile: {{ site.workload_profiles[ranking.workload].label }}. {{ site.workload_profiles[ranking.workload].description }}</p></section>
+<section class="insight-box"><h2>Frontier insight</h2><p>{{ ranking.insights.summary }}</p></section>
+{% if ranking.rows %}<div class="table-wrap"><table><thead><tr><th>Model</th><th>Benchmark</th><th>Performance</th><th>Blended cost</th><th>Cohort</th></tr></thead><tbody>{% for row in ranking.rows %}<tr><td><a href="{{ link('models/' ~ row.model.slug ~ '/') }}">{{ row.model.name }}</a></td><td>{{ row.benchmark.name }} {{ row.benchmark.version }}</td><td>{{ row.display_performance }} {{ row.benchmark.unit }}</td><td>{{ row.cost|money }}</td><td>{{ row.cohort_label }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="callout">No frontier is published until at least one model has fresh pricing and an eligible intelligence observation. Missing values are not imputed.</p>{% endif %}
+<section class="card"><h2>Dominance rule</h2><p>Dominance is deterministic and cohort-local. A candidate is removed only when another candidate is at least as capable and no more expensive, with one strict advantage. Unrelated benchmarks are never placed on the same frontier.</p></section>
+{% endblock %}

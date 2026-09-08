@@ -3,13 +3,38 @@
   "base_url": "https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/",
   "as_of_date": "2026-09-07",
   "maximum_pricing_age_days": 120,
-  "blended_workload": {
-    "formula_version": "blended-workload-v1",
-    "input_tokens": 800000,
-    "output_tokens": 200000
+  "maximum_benchmark_age_days": 365,
+  "maximum_operational_age_days": 120,
+  "default_workload_profile": "coding",
+  "workload_profiles": {
+    "coding": {
+      "label": "Coding example",
+      "description": "Illustrative 70% input / 30% output token mix; not a universal default.",
+      "input_share": 0.7,
+      "output_share": 0.3,
+      "total_tokens": 1000000,
+      "formula_version": "workload-coding-v1"
+    },
+    "chat": {
+      "label": "Chat example",
+      "description": "Illustrative 40% input / 60% output token mix; not a universal default.",
+      "input_share": 0.4,
+      "output_share": 0.6,
+      "total_tokens": 1000000,
+      "formula_version": "workload-chat-v1"
+    },
+    "batch": {
+      "label": "Batch extraction example",
+      "description": "Illustrative 90% input / 10% output token mix; not a universal default.",
+      "input_share": 0.9,
+      "output_share": 0.1,
+      "total_tokens": 1000000,
+      "formula_version": "workload-batch-v1"
+    }
   },
   "intelligence_per_dollar": {
-    "version": "intelligence-per-dollar-v1",
-    "included_benchmarks": ["agents-last-exam-v1"]
-  }
+    "version": "intelligence-per-dollar-v2",
+    "included_benchmarks": ["aa-intelligence-index-v4.1"]
+  },
+  "composites": []
 }

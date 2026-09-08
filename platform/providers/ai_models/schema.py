@@ -49,6 +49,9 @@ class Benchmark(TypedDict):
     version: str
     unit: str
     higher_is_better: bool
+    group: Literal["general_intelligence", "reasoning", "coding", "multimodal"]
+    evaluator: str
+    normalization_method: str | None
     description: str
     provenance: Provenance
 
@@ -70,6 +73,23 @@ class PerformanceObservation(TypedDict):
     benchmark_id: str
     value: float
     unit: str
+    evaluation_configuration: str
+    comparison_group: str
+    benchmark_name: str
+    benchmark_version: str
+    evaluation_date: str
+    source: str
+    evaluator: str
+    metric_direction: Literal["higher_is_better", "lower_is_better"]
+    normalization_method: str | None
+    provenance: Provenance
+
+
+class OperationalObservation(TypedDict):
+    model_id: str
+    metric: Literal["latency", "throughput"]
+    value: float
+    unit: Literal["seconds_to_first_token", "tokens_per_second"]
     evaluation_configuration: str
     comparison_group: str
     provenance: Provenance

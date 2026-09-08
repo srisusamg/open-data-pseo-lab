@@ -30,7 +30,7 @@
 </section>
 <div class="grid two-column">
   <section class="card"><h2>Providers</h2><ul class="link-list">{% for provider in providers %}<li><a href="{{ link(provider.path) }}">{{ provider.name }}</a> <span>{{ provider.models|length }} models</span></li>{% endfor %}</ul></section>
-  <section class="card"><h2>Rankings</h2><ul class="link-list">{% for ranking in rankings %}<li><a href="{{ link(ranking.path) }}">{{ ranking.metric|replace('-', ' ')|title }}</a></li>{% endfor %}</ul><p class="muted">Eligibility is calculated independently for each metric.</p></section>
+  <section class="card"><h2>Rankings</h2><ul class="link-list">{% for ranking in rankings %}<li><a href="{{ link(ranking.path) }}">{{ ranking.title }}{% if ranking.workload %} — {{ ranking.workload }}{% endif %}</a></li>{% endfor %}<li><a href="{{ link(frontier.path) }}">Price-performance frontier</a></li></ul><p class="muted">Eligibility is calculated independently for each metric. There is no overall score.</p></section>
 </div>
 {% if comparisons %}<section><h2>Configured economic comparisons</h2><div class="comparison-list">{% for comparison in comparisons %}<a class="comparison-link" href="{{ link(comparison.path) }}"><span>{{ comparison.model_a.name }}</span><strong>vs</strong><span>{{ comparison.model_b.name }}</span></a>{% endfor %}</div></section>{% endif %}
 <script>

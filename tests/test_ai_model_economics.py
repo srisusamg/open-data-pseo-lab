@@ -11,9 +11,12 @@ from platform.core.quality import evaluate_page_quality
 from platform.providers.ai_models.curated import load_catalog, validate_catalog
 from platform.providers.ai_models.normalizer import normalize_catalog, normalize_price
 from platform.recipes.model_economics import (
-    benchmark_data_is_compatible, blended_workload_cost, comparable_performance, complete_dated_provenance,
-    enrich_models, model_insights, model_path, order_releases,
-    pricing_is_fresh, provider_path, ranking_path, relative_price_difference, release_path,
+    benchmark_data_is_compatible, benchmark_groups, blended_workload_cost, comparable_performance,
+    complete_dated_provenance, enrich_models, frontier_insights, frontier_path, model_insights, model_path,
+    normalize_benchmark_score, observation_is_fresh, order_releases, pareto_frontier,
+    price_performance_frontier, pricing_is_fresh, provider_path, rank_models, ranking_insights, ranking_path,
+    relative_price_difference, release_path, validate_composite_definitions, validate_workload_profiles,
+    value_ranking_path,
 )
 from scripts.validate_ai_model_economics import validate as validate_generated_site
 
@@ -104,10 +107,22 @@ class ModelEconomicsRecipeTests(unittest.TestCase):
         self.assertIn("configured blended workload cost", first["summary"])
         self.assertTrue(all(item["evidence"] for item in first["selected"]))
 
+    def test_ranking_and_frontier_summaries_are_deterministic(self):
+        rows = rank_models("input-cost", self.models, self.benchmarks, self.config)
+        self.assertEqual(ranking_insights("input-cost", rows), ranking_insights("input-cost", rows))
+        empty = ranking_insights("speed", [])
+        self.assertIn("missing values are not treated as zero", empty["summary"])
+        frontier = price_performance_frontier(self.models, self.benchmarks, self.config)
+        first = frontier_insights(frontier, "coding")
+        self.assertEqual(first, frontier_insights(frontier, "coding"))
+        self.assertEqual(first["selected"][0]["type"], "cost_performance_frontier")
+
     def test_url_generation_matches_required_recipes(self):
         self.assertEqual(model_path({"slug": "model-a"}), "models/model-a/")
         self.assertEqual(provider_path({"slug": "provider-a"}), "providers/provider-a/")
-        self.assertEqual(ranking_path("input-cost"), "models/rankings/input-cost/")
+        self.assertEqual(ranking_path("input-cost"), "rankings/input-cost/")
+        self.assertEqual(value_ranking_path("coding"), "rankings/value/coding/")
+        self.assertEqual(frontier_path(), "rankings/price-performance-frontier/")
         self.assertEqual(release_path(2026), "models/releases/2026/")
 
     def test_catalog_spans_requested_provider_taxonomy(self):
@@ -146,6 +161,86 @@ class ModelEconomicsRecipeTests(unittest.TestCase):
         self.assertEqual(model["performance"], [])
         self.assertEqual(model["ranking_eligibility"]["benchmarks"], [])
         self.assertTrue(model["ranking_eligibility"]["context_window"])
+
+    def test_benchmark_grouping_keeps_observations_semantically_separate(self):
+        grouped = benchmark_groups(self.dataset["benchmarks"])
+        self.assertEqual([item["id"] for item in grouped["general_intelligence"]], ["aa-intelligence-index-v4.1"])
+        self.assertEqual([item["id"] for item in grouped["reasoning"]], ["agents-last-exam-v1"])
+        self.assertEqual([item["id"] for item in grouped["coding"]], ["terminal-bench-2.1"])
+        observation = self.dataset["performance_observations"][0]
+        self.assertTrue({"benchmark_name", "benchmark_version", "evaluation_date", "source", "evaluator", "metric_direction", "normalization_method"}.issubset(observation))
+
+    def test_explicit_benchmark_normalization_only(self):
+        self.assertEqual(normalize_benchmark_score(75, "percent_to_unit_interval"), 0.75)
+        self.assertEqual(normalize_benchmark_score(25, "min_max", minimum=0, maximum=100), 0.25)
+        self.assertEqual(normalize_benchmark_score(58.9, None), 58.9)
+        with self.assertRaisesRegex(ValueError, "unsupported"):
+            normalize_benchmark_score(1, "mystery")
+        validate_composite_definitions([], set(self.benchmarks))
+        with self.assertRaisesRegex(ValueError, "sum to 1"):
+            validate_composite_definitions([{"id": "x", "version": "v1", "included_benchmarks": ["agents-last-exam-v1"], "weights": {"agents-last-exam-v1": .5}, "normalization_method": "identity"}], set(self.benchmarks))
+
+    def test_workload_costs_and_value_metrics_are_profile_specific(self):
+        model = self.by_id["openai:gpt-5.6-sol"]
+        self.assertEqual(set(model["workload_costs"]), {"coding", "chat", "batch"})
+        self.assertEqual(model["workload_costs"]["coding"]["value"], 8.8)
+        self.assertEqual(model["workload_costs"]["chat"]["value"], 13.6)
+        self.assertEqual(model["workload_costs"]["batch"]["value"], 5.6)
+        metrics = {item["workload"]: item for item in model["value_metrics"]}
+        self.assertEqual(metrics["coding"]["intelligence_per_input_dollar"], 14.725)
+        self.assertEqual(metrics["coding"]["intelligence_per_output_dollar"], 2.945)
+        self.assertIsNone(metrics["coding"]["speed_adjusted_value"])
+        with self.assertRaisesRegex(ValueError, "sum to 1"):
+            validate_workload_profiles({"bad": {"input_share": .7, "output_share": .4, "total_tokens": 1, "formula_version": "v1"}})
+
+    def test_metric_eligibility_excludes_missing_and_stale_facts(self):
+        unpriced = self.by_id["meta:llama-4-scout"]
+        self.assertFalse(unpriced["ranking_eligibility"]["input_cost"])
+        self.assertEqual(unpriced["ranking_eligibility"]["value_workloads"], [])
+        stale_dataset = copy.deepcopy(self.dataset)
+        price = next(item for item in stale_dataset["pricing_observations"] if item["model_id"] == "openai:gpt-5.6-sol")
+        price["provenance"]["observation_date"] = "2025-01-01"
+        stale_models = enrich_models(stale_dataset, self.config)
+        stale = next(item for item in stale_models if item["id"] == "openai:gpt-5.6-sol")
+        self.assertFalse(stale["ranking_eligibility"]["input_cost"])
+        self.assertFalse(observation_is_fresh(price, self.config["as_of_date"], self.config["maximum_pricing_age_days"]))
+
+    def test_multi_dimensional_ranking_is_deterministic_and_cohort_local(self):
+        first = rank_models("intelligence", self.models, self.benchmarks, self.config)
+        second = rank_models("intelligence", self.models, self.benchmarks, self.config)
+        self.assertEqual(first, second)
+        self.assertEqual([row["model"]["id"] for row in first], ["openai:gpt-5.6-sol", "openai:gpt-5.6-terra", "openai:gpt-5.6-luna"])
+        self.assertTrue(all(row["cohort"] == first[0]["cohort"] for row in first))
+        self.assertEqual(rank_models("coding", self.models, self.benchmarks, self.config), [])
+
+    def test_latency_throughput_and_speed_adjusted_value_require_fresh_observations(self):
+        dataset = copy.deepcopy(self.dataset)
+        provenance = copy.deepcopy(self.by_id["openai:gpt-5.6-sol"]["pricing"]["provenance"])
+        dataset["operational_observations"] = []
+        for model_id, throughput, latency in (("openai:gpt-5.6-sol", 100, .4), ("openai:gpt-5.6-terra", 120, .6)):
+            dataset["operational_observations"].extend([
+                {"model_id": model_id, "metric": "throughput", "value": throughput, "unit": "tokens_per_second", "evaluation_configuration": "same harness", "comparison_group": "synthetic-test-cohort", "provenance": copy.deepcopy(provenance)},
+                {"model_id": model_id, "metric": "latency", "value": latency, "unit": "seconds_to_first_token", "evaluation_configuration": "same harness", "comparison_group": "synthetic-test-cohort", "provenance": copy.deepcopy(provenance)},
+            ])
+        models = enrich_models(dataset, self.config)
+        speed = rank_models("speed", models, self.benchmarks, self.config)
+        latency = rank_models("latency", models, self.benchmarks, self.config)
+        self.assertEqual([row["model"]["id"] for row in speed], ["openai:gpt-5.6-terra", "openai:gpt-5.6-sol"])
+        self.assertEqual([row["model"]["id"] for row in latency], ["openai:gpt-5.6-sol", "openai:gpt-5.6-terra"])
+        sol = next(item for item in models if item["id"] == "openai:gpt-5.6-sol")
+        self.assertTrue(all(item["speed_adjusted_value"] is not None for item in sol["value_metrics"]))
+
+    def test_pareto_frontier_removes_only_dominated_comparable_models(self):
+        rows = [
+            {"model": {"id": "a", "name": "A"}, "performance": 10, "cost": 5, "cohort": ("same",)},
+            {"model": {"id": "b", "name": "B"}, "performance": 12, "cost": 4, "cohort": ("same",)},
+            {"model": {"id": "c", "name": "C"}, "performance": 9, "cost": 2, "cohort": ("same",)},
+            {"model": {"id": "d", "name": "D"}, "performance": 1, "cost": 99, "cohort": ("other",)},
+        ]
+        self.assertEqual([row["model"]["id"] for row in pareto_frontier(rows)], ["d", "c", "b"])
+        actual = price_performance_frontier(self.models, self.benchmarks, self.config)
+        self.assertEqual(actual, price_performance_frontier(self.models, self.benchmarks, self.config))
+        self.assertTrue(actual)
 
     def test_model_status_values_and_validation(self):
         statuses = {item["status"] for item in self.models}

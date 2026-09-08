@@ -6,7 +6,7 @@ from copy import deepcopy
 
 from platform.core.provenance import dated_provenance
 from platform.providers.ai_models.schema import (
-    Benchmark, Model, PerformanceObservation, PricingObservation, Provider,
+    Benchmark, Model, OperationalObservation, PerformanceObservation, PricingObservation, Provider,
 )
 
 
@@ -63,7 +63,7 @@ def normalize_catalog(catalog: dict) -> dict:
     benchmarks: list[Benchmark] = []
     for item in catalog["benchmarks"]:
         benchmarks.append({
-            **{key: item[key] for key in ("id", "slug", "name", "version", "unit", "higher_is_better", "description")},
+            **{key: item[key] for key in ("id", "slug", "name", "version", "unit", "higher_is_better", "group", "evaluator", "normalization_method", "description")},
             "provenance": _provenance(item),
         })
     pricing: list[PricingObservation] = []
@@ -77,16 +77,32 @@ def normalize_catalog(catalog: dict) -> dict:
             "maximum_prompt_tokens_for_rate": item.get("maximum_prompt_tokens_for_rate"),
             "provenance": _provenance(item),
         })
+    benchmark_by_id = {item["id"]: item for item in benchmarks}
     performance: list[PerformanceObservation] = []
     for item in catalog["performance_observations"]:
+        benchmark = benchmark_by_id[item["benchmark_id"]]
+        provenance = _provenance(item)
         performance.append({
             **{key: item[key] for key in (
                 "model_id", "benchmark_id", "value", "unit", "evaluation_configuration", "comparison_group",
             )},
+            "benchmark_name": benchmark["name"], "benchmark_version": benchmark["version"],
+            "evaluation_date": item.get("evaluation_date", provenance["observation_date"]),
+            "source": item.get("source", provenance["source_url"]),
+            "evaluator": item.get("evaluator", benchmark["evaluator"]),
+            "metric_direction": "higher_is_better" if benchmark["higher_is_better"] else "lower_is_better",
+            "normalization_method": item.get("normalization_method", benchmark["normalization_method"]),
+            "provenance": provenance,
+        })
+    operational: list[OperationalObservation] = []
+    for item in catalog.get("operational_observations", []):
+        operational.append({
+            **{key: item[key] for key in ("model_id", "metric", "value", "unit", "evaluation_configuration", "comparison_group")},
             "provenance": _provenance(item),
         })
     return {
         "schema_version": catalog["schema_version"], "retrieved_at": catalog["retrieved_at"],
         "providers": providers, "models": models, "benchmarks": benchmarks,
         "pricing_observations": pricing, "performance_observations": performance,
+        "operational_observations": operational,
     }

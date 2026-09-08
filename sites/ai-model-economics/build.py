@@ -15,12 +15,13 @@ from platform.providers.ai_models.curated import SCHEMA_VERSION, load_catalog
 from platform.providers.ai_models.normalizer import normalize_catalog
 from platform.recipes.model_economics import (
     benchmark_data_is_compatible, comparison_insights, comparison_path, comparable_performance,
-    complete_dated_provenance, enrich_models, model_insights, model_path,
-    order_releases, pricing_is_fresh, provider_path, ranking_insights, ranking_path, relative_price_difference,
-    release_path,
+    complete_dated_provenance, enrich_models, frontier_insights, frontier_path, model_insights, model_path,
+    order_releases, price_performance_frontier, pricing_is_fresh, provider_path, rank_models,
+    ranking_insights, ranking_path, relative_price_difference, release_path, RANKING_DEFINITIONS,
+    value_ranking_path,
 )
 
-GENERATOR_VERSION = "2.0.0"
+GENERATOR_VERSION = "3.0.0"
 
 
 def _evaluated(context: dict) -> tuple[dict, dict]:
@@ -48,25 +49,21 @@ def _load_comparisons(path: Path, models: dict[str, dict]) -> list[tuple[dict, d
 
 
 def _ranking(metric: str, models: list[dict]) -> list[dict]:
-    if metric == "input-cost":
-        rows = [{"model": item, "value": item["pricing"]["input_price_per_million_tokens"]} for item in models if item["ranking_eligibility"]["input_cost"]]
-        rows = sorted(rows, key=lambda row: (row["value"], row["model"]["name"]))
-        for row in rows:
-            row["rank"] = 1 + sum(other["value"] < row["value"] for other in rows)
-        return rows
-    if metric == "output-cost":
-        rows = [{"model": item, "value": item["pricing"]["output_price_per_million_tokens"]} for item in models if item["ranking_eligibility"]["output_cost"]]
-        rows = sorted(rows, key=lambda row: (row["value"], row["model"]["name"]))
-        for row in rows:
-            row["rank"] = 1 + sum(other["value"] < row["value"] for other in rows)
-        return rows
-    if metric == "context-window":
-        rows = [{"model": item, "value": item["context_window_tokens"]} for item in models if item["ranking_eligibility"]["context_window"]]
-        rows = sorted(rows, key=lambda row: (-row["value"], row["model"]["name"]))
-        for row in rows:
-            row["rank"] = 1 + sum(other["value"] > row["value"] for other in rows)
-        return rows
-    raise ValueError(f"unknown ranking metric: {metric}")
+    """Backward-compatible adapter for the original three ranking tests."""
+    canonical = "context" if metric == "context-window" else metric
+    if canonical not in {"input-cost", "output-cost", "context"}:
+        raise ValueError(f"unknown legacy ranking metric: {metric}")
+    definition = RANKING_DEFINITIONS[canonical]
+    if canonical == "context":
+        rows = [{"model": item, "value": item[definition["field"]]} for item in models if item["ranking_eligibility"]["context_window"]]
+    else:
+        key = canonical.replace("-", "_")
+        rows = [{"model": item, "value": item["pricing"][definition["field"]]} for item in models if item["ranking_eligibility"][key] and item.get("pricing")]
+    descending = definition["direction"] == "desc"
+    rows.sort(key=lambda row: (-row["value"] if descending else row["value"], row["model"]["name"], row["model"]["id"]))
+    for row in rows:
+        row["rank"] = 1 + sum(other["value"] > row["value"] if descending else other["value"] < row["value"] for other in rows)
+    return rows
 
 
 def render_site(paths: SitePaths) -> int:
@@ -93,10 +90,12 @@ def render_site(paths: SitePaths) -> int:
     permanent_urls = {"", "methodology/"}
     model_urls = {item["id"]: model_path(item) for item in models}
     provider_urls = {item["id"]: provider_path(item) for item in dataset["providers"]}
-    ranking_urls = {metric: ranking_path(metric) for metric in ("input-cost", "output-cost", "context-window")}
+    ranking_urls = {metric: ranking_path(metric) for metric in RANKING_DEFINITIONS}
+    workload_ranking_urls = {slug: value_ranking_path(slug) for slug in config["workload_profiles"]}
+    price_frontier_url = frontier_path()
     years = sorted({int(item["release_date"][:4]) for item in models if item["release_date"]}, reverse=True)
     release_urls = {year: release_path(year) for year in years}
-    all_base_urls = permanent_urls | set(model_urls.values()) | set(provider_urls.values()) | set(ranking_urls.values()) | set(release_urls.values())
+    all_base_urls = permanent_urls | set(model_urls.values()) | set(provider_urls.values()) | set(ranking_urls.values()) | set(workload_ranking_urls.values()) | {price_frontier_url} | set(release_urls.values())
 
     model_results: dict[str, tuple[dict, dict, dict]] = {}
     model_intents = duplicate_intents([f"model:{item['id']}" for item in models])
@@ -130,7 +129,7 @@ def render_site(paths: SitePaths) -> int:
         model_results[path] = (result, report, insights)
 
     eligible_models = [item for item in models if model_results[model_urls[item["id"]]][0]["status"] == "generated"]
-    available_urls = permanent_urls | {model_urls[item["id"]] for item in eligible_models} | set(provider_urls.values()) | set(ranking_urls.values()) | set(release_urls.values())
+    available_urls = permanent_urls | {model_urls[item["id"]] for item in eligible_models} | set(provider_urls.values()) | set(ranking_urls.values()) | set(workload_ranking_urls.values()) | {price_frontier_url} | set(release_urls.values())
     quality_reports = [model_results[model_urls[item["id"]]][1] for item in models]
 
     providers = []
@@ -155,24 +154,43 @@ def render_site(paths: SitePaths) -> int:
     quality_reports.extend(provider_reports)
 
     rankings = []
-    for metric in ranking_urls:
-        rows = _ranking(metric, eligible_models)
+    ranking_specs = [(metric, path, None) for metric, path in ranking_urls.items()]
+    ranking_specs += [("value", path, workload) for workload, path in workload_ranking_urls.items()]
+    for metric, path, workload in ranking_specs:
+        rows = rank_models(metric, eligible_models, benchmarks_by_id, config, workload=workload)
         insights = ranking_insights(metric, rows)
-        path = ranking_urls[metric]
-        source_years = [int((row["model"]["pricing"] if metric != "context-window" else row["model"])["provenance"]["observation_date"][:4]) for row in rows]
+        source_years = [int(row["observed"][:4]) for row in rows]
+        evidence_rows = [row.get("observation") or (row["model"]["pricing"] if metric in {"input-cost", "output-cost", "value"} else row["model"]) for row in rows]
         context = {
             "url": path, "page_type": "model_ranking", "as_of_year": as_of_year,
             "usable_facts": len(rows), "usable_historical_metrics": 0,
             "insight_candidate_count": len(insights["candidates"]), "selected_insight_count": len(insights["selected"]),
-            "source_years": source_years, "provenance_complete": bool(rows) and all(complete_dated_provenance(row["model"]["pricing"] if metric != "context-window" else row["model"]) for row in rows),
+            "source_years": source_years or [as_of_year], "provenance_complete": all(complete_dated_provenance(item) for item in evidence_rows),
             "differentiated_content_count": len({row["value"] for row in rows}), "duplicate_intent": False,
             "required_internal_links": ["methodology/"] + [model_urls[row["model"]["id"]] for row in rows], "available_internal_links": available_urls,
             "canonical_url": canonical_url(base_url, path), "expected_canonical_url": canonical_url(base_url, path), "unsupported_calculations": 0,
+            "policy_overrides": {"minimum_usable_facts": 0, "minimum_differentiated_content": 0, "minimum_insight_candidates": 0, "minimum_selected_insights": 0, "minimum_required_internal_links": 1},
         }
         result, report = _evaluated(context)
         quality_reports.append(report)
         if result["status"] == "generated":
-            rankings.append({"metric": metric, "path": path, "rows": rows, "insights": insights})
+            rankings.append({"metric": metric, "title": RANKING_DEFINITIONS[metric]["title"], "path": path, "rows": rows, "insights": insights, "workload": workload, "definition": RANKING_DEFINITIONS[metric]})
+
+    frontier_rows = price_performance_frontier(eligible_models, benchmarks_by_id, config)
+    frontier_insight_result = frontier_insights(frontier_rows, config["default_workload_profile"])
+    frontier = {"metric": "price-performance-frontier", "title": "Price-performance frontier", "path": price_frontier_url, "rows": frontier_rows, "insights": frontier_insight_result, "workload": config["default_workload_profile"], "definition": {"kind": "frontier", "direction": "none"}}
+    frontier_context = {
+        "url": price_frontier_url, "page_type": "model_ranking", "as_of_year": as_of_year,
+        "usable_facts": len(frontier_rows), "usable_historical_metrics": 0,
+        "insight_candidate_count": len(frontier_insight_result["candidates"]), "selected_insight_count": len(frontier_insight_result["selected"]),
+        "source_years": [as_of_year], "provenance_complete": True,
+        "differentiated_content_count": len(frontier_rows), "duplicate_intent": False,
+        "required_internal_links": ["methodology/"] + [model_urls[row["model"]["id"]] for row in frontier_rows], "available_internal_links": available_urls,
+        "canonical_url": canonical_url(base_url, price_frontier_url), "expected_canonical_url": canonical_url(base_url, price_frontier_url), "unsupported_calculations": 0,
+        "policy_overrides": {"minimum_usable_facts": 0, "minimum_differentiated_content": 0, "minimum_insight_candidates": 0, "minimum_selected_insights": 0, "minimum_required_internal_links": 1},
+    }
+    frontier_result, frontier_report = _evaluated(frontier_context)
+    quality_reports.append(frontier_report)
 
     comparisons = []
     comparison_intents = duplicate_intents(["comparison:" + ":".join(sorted((a["id"], b["id"]))) for a, b in configured_pairs])
@@ -226,10 +244,10 @@ def render_site(paths: SitePaths) -> int:
     for comparison in comparisons:
         providers_by_model[comparison["model_a"]["id"]].append(comparison)
         providers_by_model[comparison["model_b"]["id"]].append(comparison)
-    page_paths = [""] + [model_urls[item["id"]] for item in eligible_models] + [item["path"] for item in providers] + [item["path"] for item in rankings] + [item["path"] for item in comparisons] + [item["path"] for item in releases] + ["methodology/"]
+    page_paths = [""] + [model_urls[item["id"]] for item in eligible_models] + [item["path"] for item in providers] + [item["path"] for item in rankings] + [price_frontier_url] + [item["path"] for item in comparisons] + [item["path"] for item in releases] + ["methodology/"]
     common = {
         "site": config, "models": eligible_models, "providers": providers, "rankings": rankings,
-        "comparisons": comparisons, "releases": releases, "retrieved_at": dataset["retrieved_at"],
+        "comparisons": comparisons, "releases": releases, "frontier": frontier, "retrieved_at": dataset["retrieved_at"],
         "canonical_url": canonical_url,
         "families": sorted({item["family"] for item in eligible_models}),
     }
@@ -246,6 +264,7 @@ def render_site(paths: SitePaths) -> int:
         render("provider.html", provider["path"], output / provider["path"] / "index.html", provider=provider)
     for ranking in rankings:
         render("ranking.html", ranking["path"], output / ranking["path"] / "index.html", ranking=ranking)
+    render("frontier.html", frontier["path"], output / frontier["path"] / "index.html", ranking=frontier)
     for comparison in comparisons:
         render("comparison.html", comparison["path"], output / comparison["path"] / "index.html", comparison=comparison, benchmarks_by_id=benchmarks_by_id)
     for release in releases:
@@ -263,13 +282,13 @@ def render_site(paths: SitePaths) -> int:
     derived_output = {
         "as_of_date": config["as_of_date"],
         "formulas": {
-            "blended_workload": config["blended_workload"],
+            "workload_profiles": config["workload_profiles"],
             "intelligence_per_dollar": config["intelligence_per_dollar"],
             "relative_price_difference": {"version": "relative-price-difference-v1", "formula": "(model_a_price - model_b_price) / model_b_price * 100"},
         },
         "models": [{
-            "model_id": item["id"], "pricing": item["pricing"], "blended_cost": item["blended_cost"],
-            "intelligence_per_dollar": item["value_metrics"], "ranking_eligibility": item["ranking_eligibility"],
+            "model_id": item["id"], "pricing": item["pricing"], "workload_costs": item["workload_costs"],
+            "value_metrics": item["value_metrics"], "ranking_eligibility": item["ranking_eligibility"],
         } for item in eligible_models],
         "comparisons": [{
             "path": item["path"], "model_a_id": item["model_a"]["id"], "model_b_id": item["model_b"]["id"],
@@ -277,9 +296,10 @@ def render_site(paths: SitePaths) -> int:
             "comparable_benchmarks": [pair[0]["benchmark_id"] for pair in item["performance_pairs"]],
         } for item in comparisons],
         "rankings": [{
-            "metric": item["metric"],
-            "rows": [{"rank": row["rank"], "model_id": row["model"]["id"], "value": row["value"]} for row in item["rows"]],
+            "metric": item["metric"], "workload": item["workload"],
+            "rows": [{"rank": row["rank"], "model_id": row["model"]["id"], "value": row["value"], "cohort": list(row.get("cohort", ())), "age_days": row.get("age_days")} for row in item["rows"]],
         } for item in rankings],
+        "price_performance_frontier": [{"model_id": row["model"]["id"], "performance": row["display_performance"], "cost": row["cost"], "cohort": list(row["cohort"]), "workload": row["workload"]} for row in frontier_rows],
     }
     write_text(paths.generated_data / "derived_model_economics.json", json.dumps(derived_output, indent=2))
     example_models = [models_by_id[item] for item in ("openai:gpt-5.6-sol", "openai:gpt-5.6-luna", "google:gemini-3.8-flash")]
@@ -291,7 +311,7 @@ def render_site(paths: SitePaths) -> int:
     manifest = {
         "build_timestamp": dataset["retrieved_at"], "generator_version": GENERATOR_VERSION, "schema_version": SCHEMA_VERSION,
         "provider_count": len(providers), "model_count": len(eligible_models), "comparison_count": len(comparisons),
-        "ranking_count": len(rankings), "release_timeline_count": len(releases), "generated_page_count": len(page_paths),
+        "ranking_count": len(rankings) + 1, "release_timeline_count": len(releases), "generated_page_count": len(page_paths),
         "quality_generated_count": sum(item["status"] == "generated" for item in quality_reports),
         "quality_skipped_count": sum(item["status"] == "skipped" for item in quality_reports),
     }

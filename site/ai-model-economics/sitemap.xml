@@ -60,9 +60,20 @@
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/moonshot/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/minimax/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/providers/zhipu/</loc></url>
-  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/input-cost/</loc></url>
-  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/output-cost/</loc></url>
-  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/models/rankings/context-window/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/intelligence/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/reasoning/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/coding/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/speed/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/latency/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/input-cost/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/output-cost/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/context/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/open-models/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/value/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/value/coding/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/value/chat/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/value/batch/</loc></url>
+  <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/rankings/price-performance-frontier/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-sol/claude-fable-5/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-terra/claude-sonnet-5/</loc></url>
   <url><loc>https://srisusamg.github.io/open-data-pseo-lab/ai-model-economics/compare/models/gpt-5-6-luna/gemini-3-5-flash-lite/</loc></url>
