@@ -9,17 +9,34 @@
   <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../">AI Model Economics</a>
-    <nav aria-label="Primary"><a href="../../">Models</a><a href="../intelligence/">Rankings</a><a href="../price-performance-frontier/">Frontier</a><a href="../../methodology/">Methodology</a></nav>
+    <div class="masthead">
+      <a class="brand" href="../../"><span>AI Model</span> Economics</a>
+      <p>Market data and quantitative reference</p>
+    </div>
+    <nav aria-label="Primary">
+      <a href="../../">Data</a>
+      <a href="../intelligence/">Rankings</a>
+      <a href="../price-performance-frontier/">Frontier</a>
+      <a href="../../methodology/">Methods</a>
+    </nav>
   </header>
-  <main><p class="breadcrumbs"><a href="../../">Models</a> / Rankings</p>
-<section class="page-heading"><p class="eyebrow">Independent dimension</p><h1>Coding</h1>
+  <main id="main-content"><p class="breadcrumbs"><a href="../../">Data</a> / Rankings</p>
+<header class="page-heading"><p class="eyebrow">Independent dimension · 0 observations</p><h1>Coding</h1>
   <p class="lede">Higher is better within each explicitly comparable cohort.</p>
-</section>
-<section class="insight-box"><h2>What the ranking shows</h2><p>No model currently has sufficient fresh, comparable data for this dimension; missing values are not treated as zero.</p></section>
-<p class="callout">This page is intentionally unranked until enough fresh, comparable observations exist. No missing value is converted to zero.</p><section class="card"><h2>Eligibility boundary</h2><p>Ranks are calculated before rendering. Benchmark, version, unit, evaluator configuration, and comparison group remain separate; ties share a rank and deterministic name ordering only breaks display-order ties.</p></section>
+</header>
+
+<section aria-labelledby="ranking-table-heading">
+  <div class="section-heading"><div><p class="kicker">01 · Ranked observations</p><h2 id="ranking-table-heading">Results</h2></div><p class="muted">Observed values; ties share rank</p></div>
+<p class="notice">This table is intentionally unranked until enough fresh, comparable observations exist. No missing value is converted to zero.</p></section>
+
+<section class="insight-box" aria-labelledby="ranking-insight"><h2 id="ranking-insight">Deterministic insight</h2><p>No model currently has sufficient fresh, comparable data for this dimension; missing values are not treated as zero.</p></section>
+<aside class="method-note"><p class="kicker">Eligibility boundary</p><p>Benchmark, version, unit, evaluator configuration, and comparison group remain separate. Deterministic name ordering only breaks display-order ties.</p><a class="text-link" href="../../methodology/">Methods and limitations <span aria-hidden="true">→</span></a></aside>
 </main>
-  <footer><p>Curated from official provider sources. Prices are point-in-time API list prices; terms and availability can change. <a href="../../methodology/">Methods and limitations</a>.</p></footer>
+  <footer>
+    <div><strong>AI Model Economics</strong><p>Independent reference data compiled from official provider sources.</p></div>
+    <p>Prices are point-in-time API list prices; terms and availability can change. <a href="../../methodology/">Methodology and limitations</a>.</p>
+  </footer>
 </body>
 </html>

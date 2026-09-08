@@ -245,11 +245,32 @@ def render_site(paths: SitePaths) -> int:
         providers_by_model[comparison["model_a"]["id"]].append(comparison)
         providers_by_model[comparison["model_b"]["id"]].append(comparison)
     page_paths = [""] + [model_urls[item["id"]] for item in eligible_models] + [item["path"] for item in providers] + [item["path"] for item in rankings] + [price_frontier_url] + [item["path"] for item in comparisons] + [item["path"] for item in releases] + ["methodology/"]
+    rankings_by_metric = {item["metric"]: item for item in rankings if not item["workload"]}
+    workload_rankings = {item["workload"]: item for item in rankings if item["workload"]}
+    featured_rankings = [
+        rankings_by_metric[metric]
+        for metric in ("intelligence", "reasoning", "coding", "open-models")
+        if metric in rankings_by_metric
+    ]
+    if config["default_workload_profile"] in workload_rankings:
+        featured_rankings.insert(3, workload_rankings[config["default_workload_profile"]])
+    latest_models = sorted(
+        (item for item in eligible_models if item["release_date"]),
+        key=lambda item: (item["release_date"], item["name"]),
+        reverse=True,
+    )[:8]
+    recently_updated = sorted(
+        eligible_models,
+        key=lambda item: (item["provenance"]["observation_date"], item["name"]),
+        reverse=True,
+    )[:8]
     common = {
         "site": config, "models": eligible_models, "providers": providers, "rankings": rankings,
         "comparisons": comparisons, "releases": releases, "frontier": frontier, "retrieved_at": dataset["retrieved_at"],
         "canonical_url": canonical_url,
         "families": sorted({item["family"] for item in eligible_models}),
+        "rankings_by_metric": rankings_by_metric, "featured_rankings": featured_rankings,
+        "latest_models": latest_models, "recently_updated": recently_updated,
     }
 
     def render(template: str, page_path: str, destination: Path, **context: object) -> None:

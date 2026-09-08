@@ -9,29 +9,46 @@
   <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../">AI Model Economics</a>
-    <nav aria-label="Primary"><a href="../../">Models</a><a href="../intelligence/">Rankings</a><a href="../price-performance-frontier/">Frontier</a><a href="../../methodology/">Methodology</a></nav>
+    <div class="masthead">
+      <a class="brand" href="../../"><span>AI Model</span> Economics</a>
+      <p>Market data and quantitative reference</p>
+    </div>
+    <nav aria-label="Primary">
+      <a href="../../">Data</a>
+      <a href="../intelligence/">Rankings</a>
+      <a href="../price-performance-frontier/">Frontier</a>
+      <a href="../../methodology/">Methods</a>
+    </nav>
   </header>
-  <main><p class="breadcrumbs"><a href="../../">Models</a> / Rankings</p>
-<section class="page-heading"><p class="eyebrow">Independent dimension</p><h1>Reasoning</h1>
+  <main id="main-content"><p class="breadcrumbs"><a href="../../">Data</a> / Rankings</p>
+<header class="page-heading"><p class="eyebrow">Independent dimension · 3 observations</p><h1>Reasoning</h1>
   <p class="lede">Higher is better within each explicitly comparable cohort.</p>
-</section>
-<section class="insight-box"><h2>What the ranking shows</h2><p>GPT-5.6 Sol ranks first at 52.70 percent. The eligible range runs from 50.30 percent to 52.70 percent, a spread of 2.40 percent.</p></section>
-<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Model</th><th>Provider</th><th>Value</th><th>Cohort</th><th>Observed</th></tr></thead><tbody><tr>
-  <td>1</td><td><a href="../../models/gpt-5-6-sol/">GPT-5.6 Sol</a></td><td>OpenAI</td>
-  <td>52.7 percent</td>
-  <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td>2026-07-09 (60 days old)</td>
-</tr><tr>
-  <td>2</td><td><a href="../../models/gpt-5-6-terra/">GPT-5.6 Terra</a></td><td>OpenAI</td>
-  <td>50.4 percent</td>
-  <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td>2026-07-09 (60 days old)</td>
-</tr><tr>
-  <td>3</td><td><a href="../../models/gpt-5-6-luna/">GPT-5.6 Luna</a></td><td>OpenAI</td>
-  <td>50.3 percent</td>
-  <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td>2026-07-09 (60 days old)</td>
-</tr></tbody></table></div><section class="card"><h2>Eligibility boundary</h2><p>Ranks are calculated before rendering. Benchmark, version, unit, evaluator configuration, and comparison group remain separate; ties share a rank and deterministic name ordering only breaks display-order ties.</p></section>
+</header>
+
+<section aria-labelledby="ranking-table-heading">
+  <div class="section-heading"><div><p class="kicker">01 · Ranked observations</p><h2 id="ranking-table-heading">Results</h2></div><p class="muted">Observed values; ties share rank</p></div>
+<div class="table-wrap"><table class="data-table ranking-table"><thead><tr><th scope="col">Rank</th><th scope="col">Model</th><th scope="col">Provider</th><th scope="col">Value</th><th scope="col">Cohort / secondary measure</th><th scope="col">Observation date</th></tr></thead><tbody><tr>
+    <td class="rank">1</td><th scope="row"><a href="../../models/gpt-5-6-sol/">GPT-5.6 Sol</a></th><td>OpenAI</td>
+    <td class="numeric"><strong>52.7 percent</strong></td>
+    <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td class="numeric">2026-07-09<small>60 days old</small></td>
+  </tr><tr>
+    <td class="rank">2</td><th scope="row"><a href="../../models/gpt-5-6-terra/">GPT-5.6 Terra</a></th><td>OpenAI</td>
+    <td class="numeric"><strong>50.4 percent</strong></td>
+    <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td class="numeric">2026-07-09<small>60 days old</small></td>
+  </tr><tr>
+    <td class="rank">3</td><th scope="row"><a href="../../models/gpt-5-6-luna/">GPT-5.6 Luna</a></th><td>OpenAI</td>
+    <td class="numeric"><strong>50.3 percent</strong></td>
+    <td>Agents&#39; Last Exam launch-table-2026-07-09 · openai-gpt-5.6-launch-2026-07-09</td><td class="numeric">2026-07-09<small>60 days old</small></td>
+  </tr></tbody></table></div></section>
+
+<section class="insight-box" aria-labelledby="ranking-insight"><h2 id="ranking-insight">Deterministic insight</h2><p>GPT-5.6 Sol ranks first at 52.70 percent. The eligible range runs from 50.30 percent to 52.70 percent, a spread of 2.40 percent.</p></section>
+<aside class="method-note"><p class="kicker">Eligibility boundary</p><p>Benchmark, version, unit, evaluator configuration, and comparison group remain separate. Deterministic name ordering only breaks display-order ties.</p><a class="text-link" href="../../methodology/">Methods and limitations <span aria-hidden="true">→</span></a></aside>
 </main>
-  <footer><p>Curated from official provider sources. Prices are point-in-time API list prices; terms and availability can change. <a href="../../methodology/">Methods and limitations</a>.</p></footer>
+  <footer>
+    <div><strong>AI Model Economics</strong><p>Independent reference data compiled from official provider sources.</p></div>
+    <p>Prices are point-in-time API list prices; terms and availability can change. <a href="../../methodology/">Methodology and limitations</a>.</p>
+  </footer>
 </body>
 </html>

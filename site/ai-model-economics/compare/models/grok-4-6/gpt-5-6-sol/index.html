@@ -9,22 +9,47 @@
   <link rel="stylesheet" href="../../../../styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../../../">AI Model Economics</a>
-    <nav aria-label="Primary"><a href="../../../../">Models</a><a href="../../../../rankings/intelligence/">Rankings</a><a href="../../../../rankings/price-performance-frontier/">Frontier</a><a href="../../../../methodology/">Methodology</a></nav>
+    <div class="masthead">
+      <a class="brand" href="../../../../"><span>AI Model</span> Economics</a>
+      <p>Market data and quantitative reference</p>
+    </div>
+    <nav aria-label="Primary">
+      <a href="../../../../">Data</a>
+      <a href="../../../../rankings/intelligence/">Rankings</a>
+      <a href="../../../../rankings/price-performance-frontier/">Frontier</a>
+      <a href="../../../../methodology/">Methods</a>
+    </nav>
   </header>
-  <main><p class="breadcrumbs"><a href="../../../../">Models</a> / Comparison</p>
-<section class="page-heading"><p class="eyebrow">Model comparison</p><h1>Grok 4.6 <span class="muted">vs</span> GPT-5.6 Sol</h1></section>
-<section class="insight-box"><h2>Deterministic summary</h2><p>Grok 4.6 has the lower input token price ($2.00 versus $4.00 per 1M tokens). Grok 4.6 has the lower output token price ($6.00 versus $20.00 per 1M tokens). GPT-5.6 Sol has the larger context window (1,050,000 versus 500,000 tokens).</p></section>
-<div class="table-wrap"><table><thead><tr><th>Metric</th><th><a href="../../../../models/grok-4-6/">Grok 4.6</a></th><th><a href="../../../../models/gpt-5-6-sol/">GPT-5.6 Sol</a></th></tr></thead><tbody>
-<tr><th>Input / 1M tokens</th><td>$2.00</td><td>$4.00</td></tr>
-<tr><th>Output / 1M tokens</th><td>$6.00</td><td>$20.00</td></tr>
-<tr><th>Configured blended workload</th><td>$3.20</td><td>$8.80</td></tr>
-<tr><th>Context window</th><td>500,000</td><td>1,050,000</td></tr>
-</tbody></table></div>
-<section class="card derivation"><h2>Relative price differences</h2><p>A versus B, using B as the baseline.</p><dl class="facts"><div><dt>Input</dt><dd>-50.0%</dd></div><div><dt>Output</dt><dd>-70.0%</dd></div><div><dt>Blended workload</dt><dd>-63.6%</dd></div></dl></section>
-<p class="callout">No performance leader is stated: the curated catalog has no benchmark observations for these models with the same benchmark version, unit, harness, and comparison group.</p><section class="sources"><h2>Pricing sources</h2><ul><li><a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a> — effective 2026-08-12</li><li><a href="https://platform.openai.com/docs/models/gpt-5.6-sol">GPT-5.6 Sol</a> — effective 2026-08-21</li></ul></section>
+  <main id="main-content"><p class="breadcrumbs"><a href="../../../../">Data</a> / Model comparison</p>
+<header class="page-heading"><p class="eyebrow">Comparative reference</p><h1>Grok 4.6 <span class="muted">vs</span> GPT-5.6 Sol</h1><p class="lede">Side-by-side economics and performance using only compatible, dated observations.</p></header>
+
+<section aria-labelledby="comparison-metrics">
+  <div class="section-heading"><div><p class="kicker">01 · Core measures</p><h2 id="comparison-metrics">Metric comparison</h2></div></div>
+  <div class="table-wrap"><table class="data-table comparison-table"><thead><tr><th scope="col">Metric</th><th scope="col"><a href="../../../../models/grok-4-6/">Grok 4.6</a></th><th scope="col"><a href="../../../../models/gpt-5-6-sol/">GPT-5.6 Sol</a></th></tr></thead><tbody>
+  <tr><th scope="row">Provider</th><td>xAI</td><td>OpenAI</td></tr>
+  <tr><th scope="row">Release</th><td>2026-08-12</td><td>2026-07-09</td></tr>
+  <tr><th scope="row">Input / 1M tokens</th><td class="numeric">$2.00</td><td class="numeric">$4.00</td></tr>
+  <tr><th scope="row">Output / 1M tokens</th><td class="numeric">$6.00</td><td class="numeric">$20.00</td></tr>
+  <tr><th scope="row">Configured blended workload</th><td class="numeric">$3.20</td><td class="numeric">$8.80</td></tr>
+  <tr><th scope="row">Context window</th><td class="numeric">500,000</td><td class="numeric">1,050,000</td></tr>
+  </tbody></table></div>
+</section>
+
+<section aria-labelledby="differences-heading">
+  <div class="section-heading"><div><p class="kicker">02 · Difference</p><h2 id="differences-heading">Relative price differences</h2></div><p class="muted">A versus B; B is the baseline</p></div>
+  <dl class="metrics difference-metrics"><div class="metric"><span>Input</span><strong>-50.0%</strong></div><div class="metric"><span>Output</span><strong>-70.0%</strong></div><div class="metric"><span>Blended workload</span><strong>-63.6%</strong></div></dl>
+</section>
+
+<section class="insight-box" aria-labelledby="comparison-insight"><h2 id="comparison-insight">Deterministic insight</h2><p>Grok 4.6 has the lower input token price ($2.00 versus $4.00 per 1M tokens). Grok 4.6 has the lower output token price ($6.00 versus $20.00 per 1M tokens). GPT-5.6 Sol has the larger context window (1,050,000 versus 500,000 tokens).</p></section>
+
+<p class="callout">No performance leader is stated: the curated catalog has no benchmark observations for these models with the same benchmark version, unit, harness, and comparison group.</p>
+<section class="sources" aria-labelledby="comparison-sources"><p class="kicker">04 · Provenance</p><h2 id="comparison-sources">Pricing sources</h2><ul><li><a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a> — effective 2026-08-12</li><li><a href="https://platform.openai.com/docs/models/gpt-5.6-sol">GPT-5.6 Sol</a> — effective 2026-08-21</li></ul></section>
 </main>
-  <footer><p>Curated from official provider sources. Prices are point-in-time API list prices; terms and availability can change. <a href="../../../../methodology/">Methods and limitations</a>.</p></footer>
+  <footer>
+    <div><strong>AI Model Economics</strong><p>Independent reference data compiled from official provider sources.</p></div>
+    <p>Prices are point-in-time API list prices; terms and availability can change. <a href="../../../../methodology/">Methodology and limitations</a>.</p>
+  </footer>
 </body>
 </html>

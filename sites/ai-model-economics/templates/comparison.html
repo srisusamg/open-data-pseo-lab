@@ -2,16 +2,29 @@
 {% block title %}{{ comparison.model_a.name }} vs {{ comparison.model_b.name }} API pricing{% endblock %}
 {% block description %}Deterministic comparison of API token prices, context windows, and compatible performance observations for {{ comparison.model_a.name }} and {{ comparison.model_b.name }}.{% endblock %}
 {% block content %}
-<p class="breadcrumbs"><a href="{{ link('') }}">Models</a> / Comparison</p>
-<section class="page-heading"><p class="eyebrow">Model comparison</p><h1>{{ comparison.model_a.name }} <span class="muted">vs</span> {{ comparison.model_b.name }}</h1></section>
-<section class="insight-box"><h2>Deterministic summary</h2><p>{{ comparison.insights.summary }}</p></section>
-<div class="table-wrap"><table><thead><tr><th>Metric</th><th><a href="{{ link('models/' ~ comparison.model_a.slug ~ '/') }}">{{ comparison.model_a.name }}</a></th><th><a href="{{ link('models/' ~ comparison.model_b.slug ~ '/') }}">{{ comparison.model_b.name }}</a></th></tr></thead><tbody>
-<tr><th>Input / 1M tokens</th><td>{{ comparison.model_a.pricing.input_price_per_million_tokens|money }}</td><td>{{ comparison.model_b.pricing.input_price_per_million_tokens|money }}</td></tr>
-<tr><th>Output / 1M tokens</th><td>{{ comparison.model_a.pricing.output_price_per_million_tokens|money }}</td><td>{{ comparison.model_b.pricing.output_price_per_million_tokens|money }}</td></tr>
-<tr><th>Configured blended workload</th><td>{{ comparison.model_a.blended_cost.value|money }}</td><td>{{ comparison.model_b.blended_cost.value|money }}</td></tr>
-<tr><th>Context window</th><td>{{ comparison.model_a.context_window_tokens|tokens }}</td><td>{{ comparison.model_b.context_window_tokens|tokens }}</td></tr>
-</tbody></table></div>
-<section class="card derivation"><h2>Relative price differences</h2><p>A versus B, using B as the baseline.</p><dl class="facts"><div><dt>Input</dt><dd>{{ '%+.1f'|format(comparison.derived.input_price_difference_percent_a_vs_b) }}%</dd></div><div><dt>Output</dt><dd>{{ '%+.1f'|format(comparison.derived.output_price_difference_percent_a_vs_b) }}%</dd></div><div><dt>Blended workload</dt><dd>{{ '%+.1f'|format(comparison.derived.blended_cost_difference_percent_a_vs_b) }}%</dd></div></dl></section>
-{% if comparison.performance_pairs %}<section><h2>Comparable benchmark evidence</h2><div class="table-wrap"><table><thead><tr><th>Benchmark</th><th>{{ comparison.model_a.name }}</th><th>{{ comparison.model_b.name }}</th><th>Comparison group</th></tr></thead><tbody>{% for pair in comparison.performance_pairs %}<tr><td>{{ benchmarks_by_id[pair[0].benchmark_id].name }}</td><td>{{ pair[0].value }}</td><td>{{ pair[1].value }}</td><td>{{ pair[0].comparison_group }}</td></tr>{% endfor %}</tbody></table></div></section>{% else %}<p class="callout">No performance leader is stated: the curated catalog has no benchmark observations for these models with the same benchmark version, unit, harness, and comparison group.</p>{% endif %}
-<section class="sources"><h2>Pricing sources</h2><ul><li><a href="{{ comparison.model_a.pricing.provenance.source_url }}">{{ comparison.model_a.name }}</a> — effective {{ comparison.model_a.pricing.provenance.effective_date }}</li><li><a href="{{ comparison.model_b.pricing.provenance.source_url }}">{{ comparison.model_b.name }}</a> — effective {{ comparison.model_b.pricing.provenance.effective_date }}</li></ul></section>
+<p class="breadcrumbs"><a href="{{ link('') }}">Data</a> / Model comparison</p>
+<header class="page-heading"><p class="eyebrow">Comparative reference</p><h1>{{ comparison.model_a.name }} <span class="muted">vs</span> {{ comparison.model_b.name }}</h1><p class="lede">Side-by-side economics and performance using only compatible, dated observations.</p></header>
+
+<section aria-labelledby="comparison-metrics">
+  <div class="section-heading"><div><p class="kicker">01 · Core measures</p><h2 id="comparison-metrics">Metric comparison</h2></div></div>
+  <div class="table-wrap"><table class="data-table comparison-table"><thead><tr><th scope="col">Metric</th><th scope="col"><a href="{{ link('models/' ~ comparison.model_a.slug ~ '/') }}">{{ comparison.model_a.name }}</a></th><th scope="col"><a href="{{ link('models/' ~ comparison.model_b.slug ~ '/') }}">{{ comparison.model_b.name }}</a></th></tr></thead><tbody>
+  <tr><th scope="row">Provider</th><td>{{ comparison.model_a.provider.name }}</td><td>{{ comparison.model_b.provider.name }}</td></tr>
+  <tr><th scope="row">Release</th><td>{{ comparison.model_a.release_date }}</td><td>{{ comparison.model_b.release_date }}</td></tr>
+  <tr><th scope="row">Input / 1M tokens</th><td class="numeric">{{ comparison.model_a.pricing.input_price_per_million_tokens|money }}</td><td class="numeric">{{ comparison.model_b.pricing.input_price_per_million_tokens|money }}</td></tr>
+  <tr><th scope="row">Output / 1M tokens</th><td class="numeric">{{ comparison.model_a.pricing.output_price_per_million_tokens|money }}</td><td class="numeric">{{ comparison.model_b.pricing.output_price_per_million_tokens|money }}</td></tr>
+  <tr><th scope="row">Configured blended workload</th><td class="numeric">{{ comparison.model_a.blended_cost.value|money }}</td><td class="numeric">{{ comparison.model_b.blended_cost.value|money }}</td></tr>
+  <tr><th scope="row">Context window</th><td class="numeric">{{ comparison.model_a.context_window_tokens|tokens }}</td><td class="numeric">{{ comparison.model_b.context_window_tokens|tokens }}</td></tr>
+  </tbody></table></div>
+</section>
+
+<section aria-labelledby="differences-heading">
+  <div class="section-heading"><div><p class="kicker">02 · Difference</p><h2 id="differences-heading">Relative price differences</h2></div><p class="muted">A versus B; B is the baseline</p></div>
+  <dl class="metrics difference-metrics"><div class="metric"><span>Input</span><strong>{{ '%+.1f'|format(comparison.derived.input_price_difference_percent_a_vs_b) }}%</strong></div><div class="metric"><span>Output</span><strong>{{ '%+.1f'|format(comparison.derived.output_price_difference_percent_a_vs_b) }}%</strong></div><div class="metric"><span>Blended workload</span><strong>{{ '%+.1f'|format(comparison.derived.blended_cost_difference_percent_a_vs_b) }}%</strong></div></dl>
+</section>
+
+<section class="insight-box" aria-labelledby="comparison-insight"><h2 id="comparison-insight">Deterministic insight</h2><p>{{ comparison.insights.summary }}</p></section>
+
+{% if comparison.performance_pairs %}<section aria-labelledby="benchmark-evidence"><div class="section-heading"><div><p class="kicker">03 · Performance</p><h2 id="benchmark-evidence">Comparable benchmark evidence</h2></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th scope="col">Benchmark</th><th scope="col">{{ comparison.model_a.name }}</th><th scope="col">{{ comparison.model_b.name }}</th><th scope="col">Comparison group</th></tr></thead><tbody>{% for pair in comparison.performance_pairs %}<tr><th scope="row">{{ benchmarks_by_id[pair[0].benchmark_id].name }}</th><td class="numeric">{{ pair[0].value }}</td><td class="numeric">{{ pair[1].value }}</td><td>{{ pair[0].comparison_group }}</td></tr>{% endfor %}</tbody></table></div></section>{% else %}<p class="callout">No performance leader is stated: the curated catalog has no benchmark observations for these models with the same benchmark version, unit, harness, and comparison group.</p>{% endif %}
+
+<section class="sources" aria-labelledby="comparison-sources"><p class="kicker">04 · Provenance</p><h2 id="comparison-sources">Pricing sources</h2><ul><li><a href="{{ comparison.model_a.pricing.provenance.source_url }}">{{ comparison.model_a.name }}</a> — effective {{ comparison.model_a.pricing.provenance.effective_date }}</li><li><a href="{{ comparison.model_b.pricing.provenance.source_url }}">{{ comparison.model_b.name }}</a> — effective {{ comparison.model_b.pricing.provenance.effective_date }}</li></ul></section>
 {% endblock %}

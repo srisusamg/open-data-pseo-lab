@@ -9,11 +9,23 @@
   <link rel="stylesheet" href="{{ link('styles.css') }}">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="{{ link('') }}">AI Model Economics</a>
-    <nav aria-label="Primary"><a href="{{ link('') }}">Models</a><a href="{{ link('rankings/intelligence/') }}">Rankings</a><a href="{{ link('rankings/price-performance-frontier/') }}">Frontier</a><a href="{{ link('methodology/') }}">Methodology</a></nav>
+    <div class="masthead">
+      <a class="brand" href="{{ link('') }}"><span>AI Model</span> Economics</a>
+      <p>Market data and quantitative reference</p>
+    </div>
+    <nav aria-label="Primary">
+      <a href="{{ link('') }}">Data</a>
+      <a href="{{ link('rankings/intelligence/') }}">Rankings</a>
+      <a href="{{ link('rankings/price-performance-frontier/') }}">Frontier</a>
+      <a href="{{ link('methodology/') }}">Methods</a>
+    </nav>
   </header>
-  <main>{% block content %}{% endblock %}</main>
-  <footer><p>Curated from official provider sources. Prices are point-in-time API list prices; terms and availability can change. <a href="{{ link('methodology/') }}">Methods and limitations</a>.</p></footer>
+  <main id="main-content">{% block content %}{% endblock %}</main>
+  <footer>
+    <div><strong>AI Model Economics</strong><p>Independent reference data compiled from official provider sources.</p></div>
+    <p>Prices are point-in-time API list prices; terms and availability can change. <a href="{{ link('methodology/') }}">Methodology and limitations</a>.</p>
+  </footer>
 </body>
 </html>
