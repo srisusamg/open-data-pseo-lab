@@ -289,6 +289,9 @@ def enrich_models(dataset: dict, config: dict) -> list[dict]:
         values = [value for item in performance if fresh_price and observation_is_fresh(item, config["as_of_date"], maximum_benchmark_age) for value in derive_value_metrics(item, price, workloads, config["intelligence_per_dollar"], throughput)]
         fresh_performance = [item for item in performance if observation_is_fresh(item, config["as_of_date"], maximum_benchmark_age)]
         fresh_operational = [item for item in operational if observation_is_fresh(item, config["as_of_date"], maximum_operational_age)]
+        canonical_facts = model.get("canonical_facts", {})
+        context_is_fresh = canonical_facts.get("context_window_tokens", {}).get("freshness") != "STALE"
+        open_status_is_fresh = canonical_facts.get("open_weight", {}).get("freshness") != "STALE"
         model.update({
             "provider": providers[model["provider_id"]], "pricing": price, "blended_cost": blend,
             "workload_costs": workload_costs, "performance": performance, "operational": operational,
@@ -301,8 +304,8 @@ def enrich_models(dataset: dict, config: dict) -> list[dict]:
             "ranking_eligibility": {
                 "input_cost": fresh_price,
                 "output_cost": fresh_price,
-                "context_window": model["context_window_tokens"] is not None,
-                "open_models": model["weights_available"] and "open_weight" in model["distribution_types"],
+                "context_window": model["context_window_tokens"] is not None and context_is_fresh,
+                "open_models": model["weights_available"] and "open_weight" in model["distribution_types"] and open_status_is_fresh,
                 "benchmarks": sorted({item["benchmark_id"] for item in fresh_performance}),
                 "latency": any(item["metric"] == "latency" for item in fresh_operational),
                 "throughput": any(item["metric"] == "throughput" for item in fresh_operational),

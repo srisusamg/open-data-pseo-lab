@@ -113,11 +113,11 @@
         "provenance": {
           "source_name": "Anthropic launch pricing",
           "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
-          "source_metric_id": "pricing:claude-fable-5:standard",
+          "source_metric_id": "canonical:anthropic:claude-fable-5:pricing",
           "observation_date": "2026-06-09",
           "effective_date": "2026-06-09",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_announcement",
+          "retrieved_at": "2026-06-09T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -174,11 +174,11 @@
         "provenance": {
           "source_name": "Anthropic launch pricing",
           "source_url": "https://www.anthropic.com/news/claude-opus-5",
-          "source_metric_id": "pricing:claude-opus-5:standard",
+          "source_metric_id": "canonical:anthropic:claude-opus-5:pricing",
           "observation_date": "2026-07-24",
           "effective_date": "2026-07-24",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_announcement",
+          "retrieved_at": "2026-07-24T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -235,11 +235,11 @@
         "provenance": {
           "source_name": "Anthropic launch pricing",
           "source_url": "https://www.anthropic.com/news/claude-sonnet-5",
-          "source_metric_id": "pricing:claude-sonnet-5:standard",
+          "source_metric_id": "canonical:anthropic:claude-sonnet-5:pricing",
           "observation_date": "2026-06-30",
-          "effective_date": "2026-09-01",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_announcement",
+          "effective_date": "2026-06-30",
+          "retrieved_at": "2026-06-30T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -296,11 +296,11 @@
         "provenance": {
           "source_name": "Cohere Command A pricing",
           "source_url": "https://docs.cohere.com/docs/command-a",
-          "source_metric_id": "pricing:command-a-03-2025:standard",
+          "source_metric_id": "canonical:cohere:command-a-03-2025:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2025-03-13",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -437,11 +437,11 @@
         "provenance": {
           "source_name": "Gemini API pricing",
           "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
-          "source_metric_id": "pricing:gemini-3.5-flash-lite:standard",
+          "source_metric_id": "canonical:google:gemini-3.5-flash-lite:pricing",
           "observation_date": "2026-08-11",
-          "effective_date": "2026-07-21",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "effective_date": "2026-08-11",
+          "retrieved_at": "2026-08-11T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -498,11 +498,11 @@
         "provenance": {
           "source_name": "Gemini API model guide",
           "source_url": "https://ai.google.dev/gemini-api/docs/latest-model",
-          "source_metric_id": "pricing:gemini-3.7-flash:standard",
+          "source_metric_id": "canonical:google:gemini-3.7-flash:pricing",
           "observation_date": "2026-08-12",
           "effective_date": "2026-08-12",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "retrieved_at": "2026-08-12T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -559,11 +559,11 @@
         "provenance": {
           "source_name": "Gemini API pricing",
           "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
-          "source_metric_id": "pricing:gemini-3.8-flash:standard",
+          "source_metric_id": "canonical:google:gemini-3.8-flash:pricing",
           "observation_date": "2026-09-02",
           "effective_date": "2026-09-02",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "retrieved_at": "2026-09-02T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -740,11 +740,11 @@
         "provenance": {
           "source_name": "MiniMax pay-as-you-go pricing",
           "source_url": "https://platform.minimax.io/docs/guides/pricing-paygo",
-          "source_metric_id": "pricing:minimax-m2-7:paygo",
+          "source_metric_id": "canonical:minimax:minimax-m2-7:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2026-03-18",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -981,11 +981,11 @@
         "provenance": {
           "source_name": "OpenAI model documentation",
           "source_url": "https://platform.openai.com/docs/models/gpt-5.6-luna",
-          "source_metric_id": "pricing:gpt-5.6-luna:standard",
+          "source_metric_id": "canonical:openai:gpt-5.6-luna:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2026-07-30",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -1125,11 +1125,11 @@
         "provenance": {
           "source_name": "OpenAI model documentation",
           "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol",
-          "source_metric_id": "pricing:gpt-5.6-sol:standard",
+          "source_metric_id": "canonical:openai:gpt-5.6-sol:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2026-08-21",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -1269,11 +1269,11 @@
         "provenance": {
           "source_name": "OpenAI model documentation",
           "source_url": "https://platform.openai.com/docs/models/gpt-5.6-terra",
-          "source_metric_id": "pricing:gpt-5.6-terra:standard",
+          "source_metric_id": "canonical:openai:gpt-5.6-terra:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2026-07-30",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -1573,11 +1573,11 @@
         "provenance": {
           "source_name": "xAI model pricing",
           "source_url": "https://docs.x.ai/developers/models/grok-4.3",
-          "source_metric_id": "pricing:grok-4.3:short-context",
+          "source_metric_id": "canonical:xai:grok-4.3:pricing",
           "observation_date": "2026-09-07",
-          "effective_date": "2026-05-15",
+          "effective_date": "2026-09-07",
           "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -1634,11 +1634,11 @@
         "provenance": {
           "source_name": "xAI model pricing",
           "source_url": "https://docs.x.ai/developers/models/grok-4.5",
-          "source_metric_id": "pricing:grok-4.5:short-context",
+          "source_metric_id": "canonical:xai:grok-4.5:pricing",
           "observation_date": "2026-09-02",
-          "effective_date": "2026-07-08",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "effective_date": "2026-09-02",
+          "retrieved_at": "2026-09-02T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }
@@ -1695,11 +1695,11 @@
         "provenance": {
           "source_name": "xAI model pricing",
           "source_url": "https://docs.x.ai/developers/models/grok-4.6",
-          "source_metric_id": "pricing:grok-4.6:short-context",
+          "source_metric_id": "canonical:xai:grok-4.6:pricing",
           "observation_date": "2026-08-21",
-          "effective_date": "2026-08-12",
-          "retrieved_at": "2026-09-07T00:00:00Z",
-          "source_type": "official_pricing_documentation",
+          "effective_date": "2026-08-21",
+          "retrieved_at": "2026-08-21T00:00:00Z",
+          "source_type": "automated",
           "confidence": "high",
           "status": "verified"
         }

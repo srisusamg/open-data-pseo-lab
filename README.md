@@ -40,6 +40,21 @@ python -m http.server 8000 --directory site
 
 Then open <http://localhost:8000/> for OpenData Atlas or <http://localhost:8000/ai-model-economics/> for AI Model Economics. To rebuild OpenData Atlas without calling the API, use `python scripts/build.py --offline` after a snapshot exists. The AI Model Economics build is always offline and deterministic from its curated catalog.
 
+## AI Model Economics research curation
+
+AI Model Economics uses a hybrid, field-level data flow: automated catalog observations and the human-editable `data/curated/model_facts.csv` are validated separately, merged by deterministic precedence, and only then used by rankings, insights, and pages. Automation never writes the curated CSV. Fresh verified `PREFERRED` facts override automated observations; `LOCKED` facts remain canonical even when automation detects a different value; conflicts preserve both records in a generated report.
+
+```shell
+python scripts/validate_curated_data.py
+python scripts/build_ai_model_economics.py
+python scripts/generate_research_queue.py
+python scripts/import_curated_facts.py data/generated/ai-model-economics/manual_research_template.csv
+```
+
+The editable CSV accepts one fact per row with its external source URL, observation date, confidence, status, notes, and optional lock mode. Use the generated `manual_research_template.csv` to research missing or stale rows, then import completed rows. Import refuses to replace an existing curated model/field pair unless `--overwrite` is explicitly supplied.
+
+Generated research products live under `data/generated/ai-model-economics/`: `automated_facts.json`, `canonical_models.json`, `data_conflicts.json`, model coverage in CSV and JSON, `research_queue.csv`, `model_curation_workbook.csv`, and `manual_research_template.csv`. These reports and all files under `site/` are build outputs and should not be edited manually. Field definitions and freshness thresholds live in the AI Model Economics site configuration.
+
 ## URLs
 
 - `/` — index of countries and rankings

@@ -1,5 +1,11 @@
 # AI Model Economics architecture report
 
+## Hybrid field-level curation
+
+The data boundary is now `automated facts + data/curated/model_facts.csv -> deterministic merge -> canonical facts -> quality/derivations -> rankings and pages`. The field registry classifies each supported fact as automated, partially automated, manual-required, or derived; the freshness policy defines category-specific FRESH, AGING, and STALE states. Automated extraction never writes the curated CSV.
+
+Fresh verified preferred human records override automated records, locked human records remain canonical until explicitly changed, and every differing source pair is retained in `data_conflicts.json`. All downstream consumers receive the merged dataset; templates and ranking recipes do not choose source precedence. Generated coverage, research queue, curation workbook, and manual-research template files expose missing and stale fields without converting them to zero.
+
 ## Outcome
 
 AI Model Economics is a second production-oriented site built from the same repository and shared pSEO core. It has its own site definition, provider adapter, generated-data boundary, quality report, templates, sitemap, validation entry point, and static output under `site/ai-model-economics/`. OpenData Atlas keeps its existing URL paths, configuration, provider, templates, sitemap, and build entry point.

@@ -12,6 +12,10 @@ from platform.core.quality import duplicate_intents, evaluate_page_quality, qual
 from platform.core.rendering import template_environment, write_text
 from platform.core.urls import canonical_url, relative_url
 from platform.providers.ai_models.curated import SCHEMA_VERSION, load_catalog
+from platform.providers.ai_models.hybrid import (
+    CURATED_COLUMNS, apply_canonical, automated_facts, build_reports, csv_text,
+    load_curated_facts, load_field_registry, load_freshness_policy, merge_facts,
+)
 from platform.providers.ai_models.normalizer import normalize_catalog
 from platform.recipes.model_economics import (
     benchmark_data_is_compatible, comparison_insights, comparison_path, comparable_performance,
@@ -21,7 +25,7 @@ from platform.recipes.model_economics import (
     value_ranking_path,
 )
 
-GENERATOR_VERSION = "3.0.0"
+GENERATOR_VERSION = "4.0.0"
 
 
 def _evaluated(context: dict) -> tuple[dict, dict]:
@@ -72,7 +76,15 @@ def render_site(paths: SitePaths) -> int:
     if not base_url.startswith("https://") or not base_url.endswith("/"):
         raise ValueError("site base_url must be an https URL ending in '/'")
     catalog = load_catalog(paths.config / "catalog.json")
-    dataset = normalize_catalog(catalog)
+    source_dataset = normalize_catalog(catalog)
+    registry = load_field_registry(paths.config / "field_registry.json")
+    freshness_policy = load_freshness_policy(paths.config / "freshness_policy.json")
+    curated_path = paths.root.parents[1] / "data" / "curated" / "model_facts.csv"
+    curated = load_curated_facts(curated_path, registry, {item["id"] for item in source_dataset["models"]})
+    automated = automated_facts(source_dataset, registry)
+    canonical_facts, conflicts = merge_facts(automated, curated, registry, freshness_policy, config["as_of_date"])
+    dataset = apply_canonical(source_dataset, canonical_facts, registry)
+    reports = build_reports(dataset, canonical_facts, conflicts, registry, config["as_of_date"])
     models = enrich_models(dataset, config)
     models_by_id = {item["id"]: item for item in models}
     providers_by_id = {item["id"]: item for item in dataset["providers"]}
@@ -267,7 +279,7 @@ def render_site(paths: SitePaths) -> int:
     common = {
         "site": config, "models": eligible_models, "providers": providers, "rankings": rankings,
         "comparisons": comparisons, "releases": releases, "frontier": frontier, "retrieved_at": dataset["retrieved_at"],
-        "canonical_url": canonical_url,
+        "canonical_url": canonical_url, "field_registry": registry,
         "families": sorted({item["family"] for item in eligible_models}),
         "rankings_by_metric": rankings_by_metric, "featured_rankings": featured_rankings,
         "latest_models": latest_models, "recently_updated": recently_updated,
@@ -297,6 +309,14 @@ def render_site(paths: SitePaths) -> int:
     write_text(output / "robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {canonical_url(base_url, 'sitemap.xml')}")
 
     paths.generated_data.mkdir(parents=True, exist_ok=True)
+    write_text(paths.generated_data / "automated_facts.json", json.dumps(automated, indent=2))
+    write_text(paths.generated_data / "canonical_models.json", json.dumps([{"model_id": model_id, "facts": facts} for model_id, facts in sorted(canonical_facts.items())], indent=2))
+    write_text(paths.generated_data / "data_conflicts.json", json.dumps(conflicts, indent=2))
+    write_text(paths.generated_data / "model_coverage_report.json", json.dumps(reports["coverage"], indent=2))
+    write_text(paths.generated_data / "model_coverage_report.csv", csv_text(reports["coverage"]))
+    write_text(paths.generated_data / "research_queue.csv", csv_text(reports["queue"], ("model_id", "model_name", "provider", "field_id", "field_name", "automation_status", "current_value", "current_source", "missing_or_stale", "suggested_source_type", "priority", "notes")))
+    write_text(paths.generated_data / "model_curation_workbook.csv", csv_text(reports["workbook"]))
+    write_text(paths.generated_data / "manual_research_template.csv", csv_text(reports["template"], CURATED_COLUMNS))
     write_text(paths.generated_data / "normalized_model_data.json", json.dumps(dataset, indent=2))
     write_text(paths.generated_data / "page_quality_report.json", json.dumps(quality_reports, indent=2))
     write_text(paths.generated_data / "generated_urls.json", json.dumps([canonical_url(base_url, path) for path in page_paths], indent=2))
@@ -335,6 +355,13 @@ def render_site(paths: SitePaths) -> int:
         "ranking_count": len(rankings) + 1, "release_timeline_count": len(releases), "generated_page_count": len(page_paths),
         "quality_generated_count": sum(item["status"] == "generated" for item in quality_reports),
         "quality_skipped_count": sum(item["status"] == "skipped" for item in quality_reports),
+        "automated_fact_count": len(automated), "human_curated_fact_count": len(curated),
+        "canonical_fact_count": sum(len(facts) for facts in canonical_facts.values()),
+        "conflict_count": len(conflicts), "research_queue_count": len(reports["queue"]),
+        "automated_field_count": sum(item["automation_status"] == "AUTOMATED" for item in registry),
+        "partially_automated_field_count": sum(item["automation_status"] == "PARTIALLY_AUTOMATED" for item in registry),
+        "manual_required_field_count": sum(item["automation_status"] == "MANUAL_REQUIRED" for item in registry),
+        "derived_field_count": sum(item["automation_status"] == "DERIVED" for item in registry),
     }
     write_text(paths.generated_data / "build_manifest.json", json.dumps(manifest, indent=2))
     return len(page_paths)

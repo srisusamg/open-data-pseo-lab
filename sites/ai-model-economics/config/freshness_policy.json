@@ -1,0 +1,9 @@
+{
+  "pricing":{"fresh_after_days":90,"stale_after_days":120},
+  "benchmark":{"fresh_after_days":300,"stale_after_days":365},
+  "operational":{"fresh_after_days":90,"stale_after_days":120},
+  "release_metadata":{"fresh_after_days":180,"stale_after_days":365},
+  "context_window":{"fresh_after_days":120,"stale_after_days":180},
+  "availability":{"fresh_after_days":45,"stale_after_days":60},
+  "derived":{"fresh_after_days":3650,"stale_after_days":3651}
+}

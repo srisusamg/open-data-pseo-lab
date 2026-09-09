@@ -1,6 +1,6 @@
 {
   "build_timestamp": "2026-09-07T00:00:00Z",
-  "generator_version": "3.0.0",
+  "generator_version": "4.0.0",
   "schema_version": "3.0",
   "provider_count": 15,
   "model_count": 44,
@@ -9,5 +9,14 @@
   "release_timeline_count": 3,
   "generated_page_count": 84,
   "quality_generated_count": 82,
-  "quality_skipped_count": 0
+  "quality_skipped_count": 0,
+  "automated_fact_count": 275,
+  "human_curated_fact_count": 0,
+  "canonical_fact_count": 275,
+  "conflict_count": 0,
+  "research_queue_count": 347,
+  "automated_field_count": 6,
+  "partially_automated_field_count": 7,
+  "manual_required_field_count": 1,
+  "derived_field_count": 1
 }
