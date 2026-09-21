@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-09-14T12:59:34Z",
+  "retrieved_at": "2026-09-21T12:58:41Z",
   "history_policy": {
     "maximum_observations_per_series": 15,
     "selection": "newest non-null source observations; actual years preserved; no interpolation"
@@ -1268,18 +1268,6 @@
         {
           "year": 2014,
           "value": 47.90000153
-        },
-        {
-          "year": 2013,
-          "value": 45.79999924
-        },
-        {
-          "year": 2012,
-          "value": 42.30009842
-        },
-        {
-          "year": 2011,
-          "value": 38.3
         }
       ],
       "derived_metrics": {
