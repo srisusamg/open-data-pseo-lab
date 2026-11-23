@@ -4,7 +4,7 @@
     "name": "World Bank",
     "api": "World Bank Indicators API v2"
   },
-  "retrieved_at": "2026-11-16T16:01:28Z",
+  "retrieved_at": "2026-11-23T18:25:58Z",
   "history_policy": {
     "maximum_observations_per_series": 15,
     "selection": "newest non-null source observations; actual years preserved; no interpolation"
@@ -948,78 +948,12 @@
         {
           "year": 2025,
           "value": 1406585000
-        },
-        {
-          "year": 2024,
-          "value": 1408975000
-        },
-        {
-          "year": 2023,
-          "value": 1410710000
-        },
-        {
-          "year": 2022,
-          "value": 1412175000
-        },
-        {
-          "year": 2021,
-          "value": 1412360000
-        },
-        {
-          "year": 2020,
-          "value": 1411100000
-        },
-        {
-          "year": 2019,
-          "value": 1407745000
-        },
-        {
-          "year": 2018,
-          "value": 1402760000
-        },
-        {
-          "year": 2017,
-          "value": 1396215000
-        },
-        {
-          "year": 2016,
-          "value": 1387790000
-        },
-        {
-          "year": 2015,
-          "value": 1379860000
-        },
-        {
-          "year": 2014,
-          "value": 1371860000
-        },
-        {
-          "year": 2013,
-          "value": 1363240000
-        },
-        {
-          "year": 2012,
-          "value": 1354190000
-        },
-        {
-          "year": 2011,
-          "value": 1345035000
         }
       ],
       "derived_metrics": {
         "basis": "Exact calendar-year endpoints relative to the latest observation; no interpolation",
-        "five_year": {
-          "start_year": 2020,
-          "end_year": 2025,
-          "percentage_change": -0.319963,
-          "cagr": -0.064075
-        },
-        "ten_year": {
-          "start_year": 2015,
-          "end_year": 2025,
-          "percentage_change": 1.936791,
-          "cagr": 0.192011
-        }
+        "five_year": null,
+        "ten_year": null
       }
     },
     {
@@ -1132,78 +1066,12 @@
         {
           "year": 2025,
           "value": 13861.970224368
-        },
-        {
-          "year": 2024,
-          "value": 13293.1162269366
-        },
-        {
-          "year": 2023,
-          "value": 12951.1782397043
-        },
-        {
-          "year": 2022,
-          "value": 12970.6056414327
-        },
-        {
-          "year": 2021,
-          "value": 12887.4357242941
-        },
-        {
-          "year": 2020,
-          "value": 10627.4637989619
-        },
-        {
-          "year": 2019,
-          "value": 10342.9009524335
-        },
-        {
-          "year": 2018,
-          "value": 10085.6638148819
-        },
-        {
-          "year": 2017,
-          "value": 8979.67652709856
-        },
-        {
-          "year": 2016,
-          "value": 8254.86859320357
-        },
-        {
-          "year": 2015,
-          "value": 8175.33285077393
-        },
-        {
-          "year": 2014,
-          "value": 7781.06597484974
-        },
-        {
-          "year": 2013,
-          "value": 7147.03518622344
-        },
-        {
-          "year": 2012,
-          "value": 6405.0574241349
-        },
-        {
-          "year": 2011,
-          "value": 5703.76027973346
         }
       ],
       "derived_metrics": {
         "basis": "Exact calendar-year endpoints relative to the latest observation; no interpolation",
-        "five_year": {
-          "start_year": 2020,
-          "end_year": 2025,
-          "percentage_change": 30.435356,
-          "cagr": 5.457887
-        },
-        "ten_year": {
-          "start_year": 2015,
-          "end_year": 2025,
-          "percentage_change": 69.558481,
-          "cagr": 5.42217
-        }
+        "five_year": null,
+        "ten_year": null
       }
     },
     {

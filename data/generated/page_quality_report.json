@@ -193,7 +193,7 @@
     "status": "generated",
     "quality_score": 100,
     "usable_facts": 5,
-    "usable_historical_metrics": 5,
+    "usable_historical_metrics": 3,
     "insight_candidate_count": 0,
     "selected_insight_count": 0,
     "source_freshness": {
@@ -207,7 +207,7 @@
     "skip_reasons": [],
     "metrics": {
       "usable_facts": 5,
-      "usable_historical_metrics": 5,
+      "usable_historical_metrics": 3,
       "insight_candidate_count": 0,
       "selected_insight_count": 0,
       "differentiated_content_count": 5,
@@ -569,7 +569,7 @@
     "status": "generated",
     "quality_score": 100,
     "usable_facts": 6,
-    "usable_historical_metrics": 6,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 0,
     "selected_insight_count": 0,
     "source_freshness": {
@@ -583,7 +583,7 @@
     "skip_reasons": [],
     "metrics": {
       "usable_facts": 6,
-      "usable_historical_metrics": 6,
+      "usable_historical_metrics": 5,
       "insight_candidate_count": 0,
       "selected_insight_count": 0,
       "differentiated_content_count": 6,
@@ -757,7 +757,7 @@
     "status": "generated",
     "quality_score": 100,
     "usable_facts": 6,
-    "usable_historical_metrics": 6,
+    "usable_historical_metrics": 5,
     "insight_candidate_count": 0,
     "selected_insight_count": 0,
     "source_freshness": {
@@ -771,7 +771,7 @@
     "skip_reasons": [],
     "metrics": {
       "usable_facts": 6,
-      "usable_historical_metrics": 6,
+      "usable_historical_metrics": 5,
       "insight_candidate_count": 0,
       "selected_insight_count": 0,
       "differentiated_content_count": 6,
@@ -1133,7 +1133,7 @@
     "status": "generated",
     "quality_score": 100,
     "usable_facts": 5,
-    "usable_historical_metrics": 5,
+    "usable_historical_metrics": 3,
     "insight_candidate_count": 4,
     "selected_insight_count": 4,
     "source_freshness": {
@@ -1147,7 +1147,7 @@
     "skip_reasons": [],
     "metrics": {
       "usable_facts": 5,
-      "usable_historical_metrics": 5,
+      "usable_historical_metrics": 3,
       "insight_candidate_count": 4,
       "selected_insight_count": 4,
       "differentiated_content_count": 5,
@@ -1227,7 +1227,7 @@
     "status": "generated",
     "quality_score": 100,
     "usable_facts": 5,
-    "usable_historical_metrics": 5,
+    "usable_historical_metrics": 3,
     "insight_candidate_count": 5,
     "selected_insight_count": 4,
     "source_freshness": {
@@ -1241,7 +1241,7 @@
     "skip_reasons": [],
     "metrics": {
       "usable_facts": 5,
-      "usable_historical_metrics": 5,
+      "usable_historical_metrics": 3,
       "insight_candidate_count": 5,
       "selected_insight_count": 4,
       "differentiated_content_count": 5,
@@ -1696,9 +1696,9 @@
     "page_type": "what_changed",
     "status": "generated",
     "quality_score": 100,
-    "usable_facts": 5,
-    "usable_historical_metrics": 5,
-    "insight_candidate_count": 13,
+    "usable_facts": 3,
+    "usable_historical_metrics": 3,
+    "insight_candidate_count": 9,
     "selected_insight_count": 6,
     "source_freshness": {
       "as_of_year": 2026,
@@ -1710,11 +1710,11 @@
     },
     "skip_reasons": [],
     "metrics": {
-      "usable_facts": 5,
-      "usable_historical_metrics": 5,
-      "insight_candidate_count": 13,
+      "usable_facts": 3,
+      "usable_historical_metrics": 3,
+      "insight_candidate_count": 9,
       "selected_insight_count": 6,
-      "differentiated_content_count": 5,
+      "differentiated_content_count": 3,
       "source_freshness": {
         "as_of_year": 2026,
         "newest_source_year": 2025,
@@ -1723,7 +1723,7 @@
         "allowed_age_years": 3,
         "stale_fact_count": 0
       },
-      "required_internal_link_count": 7,
+      "required_internal_link_count": 5,
       "missing_internal_links": [],
       "unsupported_calculation_count": 0,
       "checks": [
@@ -1790,9 +1790,9 @@
     "page_type": "what_changed",
     "status": "generated",
     "quality_score": 100,
-    "usable_facts": 5,
-    "usable_historical_metrics": 5,
-    "insight_candidate_count": 13,
+    "usable_facts": 3,
+    "usable_historical_metrics": 3,
+    "insight_candidate_count": 9,
     "selected_insight_count": 6,
     "source_freshness": {
       "as_of_year": 2026,
@@ -1804,11 +1804,11 @@
     },
     "skip_reasons": [],
     "metrics": {
-      "usable_facts": 5,
-      "usable_historical_metrics": 5,
-      "insight_candidate_count": 13,
+      "usable_facts": 3,
+      "usable_historical_metrics": 3,
+      "insight_candidate_count": 9,
       "selected_insight_count": 6,
-      "differentiated_content_count": 5,
+      "differentiated_content_count": 3,
       "source_freshness": {
         "as_of_year": 2026,
         "newest_source_year": 2025,
@@ -1817,7 +1817,7 @@
         "allowed_age_years": 3,
         "stale_fact_count": 0
       },
-      "required_internal_link_count": 7,
+      "required_internal_link_count": 5,
       "missing_internal_links": [],
       "unsupported_calculation_count": 0,
       "checks": [
